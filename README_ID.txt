@@ -25,3 +25,6 @@ PENTING
 - Master Paket Usaha menyediakan nama item, tetapi harga, HPP dan stok awal sengaja diset 0.
 - Fitur nota memakai dialog cetak browser; hasil printer Bluetooth/USB berbeda menurut perangkat dan browser.
 - Uji offline baru valid setelah aplikasi pertama kali dibuka melalui HTTPS dan cache selesai dibuat.
+
+
+PEMBARUAN v1.1: manifest sekarang menyertakan ikon PNG 192x192 dan 512x512 untuk membantu instalasi PWA di Android. Unggah/replace seluruh isi paket ini ke root repository GitHub Pages.
