@@ -73,3 +73,11 @@ Versi 1.7: tombol Batal pada formulir Produk & Jasa sekarang bertipe button dan 
 
 
 Versi v1.8: Tombol Batal pada formulir produk dibuat sebagai pembatalan langsung; validasi HTML bawaan dinonaktifkan pada formulir agar kolom wajib tidak menghalangi pembatalan. Validasi nama dijalankan saat Simpan. Cache service worker diperbarui.
+
+
+VERSI 1.9 - MULTI USAHA
+- Satu perangkat dapat menyimpan beberapa jenis usaha, sesuai batas lisensi 1, 3, atau 5 usaha.
+- Setiap usaha memiliki data produk, stok, resep HPP, transaksi, dan laporan yang terpisah.
+- Usaha yang tidak sedang aktif tetap tersimpan.
+- Ekspor cadangan mencakup semua usaha.
+- Pemilihan jumlah lisensi di UI saat ini masih prototipe lokal; belum terhubung ke pembayaran atau verifikasi kode aktivasi. Jangan mengandalkannya sebagai proteksi lisensi komersial sampai sistem aktivasi dibuat.
