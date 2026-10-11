@@ -1,4 +1,4 @@
-UNIVERSAL UMKM PRO - PWA OFFLINE v1.0 (PROTOTIPE AWAL)
+UNIVERSAL UMKM PRO - PWA OFFLINE v1.2 (KATALOG JENIS USAHA)
 
 ISI PAKET
 - index.html       Antarmuka HP
@@ -27,4 +27,13 @@ PENTING
 - Uji offline baru valid setelah aplikasi pertama kali dibuka melalui HTTPS dan cache selesai dibuat.
 
 
-PEMBARUAN v1.1: manifest sekarang menyertakan ikon PNG 192x192 dan 512x512 untuk membantu instalasi PWA di Android. Unggah/replace seluruh isi paket ini ke root repository GitHub Pages.
+PEMBARUAN v1.1: manifest menyertakan ikon PNG 192x192 dan 512x512 untuk membantu instalasi PWA di Android.
+PEMBARUAN v1.2:
+- Beranda setiap kali aplikasi dibuka menampilkan katalog 16 jenis usaha dari Master Paket.
+- Statistik omzet dan jumlah produk tidak lagi menjadi halaman utama.
+- Ada pencarian jenis usaha dan kartu katalog yang responsif untuk HP.
+- Jika profil usaha sudah dibuat, beranda menampilkan tombol Masuk untuk melanjutkan usaha yang tersimpan.
+- Versi ini tetap menyimpan satu usaha aktif per perangkat. Memilih jenis lain tidak menghapus/mengganti data yang sudah ada.
+- Data lama di IndexedDB tidak dihapus oleh pembaruan tampilan ini.
+
+PEMBARUAN: Unggah/replace seluruh isi folder paket ini ke root repository GitHub Pages. Tunggu deploy selesai, lalu buka PWA dan muat ulang. Service worker memakai cache baru v1.2 agar file tampilan diperbarui.
