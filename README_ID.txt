@@ -46,3 +46,10 @@ FITUR v1.3 — PAKET KULINER & HPP RESEP
 - Untuk barang jadi, tambah bahan di bagian “Resep / Komposisi HPP”, masukkan takaran untuk menghasilkan 1 unit produk. HPP otomatis dihitung dari biaya bahan × takaran. Satuan takaran harus sama dengan satuan bahan.
 - Ini adalah estimasi HPP bahan baku; biaya gas, tenaga kerja, susut, dan biaya lain perlu dimasukkan sebagai bahan/biaya tambahan bila ingin dihitung.
 - Setelah mengganti file di GitHub, buka ulang PWA untuk memperbarui cache. Jangan uninstall aplikasi atau menghapus data lokal.
+
+
+PEMBARUAN v1.4
+- Tombol + dan - pada keranjang kasir diperbesar agar mudah ditekan di HP.
+- Jumlah barang dapat diketik langsung pada kolom angka.
+- Jumlah harus bilangan bulat minimal 1; validasi stok tetap berlaku.
+- Cache service worker diperbarui ke v1.4.

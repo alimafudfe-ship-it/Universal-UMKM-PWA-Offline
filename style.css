@@ -58,3 +58,13 @@ nav button{font-size:12px}
 
 /* v1.3: recipe and ingredient editor */
 .recipe-section{border:1px solid var(--line);background:#f8fbfb;border-radius:12px;padding:12px;margin:14px 0}.recipe-heading h3{margin:0 0 4px}.recipe-heading p{font-size:12px;margin:4px 0 10px}.recipe-row{display:grid;grid-template-columns:minmax(0,1fr) 92px 38px;gap:6px;align-items:end;padding:7px 0;border-bottom:1px solid var(--line)}.recipe-row label{margin:0;font-size:11px}.recipe-row select,.recipe-row input{font-size:13px;min-width:0;padding:8px;margin-top:4px;min-height:40px}.recipe-row button{padding:6px;min-height:38px}.recipe-preview{font-weight:800;font-size:13px;color:var(--green2);align-self:center}.recipe-help{display:block;font-weight:400;color:var(--muted);font-size:11px;margin-top:8px}.ingredient-pill{display:inline-block;background:#fff0d7;color:#85520c;border-radius:6px;padding:2px 6px;font-size:10px;font-weight:800;margin-left:5px}@media(max-width:380px){.recipe-row{grid-template-columns:minmax(0,1fr) 76px 34px}.recipe-row select,.recipe-row input{font-size:12px;padding:7px}}
+
+/* v1.4: kontrol jumlah kasir ramah layar sentuh */
+.cartline{align-items:center;gap:12px;padding:13px 0}
+.cart-main{min-width:0;flex:1;overflow-wrap:anywhere}
+.cart-subtotal{font-size:13px;font-weight:700;margin-top:5px}
+.qty-control{display:flex;align-items:center;gap:6px;flex-shrink:0}
+.qty-control .qty-button{width:48px;height:48px;min-width:48px;min-height:48px;padding:0;font-size:28px;line-height:1;border-radius:12px;font-weight:800;touch-action:manipulation}
+.qty-control .qty-input{width:68px;min-width:68px;height:48px;min-height:48px;margin:0;padding:6px 4px;text-align:center;font-size:20px;font-weight:800;border:2px solid #9bbfba;border-radius:10px;font-variant-numeric:tabular-nums}
+.qty-control .qty-remove{width:42px;height:42px;min-width:42px;min-height:42px;padding:0;font-size:24px;color:var(--red);border-color:#e9b8b4;border-radius:10px}
+@media(max-width:520px){.cartline{align-items:stretch;flex-direction:column;gap:10px}.qty-control{display:grid;grid-template-columns:48px minmax(64px,1fr) 48px 42px;width:100%;gap:8px}.qty-control .qty-input{width:100%;min-width:0}.qty-control .qty-button{width:100%;min-width:0}}
