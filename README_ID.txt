@@ -61,3 +61,9 @@ PEMBARUAN v1.5
 - Tekan Enter atau keluar dari kolom untuk menyimpan jumlah ke keranjang; validasi jumlah dan stok tetap berlaku.
 - Tombol + dan - diperbesar menjadi 54 px, dengan tombol hapus yang tetap mudah disentuh.
 - Cache service worker diperbarui ke v1.5.
+
+
+PEMBARUAN v1.6
+- Memperbaiki tombol Batal pada formulir Tambah/Edit Produk & Jasa.
+- Menekan Batal sekarang menutup formulir tanpa menyimpan perubahan.
+- Cache service worker diperbarui ke v1.6.
