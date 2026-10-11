@@ -67,3 +67,6 @@ PEMBARUAN v1.6
 - Memperbaiki tombol Batal pada formulir Tambah/Edit Produk & Jasa.
 - Menekan Batal sekarang menutup formulir tanpa menyimpan perubahan.
 - Cache service worker diperbarui ke v1.6.
+
+
+Versi 1.7: tombol Batal pada formulir Produk & Jasa sekarang bertipe button dan menutup dialog secara langsung, sehingga validasi kolom wajib tidak dapat menghalangi pembatalan.
