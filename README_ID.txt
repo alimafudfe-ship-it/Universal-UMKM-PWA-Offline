@@ -53,3 +53,11 @@ PEMBARUAN v1.4
 - Jumlah barang dapat diketik langsung pada kolom angka.
 - Jumlah harus bilangan bulat minimal 1; validasi stok tetap berlaku.
 - Cache service worker diperbarui ke v1.4.
+
+
+PEMBARUAN v1.5
+- Kolom jumlah di keranjang dibuat lebih jelas, lebih lebar, dan lebih besar untuk layar HP.
+- Jumlah dapat diketik langsung; subtotal baris dan total berubah saat angka valid diketik.
+- Tekan Enter atau keluar dari kolom untuk menyimpan jumlah ke keranjang; validasi jumlah dan stok tetap berlaku.
+- Tombol + dan - diperbesar menjadi 54 px, dengan tombol hapus yang tetap mudah disentuh.
+- Cache service worker diperbarui ke v1.5.
