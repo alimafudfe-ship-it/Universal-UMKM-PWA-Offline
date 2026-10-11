@@ -70,3 +70,6 @@ PEMBARUAN v1.6
 
 
 Versi 1.7: tombol Batal pada formulir Produk & Jasa sekarang bertipe button dan menutup dialog secara langsung, sehingga validasi kolom wajib tidak dapat menghalangi pembatalan.
+
+
+Versi v1.8: Tombol Batal pada formulir produk dibuat sebagai pembatalan langsung; validasi HTML bawaan dinonaktifkan pada formulir agar kolom wajib tidak menghalangi pembatalan. Validasi nama dijalankan saat Simpan. Cache service worker diperbarui.
