@@ -37,3 +37,12 @@ PEMBARUAN v1.2:
 - Data lama di IndexedDB tidak dihapus oleh pembaruan tampilan ini.
 
 PEMBARUAN: Unggah/replace seluruh isi folder paket ini ke root repository GitHub Pages. Tunggu deploy selesai, lalu buka PWA dan muat ulang. Service worker memakai cache baru v1.2 agar file tampilan diperbarui.
+
+
+FITUR v1.3 — PAKET KULINER & HPP RESEP
+- Katalog diperluas dari 16 menjadi 24 paket, termasuk Gorengan & Camilan, Warung Kopi & Minuman, Nasi Uduk & Sarapan, Warung Makan & Pecel Lele, Bakso/Mi Ayam/Soto, Jajanan Jalanan, Martabak/Roti Bakar, serta Jus Buah/Es Campur.
+- Tiap paket kuliner menyediakan contoh barang jual dan bahan baku; harga, biaya beli/HPP, dan stok awal tetap nol.
+- Pada form produk, centang “Ini bahan baku” untuk item bahan yang tidak muncul di kasir. Masukkan harga beli per satuan bahan (misalnya per kg atau liter).
+- Untuk barang jadi, tambah bahan di bagian “Resep / Komposisi HPP”, masukkan takaran untuk menghasilkan 1 unit produk. HPP otomatis dihitung dari biaya bahan × takaran. Satuan takaran harus sama dengan satuan bahan.
+- Ini adalah estimasi HPP bahan baku; biaya gas, tenaga kerja, susut, dan biaya lain perlu dimasukkan sebagai bahan/biaya tambahan bila ingin dihitung.
+- Setelah mengganti file di GitHub, buka ulang PWA untuk memperbarui cache. Jangan uninstall aplikasi atau menghapus data lokal.
