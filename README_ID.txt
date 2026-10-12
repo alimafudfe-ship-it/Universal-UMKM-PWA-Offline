@@ -48,3 +48,13 @@ VERSI 2.3 — PEMISAHAN DATA OPERASIONAL
 - Database v3 menambahkan materials, materialPurchases, recipes, assets; semua data memiliki businessId dan ikut backup/restore.
 - Data bahan/komposisi dari versi lama dimigrasikan saat pembaruan pertama; catatan bahan lama disembunyikan dari menu Produk, tetapi tidak langsung dihapus.
 - Catatan: stok bahan belum dikurangi otomatis ketika penjualan terjadi. Untuk menghindari stok keliru, konsumsi bahan perlu ditentukan melalui proses produksi/batch pada pengembangan berikutnya.
+
+
+VERSI 2.4 — PEMBARUAN BAHAN & BELANJA
+- Daftar bahan disajikan sebagai tabel pada desktop dan kartu ringkas pada layar HP.
+- Pengguna dapat menambah, mencari, mengedit, mencatat pembelian, dan menonaktifkan bahan.
+- Tabel menampilkan kategori, satuan, stok, harga rata-rata, nilai persediaan, dan status stok.
+- Nama bahan aktif yang sama dicegah agar tidak tercatat ganda.
+- Satuan bahan yang sudah dipakai dalam riwayat belanja atau komposisi tidak bisa diubah, untuk mencegah salah hitung HPP.
+- Nonaktifkan bahan tidak menghapus riwayat pembelian. Data tetap dibatasi per usaha dan tersimpan offline.
+- Pemeriksaan teknis dilakukan dengan pemeriksaan sintaks JavaScript, validasi master, dan integritas ZIP. Pengujian interaksi browser/perangkat nyata tetap perlu dilakukan.

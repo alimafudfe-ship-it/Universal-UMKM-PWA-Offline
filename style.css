@@ -79,3 +79,26 @@ nav button{font-size:12px}
 .editor-section{border:1px solid var(--line);background:#fff;border-radius:12px;padding:12px;margin:12px 0}.editor-section h3{font-size:15px;margin:0 0 9px}.editor-section .recipe-help{margin:8px 0}.recipe-row{grid-template-columns:minmax(0,1fr) 74px 82px 34px}.recipe-row select{width:100%}.recipe-section .buttonrow{align-items:center}.recipe-section #saveRecipe{background:#e4f5ef;border-color:#b7dfd1;color:#145b4c}.editor-section .buttonrow button{flex:1}@media(max-width:420px){.recipe-row{grid-template-columns:minmax(0,1fr) 62px 72px 32px;gap:4px}.recipe-row label{font-size:10px}.recipe-row select,.recipe-row input{font-size:11px;padding:6px;min-height:38px}.recipe-row button{padding:4px;min-height:36px}}
 
 .recipe-check{display:grid;grid-template-columns:22px minmax(70px,1fr) 90px 90px;gap:8px;align-items:center;border-bottom:1px solid var(--line);padding:8px 0;margin:0;font-size:13px}.recipe-check input[type=checkbox]{width:18px;min-height:18px;margin:0}.recipe-check input[type=number],.recipe-check select{margin:0;min-width:0;padding:7px;min-height:38px;font-size:12px}.recipe-check small{color:var(--muted)}@media(max-width:480px){.recipe-check{grid-template-columns:20px minmax(60px,1fr) 72px 74px;gap:4px}.recipe-check input[type=number],.recipe-check select{font-size:11px;padding:5px}}
+
+/* v2.4: readable materials inventory table, with compact mobile cards */
+.materials-table-card{margin:18px 0;background:var(--card,#fff);border:1px solid var(--line,#dce5e9);border-radius:15px;padding:14px;box-shadow:0 3px 12px #17345108}
+.materials-table-card .sectionhead{margin-bottom:10px}
+.table-search{display:grid;gap:6px;font-size:12px;font-weight:700;margin:10px 0 14px}
+.materials-table-wrap{width:100%;overflow-x:auto;border:1px solid var(--line,#dce5e9);border-radius:12px;background:#fff}
+.materials-table{width:100%;min-width:850px;border-collapse:separate;border-spacing:0;font-size:12px}
+.materials-table th{background:#f2f6f8;color:#506579;text-align:left;font-size:11px;font-weight:800;white-space:nowrap;padding:12px 11px;border-bottom:1px solid #dce5e9}
+.materials-table td{padding:12px 11px;vertical-align:middle;border-bottom:1px solid #edf1f3;color:#30465a}
+.materials-table tbody tr:last-child td{border-bottom:0}
+.materials-table tbody tr:hover{background:#f9fcfc}
+.materials-table td strong,.materials-table td small{display:block}
+.materials-table td strong{font-size:12px;color:#20394d;overflow-wrap:anywhere}
+.materials-table td small{font-size:10px;color:#7a8996;margin-top:4px;line-height:1.35}
+.materials-table .num{font-variant-numeric:tabular-nums;white-space:nowrap}
+.stock-status{display:inline-flex;align-items:center;white-space:nowrap;border-radius:999px;padding:5px 8px;font-size:10px;font-weight:800;background:#e7f5ed;color:#22714d}
+.stock-status.empty-stock{background:#fff0ed;color:#b43f35}
+.stock-status.disabled-stock{background:#edf1f5;color:#627184}
+.material-actions{display:flex;align-items:center;gap:5px;flex-wrap:wrap;min-width:180px}
+.material-actions button{min-height:32px;padding:6px 9px;font-size:10px;white-space:nowrap}
+.material-actions .subtle-danger{color:#a73d37;border-color:#edc7c3;background:#fff8f7}
+#materialFormCard[hidden]{display:none}
+@media(max-width:600px){.materials-table-card{padding:11px;margin:14px 0}.materials-table-wrap{border:0;overflow:visible;background:transparent}.materials-table{min-width:0;border-collapse:separate;border-spacing:0 9px}.materials-table thead{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}.materials-table tbody{display:grid;gap:9px}.materials-table tr{display:grid;grid-template-columns:1fr 1fr;gap:0 12px;background:#fff;border:1px solid #dce5e9;border-radius:12px;padding:9px 11px;box-shadow:0 2px 7px #17345105}.materials-table td{display:flex;flex-direction:column;align-items:flex-start;gap:4px;min-width:0;padding:8px 0;border-bottom:0;font-size:12px;white-space:normal}.materials-table td::before{content:attr(data-label);font-size:10px;color:#718394;font-weight:800}.materials-table td:first-child{grid-column:1/-1;border-bottom:1px solid #edf1f3;padding-bottom:10px}.materials-table td:first-child strong{font-size:14px}.materials-table td[data-label="Aksi"]{grid-column:1/-1;border-top:1px solid #edf1f3;margin-top:4px;padding-top:10px}.material-actions{min-width:0;width:100%;gap:6px}.material-actions button{flex:1;min-height:36px;font-size:11px}.materials-table td small{font-size:10px}.materials-table td[data-label="Nilai stok"]{font-weight:800}}

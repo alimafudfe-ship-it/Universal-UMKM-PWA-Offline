@@ -1,0 +1,21 @@
+AUDIT PEMBARUAN UNIVERSAL UMKM PRO v2.4
+
+Fokus: menu Bahan & Belanja.
+
+Perubahan:
+1. Tombol Tambah bahan membuka formulir tersendiri; tombol Batal menutup formulir.
+2. Daftar bahan berupa tabel di desktop dan kartu responsif di layar kecil.
+3. Kolom: bahan/kategori, satuan, stok, harga rata-rata, nilai stok, status, aksi.
+4. Aksi: Edit, Belanja, Nonaktifkan. Nonaktifkan mempertahankan data dan riwayat.
+5. Pencarian mencocokkan nama dan kategori. Daftar diurutkan menurut nama.
+6. Validasi mencegah nama bahan aktif duplikat dalam usaha yang sama.
+7. Satuan tidak dapat diubah jika bahan telah memiliki riwayat pembelian atau dipakai dalam komposisi, untuk mencegah salah perhitungan.
+8. Riwayat pembelian dan bahan tetap memakai businessId; 24 paket Master dipertahankan.
+9. Cache Service Worker dinaikkan ke v2.4 agar perubahan UI dapat diperbarui.
+
+Pemeriksaan yang harus/akan dijalankan sebelum distribusi:
+- node --check app.js
+- JSON parse dan pemeriksaan jumlah paket/item Master
+- unzip -t pada ZIP keluaran
+
+Batasan: belum dilakukan pengujian browser interaktif pada HP nyata. Stok bahan belum otomatis dikurangi saat transaksi penjualan; perilaku ini sengaja belum diaktifkan sebelum aturan produksi/porsi ditetapkan.
