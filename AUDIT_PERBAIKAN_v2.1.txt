@@ -1,0 +1,28 @@
+AUDIT UNIVERSAL UMKM PRO — HASIL DAN BATASAN
+
+File acuan: Universal_UMKM_Pro_PWA_Offline_v1_9.zip dan Universal_UMKM_Pro_PWA_Paket_1-24_v2_0.zip.
+Basis kode: versi paket v2.0, dengan fitur antarmuka paket dipertahankan.
+
+TEMUAN UTAMA SEBELUM PERBAIKAN
+1. IndexedDB memakai skema versi 1 dan belum memiliki indeks businessId.
+2. Migrasi multi-usaha hanya menempelkan baris lama tanpa businessId pada saat belum ada daftar usaha. Jika daftar usaha sudah ada, baris lama dapat tertinggal di ruang legacy.
+3. Restore backup menulis data ke IndexedDB, tetapi tidak menyegarkan semua variabel memori aplikasi secara konsisten.
+4. Template Master berisi 24 paket, 624 item, dan 65 workflow.
+5. Harga paket masih dapat dipilih di perangkat; belum ada verifikasi pembayaran/lisensi server.
+
+PERBAIKAN
+- IndexedDB skema v2; indeks businessId untuk products, transactions, details.
+- Migrasi legacy yang lebih aman untuk baris tanpa businessId.
+- Validasi template dan item awal sebelum pembuatan instance usaha.
+- Simpan templateItemId untuk pelacakan asal item.
+- Restore backup memvalidasi struktur dan menyegarkan state daftar usaha, usaha aktif, paket, keranjang, serta tampilan.
+- README diperbarui dan keterbatasan lisensi dinyatakan secara jelas.
+
+UJI YANG DILAKUKAN
+- Pemeriksaan integritas ZIP input: lolos.
+- Validasi struktur Master: 24 paket; seluruh paket memiliki item; tidak ada item tanpa nama atau tanpa paket.
+- Pemeriksaan sintaks JavaScript dengan node --check: lolos.
+- Uji smoke browser headless dicoba, tetapi proses tidak selesai dalam batas waktu lingkungan; hasil browser otomatis belum dapat dinyatakan lulus.
+
+CATATAN
+Uji ini bukan pengganti pengujian manual lengkap untuk semua alur transaksi, pemulihan data nyata dari versi lama, atau perangkat Android berbeda. Backup data nyata sebelum memasang versi baru tetap dianjurkan.
