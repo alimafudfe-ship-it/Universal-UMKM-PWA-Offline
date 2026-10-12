@@ -1,0 +1,16 @@
+UNIVERSAL UMKM PRO PWA OFFLINE v2.3
+
+PERUBAHAN
+1. IndexedDB schema v3: stores materials, materialPurchases, recipes, assets dengan indeks businessId.
+2. Menu dipisah menjadi Produk/Jasa, Bahan & Belanja, Komposisi Produk, Investasi & Peralatan.
+3. Bahan reusable dan pembelian memperbarui stok serta harga rata-rata tertimbang.
+4. Komposisi merujuk materialId, menghitung HPP per unit, dan menolak konversi satuan antar dimensi berbeda.
+5. Aset disimpan terpisah dari stok bahan/produk; nilai aset tidak otomatis dibebankan ke HPP.
+6. Backup/restore/reset mencakup semua store baru.
+7. Migrasi versi lama mempertahankan record bahan lama sebagai nonaktif/legacy dan memetakan komposisi lama ke store resep baru bila cocok.
+8. Katalog master 24 paket dan model businessId dipertahankan.
+
+BATASAN YANG DIKETAHUI
+- Belum ada pengurangan stok bahan otomatis berdasarkan jumlah produk terjual karena butuh aturan hasil produksi/batch yang benar.
+- Penyusutan aset hanya perkiraan sederhana dan tidak masuk laporan laba rugi/HPP otomatis.
+- Uji sintaks, integritas ZIP, serta audit struktur data dilakukan; uji interaksi lintas-browser/HP nyata tetap perlu dilakukan.

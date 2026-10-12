@@ -38,3 +38,13 @@ CATATAN DAN BATASAN
 - Satuan khusus harus sesuai dengan satuan dasar bahan. Konversi berat dan volume tidak dicampur.
 - Pemilih harga 1–24 jenis usaha masih antarmuka lokal. Pembayaran/verifikasi lisensi server belum terhubung.
 - Sinkronisasi antarperangkat dan otorisasi server belum dibangun.
+
+
+VERSI 2.3 — PEMISAHAN DATA OPERASIONAL
+- Produk/Jasa menyimpan data jual dan stok produk terpisah; tidak lagi memuat formulir bahan dan komposisi.
+- Bahan & Belanja menggunakan tabel bahan baku sendiri, dengan riwayat pembelian dan harga rata-rata tertimbang.
+- Komposisi Produk menghubungkan productId ke materialId, memvalidasi satuan sejenis, dan menghitung HPP bahan per unit.
+- Investasi & Peralatan menyimpan aset secara terpisah; penyusutan hanya estimasi dan tidak otomatis masuk HPP.
+- Database v3 menambahkan materials, materialPurchases, recipes, assets; semua data memiliki businessId dan ikut backup/restore.
+- Data bahan/komposisi dari versi lama dimigrasikan saat pembaruan pertama; catatan bahan lama disembunyikan dari menu Produk, tetapi tidak langsung dihapus.
+- Catatan: stok bahan belum dikurangi otomatis ketika penjualan terjadi. Untuk menghindari stok keliru, konsumsi bahan perlu ditentukan melalui proses produksi/batch pada pengembangan berikutnya.
