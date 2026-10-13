@@ -35,3 +35,13 @@ PENTING
 - Data yang dibuat pada satu perangkat belum tersinkron otomatis ke perangkat lain.
 - Pemilih paket 1–24 adalah batas lokal; pembayaran/verifikasi lisensi server belum terhubung.
 - Pengujian browser end-to-end di semua perangkat belum dilakukan. Uji transaksi, stok, HPP, backup, dan laporan sebelum dipakai untuk pencatatan usaha nyata.
+
+
+PEMBARUAN v3.0.3 — PEMBELIAN DAN RIWAYAT
+- Tanggal pembelian wajib diisi.
+- Simpan Pembelian menambah stok item yang dipilih dan membuat catatan riwayat.
+- Riwayat bisa difilter berdasarkan tanggal dan tidak mengubah stok.
+- Pembelian barang jual yang mengelola stok (contoh HVS A4/F4 dan toner pada paket fotokopi) juga tersedia dari menu Bahan & Belanja.
+- Bahan baru dapat dibuat langsung di formulir pembelian; nama, kategori, dan satuan mengikuti jenis usaha.
+- Form pembelian hanya memiliki Simpan Pembelian dan Batal; tidak ada tombol Simpan Bahan.
+- Cadangkan data usaha sebelum mengganti file hosting.
