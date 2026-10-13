@@ -58,3 +58,11 @@ VERSI 2.4 — PEMBARUAN BAHAN & BELANJA
 - Satuan bahan yang sudah dipakai dalam riwayat belanja atau komposisi tidak bisa diubah, untuk mencegah salah hitung HPP.
 - Nonaktifkan bahan tidak menghapus riwayat pembelian. Data tetap dibatasi per usaha dan tersimpan offline.
 - Pemeriksaan teknis dilakukan dengan pemeriksaan sintaks JavaScript, validasi master, dan integritas ZIP. Pengujian interaksi browser/perangkat nyata tetap perlu dilakukan.
+
+
+FITUR KASIR v2.5
+- Satu transaksi memuat beberapa item dalam satu nota.
+- Pajak persentase dan biaya lain-lain nominal bersifat opsional (default Rp0).
+- Uang tunai diterima dihitung terhadap total; kembalian tampil otomatis.
+- Transaksi tunai tidak bisa disimpan jika pembayaran belum diisi atau kurang.
+- Nota dan riwayat menyimpan subtotal, pajak, biaya lain-lain, total, uang diterima, dan kembalian.

@@ -1,0 +1,11 @@
+UNIVERSAL UMKM PRO PWA OFFLINE — v2.5
+
+Perubahan kasir:
+1. Satu checkout tetap membuat satu record transaksi dan banyak detail item dengan transactionId yang sama.
+2. Menambahkan pajak opsional dalam persen, biaya lain-lain opsional dalam Rupiah, subtotal dan total otomatis.
+3. Menambahkan input uang tunai diterima dan kalkulasi kembalian/kekurangan secara langsung. Checkout diblokir jika uang belum dimasukkan atau kurang dari total.
+4. Nota mencantumkan semua item, kuantitas, harga, subtotal, pajak bila digunakan, biaya lain-lain bila digunakan, total, uang diterima, dan kembalian.
+5. Nilai subtotal, pajak, tarif pajak, biaya lain-lain, total, uang dibayar, dan kembalian disimpan di record transaksi. Transaksi lama tetap dapat ditampilkan dengan fallback nilai.
+6. Cache service worker dinaikkan ke v2.5. Database tidak perlu migrasi karena field baru disimpan pada record transaksi yang sudah ada.
+
+Pemeriksaan statis: jalankan node --check app.js; validasi JSON Master; validasi struktur HTML dan integritas ZIP. Pengujian browser/perangkat nyata belum dilakukan.
