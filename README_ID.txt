@@ -1,68 +1,37 @@
-UNIVERSAL UMKM PRO — ASISTEN USAHA UNIVERSAL v2.2
-PWA OFFLINE • DATABASE TERPISAH PER USAHA
+UNIVERSAL UMKM PRO v3.0
+PWA OFFLINE-FIRST • 24 PAKET USAHA • MASTER DATA LENGKAP
 
 ISI PAKET
 - index.html: antarmuka responsif HP dan desktop
-- app.js: logika aplikasi, IndexedDB, template, transaksi, backup/restore, produk, stok, resep/HPP
+- app.js: logika aplikasi, IndexedDB, paket usaha, transaksi, stok, resep/HPP, laporan, backup/restore
 - style.css: tampilan
-- master.json: 24 template usaha, 624 item awal, dan 65 workflow
-- sw.js: cache offline versi 2.2
+- master.json: 24 paket usaha, katalog produk/jasa/bahan/peralatan, harga referensi, 101 template komposisi awal
+- sw.js: cache offline v3.0
 - manifest.webmanifest dan ikon aplikasi
-- AUDIT_PERBAIKAN_v2.2.txt: catatan pembaruan dan batasan pengujian
+- AUDIT_PERBAIKAN_v3.0.txt: ringkasan perubahan dan batas pengujian
 
-PERUBAHAN v2.2 — FORM PRODUK
-- Informasi Produk/Jasa memiliki tombol Simpan produk.
-- Kelola stok memiliki tombol Simpan stok sendiri.
-- Resep/Komposisi HPP memiliki tombol Simpan resep/HPP sendiri.
-- Status “Ini bahan baku (tidak dijual langsung di kasir)” berada di bawah resep/HPP dan memiliki tombol simpan sendiri.
-- Satuan takaran resep mendukung konversi g/ons/kg dan ml/liter, serta satuan yang sesuai dengan satuan dasar bahan.
-- Data stok, resep, dan status bahan baku tidak ditimpa saat hanya menyimpan informasi dasar produk.
-
-PERBAIKAN DASAR v2.1 YANG DIPERTAHANKAN
-- Skema IndexedDB versi 2 dan indeks businessId pada produk, transaksi, serta detail transaksi.
-- Migrasi data lama dan pembacaan data berdasarkan usaha aktif.
-- Pembuatan usaha memvalidasi template; harga, HPP, dan stok awal template tetap 0.
-- Backup mencakup data usaha dan pemulihan memperbarui status aplikasi.
-- Perubahan Master tidak mengubah instance usaha yang sudah dibuat.
+KONSEP v3.0
+1. Penjual aplikasi menyiapkan master katalog produk/jasa, bahan, peralatan, harga referensi, dan komposisi yang relevan.
+2. Saat pembeli memilih paket, aplikasi menyalin master ke data usaha pembeli dengan ID operasional baru.
+3. Harga referensi bisa diedit. Harga referensi hanya estimasi dan harus disesuaikan dengan pemasok serta harga lokal.
+4. Stok awal produk dan bahan selalu nol; aplikasi tidak membuat stok atau transaksi palsu.
+5. Produk/jasa disimpan di products; bahan baku di materials; peralatan di assets; komposisi di recipes.
+6. HPP bisa otomatis dari komposisi atau manual. HPP manual tidak ditimpa saat harga bahan berubah.
+7. Data per usaha dipisahkan oleh businessId. Mengedit usaha tidak mengubah master atau usaha lain.
+8. Laporan keuangan memiliki ringkasan, buku kas pemasukan/pengeluaran, dan riwayat.
 
 CARA MENJALANKAN
-PWA memerlukan alamat HTTPS atau localhost untuk service worker. Jangan hanya membuka index.html melalui file manager jika ingin menguji mode offline.
-1. Unggah seluruh isi folder ke hosting statis HTTPS atau jalankan server lokal.
-2. Buka aplikasi melalui alamat HTTPS/localhost di Chrome.
-3. Buat profil usaha, isi nama toko, lalu pilih template.
-4. Pada Produk & Jasa, simpan informasi produk dahulu; setelah itu gunakan tombol simpan tersendiri untuk stok, resep/HPP, dan status bahan baku.
-5. Buat backup berkala dari menu Profil & Backup.
+PWA membutuhkan HTTPS atau localhost untuk service worker.
+1. Cadangkan data lama melalui menu Profil & Backup jika sudah ada data penting.
+2. Unggah seluruh isi folder Universal_UMKM_PWA_Offline ke hosting HTTPS atau jalankan server lokal.
+3. Buka aplikasi melalui alamat HTTPS/localhost dan pastikan terhubung internet saat aset pertama kali dimuat.
+4. Lakukan hard refresh (Ctrl+Shift+R) jika browser masih menampilkan versi lama.
+5. Buat profil usaha dan pilih jenis usaha. Katalog, harga referensi, bahan, dan komposisi akan disalin ke data usaha baru. Pengguna lama dimigrasikan otomatis dengan menjaga data yang sudah diisi.
+6. Periksa harga jual/HPP, koreksi harga bahan dan resep, lalu masukkan stok aktual.
+7. Buat backup berkala.
 
-CATATAN DAN BATASAN
-- Pengujian end-to-end penuh di browser belum dilakukan untuk seluruh alur dan perangkat.
-- Satuan khusus harus sesuai dengan satuan dasar bahan. Konversi berat dan volume tidak dicampur.
-- Pemilih harga 1–24 jenis usaha masih antarmuka lokal. Pembayaran/verifikasi lisensi server belum terhubung.
-- Sinkronisasi antarperangkat dan otorisasi server belum dibangun.
-
-
-VERSI 2.3 — PEMISAHAN DATA OPERASIONAL
-- Produk/Jasa menyimpan data jual dan stok produk terpisah; tidak lagi memuat formulir bahan dan komposisi.
-- Bahan & Belanja menggunakan tabel bahan baku sendiri, dengan riwayat pembelian dan harga rata-rata tertimbang.
-- Komposisi Produk menghubungkan productId ke materialId, memvalidasi satuan sejenis, dan menghitung HPP bahan per unit.
-- Investasi & Peralatan menyimpan aset secara terpisah; penyusutan hanya estimasi dan tidak otomatis masuk HPP.
-- Database v3 menambahkan materials, materialPurchases, recipes, assets; semua data memiliki businessId dan ikut backup/restore.
-- Data bahan/komposisi dari versi lama dimigrasikan saat pembaruan pertama; catatan bahan lama disembunyikan dari menu Produk, tetapi tidak langsung dihapus.
-- Catatan: stok bahan belum dikurangi otomatis ketika penjualan terjadi. Untuk menghindari stok keliru, konsumsi bahan perlu ditentukan melalui proses produksi/batch pada pengembangan berikutnya.
-
-
-VERSI 2.4 — PEMBARUAN BAHAN & BELANJA
-- Daftar bahan disajikan sebagai tabel pada desktop dan kartu ringkas pada layar HP.
-- Pengguna dapat menambah, mencari, mengedit, mencatat pembelian, dan menonaktifkan bahan.
-- Tabel menampilkan kategori, satuan, stok, harga rata-rata, nilai persediaan, dan status stok.
-- Nama bahan aktif yang sama dicegah agar tidak tercatat ganda.
-- Satuan bahan yang sudah dipakai dalam riwayat belanja atau komposisi tidak bisa diubah, untuk mencegah salah hitung HPP.
-- Nonaktifkan bahan tidak menghapus riwayat pembelian. Data tetap dibatasi per usaha dan tersimpan offline.
-- Pemeriksaan teknis dilakukan dengan pemeriksaan sintaks JavaScript, validasi master, dan integritas ZIP. Pengujian interaksi browser/perangkat nyata tetap perlu dilakukan.
-
-
-FITUR KASIR v2.5
-- Satu transaksi memuat beberapa item dalam satu nota.
-- Pajak persentase dan biaya lain-lain nominal bersifat opsional (default Rp0).
-- Uang tunai diterima dihitung terhadap total; kembalian tampil otomatis.
-- Transaksi tunai tidak bisa disimpan jika pembayaran belum diisi atau kurang.
-- Nota dan riwayat menyimpan subtotal, pajak, biaya lain-lain, total, uang diterima, dan kembalian.
+PENTING
+- Harga dan komposisi adalah titik awal referensi, bukan jaminan harga pasar atau resep baku.
+- Data yang dibuat pada satu perangkat belum tersinkron otomatis ke perangkat lain.
+- Pemilih paket 1–24 adalah batas lokal; pembayaran/verifikasi lisensi server belum terhubung.
+- Pengujian browser end-to-end di semua perangkat belum dilakukan. Uji transaksi, stok, HPP, backup, dan laporan sebelum dipakai untuk pencatatan usaha nyata.

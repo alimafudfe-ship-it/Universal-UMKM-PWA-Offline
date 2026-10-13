@@ -2,7 +2,7 @@
   "id": "./",
   "name": "Universal UMKM Pro",
   "short_name": "UMKM Pro",
-  "description": "Kasir dan administrasi UMKM offline",
+  "description": "Universal UMKM Pro v3.0 — katalog awal usaha, harga referensi, bahan, komposisi, kasir dan laporan offline",
   "start_url": "./index.html",
   "scope": "./",
   "display": "standalone",

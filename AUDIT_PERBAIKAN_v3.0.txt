@@ -1,0 +1,34 @@
+UNIVERSAL UMKM PRO v3.0 — MASTER DATA LENGKAP & HPP
+
+PERUBAHAN UTAMA
+- Master berisi 24 paket usaha dan 786 item katalog.
+- Terdapat 101 template komposisi awal untuk produk kuliner yang relevan; barang dagangan dan jasa tanpa resep memakai HPP manual/referensi.
+- Harga jual dan harga beli referensi diisi sebagai titik awal yang dapat diedit; bukan jaminan harga pasar.
+- Stok awal produk dan bahan selalu 0. Tidak ada stok atau transaksi contoh.
+- Bahan baku dipasang ke tabel materials; produk/jasa ke products; item operasional/peralatan ke assets.
+- Saat paket dipasang, katalog disalin dengan ID operasional baru dan businessId pembeli.
+- Data pembeli tidak menulis kembali ke master.json atau usaha pembeli lain.
+- HPP produk dapat menggunakan mode otomatis dari komposisi atau mode manual.
+- HPP manual tidak ditimpa otomatis saat harga bahan berubah; menyimpan komposisi kembali mengaktifkan mode otomatis.
+- Migrasi v3.0 untuk usaha lama: menambah item master yang belum ada, mengisi harga/HPP yang masih nol, menambah resep yang belum ada, dan tidak menimpa nilai harga/HPP nonnol.
+- Peralatan dari versi lama yang sebelumnya masuk daftar bahan dinonaktifkan sebagai item bahan tetapi catatan tidak dihapus; peralatan dibuat di modul aset.
+- Versi cache service worker dinaikkan agar browser meminta aset v3.0.
+- Laporan keuangan dengan tabel pemasukan/pengeluaran dipertahankan.
+
+PENTING
+- Harga referensi adalah estimasi awal untuk membantu setup, harus disesuaikan menurut lokasi, pemasok, ukuran, dan kualitas.
+- Komposisi adalah contoh awal, bukan resep baku atau standar produksi. Pembeli wajib memeriksa takaran dan hasil per batch.
+- Stok awal 0. Pengguna perlu mengisi stok aktual atau mencatat pembelian sebelum mengandalkan kontrol stok.
+- Migrasi tidak menulis ulang biaya HPP historis pada transaksi lama; transaksi terdahulu mempertahankan data saat penjualan dibuat.
+- Aplikasi masih offline-first per perangkat. Sinkronisasi antar perangkat dan verifikasi pembayaran lisensi belum terhubung.
+
+PENGUJIAN TEKNIS YANG DILAKUKAN
+- node --check app.js
+- Validasi JSON master.json
+- Validasi 24 paket, harga referensi, stok awal nol, dan relasi komposisi terhadap bahan dalam paket yang sama
+- Pemeriksaan struktur ZIP
+
+BELUM DILAKUKAN
+- Pengujian interaksi end-to-end di browser/HP nyata (runtime browser diblokir lingkungan kerja)
+- Verifikasi harga setiap item terhadap pemasok lokal
+- Pengujian migrasi pada salinan database produksi pengguna
