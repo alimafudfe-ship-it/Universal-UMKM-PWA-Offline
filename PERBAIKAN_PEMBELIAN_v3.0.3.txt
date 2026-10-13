@@ -1,0 +1,14 @@
+UNIVERSAL UMKM PRO PWA OFFLINE — v3.0.3
+Fokus: pembelian berdasarkan tanggal, riwayat, dan stok bertambah tepat satu kali.
+
+Perubahan:
+1. Tanggal pembelian wajib dipilih dan disimpan pada setiap transaksi.
+2. Riwayat pembelian dapat difilter berdasarkan tanggal atau menampilkan semua tanggal.
+3. Membuka/memfilter riwayat hanya membaca data; tidak mengubah stok.
+4. Tombol Simpan Pembelian dikunci selama penyimpanan untuk mencegah klik ganda pada sesi yang sama.
+5. Pembaruan stok bahan dan pencatatan riwayat dilakukan dalam satu transaksi IndexedDB; jika transaksi gagal, keduanya dibatalkan bersama.
+6. Tombol dinonaktifkan saat menyimpan dan diaktifkan kembali setelah selesai/gagal.
+7. Setelah berhasil, input jumlah dan total dikosongkan untuk mengurangi risiko transaksi berulang tidak sengaja.
+8. Cache service worker diganti ke versi v3.0.3.
+
+Catatan: pemeriksaan sintaks, integritas ZIP, dan tes logika otomatis dilakukan secara lokal. Uji browser/perangkat nyata tetap disarankan sebelum dipakai untuk transaksi usaha. Cadangkan data sebelum mengganti versi yang sedang digunakan.
