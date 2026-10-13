@@ -1,0 +1,14 @@
+Universal UMKM Pro PWA Offline — Perbaikan Form Produk v3.0.2
+
+Perubahan:
+- Menghapus tombol Simpan Stok yang terpisah.
+- Mengganti tombol Tutup menjadi Batal.
+- Mengganti tombol Simpan produk menjadi Simpan.
+- Satu tombol Simpan menyimpan informasi produk, harga, HPP, stok, dan pengaturan stok.
+- Form otomatis menutup hanya setelah penyimpanan berhasil dan stok berhasil diverifikasi.
+- Jika penyimpanan gagal, form tetap terbuka dan menampilkan pesan kesalahan.
+- Tombol Simpan dinonaktifkan sementara selama proses simpan untuk menghindari klik ganda.
+- Cache service worker diperbarui agar versi baru diambil oleh PWA.
+
+Catatan: perubahan ini tidak menghapus data lokal. Tetap lakukan ekspor/cadangan data sebelum mengganti file di hosting.
+Pemeriksaan: sintaks JavaScript dan integritas ZIP perlu lolos; pengujian browser nyata harus dilakukan di perangkat pengguna.

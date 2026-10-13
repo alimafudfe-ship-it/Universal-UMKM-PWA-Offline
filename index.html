@@ -82,10 +82,10 @@
 <section class="editor-section"><h3>Informasi produk / jasa</h3>
 <label>Nama produk/jasa<input id="editName" required maxlength="120"></label><label>Kategori<input id="editCategory" maxlength="80"></label>
 <div class="grid two"><label>Satuan jual<input id="editUnit" value="Pcs" maxlength="20"></label><label>Harga jual referensi / aktual (Rp)<input id="editPrice" type="number" min="0" step="1" value="0" required></label><label>Mode HPP<select id="editCostMode"><option value="auto">Otomatis dari komposisi</option><option value="manual">Manual / saya tentukan</option></select></label><label>HPP per satuan (Rp)<input id="editCost" type="number" min="0" step="1" value="0"></label></div>
-<p class="recipe-help">Harga awal adalah referensi. Pilih HPP otomatis jika memakai komposisi; pilih manual bila Anda ingin menetapkan HPP sendiri. Pengaturan stok disimpan terpisah.</p>
+<p class="recipe-help">Harga awal adalah referensi. Pilih HPP otomatis jika memakai komposisi; pilih manual bila Anda ingin menetapkan HPP sendiri. Stok dan seluruh informasi produk disimpan bersama melalui tombol Simpan.</p>
 </section>
-<section id="stockSection" class="editor-section"><h3>Kelola stok produk ini</h3><label>Stok saat ini<input id="editStock" type="number" min="0" step="0.001" value="0"></label><label class="check"><input id="editStockEnabled" type="checkbox"> Kelola stok untuk produk ini</label><div class="buttonrow"><button type="button" id="saveStock">Simpan stok</button></div><small class="recipe-help">Untuk produk yang sudah dibuat. Penjualan dapat mengurangi stok jika pengelolaan stok diaktifkan.</small></section>
-<div class="buttonrow"><button type="button" id="cancelProduct">Tutup</button><button id="saveProduct" type="button" class="primary">Simpan produk</button></div>
+<section id="stockSection" class="editor-section"><h3>Kelola stok produk ini</h3><label>Stok saat ini<input id="editStock" type="number" min="0" step="0.001" value="0"></label><label class="check"><input id="editStockEnabled" type="checkbox"> Kelola stok untuk produk ini</label><small class="recipe-help">Stok dan pilihan pengelolaan stok akan disimpan bersama informasi produk saat Anda menekan Simpan. Penjualan dapat mengurangi stok jika pengelolaan stok diaktifkan.</small></section>
+<div class="buttonrow"><button type="button" id="cancelProduct">Batal</button><button id="saveProduct" type="button" class="primary">Simpan</button></div>
 </form></dialog>
 <dialog id="receiptDialog"><div id="receiptContent"></div><div class="buttonrow"><button id="printReceipt">Cetak / Simpan PDF</button><button id="closeReceipt">Tutup</button></div></dialog>
 <script src="app.js"></script>
