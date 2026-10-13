@@ -1,0 +1,10 @@
+PERBAIKAN STOK UNIVERSAL UMKM PRO v3.0.1
+
+Perbaikan:
+1. getAll membaca data lalu memfilter businessId dengan normalisasi string, supaya ID usaha bertipe angka maupun teks tetap terbaca.
+2. Simpan stok produk memvalidasi input, memeriksa ulang data setelah simpan, dan menampilkan pesan sukses/gagal yang lebih jelas.
+3. Cache service worker diganti agar browser meminta file baru.
+
+Setelah mengganti file di hosting, lakukan hard refresh (Ctrl+Shift+R). Jangan hapus data aplikasi atau IndexedDB. Cadangkan data terlebih dahulu.
+
+Status pemeriksaan: pemeriksaan sintaks JavaScript dan isi ZIP; belum diuji langsung pada browser/perangkat pengguna.
