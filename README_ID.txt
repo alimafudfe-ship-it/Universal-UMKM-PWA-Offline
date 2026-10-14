@@ -45,3 +45,10 @@ PEMBARUAN v3.0.3 — PEMBELIAN DAN RIWAYAT
 - Bahan baru dapat dibuat langsung di formulir pembelian; nama, kategori, dan satuan mengikuti jenis usaha.
 - Form pembelian hanya memiliki Simpan Pembelian dan Batal; tidak ada tombol Simpan Bahan.
 - Cadangkan data usaha sebelum mengganti file hosting.
+
+
+PEMBARUAN v3.0.5 — KOMPOSISI SESUAI JENIS USAHA
+- Menu Komposisi Produk mengikuti pengaturan di Profil & Backup.
+- Pilihan: Otomatis sesuai jenis usaha, Aktifkan, atau Sembunyikan.
+- Mode otomatis menampilkan komposisi untuk jenis usaha makanan/minuman/kue/produksi yang dikenali. Jenis usaha lain dapat mengaktifkannya sendiri.
+- Menyembunyikan menu tidak menghapus resep/komposisi tersimpan. Tidak ada migrasi database atau penghapusan data produk, pembelian, stok, transaksi, maupun riwayat.

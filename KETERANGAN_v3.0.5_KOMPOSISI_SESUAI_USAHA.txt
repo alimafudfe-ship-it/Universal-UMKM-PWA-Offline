@@ -1,0 +1,12 @@
+UNIVERSAL UMKM PRO v3.0.5 — KOMPOSISI SESUAI JENIS USAHA
+
+Perubahan:
+- Menu Komposisi Produk ditampilkan sesuai pengaturan profil usaha.
+- Mode Otomatis merekomendasikan komposisi untuk jenis usaha makanan/minuman/kue dan produksi yang dikenali.
+- Untuk jenis usaha lain, menu disembunyikan secara bawaan; pengguna tetap dapat mengaktifkannya di Profil & Backup.
+- Menambahkan pengaturan Komposisi Produk: Otomatis, Aktifkan, atau Sembunyikan.
+- Komposisi yang sudah tersimpan tidak dihapus ketika menu disembunyikan.
+- Tidak mengubah skema database, data produk, transaksi, bahan, pembelian, stok, atau riwayat.
+- Cache service worker diperbarui ke versi 3.0.5.
+
+Catatan: Pemeriksaan sintaks dan integritas ZIP dilakukan. Pengujian penuh di browser nyata belum dilakukan. Cadangkan data sebelum mengganti file hosting seperti biasa.
