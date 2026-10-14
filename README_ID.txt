@@ -52,3 +52,10 @@ PEMBARUAN v3.0.5 — KOMPOSISI SESUAI JENIS USAHA
 - Pilihan: Otomatis sesuai jenis usaha, Aktifkan, atau Sembunyikan.
 - Mode otomatis menampilkan komposisi untuk jenis usaha makanan/minuman/kue/produksi yang dikenali. Jenis usaha lain dapat mengaktifkannya sendiri.
 - Menyembunyikan menu tidak menghapus resep/komposisi tersimpan. Tidak ada migrasi database atau penghapusan data produk, pembelian, stok, transaksi, maupun riwayat.
+
+PEMBARUAN v3.0.6 — KOMPOSISI BISA DIKETIK
+- Nama produk/paket bisa diketik langsung; produk baru dibuat ketika komposisi disimpan.
+- Nama bahan bisa diketik; bahan yang sudah ada digunakan kembali, bahan baru dibuat saat disimpan.
+- Kolom komposisi: bahan/produk, jumlah & satuan, harga per satuan.
+- Satuan butir untuk telur dapat dipakai; stok bahan baru tetap nol.
+- Database dan riwayat lama tidak dihapus.

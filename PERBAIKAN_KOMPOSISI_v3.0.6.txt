@@ -1,0 +1,12 @@
+UNIVERSAL UMKM PRO v3.0.6 — KOMPOSISI BISA DIKETIK
+
+Perubahan:
+1. Nama produk/paket pada Komposisi Produk dapat diketik langsung. Produk baru dibuat saat tombol Simpan Komposisi ditekan; nama produk yang sudah ada dipakai kembali.
+2. Bahan komposisi bisa diketik langsung. Nama yang sama (abaikan kapital dan spasi tepi) memakai bahan yang sudah ada, agar tidak membuat duplikat.
+3. Bahan baru disimpan saat komposisi disimpan, dengan stok awal nol.
+4. Tampilan komposisi disusun menjadi Bahan/Produk, Jumlah & Satuan, dan Harga per Satuan; ukuran input diperbesar agar mudah dibaca.
+5. Satuan bisa diketik, termasuk Butir untuk telur. Satuan hitungan umum seperti pcs, butir, buah, biji, dan unit dianggap sejenis untuk validasi konversi.
+6. HPP memakai jumlah dikali harga per satuan yang diisi pada komposisi. Untuk komposisi lama tanpa harga per satuan tersimpan, HPP tetap memakai biaya bahan yang sudah ada.
+7. Database tidak dihapus atau di-reset. Produk, pembelian, stok, transaksi, dan riwayat tetap menggunakan database lokal yang sama.
+
+Catatan: pemeriksaan sintaks JavaScript dan integritas ZIP dilakukan. Uji interaksi browser penuh belum dilakukan. Cadangkan data sebelum mengganti file di hosting.
