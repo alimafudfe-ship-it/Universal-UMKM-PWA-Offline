@@ -1,4 +1,4 @@
-UNIVERSAL UMKM PRO v3.0
+UNIVERSAL UMKM PRO v3.0.8
 PWA OFFLINE-FIRST • 24 PAKET USAHA • MASTER DATA LENGKAP
 
 ISI PAKET
@@ -59,3 +59,15 @@ PEMBARUAN v3.0.6 — KOMPOSISI BISA DIKETIK
 - Kolom komposisi: bahan/produk, jumlah & satuan, harga per satuan.
 - Satuan butir untuk telur dapat dipakai; stok bahan baru tetap nol.
 - Database dan riwayat lama tidak dihapus.
+
+
+PEMBARUAN v3.0.8 — STANDAR PERMANEN DATA AMAN
+- Pembaruan aplikasi tidak boleh menghapus atau membuat ulang usaha pengguna secara otomatis.
+- Usaha tersimpan tetap dibuka melalui daftar USAHA TERSIMPAN; memilih jenis usaha yang sudah dibuat membuka usaha tersebut, bukan membuat duplikat.
+- Jenis usaha baru yang tersedia di master dapat dipilih untuk membuat usaha baru, tanpa mengubah data usaha yang sudah ada.
+- Data produk, harga, stok, bahan, komposisi, pembelian, penjualan, pengeluaran, aset, dan riwayat wajib dipertahankan.
+- Perubahan database harus menggunakan migrasi yang mempertahankan data; jangan menaikkan DB_VERSION dengan menghapus object store atau memanggil clear() pada saat pembaruan.
+- Perubahan master hanya boleh menambahkan item yang belum ada dan tidak boleh menimpa nilai yang telah diedit pengguna. Jika migrasi tidak aman atau gagal, hentikan migrasi dan tampilkan pesan; jangan melanjutkan dengan penghapusan data.
+- Setiap rilis wajib diuji dengan data contoh: buka usaha lama, buat usaha baru, pastikan data usaha terpisah, cek stok/pembelian/riwayat, ekspor dan impor cadangan.
+- Jangan menghapus data lokal saat memasang versi baru. Ekspor cadangan sebelum mengganti file hosting.
+- Versi ini tidak mengubah struktur database IndexedDB (DB_VERSION tetap 4); perubahan ini memperbarui label versi, cache service worker, dan dokumentasi standar rilis.

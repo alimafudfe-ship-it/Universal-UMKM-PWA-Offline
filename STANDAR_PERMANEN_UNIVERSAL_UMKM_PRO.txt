@@ -1,0 +1,30 @@
+STANDAR PERMANEN UNIVERSAL UMKM PRO
+Versi dokumen: 1.0 (berlaku mulai rilis aplikasi v3.0.8)
+
+TUJUAN
+Aplikasi boleh diperbarui dan fitur boleh bertambah, tetapi data usaha pengguna tidak boleh hilang, tercampur, atau ditimpa secara tidak sengaja.
+
+ATURAN WAJIB
+1. Data yang wajib dipertahankan: profil usaha, produk/jasa, harga, stok, bahan, komposisi/resep, pembelian, penjualan, rincian transaksi, aset, pengeluaran, laporan berbasis transaksi, dan riwayat.
+2. Memasang versi aplikasi baru tidak boleh otomatis membuat ulang usaha lama, menghapus profil, atau mengosongkan database.
+3. Daftar jenis usaha adalah katalog pilihan. Pilihan baru boleh ditambahkan ke master untuk digunakan ketika membuat usaha baru; penambahan itu tidak membuat profil baru secara otomatis dan tidak mengubah usaha lama.
+4. Memilih jenis usaha yang sudah pernah dibuat harus membuka usaha tersimpan, bukan membuat data usaha duplikat.
+5. Data setiap usaha harus tetap terisolasi menggunakan businessId. Perubahan pada satu usaha tidak boleh mengubah data usaha lain.
+6. Migrasi skema wajib bersifat additive/preservative: buat object store/index yang diperlukan dan transformasikan data dengan aman. Jangan menghapus store, menjalankan clear(), atau menimpa nilai pengguna sebagai bagian dari pembaruan biasa.
+7. Master katalog hanya boleh menambahkan item yang belum ada. Harga, nama, stok, resep, dan pengaturan yang sudah diedit pengguna tidak boleh ditimpa tanpa persetujuan jelas.
+8. Pembelian baru menambah stok satu kali saat transaksi berhasil disimpan. Membuka riwayat tidak mengubah stok. Transaksi berbeda tetap berbeda meskipun tanggal/nama/jumlahnya sama.
+9. Jika migrasi atau penyimpanan gagal, aplikasi harus memberi pesan dan tidak mengklaim sukses. Jangan menghapus data untuk mengatasi error.
+10. Setiap rilis harus menyertakan nomor versi, catatan perubahan, checklist pengujian, dan cache service worker versi baru bila aset berubah.
+
+CHECKLIST MINIMUM SEBELUM RILIS
+[ ] Usaha lama tetap muncul setelah file aplikasi diganti dan halaman dimuat ulang.
+[ ] Produk, harga, stok, komposisi, transaksi, pembelian, dan riwayat usaha lama tetap ada.
+[ ] Membuka usaha lama tidak membuat duplikat atau mengubah businessId.
+[ ] Usaha baru dapat dibuat dari jenis usaha yang tersedia dan datanya terpisah.
+[ ] Penjualan/pembelian tidak menggandakan perubahan stok saat riwayat dibuka.
+[ ] Ekspor cadangan menghasilkan file JSON; impor cadangan diuji pada data uji.
+[ ] Sintaks JavaScript, JSON master, dan integritas ZIP diperiksa.
+[ ] Pengujian browser dilakukan sebelum menyatakan rilis lulus penuh.
+
+BATAS PENGUJIAN v3.0.8
+Pemeriksaan statis (sintaks, JSON, struktur ZIP, dan aturan dokumentasi) dapat dijalankan pada paket. Pengujian browser end-to-end tidak dilakukan dalam pembuatan paket ini; checklist browser harus diselesaikan pada lingkungan uji sebelum penggunaan produksi.

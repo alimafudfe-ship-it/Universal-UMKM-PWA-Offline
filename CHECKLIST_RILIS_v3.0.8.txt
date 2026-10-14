@@ -1,0 +1,24 @@
+CHECKLIST RILIS — UNIVERSAL UMKM PRO v3.0.8
+
+Tujuan: memastikan pembaruan tidak menghapus data usaha lama.
+
+Pemeriksaan paket:
+[ ] node --check app.js
+[ ] master.json valid sebagai JSON
+[ ] sw.js menggunakan nama cache v3.0.8 yang baru
+[ ] DB_VERSION tidak berubah tanpa migrasi terencana
+[ ] tidak ada penghapusan database/store saat boot/update
+[ ] ZIP dapat dibuka dan semua file sumber tersedia
+
+Pengujian browser yang harus dilakukan sebelum rilis produksi:
+[ ] Buat backup JSON dari profil uji.
+[ ] Catat jumlah produk, bahan, resep, pembelian, penjualan, dan stok.
+[ ] Ganti file aplikasi di hosting tanpa menghapus data situs.
+[ ] Hard refresh, buka usaha lama, dan bandingkan jumlah/data.
+[ ] Pilih jenis usaha yang sudah dibuat; pastikan membuka usaha lama.
+[ ] Buat jenis usaha lain; pastikan data kedua usaha tidak bercampur.
+[ ] Input dua pembelian terpisah; pastikan stok bertambah sesuai keduanya.
+[ ] Buka riwayat pembelian; pastikan stok tidak berubah.
+[ ] Uji ekspor dan impor hanya dengan data uji atau setelah membuat cadangan.
+
+Catatan: belum ada klaim lulus browser end-to-end untuk v3.0.8.
