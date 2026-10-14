@@ -1,0 +1,11 @@
+UNIVERSAL UMKM PRO v3.0.7 — DAFTAR PAKET + PAKET TAMBAHAN
+
+Perubahan:
+- Daftar produk/paket yang sudah ada tetap ditampilkan dalam pilihan dropdown.
+- Pengguna tetap dapat mengetik nama paket tambahan jika belum tersedia di daftar.
+- Jika nama yang diketik cocok dengan produk yang sudah ada, aplikasi memilih produk yang ada dan tidak membuat duplikat.
+- Jika nama paket belum ada, paket dibuat saat komposisi berhasil disimpan.
+- Data produk, komposisi, pembelian, stok, dan riwayat yang sudah ada tidak dihapus.
+- Cache service worker diperbarui agar browser memuat aset versi baru.
+
+Catatan pengujian: periksa sintaks JavaScript dan integritas ZIP; interaksi penuh perlu diuji di browser setelah dipasang.
