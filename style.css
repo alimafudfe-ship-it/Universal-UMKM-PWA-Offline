@@ -108,3 +108,12 @@ nav button{font-size:12px}
 
 /* Laporan keuangan: tabel pemasukan/pengeluaran */
 .table-scroll{width:100%;overflow-x:auto}.finance-table{width:100%;border-collapse:collapse;min-width:760px}.finance-table th,.finance-table td{padding:10px 9px;border-bottom:1px solid var(--border,#ddd);text-align:left;vertical-align:top}.finance-table th{font-weight:700;background:var(--surface,#f7f7f7)}.finance-table .num{text-align:right;white-space:nowrap}.finance-in{color:#16794b;font-weight:700}.finance-out{color:#b42318;font-weight:700}.finance-table tfoot th{border-top:2px solid var(--border,#bbb)}
+
+/* v3.0.4: ketik nama bahan/barang dan pilih saran tanpa membuat bahan duplikat */
+.purchase-suggestions{display:flex;flex-direction:column;gap:4px;margin-top:5px;padding:6px;border:1px solid var(--line,#d7dce2);border-radius:10px;background:var(--card,#fff);max-height:260px;overflow:auto;box-shadow:0 6px 18px rgba(0,0,0,.08)}
+.purchase-suggestion{display:flex;flex-direction:column;align-items:flex-start;gap:2px;width:100%;padding:9px 10px;border:0;border-radius:7px;background:transparent;color:inherit;text-align:left;cursor:pointer}
+.purchase-suggestion:hover,.purchase-suggestion:focus{background:var(--soft,#f1f5f9);outline:none}
+.purchase-suggestion small{color:var(--muted,#64748b);font-size:.82em}
+.purchase-new-hint{padding:8px 10px;color:var(--muted,#64748b);font-size:.86em;line-height:1.45}
+
+.purchase-suggestions[hidden]{display:none!important}

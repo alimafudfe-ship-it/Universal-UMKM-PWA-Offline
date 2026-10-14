@@ -44,11 +44,11 @@
     <h3>Pembelian Baru</h3><p>Setiap penyimpanan membuat transaksi baru dan menambah stok satu kali. Tanggal wajib diisi.</p>
     <div class="grid two">
       <label>Tanggal pembelian<input id="purchaseDate" type="date" required></label>
-      <label>Bahan / barang<select id="purchaseMaterial" required><option value="">Pilih bahan atau barang…</option><option value="__new__">＋ Tambah bahan baru…</option></select></label>
+      <label>Bahan / barang<input id="purchaseMaterialSearch" type="text" placeholder="Ketik nama bahan/barang atau pilih saran…" maxlength="120" autocomplete="off" required><div id="purchaseMaterialSuggestions" class="purchase-suggestions" hidden></div><select id="purchaseMaterial" required hidden><option value="">Pilih bahan atau barang…</option></select></label>
     </div>
     <div id="newMaterialFields" class="card" hidden>
       <h4>Data bahan baru</h4>
-      <label>Nama bahan<input id="newMaterialName" placeholder="Contoh: Kertas HVS A4" maxlength="120"></label>
+      <p class="muted">Nama bahan diambil dari kolom Bahan / barang di atas. Pilih kategori dan satuan untuk bahan baru ini.</p>
       <div class="grid two">
         <label>Kategori<select id="newMaterialCategory"></select></label>
         <label>Satuan stok<select id="newMaterialUnit"></select></label>

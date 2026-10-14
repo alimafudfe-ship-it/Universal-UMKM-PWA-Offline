@@ -1,0 +1,16 @@
+UNIVERSAL UMKM PRO v3.0.4 — INPUT NAMA BAHAN/BARANG LANGSUNG
+
+Perubahan:
+- Kolom Bahan/Barang dapat diketik langsung dan menampilkan saran dari bahan serta barang yang sudah terdaftar.
+- Memilih saran memakai catatan yang sudah ada, sehingga stok item yang tepat diperbarui.
+- Nama baru dapat diketik tanpa tombol Simpan Bahan terpisah; kategori dan satuan tetap dipilih sesuai jenis usaha.
+- Sebelum membuat bahan baru, aplikasi mencari nama yang sama (tanpa membedakan huruf besar/kecil) dan menggunakan catatan yang sudah ada bila ditemukan. Bahan yang sebelumnya dinonaktifkan akan diaktifkan kembali saat dipakai untuk pembelian, bukan diduplikasi.
+- Tombol Simpan Pembelian tetap membuat transaksi riwayat baru untuk setiap penyimpanan yang berhasil. Tanggal tetap wajib diisi.
+- Riwayat berdasarkan tanggal tetap hanya menampilkan transaksi; membuka riwayat tidak mengubah stok.
+- Stok bertambah satu kali per transaksi pembelian yang berhasil disimpan.
+- Service worker cache dinaikkan agar browser mengambil file versi baru.
+
+Pemasangan:
+Cadangkan data usaha terlebih dahulu. Unggah isi folder Universal_UMKM_PWA_Offline ke hosting menggantikan file lama, lalu muat ulang aplikasi (Ctrl+Shift+R). Jangan hapus data situs/IndexedDB.
+
+Pemeriksaan: sintaks JavaScript dan integritas ZIP diperiksa. Interaksi langsung pada browser produksi belum diuji.
