@@ -1,0 +1,15 @@
+CHECKLIST RILIS v3.3.19
+[x] Versi HTML v3.3.19
+[x] app.js memiliki penanda runtime v3.3.19
+[x] URL app.js menggunakan ?v=3.3.19
+[x] Cache Service Worker diperbarui ke v3.3.19
+[x] Jenis usaha Jus/Es Campur menyembunyikan nama menu dari Bahan dan Belanja
+[x] Menu produk yang disamarkan tidak dihapus dari database dan riwayat
+[x] Pembelian baru dengan nama menu ditolak agar tidak membuat bahan duplikat
+[x] Jenis usaha lain mempertahankan perilaku pembelian sebelumnya
+[x] Tidak ada reset database atau penghapusan data
+[ ] Deploy ke hosting dan uji langsung di Chrome
+[ ] Pastikan bahan dan stok lama tetap terlihat selain duplikat nama menu
+[ ] Pastikan riwayat pembelian lama tetap dapat dibuka
+[ ] Uji pembelian bahan baru, simpan sekali, stok bertambah sekali
+Catatan: pemeriksaan statis bukan pengganti uji browser langsung.

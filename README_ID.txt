@@ -101,3 +101,7 @@ PEMBARUAN v3.1.3 — PANDUAN KHUSUS PER JENIS USAHA
 
 
 Versi v3.1.5: formulir pembelian menggunakan harga beli per satuan dan total otomatis; data lokal tidak direset. Lihat PERBAIKAN_PEMBELIAN_v3.1.5.txt.
+
+
+VERSI TERBARU: v3.3.19
+Perubahan: menu jadi seperti Jus Alpukat, Jus Mangga, Jus Jambu, dan Es Campur tidak ditampilkan sebagai bahan/opsi belanja pada jenis usaha Jus Buah & Es Campur. Data lama tidak dihapus; riwayat tetap disimpan. Lihat PERBAIKAN_BAHAN_JUS_v3.3.19.txt dan CHECKLIST_RILIS_v3.3.19.txt.

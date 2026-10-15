@@ -1,0 +1,15 @@
+PERBAIKAN BAHAN DAN BELANJA — v3.3.19
+
+Tujuan:
+- Pada jenis usaha Jus Buah & Es Campur, daftar Bahan dan Belanja hanya menampilkan bahan baku/perlengkapan, bukan menu jadi seperti Jus Alpukat, Jus Mangga, Jus Jambu, atau Es Campur.
+- Produk jadi yang keliru tersimpan sebagai bahan lama disembunyikan dari pilihan aktif, tidak dihapus dari IndexedDB.
+- Riwayat pembelian lama tidak dihapus atau diubah.
+- Pembelian baru dengan nama menu jus/es campur ditolak agar tidak membuat duplikat bahan.
+- Pilihan bahan komposisi mengutamakan bahan baku. Baris komposisi lama tetap dapat dibaca walau merujuk data bahan lama yang kini disembunyikan dari pilihan baru.
+- Untuk jenis usaha selain jus/es campur, perilaku pemilihan stok tetap seperti sebelumnya.
+
+Data:
+- Tidak ada reset database, penghapusan profil, penghapusan bahan, atau penghapusan transaksi.
+- Tidak ada migrasi IndexedDB; penyaringan dilakukan saat data ditampilkan dan dipilih.
+
+Pemeriksaan statis dilakukan pada sintaks JavaScript, JSON, rumus harga paket, versi HTML/JS/Service Worker, dan integritas ZIP. Uji browser langsung belum dilakukan.

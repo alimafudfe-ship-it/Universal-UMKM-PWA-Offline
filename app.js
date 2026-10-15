@@ -1,5 +1,5 @@
 'use strict';
-window.APP_BUILD_VERSION='3.3.18';document.documentElement.dataset.appVersion='3.3.18';
+window.APP_BUILD_VERSION='3.3.19';document.documentElement.dataset.appVersion='3.3.19';
 const DB_NAME='UniversalUMKMProOffline', DB_VERSION=4;
 let db, master, cart=[], lastReceipt=null, selectedPackageId=null, currentProfile=null, recipeDraft=[], businesses=[], activeBusinessId=null, licenseSlots=1, purchaseSearchSeq=0;
 const $=id=>document.getElementById(id);
@@ -277,7 +277,12 @@ function businessMaterialOptions(){
  return {categories:['Bahan baku','Bahan tambahan','Kemasan','Perlengkapan','Barang dagangan','Lainnya'],units:['Pcs','Kg','Gram','Liter','Ml','Buah','Ikat','Sachet','Pack','Botol','Dus','Karung','Roll','Meter','Set']};
 }
 function initNewMaterialOptions(){const opts=businessMaterialOptions();$('newMaterialCategory').innerHTML=opts.categories.map((x,i)=>`<option value="${esc(x)}" ${i===0?'selected':''}>${esc(x)}</option>`).join('');$('newMaterialUnit').innerHTML=opts.units.map((x,i)=>`<option value="${esc(x)}" ${i===0?'selected':''}>${esc(x)}</option>`).join('')}
-async function getPurchaseChoices(){const [materials,products]=await Promise.all([getAll('materials'),getAll('products')]);return [...materials.filter(m=>m.active!==false).map(m=>({id:Number(m.id),kind:'material',name:m.name,unit:m.unit||'Pcs'})),...products.filter(p=>p.active!==false&&!p.legacyMaterial&&p.forSale!==false&&p.stockEnabled).map(p=>({id:Number(p.id),kind:'product',name:p.name,unit:p.unit||'Pcs'}))].sort((a,b)=>String(a.name).localeCompare(String(b.name),'id'))}
+function isJuiceBusiness(){const name=String(currentProfile?.business||'').toLocaleLowerCase('id');return name.includes('jus')||name.includes('es campur')}
+function normItemName(value){return String(value||'').trim().toLocaleLowerCase('id').replace(/\s+/g,' ')}
+function isJuiceMenuName(name){const n=normItemName(name);return /^jus\s+/.test(n)||/^es\s+campur(?:\s|$)/.test(n)}
+function isJuiceMenuMaterial(material,products=[]){if(!isJuiceBusiness())return false;const name=normItemName(material?.name);if(!name)return false;const category=normItemName(material?.category);if(/produk jadi|produk\s*\/\s*barang dijual|menu minuman|menu jadi/.test(category)||isJuiceMenuName(name))return true;return products.some(p=>p.active!==false&&p.legacyMaterial!==true&&p.forSale!==false&&normItemName(p.name)===name)}
+function visibleMaterialsForJuice(materials,products=[]){return materials.filter(m=>m.active!==false&&!isJuiceMenuMaterial(m,products))}
+async function getPurchaseChoices(){const [materials,products]=await Promise.all([getAll('materials'),getAll('products')]);const juice=isJuiceBusiness();return [...visibleMaterialsForJuice(materials,products).map(m=>({id:Number(m.id),kind:'material',name:m.name,unit:m.unit||'Pcs'})),...(juice?[]:products.filter(p=>p.active!==false&&!p.legacyMaterial&&p.forSale!==false&&p.stockEnabled).map(p=>({id:Number(p.id),kind:'product',name:p.name,unit:p.unit||'Pcs'})))].sort((a,b)=>String(a.name).localeCompare(String(b.name),'id'))}
 function setPurchaseSelection(value){const sel=$('purchaseMaterial');if(![...sel.options].some(o=>o.value===String(value))){const option=document.createElement('option');option.value=String(value);option.textContent=String(value);sel.appendChild(option)}sel.value=String(value)}
 function selectPurchaseChoice(choice){setPurchaseSelection(`${choice.kind}:${choice.id}`);$('purchaseMaterialSearch').value=choice.name;$('newMaterialFields').hidden=true;$('purchaseMaterialSuggestions').hidden=true;$('purchaseQty').focus()}
 async function renderPurchaseMaterialSuggestions(){const input=$('purchaseMaterialSearch'),box=$('purchaseMaterialSuggestions');if(!input||!box)return;const seq=++purchaseSearchSeq,name=input.value.trim(),term=name.toLocaleLowerCase('id');setPurchaseSelection('');if(!name){box.hidden=true;$('newMaterialFields').hidden=true;return}const choices=await getPurchaseChoices();if(seq!==purchaseSearchSeq||input.value.trim()!==name)return;const exact=choices.filter(x=>String(x.name||'').trim().toLocaleLowerCase('id')===term);if(exact.length){const preferred=exact.find(x=>x.kind==='material')||exact[0];setPurchaseSelection(`${preferred.kind}:${preferred.id}`);$('newMaterialFields').hidden=true}else{$('newMaterialFields').hidden=false;initNewMaterialOptions()}const matches=choices.filter(x=>String(x.name||'').toLocaleLowerCase('id').includes(term)).slice(0,8);box.innerHTML=(matches.map(x=>`<button type="button" class="purchase-suggestion" data-purchase-kind="${x.kind}" data-purchase-id="${x.id}"><strong>${esc(x.name)}</strong><small>${esc(x.unit)} · ${x.kind==='product'?'Barang jual':'Bahan'}</small></button>`).join(''))+(exact.length?'':`<div class="purchase-new-hint">${matches.length?'Pilih salah satu saran jika barangnya sudah ada. ':''}Jika nama ini barang baru, lanjutkan dan simpan pembelian untuk membuat bahan baru.</div>`);box.hidden=false;box.querySelectorAll('[data-purchase-kind]').forEach(b=>b.onclick=()=>selectPurchaseChoice({kind:b.dataset.purchaseKind,id:Number(b.dataset.purchaseId),name:choices.find(x=>x.kind===b.dataset.purchaseKind&&Number(x.id)===Number(b.dataset.purchaseId))?.name||name}));}
@@ -287,11 +292,12 @@ function cancelPurchaseForm(){ $('purchaseMaterial').value='';$('purchaseMateria
 async function renderMaterials(){
  const [materials,products]=await Promise.all([getAll('materials'),getAll('products')]);
  const term=($('materialSearch').value||'').trim().toLowerCase();
- const rows=[...materials.filter(m=>m.active!==false).map(m=>({...m,_kind:'material'})),...products.filter(p=>p.active!==false&&!p.legacyMaterial&&p.forSale!==false&&p.stockEnabled).map(p=>({...p,_kind:'product'}))].filter(m=>`${m.name||''} ${m.category||''}`.toLowerCase().includes(term)).sort((a,b)=>String(a.name).localeCompare(String(b.name),'id'));
+ const juice=isJuiceBusiness();
+ const rows=[...visibleMaterialsForJuice(materials,products).map(m=>({...m,_kind:'material'})),...(juice?[]:products.filter(p=>p.active!==false&&!p.legacyMaterial&&p.forSale!==false&&p.stockEnabled).map(p=>({...p,_kind:'product'})))].filter(m=>`${m.name||''} ${m.category||''}`.toLowerCase().includes(term)).sort((a,b)=>String(a.name).localeCompare(String(b.name),'id'));
  const fmtQty=n=>Number(n||0).toLocaleString('id-ID',{maximumFractionDigits:4});
  $('materialsList').innerHTML=rows.length?`<div class="materials-table-wrap"><table class="materials-table"><thead><tr><th>Bahan / barang</th><th>Jenis</th><th>Satuan</th><th>Stok</th><th>Harga modal rata-rata</th><th>Nilai stok</th><th>Status</th><th>Aksi</th></tr></thead><tbody>${rows.map(m=>{const stock=Number(m.stock||0),cost=Number(m.cost||0),status=m.stockEnabled===false?'Stok nonaktif':stock<=0?'Habis':'Tersedia';return `<tr><td data-label="Bahan / barang"><strong>${esc(m.name)}</strong><small>${esc(m.category||'Bahan baku')}</small></td><td data-label="Jenis">${m._kind==='product'?'Barang jual':'Bahan'}</td><td data-label="Satuan">${esc(m.unit||'Pcs')}</td><td data-label="Stok" class="num">${fmtQty(stock)} ${esc(m.unit||'')}</td><td data-label="Harga modal rata-rata" class="num">${money(cost)}<small>/ ${esc(m.unit||'satuan')}</small></td><td data-label="Nilai stok" class="num">${money(stock*cost)}</td><td data-label="Status"><span class="stock-status ${stock<=0&&m.stockEnabled!==false?'empty-stock':m.stockEnabled===false?'disabled-stock':'in-stock'}">${status}</span></td><td data-label="Aksi"><div class="material-actions"><button type="button" data-mbuy="${m._kind}:${m.id}">Belanja</button>${m._kind==='material'?`<button type="button" class="subtle-danger" data-mdel="${m.id}">Nonaktifkan</button>`:''}</div></td></tr>`}).join('')}</tbody></table></div>`:'<div class="empty">Belum ada bahan atau barang stok yang cocok.</div>';
  const previousSelection=$('purchaseMaterial').value;
- const choices=[...materials.filter(m=>m.active!==false).map(m=>({id:m.id,kind:'material',name:m.name,unit:m.unit})),...products.filter(p=>p.active!==false&&!p.legacyMaterial&&p.forSale!==false&&p.stockEnabled).map(p=>({id:p.id,kind:'product',name:p.name,unit:p.unit}))].sort((a,b)=>String(a.name).localeCompare(String(b.name),'id'));
+ const choices=[...visibleMaterialsForJuice(materials,products).map(m=>({id:m.id,kind:'material',name:m.name,unit:m.unit})),...(juice?[]:products.filter(p=>p.active!==false&&!p.legacyMaterial&&p.forSale!==false&&p.stockEnabled).map(p=>({id:p.id,kind:'product',name:p.name,unit:p.unit})))].sort((a,b)=>String(a.name).localeCompare(String(b.name),'id'));
  $('purchaseMaterial').innerHTML='<option value="">Pilih bahan atau barang…</option>'+choices.map(x=>`<option value="${x.kind}:${x.id}">${esc(x.name)} (${esc(x.unit||'Pcs')})${x.kind==='product'?' · barang jual':''}</option>`).join('')+'<option value="__new__">＋ Tambah bahan baru…</option>';
  if(previousSelection&&[...$('purchaseMaterial').options].some(o=>o.value===previousSelection))$('purchaseMaterial').value=previousSelection;
  const chosen=choices.find(x=>`${x.kind}:${x.id}`===$('purchaseMaterial').value);if(chosen&& !$('purchaseMaterialSearch').value)$('purchaseMaterialSearch').value=chosen.name;
@@ -310,7 +316,11 @@ async function savePurchase(){
  if(!date){toast('Tanggal pembelian wajib diisi.');$('purchaseDate').focus();return}
  if(!typedName||!(qty>0)||!Number.isFinite(qty)||!(unitCost>=0)||!Number.isFinite(unitCost)||$('purchaseUnitPrice').value===''||!(total>=0)||!Number.isFinite(total)){toast('Ketik atau pilih bahan/barang, lalu isi jumlah dan harga beli per satuan dengan benar.');if(!typedName)$('purchaseMaterialSearch').focus();else if($('purchaseUnitPrice').value==='')$('purchaseUnitPrice').focus();return}
  // Resolve exact names to existing records first, so typing an existing name never creates a duplicate.
- const available=await getPurchaseChoices(),exact=available.filter(x=>String(x.name||'').trim().toLocaleLowerCase('id')===typedName.toLocaleLowerCase('id'));
+ if(isJuiceBusiness()){
+  const products=await getAll('products');
+  if(isJuiceMenuName(typedName)||products.some(p=>p.active!==false&&!p.legacyMaterial&&p.forSale!==false&&normItemName(p.name)===normItemName(typedName))){toast('Nama tersebut adalah menu/produk yang dijual, bukan bahan belanja. Pilih bahan baku yang digunakan untuk membuat menu.');return}
+ }
+ const available=await getPurchaseChoices(),exact=available.filter(x=>normItemName(x.name)===normItemName(typedName));
  if(!selection||selection==='__new__'||!available.some(x=>`${x.kind}:${x.id}`===selection)){const resolved=exact.find(x=>x.kind==='material')||exact[0];selection=resolved?`${resolved.kind}:${resolved.id}`:'__new__'}
  let kind='',itemId=0,isNew=selection==='__new__';
  if(!isNew){const parts=selection.split(':');kind=parts[0];itemId=Number(parts[1]);if(!['material','product'].includes(kind)||!itemId){toast('Pilihan bahan/barang tidak valid.');return}}
@@ -348,7 +358,9 @@ function renderRecipeVariantEditor(variants=null){
 function readRecipeVariants(){return [...($('recipeVariants')?.querySelectorAll('.recipe-variant-row')||[])].map(row=>({name:row.querySelector('.variant-name').value.trim(),price:row.querySelector('.variant-price').value===''?'':Number(row.querySelector('.variant-price').value),multiplier:Number(row.querySelector('.variant-multiplier').value||0)}))}
 async function renderRecipePage(){
  const products=(await getAll('products')).filter(p=>p.active!==false&&!p.legacyMaterial&&p.forSale!==false).sort((a,b)=>String(a.name).localeCompare(String(b.name),'id'));
- const materials=(await getAll('materials')).filter(m=>m.active!==false);
+ const allMaterials=(await getAll('materials')).filter(m=>m.active!==false);
+ const allProducts=await getAll('products');
+ const materials=visibleMaterialsForJuice(allMaterials,allProducts);
  const currentName=$('recipeProduct').value.trim();
  $('recipeProductOptions').innerHTML=products.map(p=>`<option value="${esc(p.name)}"></option>`).join('');
  $('recipeProductSelect').innerHTML='<option value="">— Pilih produk / paket —</option>'+products.map(p=>`<option value="${esc(p.name)}">${esc(p.name)}</option>`).join('');
@@ -365,11 +377,12 @@ async function renderRecipeForm(){
  const product=products.find(p=>String(p.name).trim().toLocaleLowerCase('id')===name.toLocaleLowerCase('id'));
  const recipe=product?(await getAll('recipes')).find(r=>Number(r.productId)===Number(product.id)):null;
  if($('recipeSizeMode'))$('recipeSizeMode').value=recipe?.variants?.length?'multiple':'single';renderRecipeVariantEditor(recipe?.variants||null);
- const materials=(await getAll('materials')).filter(m=>m.active!==false);
- $('recipeMaterialOptions').innerHTML=materials.map(m=>`<option value="${esc(m.name)}"></option>`).join('');
+ const allMaterials=(await getAll('materials')).filter(m=>m.active!==false);
+ const visibleMaterials=visibleMaterialsForJuice(allMaterials,await getAll('products'));
+ $('recipeMaterialOptions').innerHTML=visibleMaterials.map(m=>`<option value="${esc(m.name)}"></option>`).join('');
  $('recipeLines').innerHTML='';
  if(recipe?.lines?.length){
-  for(const line of recipe.lines){const m=materials.find(x=>Number(x.id)===Number(line.materialId));if(!m)continue;appendRecipeLine({name:m.name,qty:line.qty,unit:line.unit||recipeDefaultUnit(m.name,m.unit),price:Number.isFinite(Number(line.unitPrice))?line.unitPrice:Number(m.cost||0),materialId:m.id});}
+  for(const line of recipe.lines){const m=allMaterials.find(x=>Number(x.id)===Number(line.materialId));if(!m)continue;appendRecipeLine({name:m.name,qty:line.qty,unit:line.unit||recipeDefaultUnit(m.name,m.unit),price:Number.isFinite(Number(line.unitPrice))?line.unitPrice:Number(m.cost||0),materialId:m.id});}
  }else appendRecipeLine();
  renderRecipePreviewLive();
 }
