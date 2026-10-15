@@ -33,8 +33,8 @@ Pemeriksaan statis (sintaks, JSON, struktur ZIP, dan aturan dokumentasi) dapat d
 12. KODE TRANSAKSI PER TOKO (BERLAKU MULAI v3.0.9)
 - Profil toko baru mendapat awalan kode dari dua karakter pertama nama toko, huruf kapital; contoh Azale menjadi AZ.
 - Kode transaksi baru memakai format AWALAN-0000001 dengan minimal 7 digit angka; jika lebih dari 9.999.999 transaksi, digit bertambah otomatis tanpa mengubah nomor lama.
-- Penjualan, pembelian, dan pengeluaran menggunakan satu urutan nomor bersama untuk setiap toko. Penghitung toko lain tidak ikut berubah.
-- Nomor urut dialokasikan dalam transaksi IndexedDB yang sama dengan penyimpanan transaksi. Nomor yang sudah dipakai tidak boleh digunakan ulang; kegagalan transaksi tidak boleh mengklaim berhasil. Nomor yang terlanjur terlewati boleh dilewati, tidak boleh didaur ulang.
+- Kode bernomor hanya diberikan kepada transaksi penjualan yang disimpan melalui Kasir dan ditampilkan pada nota penjualan. Pembelian bahan/barang dan pengeluaran tidak menggunakan kode penjualan; tampilkan label manusiawi seperti “Pembelian - Strawberry” atau “Pengeluaran - Listrik”.
+- Nomor penjualan dialokasikan dalam transaksi IndexedDB yang sama dengan penyimpanan penjualan. Nomor yang sudah pernah dialokasikan tidak boleh digunakan ulang; kegagalan transaksi tidak boleh mengklaim berhasil. Nomor lama yang pernah dipakai pembelian/pengeluaran pada versi sebelumnya tetap diperhitungkan untuk mencegah penggunaan ulang nomor historis, tetapi tidak ditampilkan sebagai kode pembelian/pengeluaran.
 - Awalan kode ditetapkan saat profil dibuat atau migrasi pertama dan tidak berubah ketika nama toko diedit.
 - Pembaruan tidak boleh mengganti kode, ID internal, tanggal, rincian, atau relasi transaksi lama. Migrasi hanya membaca kode yang ada untuk menentukan nomor berikutnya.
 - Riwayat lama tanpa kode baru tetap disimpan apa adanya; hanya transaksi yang dibuat setelah standar ini diterapkan yang memperoleh kode baru.

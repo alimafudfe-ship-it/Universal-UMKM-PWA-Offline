@@ -1,0 +1,22 @@
+PERBAIKAN v3.3.20 — KODE HANYA UNTUK PENJUALAN KASIR
+
+Tujuan
+Membuat aturan kode konsisten di seluruh jenis usaha. Kode bernomor milik usaha hanya dipakai untuk penjualan yang disimpan lewat Kasir dan dicetak pada nota penjualan.
+
+Perubahan
+1. Pembelian bahan/barang tidak memanggil allocator kode penjualan, tidak menyimpan nomor/transactionCode baru, dan tidak menghabiskan urutan kode penjualan. Riwayat menampilkan “Pembelian - Nama Bahan/Barang”.
+2. Pengeluaran tidak memakai kode penjualan. Riwayat dan buku kas menampilkan “Pengeluaran - Nama”.
+3. Penjualan tetap mendapat kode berawalan toko dan nomor urut 7 digit atau lebih, dan nomor ditampilkan pada nota.
+4. Kode lama yang telanjur ada di catatan pembelian/pengeluaran tidak dihapus dari database, tetapi disembunyikan dari tampilan. Penghitung yang ada tidak diturunkan untuk mencegah nomor historis dipakai ulang.
+5. Berlaku untuk semua jenis usaha karena perubahan berada di fungsi pembelian dan pengeluaran umum, bukan khusus jenis usaha tertentu.
+6. Tidak ada perubahan struktur database, tidak ada penghapusan data, dan DB_VERSION tetap 4.
+
+Pemeriksaan statis
+- Sintaks app.js diperiksa dengan node --check.
+- Penelusuran sumber memastikan allocateTransactionCode hanya dipanggil pada checkout penjualan.
+- Riwayat pembelian menggunakan label “Pembelian - ...”, bukan nomor kode.
+- Riwayat pengeluaran dan buku kas menggunakan label “Pengeluaran - ...”, bukan nomor kode.
+- JSON master dan integritas ZIP diperiksa.
+
+Batas pengujian
+Belum diuji langsung di browser/hosting atau perangkat pengguna. Sebelum produksi, uji satu pembelian baru (stok naik sekali, tanpa kode), satu pengeluaran (tanpa kode), dan satu penjualan (mendapat kode dan tampil pada nota). Jangan menghapus data situs saat memperbarui.

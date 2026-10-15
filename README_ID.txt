@@ -103,5 +103,12 @@ PEMBARUAN v3.1.3 — PANDUAN KHUSUS PER JENIS USAHA
 Versi v3.1.5: formulir pembelian menggunakan harga beli per satuan dan total otomatis; data lokal tidak direset. Lihat PERBAIKAN_PEMBELIAN_v3.1.5.txt.
 
 
-VERSI TERBARU: v3.3.19
+VERSI TERBARU: v3.3.20
 Perubahan: menu jadi seperti Jus Alpukat, Jus Mangga, Jus Jambu, dan Es Campur tidak ditampilkan sebagai bahan/opsi belanja pada jenis usaha Jus Buah & Es Campur. Data lama tidak dihapus; riwayat tetap disimpan. Lihat PERBAIKAN_BAHAN_JUS_v3.3.19.txt dan CHECKLIST_RILIS_v3.3.19.txt.
+
+PEMBARUAN v3.3.20 — KODE PENJUALAN SAJA
+- Kode bernomor hanya dibuat untuk transaksi penjualan di Kasir dan ditampilkan pada nota penjualan.
+- Pembelian baru tidak lagi mengalokasikan kode penjualan atau menghabiskan nomor urut penjualan. Riwayat tampil “Pembelian - Nama Bahan/Barang”.
+- Pengeluaran baru tidak lagi memakai kode penjualan; riwayat dan buku kas tampil “Pengeluaran - Nama”.
+- Kode yang tersimpan pada pembelian/pengeluaran lama tetap ada di database untuk menjaga data historis, tetapi tidak ditampilkan pada layar. Penghitung tidak diturunkan sehingga nomor historis tidak dipakai ulang.
+- Perubahan berlaku untuk semua jenis usaha. DB_VERSION tetap 4; tidak ada penghapusan atau reset data.
