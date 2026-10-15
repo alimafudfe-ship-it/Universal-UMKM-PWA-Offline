@@ -1,0 +1,24 @@
+CHECKLIST RILIS UNIVERSAL UMKM PRO v3.3.21
+
+[OK] Versi index.html, app.js, dan cache Service Worker konsisten v3.3.21.
+[OK] Harga paket dipertahankan: 1=Rp14.999, 2=Rp29.999, 3=Rp44.999, ... 24=Rp359.999.
+[OK] Mode pembelian kemasan bersifat opsional dan berlaku untuk semua jenis usaha.
+[OK] Pembelian biasa tetap memakai jumlah dan harga per satuan stok.
+[OK] Nama kemasan umum menyarankan kategori Kemasan dan satuan stok Pcs jika tersedia.
+[OK] Mode kemasan menghitung stockQty=jumlahKemasan x isiPerKemasan.
+[OK] Modal per satuan stok dihitung hargaPerKemasan / isiPerKemasan.
+[OK] Total pembelian dihitung jumlahKemasan x hargaPerKemasan.
+[OK] Stok dan modal rata-rata menggunakan nilai konversi, bukan jumlah kemasan.
+[OK] Riwayat menyimpan jumlah stok masuk dan rincian kemasan.
+[OK] Tidak ada migrasi destruktif atau reset database.
+[OK] Sintaks JavaScript dan JSON master valid; ZIP integrity diuji.
+[PENDING] Uji browser/HP dan hosting nyata belum dilakukan.
+
+Skenario uji setelah pemasangan:
+1. Bahan Plastik, satuan stok Pcs.
+2. Aktifkan pembelian dalam kemasan.
+3. Isi 1 Pack, harga Rp30.000, isi 100 Pcs.
+4. Simpan sekali.
+5. Verifikasi stok bertambah 100 Pcs, modal Rp300/Pcs, total Rp30.000.
+6. Buka riwayat tanggal tersebut; stok tidak berubah.
+7. Coba pembelian biasa tanpa mencentang mode kemasan.

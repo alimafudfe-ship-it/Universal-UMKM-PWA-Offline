@@ -1,0 +1,31 @@
+UNIVERSAL UMKM PRO v3.3.21 — PEMBELIAN DALAM KEMASAN
+
+Tujuan:
+Pengguna tidak perlu menghitung sendiri harga per pcs/gram/ml ketika membeli barang dalam pack, dus, karung, rim, atau kemasan lain. Fitur berlaku untuk seluruh jenis usaha.
+
+Cara menggunakan:
+1. Pilih atau ketik nama bahan/barang.
+2. Aktifkan “Saya membeli dalam kemasan”.
+3. Isi satuan kemasan (mis. Pack), jumlah kemasan, harga per kemasan, dan isi per kemasan dalam satuan stok bahan.
+4. Aplikasi menghitung total belanja, jumlah stok masuk, dan modal per satuan stok.
+
+Contoh:
+Plastik; stok menggunakan Pcs; beli 1 Pack; harga Rp30.000/Pack; isi 100 Pcs/Pack.
+Hasil: total Rp30.000; stok bertambah 100 Pcs; modal Rp300/Pcs.
+
+Perubahan teknis:
+- Form pembelian memiliki mode kemasan opsional; pembelian biasa tetap berjalan seperti sebelumnya.
+- Stok dan rata-rata modal dihitung memakai kuantitas hasil konversi dan biaya per satuan stok.
+- Riwayat pembelian menyimpan kuantitas stok, total transaksi, harga modal satuan, serta metadata kemasan agar rincian pembelian tetap bisa dibaca.
+- Pembelian tetap menggunakan ID internal IndexedDB dan tidak memakai kode penjualan kasir.
+- Tidak ada perubahan versi database, tidak ada penghapusan data, dan tidak ada reset database.
+- Cache Service Worker diperbarui ke v3.3.21.
+
+Pemeriksaan statis:
+- Sintaks JavaScript diperiksa dengan node --check.
+- JSON master diperiksa.
+- Integritas ZIP diperiksa.
+- Perhitungan contoh 1 Pack x 100 Pcs, Rp30.000/Pack menghasilkan stok 100 Pcs dan modal Rp300/Pcs.
+
+Batas pengujian:
+Belum dilakukan pengujian interaksi langsung di Chrome/HP atau hosting pengguna. Setelah rilis, lakukan satu transaksi uji dan periksa stok serta riwayat. Jangan menghapus data situs/database saat memperbarui.
