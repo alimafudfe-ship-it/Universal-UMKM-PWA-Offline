@@ -1,0 +1,19 @@
+PERBAIKAN v3.1.2 — PANDUAN TERINTEGRASI PER JENIS USAHA
+
+Perubahan:
+- Panduan menjadi menu permanen pada setiap toko, bukan hanya wizard pembukaan.
+- Tepat 8 langkah per jenis usaha.
+- Fokus Step 6 dibuat spesifik sesuai 24 paket usaha.
+- Progres tetap melekat pada profil usaha dan terpisah antartoko.
+- Tidak ada perubahan DB_VERSION (tetap 4), skema database, atau operasi penghapusan data pada pembukaan panduan.
+- Cache service worker diperbarui ke v3.1.2.
+
+Pengujian yang dilakukan:
+- Pemeriksaan sintaks JavaScript.
+- Pemeriksaan validitas JSON master.
+- Uji definisi panduan terhadap 24 nama paket, memastikan setiap paket menghasilkan tepat 8 langkah dan Step 6 berisi petunjuk khusus.
+- Pemeriksaan HTML untuk ID duplikat.
+- Pemeriksaan ZIP.
+
+Batas pengujian:
+Pengujian browser end-to-end dan penggunaan database lama secara langsung belum dilakukan di sini. Sebelum rilis produksi, buka salinan cadangan data dan uji progres per toko, menu navigasi, transaksi, stok, dan laporan.

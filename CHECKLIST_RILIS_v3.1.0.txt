@@ -1,0 +1,30 @@
+CHECKLIST RILIS — UNIVERSAL UMKM PRO v3.1.1
+Fitur: Wizard Panduan Memulai Usaha
+
+PERUBAHAN
+- Wizard langkah demi langkah per profil usaha.
+- Navigasi dari setiap langkah ke fitur terkait.
+- Status selesai/dilewati disimpan pada profil di store settings yang sudah ada.
+- Tidak ada perubahan DB_VERSION (tetap 4) dan tidak ada migrasi destruktif.
+- Service worker cache diperbarui ke v3.1.1.
+
+PEMERIKSAAN STATIS
+[ ] node --check app.js
+[ ] master.json valid JSON
+[ ] index.html memiliki tombol Panduan dan halaman wizard
+[ ] ZIP lulus unzip -t
+[ ] Cari perubahan memastikan tidak ada pemanggilan clear() baru atau penghapusan object store
+
+PENGUJIAN BROWSER WAJIB SEBELUM PRODUKSI
+[ ] Usaha baru dibuat, lalu wizard terbuka otomatis.
+[ ] Profil, produk, bahan, harga, stok, komposisi, kasir, dan laporan dapat dibuka dari langkah terkait.
+[ ] Langkah opsional dapat dilewati dan progres tersimpan setelah muat ulang.
+[ ] Tutup/buka kembali aplikasi: progres tetap ada.
+[ ] Beralih toko: progres masing-masing toko terpisah.
+[ ] Wizard pada usaha lama tidak mengubah jumlah atau isi produk, stok, bahan, resep, transaksi, pembelian, aset, dan pengeluaran.
+[ ] Mengulang wizard hanya mereset progres wizard.
+[ ] Komposisi tidak dipaksakan untuk usaha jasa yang tidak relevan.
+[ ] Ekspor cadangan tetap bekerja.
+
+STATUS
+Pemeriksaan statis dijalankan saat paket disiapkan. Pengujian browser end-to-end belum dilakukan; jangan menyatakan lulus penuh sebelum checklist browser diuji pada salinan data uji.

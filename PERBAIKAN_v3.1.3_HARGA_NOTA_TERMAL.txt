@@ -1,0 +1,22 @@
+UNIVERSAL UMKM PRO v3.1.3 — HARGA PAKET DAN NOTA PRINTER TERMAL
+
+Harga paket:
+- 1 jenis usaha: Rp14.999
+- Setiap tambahan 1 jenis usaha menambah Rp15.000
+- Formula: Rp14.999 + (jumlah jenis usaha - 1) x Rp15.000
+- Harga paket 1–24 jenis usaha selalu berakhir dengan 999.
+- Formula harga pada tampilan paket dan pilihan lisensi disamakan.
+
+Nota termal:
+- Dialog nota memiliki pilihan 58 mm, 80 mm, dan A4/Simpan PDF.
+- CSS cetak mengatur ukuran halaman, margin, ukuran huruf, tabel, dan menyembunyikan kontrol saat dicetak.
+- Agar hasil fisik sesuai, pengguna tetap perlu memilih ukuran kertas yang sama di dialog driver printer/browser. Dukungan ukuran halaman dan panjang gulungan bergantung pada browser serta driver printer.
+
+Perlindungan data:
+- Tidak ada perubahan skema database (DB_VERSION tetap 4).
+- Tidak ada store yang dihapus atau database yang di-reset.
+- Perubahan harga hanya mengubah perhitungan tampilan jumlah jenis usaha; tidak mengubah transaksi atau data toko yang sudah tersimpan.
+
+Pemeriksaan:
+- Perlu jalankan node --check app.js, validasi JSON master, pengecekan harga 1–24, dan uji integritas ZIP.
+- Pengujian cetak fisik belum dilakukan; perlu dicoba dengan printer termal 58 mm dan 80 mm.

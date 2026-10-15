@@ -1,0 +1,20 @@
+UNIVERSAL UMKM PRO v3.1.4 — PERBAIKAN HARGA PAKET & CACHE WEBSITE
+
+Harga paket yang benar:
+- 1 jenis usaha: Rp14.999
+- 2 jenis usaha: Rp29.999
+- 3 jenis usaha: Rp44.999
+- 4 jenis usaha: Rp59.999
+- 24 jenis usaha: Rp359.999
+- Rumus tunggal: Rp14.999 + (jumlah jenis usaha - 1) x Rp15.000.
+
+Perbaikan teknis:
+- Perhitungan harga dipusatkan pada satu fungsi agar harga tampilan paket dan pilihan lisensi konsisten.
+- Nama cache service worker dinaikkan ke v3.1.4 agar browser meminta cache aplikasi baru saat file ini dipublikasikan.
+- Database tetap DB_VERSION 4; tidak ada database/store yang dihapus dan tidak ada reset data.
+- Setelah mengunggah file website, buka situs online di Chrome dan muat ulang. Jangan gunakan Hapus data situs.
+
+Pemeriksaan yang dilakukan saat paket dibuat:
+- Rumus harga diuji untuk seluruh jumlah 1 sampai 24.
+- Pemeriksaan sintaks JavaScript, validasi master.json, dan integritas ZIP dilakukan.
+- Browser HP dan printer fisik belum diuji pada perangkat pengguna.

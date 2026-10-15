@@ -1,0 +1,8 @@
+CHECKLIST RILIS v3.1.5
+[x] Form pembelian memiliki harga beli per satuan.
+[x] Total belanja dihitung otomatis dari jumlah × harga satuan.
+[x] savePurchase menggunakan harga satuan yang diinput, bukan membagi total secara terpisah.
+[x] Tidak ada perubahan versi database dan tidak ada penghapusan data.
+[x] Cache service worker dinaikkan ke v3.1.5.
+[ ] Uji langsung di browser/perangkat pengguna.
+[ ] Verifikasi transaksi nyata dan stok sebelum/sesudah pada salinan data uji.

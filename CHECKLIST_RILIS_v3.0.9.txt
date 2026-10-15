@@ -1,0 +1,29 @@
+CHECKLIST RILIS — UNIVERSAL UMKM PRO v3.0.9
+
+PERUBAHAN
+- Kode transaksi berbasis toko: AZ-0000001, AZ-0000002, dan seterusnya.
+- Penjualan, pembelian, pengeluaran memakai satu urutan per toko.
+- Nomor transaksi lama, ID internal, rincian, stok, dan data bisnis tidak dimigrasi ulang atau dihapus.
+- Prefix disimpan di profil dan tetap sama saat nama toko diedit.
+- Cache service worker diperbarui ke v3.0.9.
+
+PEMERIKSAAN STATIS
+[ ] node --check app.js
+[ ] master.json valid JSON
+[ ] unzip -t pada paket rilis
+[ ] Pastikan DB_VERSION tidak dinaikkan karena tidak ada perubahan struktur object store.
+[ ] Pastikan tidak ada clear/delete store pada migrasi penomoran.
+
+PENGUJIAN BROWSER WAJIB SEBELUM PRODUKSI
+[ ] Profil baru bernama Azale menghasilkan prefix AZ dan penjualan pertama AZ-0000001.
+[ ] Pembelian berikutnya mendapat AZ-0000002; pengeluaran berikutnya AZ-0000003.
+[ ] Toko lain mempunyai prefix dan penghitung sendiri.
+[ ] Edit nama toko tidak mengubah prefix yang sudah ditetapkan.
+[ ] Setelah refresh/update, transaksi lama tetap ada dan nomor berikutnya tidak berulang.
+[ ] Uji kode melewati 9.999.999 menggunakan data uji; digit bertambah otomatis.
+[ ] Ekspor/impor cadangan mempertahankan kode dan penghitung.
+[ ] Restore cadangan lama untuk ID usaha yang sama tidak menurunkan penghitung yang sudah lebih tinggi pada perangkat.
+[ ] Jika transaksi gagal, stok/riwayat tidak berubah sebagian dan aplikasi tidak menampilkan sukses.
+
+STATUS
+Pemeriksaan statis dilakukan saat paket dibuat. Pengujian browser end-to-end belum dilakukan dalam proses pembuatan paket ini; jangan menyatakan lulus produksi sebelum checklist browser diselesaikan.

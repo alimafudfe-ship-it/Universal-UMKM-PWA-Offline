@@ -1,0 +1,8 @@
+CHECKLIST RILIS v3.1.4
+[x] 1 jenis = Rp14.999; 2 = Rp29.999; 3 = Rp44.999; 4 = Rp59.999; 24 = Rp359.999.
+[x] Harga paket dan pilihan lisensi memakai fungsi perhitungan yang sama.
+[x] Cache service worker dinaikkan ke v3.1.4.
+[x] DB_VERSION tetap 4; tidak ada instruksi reset database.
+[ ] Setelah upload, buka website online pada Chrome HP dan pastikan 2 jenis menampilkan Rp29.999.
+[ ] Pastikan data toko lama, produk, stok, komposisi, pembelian, penjualan, dan laporan tetap tersedia.
+Catatan: uji browser di perangkat pengguna belum dilakukan.

@@ -1,0 +1,14 @@
+PERBAIKAN UNIVERSAL UMKM PRO v3.1.1 — PANDUAN LANGSUNG TERLIHAT
+
+Masalah:
+Panduan tersedia di menu, tetapi saat aplikasi dibuka dengan profil toko aktif, aplikasi tetap membuka halaman biasa sehingga pengguna tidak langsung melihat Step 1–8.
+
+Perbaikan:
+- Saat aplikasi dibuka dengan profil toko aktif yang panduannya belum selesai, aplikasi langsung menampilkan Panduan Usaha.
+- Saat pengguna masuk atau berganti ke toko yang panduannya belum selesai, panduan langsung dibuka.
+- Toko yang panduannya sudah selesai tetap membuka halaman biasa.
+- Progres panduan tetap disimpan pada profil toko.
+- Tidak mengubah skema database, tidak menghapus database, produk, stok, bahan, pembelian, penjualan, atau riwayat.
+- Cache service worker dinaikkan ke v3.1.1 agar aplikasi mengambil file baru.
+
+Validasi: sintaks JavaScript, JSON master, dan integritas ZIP diperiksa. Pengujian browser manual belum dilakukan.

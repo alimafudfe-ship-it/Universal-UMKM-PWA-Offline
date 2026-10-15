@@ -1,0 +1,15 @@
+PERBAIKAN HARGA PAKET & DEPLOY — v3.3.18
+
+Temuan:
+- v3.3.17 sudah memiliki rumus harga 14.999 + (n-1)*15.000.
+- index.html masih menyebut v3.3.16, sehingga label rilis tidak konsisten dan diagnosis versi di hosting sulit.
+
+Perbaikan:
+- Versi HTML, penanda runtime app.js, URL script, dan cache Service Worker disamakan ke v3.3.18.
+- Rumus harga ditulis langsung sebagai 14.999 + (jumlah usaha - 1) * 15.000.
+- Service Worker memakai network-first untuk halaman HTML dan app.js saat online, dengan cache sebagai fallback offline.
+- Database IndexedDB tidak dihapus, di-reset, atau dimigrasikan oleh perbaikan ini.
+
+Harga yang diharapkan: 1=Rp14.999; 2=Rp29.999; 3=Rp44.999; 4=Rp59.999; 24=Rp359.999.
+
+Pemeriksaan statis dilakukan saat pembuatan ZIP. Belum dilakukan uji browser langsung pada hosting pengguna.

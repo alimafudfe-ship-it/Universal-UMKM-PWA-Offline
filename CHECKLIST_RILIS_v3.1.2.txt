@@ -1,0 +1,11 @@
+CHECKLIST RILIS v3.1.2
+[ ] Buka Panduan Usaha dari navigasi pada setiap jenis usaha.
+[ ] Pastikan tepat 8 langkah muncul.
+[ ] Pastikan Step 6 sesuai jenis usaha aktif.
+[ ] Tandai selesai/lewati langkah; tutup dan buka kembali; progres tetap tersimpan.
+[ ] Ganti toko dan pastikan progres masing-masing terpisah.
+[ ] Ulangi panduan dan pastikan hanya tanda progres yang berubah.
+[ ] Periksa produk, harga, stok, bahan, komposisi, pembelian, penjualan, pengeluaran, aset, dan laporan lama.
+[ ] Uji pembelian: stok bertambah tepat satu kali; membuka riwayat tidak mengubah stok.
+[ ] Ekspor cadangan dan periksa hasil ekspor.
+Catatan: browser end-to-end belum dijalankan secara otomatis.

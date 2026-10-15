@@ -1,4 +1,4 @@
-UNIVERSAL UMKM PRO v3.0.8
+UNIVERSAL UMKM PRO v3.1.3
 PWA OFFLINE-FIRST • 24 PAKET USAHA • MASTER DATA LENGKAP
 
 ISI PAKET
@@ -71,3 +71,33 @@ PEMBARUAN v3.0.8 — STANDAR PERMANEN DATA AMAN
 - Setiap rilis wajib diuji dengan data contoh: buka usaha lama, buat usaha baru, pastikan data usaha terpisah, cek stok/pembelian/riwayat, ekspor dan impor cadangan.
 - Jangan menghapus data lokal saat memasang versi baru. Ekspor cadangan sebelum mengganti file hosting.
 - Versi ini tidak mengubah struktur database IndexedDB (DB_VERSION tetap 4); perubahan ini memperbarui label versi, cache service worker, dan dokumentasi standar rilis.
+
+
+PEMBARUAN v3.0.9 — KODE TRANSAKSI PER TOKO
+- Kode transaksi baru memakai dua karakter awal nama toko dan nomor urut 7 digit, contoh AZ-0000001.
+- Penjualan, pembelian, dan pengeluaran memakai satu urutan nomor per toko. Nomor dapat bertambah melewati 9.999.999 dengan menambah digit otomatis.
+- Penghitung disimpan bersama profil usaha dan dialokasikan secara atomik dalam transaksi database agar nomor tidak dipakai ulang ketika transaksi tersimpan.
+- Kode transaksi lama tidak diubah; ID internal penjualan dan hubungan rincian transaksi tetap dipertahankan. Migrasi menghitung nomor berikutnya dari kode yang sudah ada tanpa menghapus data.
+- Awalan kode yang sudah dibuat tidak berubah saat nama toko diedit. Setiap toko memiliki penghitung terpisah. Saat restore cadangan dengan ID usaha sama, penghitung yang lebih tinggi pada perangkat tidak diturunkan.
+
+
+PEMBARUAN v3.1.3 — WIZARD PANDUAN MEMULAI USAHA
+- Usaha baru langsung membuka Panduan Usaha bertahap setelah profil dan katalog awal berhasil dibuat.
+- Panduan meliputi profil, produk/jasa, harga dan modal, bahan/perlengkapan, stok awal, komposisi/resep jika relevan, kasir, dan laporan.
+- Langkah komposisi disesuaikan dengan jenis usaha dan dapat dilewati bila tidak diperlukan.
+- Tombol panduan membuka fitur aplikasi terkait; pengguna menandai langkah selesai sendiri setelah memeriksa data.
+- Progres panduan disimpan di properti setupWizard pada profil usaha dalam store settings yang sudah ada. Tidak ada object store baru, tidak ada perubahan DB_VERSION, dan tidak ada penghapusan data usaha.
+- Progres terpisah per profil usaha. Mengulang panduan hanya mereset status panduan, tidak mengubah produk, harga, stok, bahan, resep, transaksi, pembelian, aset, atau pengeluaran.
+- Pengguna usaha lama dapat membuka Panduan Usaha dari navigasi; progres awalnya kosong dan tidak memengaruhi data lama.
+
+
+PEMBARUAN v3.1.3 — PANDUAN KHUSUS PER JENIS USAHA
+- Menu Panduan Usaha tetap tersedia dari navigasi di setiap profil usaha; panduan tidak memaksa pengguna ketika membuka aplikasi.
+- Setiap panduan menampilkan tepat 8 langkah: profil, pengaturan usaha, produk/jasa, harga/modal, bahan dan stok, fokus khusus usaha, transaksi, serta laporan.
+- Langkah fokus menyesuaikan 24 paket, termasuk kuliner, katering, depot air, frozen food, konter HP, laundry, makanan online, percetakan/fotokopi, pet shop, salon, kosmetik, bakery, pakaian, retail, sembako/grosir, serta berbagai jenis makanan/minuman.
+- Progres disimpan pada profil usaha yang sudah ada; ID langkah lama yang masih dipakai dipertahankan. Data progres lama yang tidak lagi ditampilkan tidak dihapus dari profil.
+- Tidak ada perubahan skema database, DB_VERSION tetap 4, dan tidak ada operasi penghapusan/penulisan ulang produk atau transaksi saat panduan dibuka.
+- Cache service worker dinaikkan untuk memastikan file baru dapat dimuat.
+
+
+Versi v3.1.5: formulir pembelian menggunakan harga beli per satuan dan total otomatis; data lokal tidak direset. Lihat PERBAIKAN_PEMBELIAN_v3.1.5.txt.

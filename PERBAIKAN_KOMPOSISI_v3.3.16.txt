@@ -1,0 +1,14 @@
+UNIVERSAL UMKM PRO v3.3.16 — KOMPOSISI SATU / BEBERAPA UKURAN
+
+Perubahan:
+- Komposisi memiliki pilihan Satu ukuran atau Beberapa ukuran.
+- Beberapa ukuran menyimpan nama ukuran, harga jual, dan pengali takaran resep.
+- Default contoh ukuran: Kecil (0,75x), Sedang (1x), Besar (1,25x). Angka dapat diedit pengguna.
+- Saat menu multiukuran dipilih di kasir, pengguna diminta memilih ukuran; harga dan HPP perkiraan mengikuti ukuran.
+- Resep lama yang tidak memiliki variasi tetap dibaca sebagai satu ukuran.
+- Data lama tidak dihapus; database version tidak dinaikkan karena perubahan hanya menambah properti opsional pada record resep.
+
+Batasan yang harus diketahui:
+- Pengali ukuran menskalakan takaran dasar secara proporsional. Jika satu bahan tidak proporsional, pengguna perlu memilih mode satu ukuran atau kelola resep terpisah sampai fitur takaran per-ukuran per-bahan dibuat.
+- Penjualan belum mengurangi stok bahan resep secara otomatis; perilaku lama untuk stok produk tetap dipertahankan.
+- Pilihan ukuran kasir memakai prompt sederhana; belum dilakukan uji browser/device langsung.

@@ -28,3 +28,31 @@ CHECKLIST MINIMUM SEBELUM RILIS
 
 BATAS PENGUJIAN v3.0.8
 Pemeriksaan statis (sintaks, JSON, struktur ZIP, dan aturan dokumentasi) dapat dijalankan pada paket. Pengujian browser end-to-end tidak dilakukan dalam pembuatan paket ini; checklist browser harus diselesaikan pada lingkungan uji sebelum penggunaan produksi.
+
+
+12. KODE TRANSAKSI PER TOKO (BERLAKU MULAI v3.0.9)
+- Profil toko baru mendapat awalan kode dari dua karakter pertama nama toko, huruf kapital; contoh Azale menjadi AZ.
+- Kode transaksi baru memakai format AWALAN-0000001 dengan minimal 7 digit angka; jika lebih dari 9.999.999 transaksi, digit bertambah otomatis tanpa mengubah nomor lama.
+- Penjualan, pembelian, dan pengeluaran menggunakan satu urutan nomor bersama untuk setiap toko. Penghitung toko lain tidak ikut berubah.
+- Nomor urut dialokasikan dalam transaksi IndexedDB yang sama dengan penyimpanan transaksi. Nomor yang sudah dipakai tidak boleh digunakan ulang; kegagalan transaksi tidak boleh mengklaim berhasil. Nomor yang terlanjur terlewati boleh dilewati, tidak boleh didaur ulang.
+- Awalan kode ditetapkan saat profil dibuat atau migrasi pertama dan tidak berubah ketika nama toko diedit.
+- Pembaruan tidak boleh mengganti kode, ID internal, tanggal, rincian, atau relasi transaksi lama. Migrasi hanya membaca kode yang ada untuk menentukan nomor berikutnya.
+- Riwayat lama tanpa kode baru tetap disimpan apa adanya; hanya transaksi yang dibuat setelah standar ini diterapkan yang memperoleh kode baru.
+- Backup/restore harus mempertahankan awalan dan penghitung; setelah impor, aplikasi memeriksa transaksi yang dipulihkan agar nomor berikutnya tidak bertabrakan. Untuk profil dengan ID usaha yang sama, penghitung yang sudah lebih tinggi di perangkat sebelum impor tidak boleh diturunkan.
+
+
+13. WIZARD PANDUAN MEMULAI USAHA (BERLAKU MULAI v3.1.1)
+- Panduan harus bertahap dari profil toko, produk/jasa, harga/modal, bahan/perlengkapan, stok awal, komposisi bila relevan, transaksi, hingga laporan.
+- Isi panduan disesuaikan dengan jenis usaha. Komposisi tidak dipaksakan pada usaha jasa sederhana; data komposisi yang sudah ada tidak dihapus saat langkah disembunyikan.
+- Progres disimpan per profil usaha, di dalam data profil yang sudah ada; tidak menambah atau menghapus object store.
+- Wizard tidak membuat transaksi uji secara otomatis, tidak mengubah stok, harga, produk, resep, atau riwayat. Pengguna menandai langkah selesai secara sadar.
+- Mengulang wizard hanya menghapus status progres wizard, bukan data usaha. Wizard selalu dapat dibuka kembali dari menu Panduan Usaha.
+- Pembaruan wizard tidak boleh membuat ulang profil usaha atau mengubah businessId. Progres usaha lain tidak boleh tercampur.
+
+
+14. PANDUAN PER JENIS USAHA (BERLAKU MULAI v3.1.3)
+- Menu Panduan Usaha adalah fitur permanen yang dapat dibuka kapan saja dari setiap profil toko.
+- Panduan berisi 8 langkah dan menyesuaikan jenis usaha aktif.
+- Progres terpisah per profil usaha; membuka, menandai, melewati, atau mengulang panduan tidak boleh mengubah data operasional.
+- Panduan hanya menavigasikan pengguna ke fitur terkait; tidak membuat transaksi percobaan atau mengubah stok secara otomatis.
+- Perubahan panduan tidak mengubah DB_VERSION atau menghapus database dan riwayat.

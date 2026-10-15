@@ -1,0 +1,15 @@
+UNIVERSAL UMKM PRO v3.1.5 — HARGA SATUAN PEMBELIAN OTOMATIS
+
+Perubahan:
+- Form pembelian kini meminta jumlah dan harga beli per satuan.
+- Total belanja dihitung otomatis: jumlah × harga per satuan.
+- Contoh 9 kg × Rp15.000/kg menghasilkan total Rp135.000 dan modal satuan Rp15.000/kg.
+- Jika harga komposisi sama persis dengan modal stok lama dan satuannya sama, harga komposisi ikut diperbarui ke modal rata-rata terbaru. Harga komposisi berbeda tidak ditimpa.
+- Penyimpanan pembelian tetap satu transaksi dan menambah stok satu kali.
+- Riwayat pembelian tetap hanya membaca data; membuka riwayat tidak mengubah stok.
+- Database lokal dan data usaha tidak dihapus; tidak ada reset database atau penghapusan data.
+- Cache service worker dinaikkan ke v3.1.5.
+
+Batas pengujian:
+- Pemeriksaan statis dan pemeriksaan sintaks dilakukan pada paket.
+- Pengujian langsung di browser/perangkat pengguna belum dilakukan.

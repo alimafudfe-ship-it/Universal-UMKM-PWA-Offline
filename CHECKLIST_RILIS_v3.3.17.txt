@@ -1,0 +1,8 @@
+CHECKLIST RILIS v3.3.17 — HARGA PAKET & CACHE
+[x] Rumus 1, 2, 3, 4, dan 24 usaha diverifikasi secara hitung.
+[x] URL app.js diberi query versi v3.3.17.
+[x] Nama cache Service Worker dinaikkan ke v3.3.17.
+[ ] Setelah deploy, pastikan 2 usaha menampilkan Rp29.999 di browser HP dan desktop.
+[ ] Pastikan paket 3 menampilkan Rp44.999 dan paket 24 Rp359.999.
+[ ] Pastikan profil, produk, stok, resep, pembelian, dan transaksi lama tetap ada setelah update.
+[ ] Browser/device E2E belum dilakukan saat pembuatan ZIP.

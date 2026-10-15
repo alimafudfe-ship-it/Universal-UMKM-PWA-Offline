@@ -1,0 +1,11 @@
+CHECKLIST RILIS v3.1.3
+[ ] 1 jenis = Rp14.999; 2 = Rp29.999; 3 = Rp44.999; 24 = Rp359.999.
+[ ] Harga pada pilihan paket dan pemilih lisensi sama.
+[ ] Nota dapat memilih 58 mm, 80 mm, dan A4.
+[ ] Dialog cetak menyembunyikan tombol dan pilihan ukuran ketika dicetak.
+[ ] Uji printer termal 58 mm dengan driver pada 58 mm.
+[ ] Uji printer termal 80 mm dengan driver pada 80 mm.
+[ ] Pastikan item panjang, jumlah, harga, total, tunai, kembalian dan footer tidak terpotong.
+[ ] Pastikan DB_VERSION tetap 4 dan data lama tidak dihapus.
+[ ] Buka toko lama dan periksa produk, stok, komposisi, transaksi dan laporan.
+Catatan: tes fisik printer dan browser E2E belum dilakukan saat paket dibuat.

@@ -1,0 +1,12 @@
+CHECKLIST RILIS v3.3.18
+[x] HTML menyebut v3.3.18
+[x] app.js memiliki penanda runtime v3.3.18
+[x] URL app.js menggunakan ?v=3.3.18
+[x] Rumus paket 1-24 usaha menggunakan kenaikan Rp15.000 per usaha tambahan
+[x] Service Worker cache version v3.3.18
+[x] HTML dan app.js network-first saat online; cache fallback untuk offline
+[x] Tidak ada instruksi reset/hapus database
+[ ] Deploy ke hosting dan periksa indikator versi v3.3.18 di layar
+[ ] Uji 2 usaha=Rp29.999 dan 3 usaha=Rp44.999 pada Chrome desktop dan HP
+[ ] Pastikan profil, produk, stok, resep, pembelian, dan transaksi tetap ada
+Catatan: uji browser/hosting pengguna belum dilakukan saat pembuatan ZIP.

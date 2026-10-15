@@ -1,0 +1,11 @@
+CHECKLIST RILIS v3.1.1
+[ ] Buka toko lama dengan panduan belum selesai; layar Panduan Usaha langsung terlihat.
+[ ] Pastikan langkah panduan muncul sesuai jenis usaha (Step 1 sampai langkah terakhir yang relevan).
+[ ] Tandai langkah selesai; tutup dan buka kembali; progres tetap ada.
+[ ] Ganti toko; panduan mengikuti profil toko yang dipilih.
+[ ] Toko dengan panduan selesai tetap masuk ke halaman biasa.
+[ ] Periksa produk, harga, stok, bahan, komposisi, pembelian, penjualan, dan laporan lama.
+[ ] Uji pembelian baru: stok bertambah tepat satu kali.
+[ ] Uji riwayat pembelian: membuka riwayat tidak mengubah stok.
+[ ] Ekspor cadangan dan verifikasi file.
+Catatan: pengujian browser manual harus dilakukan sebelum produksi.

@@ -1,0 +1,22 @@
+PERBAIKAN HARGA PAKET — v3.3.17
+
+Temuan audit v3.3.16:
+- Rumus di app.js sudah menghasilkan harga yang benar (2 usaha = Rp29.999).
+- Jika antarmuka menampilkan Rp19.999, kemungkinan besar JavaScript lama masih tersaji dari cache atau yang dipasang bukan ZIP yang diaudit.
+
+Perbaikan v3.3.17:
+- Menegaskan rumus harga dengan konstanta basePrice=14999 dan additionalBusinessPrice=15000.
+- Menambahkan versi pada URL app.js: app.js?v=3.3.17 untuk cache-busting browser.
+- Mengganti nama cache Service Worker ke v3.3.17 agar aset baru diunduh.
+- Tidak mengubah atau menghapus database dan data usaha.
+
+Harga yang diharapkan:
+1 usaha = Rp14.999
+2 usaha = Rp29.999
+3 usaha = Rp44.999
+4 usaha = Rp59.999
+24 usaha = Rp359.999
+
+Pengujian:
+- Pemeriksaan sintaks JavaScript dan formula dilakukan saat pembuatan ZIP.
+- Belum diuji langsung pada hosting/browser pengguna. Setelah mengunggah SELURUH isi ZIP, buka ulang halaman dan pastikan v3.3.17 yang terpasang. Jangan menghapus data situs.

@@ -1,0 +1,11 @@
+CHECKLIST RILIS v3.3.16
+[ ] Periksa syntax app.js dengan node --check.
+[ ] Periksa seluruh JSON dan integritas ZIP.
+[ ] Pastikan cache service worker memakai nama versi baru.
+[ ] Uji menu lama tanpa variasi; resep harus tetap tampil.
+[ ] Uji menu baru satu ukuran dan simpan.
+[ ] Uji menu beberapa ukuran: isi harga, ubah pengali, simpan, buka kembali.
+[ ] Uji kasir memilih tiap ukuran dan memeriksa harga nota.
+[ ] Uji backup/restore mempertahankan properti variants.
+[ ] Uji pembelian dan riwayat tidak menggandakan stok.
+[ ] Browser/device E2E belum dilakukan dalam proses pembuatan ZIP ini.
