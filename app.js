@@ -336,17 +336,37 @@ async function savePurchase(){
   // Pembelian memakai ID internal IndexedDB, bukan kode transaksi penjualan.
   const savePurchaseRow=(id,itemKind,itemName,unit)=>{const stockUnit=unit||'Pcs';purchaseStore.add({businessId:activeBusinessId,itemType:itemKind,itemId:Number(id),materialId:itemKind==='material'?Number(id):undefined,productId:itemKind==='product'?Number(id):undefined,materialName:itemName,itemName,qty,unit:stockUnit,total,unitCost,date,packageMode,purchasedQty:enteredQty,purchaseUnit:packageMode?purchaseUnit:stockUnit,contentPerPack:packageMode?contentPerPack:1,createdAt:stamp});};
   if(isNew){const material={businessId:activeBusinessId,name:newName,category:newCategory,unit:newUnit,cost:unitCost,stock:qty,stockEnabled:true,active:true,source:'user',referenceCost:false,createdAt:stamp,updatedAt:stamp};const req=tx.objectStore('materials').add(material);req.onsuccess=()=>savePurchaseRow(req.result,'material',newName,newUnit);req.onerror=()=>{requestFailed=true};}
-  else {const store=tx.objectStore(kind==='product'?'products':'materials'),req=store.get(itemId);req.onsuccess=()=>{const item=req.result;if(!item||String(item.businessId??'legacy')!==String(activeBusinessId??'legacy')){requestFailed=true;try{tx.abort()}catch{}return}const oldQty=Math.max(0,Number(item.stock||0)),oldCost=Math.max(0,Number(item.cost||0)),newStock=oldQty+qty;item.cost=newStock>0?((oldQty*oldCost)+(qty*unitCost))/newStock:unitCost;item.stock=newStock;item.stockEnabled=true;item.active=true;item.updatedAt=stamp;store.put(item);if(kind==='material'){const recipeReq=tx.objectStore('recipes').getAll();recipeReq.onsuccess=()=>{for(const recipe of recipeReq.result||[]){if(String(recipe.businessId??'legacy')!==String(activeBusinessId??'legacy'))continue;let changed=false;for(const line of recipe.lines||[]){if(Number(line.materialId)!==itemId)continue;const sameUnit=String(line.unit||item.unit||'').trim().toLocaleLowerCase('id')===String(item.unit||'').trim().toLocaleLowerCase('id');const linePrice=Number(line.unitPrice);if(sameUnit&&Number.isFinite(linePrice)&&Math.abs(linePrice-oldCost)<0.000001){line.unitPrice=item.cost;changed=true}}if(changed){recipe.updatedAt=stamp;tx.objectStore('recipes').put(recipe)}}};recipeReq.onerror=()=>{requestFailed=true}}savePurchaseRow(itemId,kind,item.name,item.unit||'Pcs')};req.onerror=()=>{requestFailed=true};}
+  else {const store=tx.objectStore(kind==='product'?'products':'materials'),req=store.get(itemId);req.onsuccess=()=>{const item=req.result;if(!item||String(item.businessId??'legacy')!==String(activeBusinessId??'legacy')){requestFailed=true;try{tx.abort()}catch{}return}const oldQty=Math.max(0,Number(item.stock||0)),oldCost=Math.max(0,Number(item.cost||0)),newStock=oldQty+qty;item.cost=newStock>0?((oldQty*oldCost)+(qty*unitCost))/newStock:unitCost;item.stock=newStock;item.stockEnabled=true;item.active=true;item.updatedAt=stamp;store.put(item);if(kind==='material'){const recipeReq=tx.objectStore('recipes').getAll();recipeReq.onsuccess=()=>{for(const recipe of recipeReq.result||[]){if(String(recipe.businessId??'legacy')!==String(activeBusinessId??'legacy'))continue;let changed=false;for(const line of recipe.lines||[]){if(Number(line.materialId)!==itemId)continue;const recipeUnit=line.unit||item.unit||'Pcs';const stockQtyPerRecipeUnit=convertQty(1,recipeUnit,item.unit||recipeUnit);const expectedOldLinePrice=stockQtyPerRecipeUnit===null?NaN:oldCost*stockQtyPerRecipeUnit;const linePrice=Number(line.unitPrice);if(Number.isFinite(expectedOldLinePrice)&&Number.isFinite(linePrice)&&Math.abs(linePrice-expectedOldLinePrice)<Math.max(0.000001,Math.abs(expectedOldLinePrice)*0.000001)){line.unitPrice=Number(item.cost||0)*stockQtyPerRecipeUnit;changed=true}}if(changed){recipe.updatedAt=stamp;tx.objectStore('recipes').put(recipe)}}};recipeReq.onerror=()=>{requestFailed=true}}savePurchaseRow(itemId,kind,item.name,item.unit||'Pcs')};req.onerror=()=>{requestFailed=true};}
   tx.oncomplete=async()=>{try{await recalculateRecipeCosts();await renderMaterials();await renderProducts();await renderCashItems();await renderRecipePage();$('purchaseQty').value='';$('purchaseUnitPrice').value='';$('purchaseTotal').value='';$('purchaseMaterialSearch').value='';$('purchaseMaterial').value='';$('purchaseMaterialSuggestions').hidden=true;$('newMaterialFields').hidden=true;$('purchasePackageMode').checked=false;$('purchasePackageUnit').value='Pack';$('purchasePackageContentQty').value='1';togglePurchasePackageMode();$('purchaseHistoryDate').value=date;await renderPurchaseHistory();toast(`Pembelian ${isNew?newName:'berhasil'} tersimpan. Stok bertambah ${qty.toLocaleString('id-ID',{maximumFractionDigits:4})} ${isNew?newUnit:'unit'} satu kali.`)}catch(err){console.error(err);toast('Pembelian tersimpan, tetapi tampilan gagal diperbarui. Muat ulang aplikasi untuk memeriksa stok.')}finally{btn.disabled=false}};
   tx.onerror=()=>{btn.disabled=false;toast('Pembelian gagal disimpan: '+(tx.error?.message||'kesalahan database'))};tx.onabort=()=>{btn.disabled=false;if(requestFailed)toast('Bahan/barang tidak ditemukan atau tidak aktif. Stok tidak diubah.');else toast('Pembelian dibatalkan oleh database. Stok tidak diubah.')};
  }catch(err){console.error(err);btn.disabled=false;toast('Pembelian gagal disimpan: '+(err.message||'kesalahan database'))}
 }
 function recipeDefaultUnit(name, existingUnit=''){
- const n=String(name||'').toLowerCase();
+ const n=String(name||'').toLocaleLowerCase('id'),u=String(existingUnit||'').trim();
  if(/telur|egg|butir/.test(n))return 'Butir';
- if(/tepung|beras|gula|terigu|garam|ayam|daging|ikan|kentang|wortel|bawang|cabai|cabe/.test(n))return existingUnit&&existingUnit!=='Pcs'?existingUnit:'Kg';
- if(/susu|air|minyak|sirup|kecap|saus|santan/.test(n))return /minyak/.test(n)?(existingUnit||'Liter'):'Ml';
- return existingUnit||'Pcs';
+ const dim=unitDimension(u);
+ // Resep memakai satuan kecil yang mudah dibaca; stok tetap memakai satuan bahan yang tersimpan.
+ if(dim.dim==='mass')return 'Gram';
+ if(dim.dim==='volume')return 'Ml';
+ if(u)return u;
+ if(/kopi|bubuk|tepung|beras|gula|terigu|garam|ayam|daging|ikan|kentang|wortel|bawang|cabai|cabe|keju|cokelat|coklat|mentega|margarin|es batu/.test(n))return 'Gram';
+ if(/susu|air|minyak|sirup|kecap|saus|santan|krimer|espresso/.test(n))return 'Ml';
+ return 'Pcs';
+}
+function materialCostInRecipeUnit(material, recipeUnit){
+ const stockUnit=material?.unit||recipeUnit;
+ const stockQtyPerRecipeUnit=convertQty(1,recipeUnit,stockUnit);
+ if(stockQtyPerRecipeUnit===null)return Number(material?.cost||0);
+ return Number(material?.cost||0)*stockQtyPerRecipeUnit;
+}
+function normalizeRecipeLineForDisplay(line, material){
+ let qty=Number(line.qty||0),unit=String(line.unit||recipeDefaultUnit(material?.name,material?.unit)||material?.unit||'Pcs'),price=Number(line.unitPrice);
+ if(!Number.isFinite(price))price=materialCostInRecipeUnit(material,unit);
+ const dim=unitDimension(unit);
+ // Takaran resep di bawah 1 kg/liter tampil dalam gram/ml, tanpa mengubah total HPP.
+ if(qty>0&&dim.dim==='mass'&&['kg','kilo'].includes(unit.toLocaleLowerCase('id'))&&qty<1){const nextQty=convertQty(qty,unit,'Gram');if(nextQty!==null){price=price*qty/nextQty;qty=nextQty;unit='Gram'}}
+ else if(qty>0&&dim.dim==='volume'&&['l','liter','litre'].includes(unit.toLocaleLowerCase('id'))&&qty<1){const nextQty=convertQty(qty,unit,'Ml');if(nextQty!==null){price=price*qty/nextQty;qty=nextQty;unit='Ml'}}
+ return {qty,unit,price};
 }
 function renderRecipeVariantEditor(variants=null){
  const mode=$('recipeSizeMode')?.value||'single',root=$('recipeVariants');if(!root)return;
@@ -384,7 +404,7 @@ async function renderRecipeForm(){
  $('recipeMaterialOptions').innerHTML=visibleMaterials.map(m=>`<option value="${esc(m.name)}"></option>`).join('');
  $('recipeLines').innerHTML='';
  if(recipe?.lines?.length){
-  for(const line of recipe.lines){const m=allMaterials.find(x=>Number(x.id)===Number(line.materialId));if(!m)continue;appendRecipeLine({name:m.name,qty:line.qty,unit:line.unit||recipeDefaultUnit(m.name,m.unit),price:Number.isFinite(Number(line.unitPrice))?line.unitPrice:Number(m.cost||0),materialId:m.id});}
+  for(const line of recipe.lines){const m=allMaterials.find(x=>Number(x.id)===Number(line.materialId));if(!m)continue;const displayLine=normalizeRecipeLineForDisplay(line,m);appendRecipeLine({name:m.name,qty:displayLine.qty,unit:displayLine.unit,price:displayLine.price,materialId:m.id});}
  }else appendRecipeLine();
  renderRecipePreviewLive();
 }
@@ -394,10 +414,10 @@ function appendRecipeLine(data={}){
  const name=data.name||'',qty=data.qty??'',unit=data.unit||recipeDefaultUnit(name,''),price=data.price??'';
  row.innerHTML=`<div class="recipe-material-cell"><input class="recipe-material-name" list="recipeMaterialOptions" value="${esc(name)}" placeholder="Ketik bahan, mis. telur" autocomplete="off" aria-label="Bahan atau produk"></div><div class="recipe-qty-cell"><input class="recipe-qty" type="number" min="0.0001" step="0.0001" value="${esc(qty)}" placeholder="Jumlah" aria-label="Jumlah"><input class="recipe-unit" type="text" maxlength="24" value="${esc(unit)}" placeholder="Satuan" list="recipeUnitOptions" aria-label="Satuan"></div><div><input class="recipe-price" type="number" min="0" step="0.01" value="${esc(price)}" placeholder="Harga/satuan" aria-label="Harga per satuan"></div><button type="button" class="recipe-remove" aria-label="Hapus baris" title="Hapus baris">×</button>`;
  root.appendChild(row);
- if(!$('recipeUnitOptions')){const dl=document.createElement('datalist');dl.id='recipeUnitOptions';dl.innerHTML=['Butir','Buah','Pcs','Porsi','Gram','Kg','Ml','Liter','Sendok makan','Sendok teh','Lembar','Ikat','Sachet','Botol','Pack','Roll','Meter','Rim'].map(x=>`<option value="${x}"></option>`).join('');$('page-recipes').appendChild(dl)}
+ if(!$('recipeUnitOptions')){const dl=document.createElement('datalist');dl.id='recipeUnitOptions';dl.innerHTML=['Butir','Buah','Pcs','Porsi','Gram','Ons','Kg','Ml','Liter','Sendok makan','Sendok teh','Lembar','Ikat','Sachet','Botol','Pack','Roll','Meter','Rim'].map(x=>`<option value="${x}"></option>`).join('');$('page-recipes').appendChild(dl)}
  row.querySelector('.recipe-material-name').addEventListener('change',async e=>{
   const n=e.target.value.trim(),m=(await getAll('materials')).find(x=>String(x.name).trim().toLocaleLowerCase('id')===n.toLocaleLowerCase('id'));
-  if(m){if(!row.querySelector('.recipe-unit').value||row.querySelector('.recipe-unit').value==='Pcs')row.querySelector('.recipe-unit').value=recipeDefaultUnit(m.name,m.unit);if(!row.querySelector('.recipe-price').value)row.querySelector('.recipe-price').value=Number(m.cost||0)}
+  if(m){if(!row.querySelector('.recipe-unit').value||row.querySelector('.recipe-unit').value==='Pcs')row.querySelector('.recipe-unit').value=recipeDefaultUnit(m.name,m.unit);if(!row.querySelector('.recipe-price').value)row.querySelector('.recipe-price').value=Number(materialCostInRecipeUnit(m,row.querySelector('.recipe-unit').value)||0)}
   else if(!row.querySelector('.recipe-unit').value)row.querySelector('.recipe-unit').value=recipeDefaultUnit(n,'');
   renderRecipePreviewLive();
  });

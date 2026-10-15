@@ -1,0 +1,28 @@
+UNIVERSAL UMKM PRO v3.3.22 — SATUAN RESEP OTOMATIS
+
+BASIS
+- Melanjutkan Universal UMKM Pro v3.3.21 Pembelian Kemasan Otomatis.
+- Data usaha, profil, stok, pembelian, penjualan, dan database tidak dihapus.
+
+PERUBAHAN
+- Satuan resep untuk bahan yang stoknya kg otomatis menggunakan Gram.
+- Satuan resep untuk bahan yang stoknya Liter otomatis menggunakan Ml.
+- Resep lama dengan jumlah kurang dari 1 kg/liter ditampilkan sebagai gram/ml dengan harga satuan dikonversi berlawanan agar total HPP tetap sama.
+- Menambahkan Ons (100 gram) ke daftar satuan resep.
+- Harga per gram/ml dihitung dari harga modal per kg/liter saat memilih bahan.
+- Saat modal bahan berubah lewat pembelian, harga resep otomatis diperbarui hanya bila harga baris sebelumnya cocok dengan harga modal otomatis terkonversi; harga manual yang berbeda tidak ditimpa.
+- Satuan stok bahan tidak diubah oleh perubahan tampilan satuan resep.
+- HTML, query-string app.js, dan Service Worker cache dinaikkan ke v3.3.22.
+
+CONTOH
+- Kopi bubuk stok 1 kg, modal Rp120.000/kg.
+- Resep lama 0,02 kg × Rp120.000/kg = Rp2.400.
+- Ditampilkan sebagai 20 gram × Rp120/gram = Rp2.400.
+- Susu stok 1 liter, modal Rp20.000/liter; resep 0,15 liter ditampilkan 150 ml × Rp20/ml = Rp3.000.
+
+PEMERIKSAAN
+- node --check app.js.
+- JSON master divalidasi.
+- Rumus konversi massa/volume dan pelestarian HPP diuji secara terpisah.
+- Integritas ZIP diperiksa setelah dibuat.
+- Browser/hosting/HP belum diuji langsung.

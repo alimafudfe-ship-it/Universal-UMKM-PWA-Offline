@@ -1,0 +1,9 @@
+CHECKLIST RILIS UNIVERSAL UMKM PRO v3.3.22
+[OK] Versi index.html, query-string app.js, dan cache Service Worker konsisten v3.3.22.
+[OK] Sintaks JavaScript diperiksa dengan node --check.
+[OK] JSON master diperiksa.
+[OK] Konversi 0,02 kg -> 20 gram dan 0,15 liter -> 150 ml menjaga total HPP.
+[OK] Harga modal per gram/ml mengikuti modal stok kg/liter melalui konversi.
+[OK] Tidak ada instruksi menghapus database atau data usaha.
+[OK] ZIP diuji integritasnya.
+[NOT TESTED] Belum diuji langsung di browser, hosting, atau HP.
