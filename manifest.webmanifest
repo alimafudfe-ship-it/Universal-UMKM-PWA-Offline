@@ -2,7 +2,7 @@
   "id": "./",
   "name": "Universal UMKM Pro",
   "short_name": "UMKM Pro",
-  "description": "Universal UMKM Pro v3.3.30 — panduan Produk/Jasa, Komposisi, dan HPP",
+  "description": "Universal UMKM Pro v3.3.31 — panduan Produk/Jasa, Komposisi, dan HPP",
   "start_url": "./index.html",
   "scope": "./",
   "display": "standalone",

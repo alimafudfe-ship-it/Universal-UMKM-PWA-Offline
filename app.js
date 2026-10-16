@@ -1,5 +1,5 @@
 'use strict';
-window.APP_BUILD_VERSION='3.3.30';document.documentElement.dataset.appVersion='3.3.30';
+window.APP_BUILD_VERSION='3.3.31';document.documentElement.dataset.appVersion='3.3.31';
 const DB_NAME='UniversalUMKMProOffline', DB_VERSION=4;
 let db, master, cart=[], lastReceipt=null, selectedPackageId=null, currentProfile=null, recipeDraft=[], businesses=[], activeBusinessId=null, licenseSlots=1, purchaseSearchSeq=0;
 const $=id=>document.getElementById(id);
@@ -179,7 +179,7 @@ function renderWizard(){const root=$('wizardSteps');if(!root||!currentProfile)re
 async function restartWizard(){const profile=await getCurrentProfile();if(!profile)return;if(!confirm('Ulangi panduan dari awal? Hanya tanda progres panduan yang direset. Produk, harga, stok, bahan, komposisi, pembelian, penjualan, dan riwayat tidak diubah.'))return;profile.setupWizard={completed:{},updatedAt:dateNow()};const idx=businesses.findIndex(b=>String(b.id)===String(profile.id));if(idx>=0)businesses[idx]=profile;currentProfile=profile;await saveBusinessList();renderWizard();toast('Progres panduan diulang. Semua data usaha tetap aman.')}
 
 // v3.3.29: keep catering equipment (including Maspion 40 L thermos) in Assets, not stock/cashier.
-// v3.3.30: clarify Product/Service vs Composition vs HPP and show per-size estimated HPP in catalog.
+// v3.3.31: clarify Product/Service vs Composition vs HPP and show per-size estimated HPP in catalog.
 async function migrateCateringEquipmentToAssets(){
  if(!master||!Array.isArray(businesses))return;
  const equipment=master.items.filter(i=>String(i.nama_item||'').toLowerCase().includes('termos')&&String(i.nama_item||'').toLowerCase().includes('maspion'));
@@ -545,7 +545,57 @@ async function addCart(id){const p=await get('products',id);if(!p)return;const r
 function getCheckoutAmounts(){const subtotal=cart.reduce((a,x)=>a+x.qty*x.price,0);const taxRate=Math.max(0,Math.min(100,Number($('taxRate')?.value||0)));const taxAmount=Math.round(subtotal*taxRate)/100;const otherFee=Math.max(0,Math.round(Number($('otherFee')?.value||0)));const total=Math.round(subtotal+taxAmount+otherFee);const receivedRaw=$('cashReceived')?.value?.trim()||'';const received=receivedRaw===''?0:Math.max(0,Math.round(Number(receivedRaw)||0));return {subtotal,taxRate,taxAmount,otherFee,total,received,change:Math.max(0,received-total),shortage:Math.max(0,total-received),hasReceived:receivedRaw!==''}}
 function updateCheckoutSummary(){if(!$('cartTotal'))return;const a=getCheckoutAmounts();$('cartSubtotal').textContent=money(a.subtotal);$('cartTax').textContent=money(a.taxAmount);$('cartOther').textContent=money(a.otherFee);$('cartTotal').textContent=money(a.total);$('changeAmount').textContent=money(a.hasReceived?a.change:0);$('paymentStatus').textContent=a.hasReceived&&a.shortage>0?'Uang masih kurang':'Kembalian';$('paymentStatus').style.color=a.hasReceived&&a.shortage>0?'var(--red)':'';$('checkout').disabled=!cart.length||!a.hasReceived||a.shortage>0}
 function renderCart(){const root=$('cartList');if(!cart.length){root.innerHTML='<p>Belum ada barang.</p>'}else root.innerHTML=cart.map((x,i)=>`<div class="cartline"><div class="cart-main"><strong>${esc(x.name)}${x.variantName?' — '+esc(x.variantName):''}</strong><div class="muted">${money(x.price)} / ${esc(x.unit||'Pcs')}</div><div class="cart-subtotal" data-line-subtotal="${i}">${x.qty} × ${money(x.price)} = ${money(x.qty*x.price)}</div></div><div class="qty-control"><button type="button" class="qty-button" data-minus="${i}" aria-label="Kurangi ${esc(x.name)}">−</button><input class="qty-input" data-qty="${i}" type="number" min="1" step="1" inputmode="numeric" pattern="[0-9]*" enterkeyhint="done" value="${x.qty}" aria-label="Ketik jumlah ${esc(x.name)}" title="Ketik jumlah barang"><button type="button" class="qty-button" data-plus="${i}" aria-label="Tambah ${esc(x.name)}">+</button><button type="button" class="qty-remove" data-remove="${i}" aria-label="Hapus ${esc(x.name)}">×</button></div></div>`).join('');root.querySelectorAll('[data-minus]').forEach(b=>b.onclick=()=>{const i=+b.dataset.minus;if(!cart[i])return;cart[i].qty--;if(cart[i].qty<=0)cart.splice(i,1);renderCart()});root.querySelectorAll('[data-plus]').forEach(b=>b.onclick=async()=>{const i=+b.dataset.plus;if(!cart[i])return;const p=await get('products',cart[i].id);if(p?.stockEnabled&&cart[i].qty+1>Number(p.stock||0)){toast('Stok tidak mencukupi.');return}cart[i].qty++;renderCart()});root.querySelectorAll('[data-qty]').forEach(input=>{input.onchange=async()=>{const i=+input.dataset.qty;if(!cart[i])return;const raw=input.value.trim(),qty=Number(raw);if(raw===''||!Number.isInteger(qty)||qty<1){toast('Jumlah harus bilangan bulat minimal 1.');renderCart();return}const p=await get('products',cart[i].id);if(p?.stockEnabled&&qty>Number(p.stock||0)){toast('Jumlah melebihi stok yang tersedia.');renderCart();return}cart[i].qty=qty;renderCart()};input.onkeydown=e=>{if(e.key==='Enter'){e.preventDefault();input.blur()}}});root.querySelectorAll('[data-remove]').forEach(b=>b.onclick=()=>{cart.splice(+b.dataset.remove,1);renderCart()});updateCheckoutSummary()}
-async function checkout(){if(!cart.length)return;const amounts=getCheckoutAmounts();if(!amounts.hasReceived){toast('Masukkan uang yang diterima dari pelanggan.');$('cashReceived').focus();return}if(amounts.shortage>0){toast('Uang pelanggan kurang '+money(amounts.shortage)+'.');$('cashReceived').focus();return}for(const x of cart){const p=await get('products',x.id);if(!p||p.active===false){toast('Ada produk yang sudah tidak aktif.');return}if(p.stockEnabled&&x.qty>Number(p.stock||0)){toast('Stok '+p.name+' tidak cukup.');return}}const {subtotal,taxRate,taxAmount,otherFee,total,received,change}=amounts,prof=await getCurrentProfile(),internalId='TRX-'+Date.now().toString(36).toUpperCase()+'-'+Math.random().toString(36).slice(2,5).toUpperCase();let order=null,details=[];const tx=db.transaction(['settings','transactions','details','products'],'readwrite');tx.oncomplete=async()=>{if(!order){toast('Transaksi gagal disimpan: nomor transaksi tidak terbentuk.');return}lastReceipt={order,details,profile:prof};cart=[];$('customer').value='';$('taxRate').value='0';$('otherFee').value='0';$('cashReceived').value='';renderCart();await renderHome();await renderReports();await renderCashItems();showReceipt(lastReceipt);toast('Transaksi tersimpan di perangkat ini dengan nomor '+order.number+'.')};tx.onerror=()=>toast('Transaksi gagal disimpan: '+(tx.error?.message||'kesalahan database'));tx.onabort=()=>{};allocateTransactionCode(tx,activeBusinessId,(code)=>{order={id:internalId,businessId:activeBusinessId,date:dateNow(),number:code,customer:$('customer').value.trim()||'Pelanggan umum',subtotal,taxRate,taxAmount,otherFee,total,paid:received,change,cost:cart.reduce((a,x)=>a+x.qty*x.cost,0),business:prof?.name||'',paymentMethod:'Tunai',status:'Selesai'};details=cart.map(x=>({businessId:activeBusinessId,transactionId:internalId,productId:x.id,name:x.variantName?`${x.name} (${x.variantName})`:x.name,unit:x.unit,qty:x.qty,price:x.price,cost:x.cost,subtotal:x.qty*x.price}));tx.objectStore('transactions').add(order);details.forEach(d=>tx.objectStore('details').add(d));cart.forEach(x=>{const req=tx.objectStore('products').get(x.id);req.onsuccess=()=>{const p=req.result;if(p&&p.stockEnabled){p.stock=Math.max(0,Number(p.stock||0)-x.qty);tx.objectStore('products').put(p)}}})})}
+async function checkout(){
+ if(!cart.length)return;
+ const amounts=getCheckoutAmounts();
+ if(!amounts.hasReceived){toast('Masukkan uang yang diterima dari pelanggan.');$('cashReceived').focus();return}
+ if(amounts.shortage>0){toast('Uang pelanggan kurang '+money(amounts.shortage)+'.');$('cashReceived').focus();return}
+ const [allProducts,allRecipes,allMaterials]=await Promise.all([getAll('products'),getAll('recipes'),getAll('materials')]);
+ const productById=new Map(allProducts.map(p=>[Number(p.id),p]));
+ const recipeByProduct=new Map(allRecipes.map(r=>[Number(r.productId),r]));
+ const materialById=new Map(allMaterials.map(m=>[Number(m.id),m]));
+ const materialUsage=new Map();
+ for(const x of cart){
+  const p=productById.get(Number(x.id));
+  if(!p||p.active===false){toast('Ada produk yang sudah tidak aktif.');return}
+  if(p.stockEnabled&&x.qty>Number(p.stock||0)){toast('Stok '+p.name+' tidak cukup.');return}
+  const recipe=recipeByProduct.get(Number(x.id));
+  if(!recipe)continue;
+  const multiplier=Math.max(0,Number(x.variantMultiplier)||1);
+  for(const line of recipe.lines||[]){
+   const recipeQty=Number(line.qty||0)*Number(x.qty||0)*multiplier;
+   if(!(recipeQty>0))continue;
+   const material=materialById.get(Number(line.materialId));
+   if(!material){toast('Bahan pada komposisi '+p.name+' tidak ditemukan. Periksa kembali menu Komposisi Produk.');return}
+   const required=convertQty(recipeQty,line.unit||material.unit||'Pcs',material.unit||line.unit||'Pcs');
+   if(required===null||!Number.isFinite(required)){toast('Satuan bahan '+material.name+' tidak cocok dengan satuan komposisi. Perbaiki satuannya sebelum menjual.');return}
+   const current=materialUsage.get(Number(material.id))||{material,qty:0};
+   current.qty+=required;materialUsage.set(Number(material.id),current);
+  }
+ }
+ for(const {material,qty} of materialUsage.values()){
+  if(material.stockEnabled!==false&&qty>Number(material.stock||0)+1e-9){
+   toast('Stok bahan '+material.name+' tidak cukup. Perlu '+qty.toLocaleString('id-ID',{maximumFractionDigits:3})+' '+(material.unit||'unit')+', tersedia '+Number(material.stock||0).toLocaleString('id-ID',{maximumFractionDigits:3})+'.');return;
+  }
+ }
+ const {subtotal,taxRate,taxAmount,otherFee,total,received,change}=amounts,prof=await getCurrentProfile(),internalId='TRX-'+Date.now().toString(36).toUpperCase()+'-'+Math.random().toString(36).slice(2,5).toUpperCase();
+ let order=null,details=[];
+ const tx=db.transaction(['settings','transactions','details','products','materials'],'readwrite');
+ tx.oncomplete=async()=>{if(!order){toast('Transaksi gagal disimpan: nomor transaksi tidak terbentuk.');return}lastReceipt={order,details,profile:prof};cart=[];$('customer').value='';$('taxRate').value='0';$('otherFee').value='0';$('cashReceived').value='';renderCart();await renderHome();await renderReports();await renderCashItems();await renderMaterials();showReceipt(lastReceipt);toast('Transaksi tersimpan. Stok produk dan bahan resep sudah diperbarui.')};
+ tx.onerror=()=>toast('Transaksi gagal disimpan: '+(tx.error?.message||'kesalahan database'));
+ tx.onabort=()=>{};
+ allocateTransactionCode(tx,activeBusinessId,(code)=>{
+  order={id:internalId,businessId:activeBusinessId,date:dateNow(),number:code,customer:$('customer').value.trim()||'Pelanggan umum',subtotal,taxRate,taxAmount,otherFee,total,paid:received,change,cost:cart.reduce((a,x)=>a+x.qty*x.cost,0),business:prof?.name||'',paymentMethod:'Tunai',status:'Selesai'};
+  details=cart.map(x=>({businessId:activeBusinessId,transactionId:internalId,productId:x.id,name:x.variantName?`${x.name} (${x.variantName})`:x.name,unit:x.unit,qty:x.qty,price:x.price,cost:x.cost,subtotal:x.qty*x.price}));
+  tx.objectStore('transactions').add(order);details.forEach(d=>tx.objectStore('details').add(d));
+  cart.forEach(x=>{const req=tx.objectStore('products').get(x.id);req.onsuccess=()=>{const p=req.result;if(p&&String(p.businessId??'legacy')===String(activeBusinessId??'legacy')&&p.stockEnabled){p.stock=Math.max(0,Number(p.stock||0)-x.qty);tx.objectStore('products').put(p)}}});
+  for(const {material,qty} of materialUsage.values()){
+   if(material.stockEnabled===false)continue;
+   const req=tx.objectStore('materials').get(material.id);
+   req.onsuccess=()=>{const m=req.result;if(!m||String(m.businessId??'legacy')!==String(activeBusinessId??'legacy')){try{tx.abort()}catch{}return}m.stock=Number(m.stock||0)-qty;m.updatedAt=dateNow();tx.objectStore('materials').put(m)};
+  }
+ });
+}
 function showReceipt(data){const {order,details,profile}=data;const subtotal=Number(order.subtotal??details.reduce((a,d)=>a+Number(d.subtotal||0),0));const taxAmount=Number(order.taxAmount||0),otherFee=Number(order.otherFee||0),total=Number(order.total||subtotal+taxAmount+otherFee);const paymentRows=`<tr><td>Subtotal</td><td>${money(subtotal)}</td></tr>${Number(order.taxRate||0)>0||taxAmount>0?`<tr><td>Pajak${Number(order.taxRate||0)>0?` (${Number(order.taxRate)}%)`:''}</td><td>${money(taxAmount)}</td></tr>`:''}${otherFee>0?`<tr><td>Biaya lain-lain</td><td>${money(otherFee)}</td></tr>`:''}<tr><td><b>TOTAL</b></td><td><b>${money(total)}</b></td></tr>${order.paid!==undefined?`<tr><td>Tunai diterima</td><td>${money(order.paid)}</td></tr><tr><td><b>Kembalian</b></td><td><b>${money(order.change||0)}</b></td></tr>`:''}`;$('receiptContent').innerHTML=`<div class="receipt"><h2>${esc(profile?.name||order.business||'Usaha Anda')}</h2><div class="center">${esc(profile?.address||'')}${profile?.phone?'<br>Telp. '+esc(profile.phone):''}</div><hr><div>No: ${esc(order.number)}<br>Tanggal: ${new Date(order.date).toLocaleString('id-ID')}<br>Pelanggan: ${esc(order.customer)}</div><hr><table><thead><tr><th>Item</th><th>Jumlah</th><th>Harga</th><th>Total</th></tr></thead><tbody>${details.map(d=>`<tr><td>${esc(d.name)}</td><td>${d.qty} ${esc(d.unit||'')}</td><td>${money(d.price)}</td><td>${money(d.subtotal)}</td></tr>`).join('')}</tbody></table><hr><table>${paymentRows}</table><hr><div class="center">${esc(profile?.footer||'Terima kasih atas kunjungan Anda.')}</div></div>`;$('receiptDialog').showModal()}
 function localDateValue(){const d=new Date();d.setMinutes(d.getMinutes()-d.getTimezoneOffset());return d.toISOString().slice(0,10)}
 async function saveExpense(){const name=$('expenseName').value.trim(),category=$('expenseCategory').value,amount=Number($('expenseAmount').value),date=$('expenseDate').value,note=$('expenseNote').value.trim();if(!name){toast('Nama biaya wajib diisi.');$('expenseName').focus();return}if(!Number.isFinite(amount)||amount<=0){toast('Jumlah biaya harus lebih dari nol.');$('expenseAmount').focus();return}if(!date){toast('Tanggal biaya wajib diisi.');$('expenseDate').focus();return}try{const tx=db.transaction(['expenses'],'readwrite');let saved=false;tx.oncomplete=async()=>{if(!saved){toast('Biaya gagal disimpan.');return}$('expenseName').value='';$('expenseAmount').value='';$('expenseNote').value='';$('expenseDate').value=localDateValue();await renderReports();toast('Pengeluaran tersimpan.')};tx.onerror=()=>toast('Biaya gagal disimpan: '+(tx.error?.message||'kesalahan database'));const req=tx.objectStore('expenses').add({businessId:activeBusinessId,name,category,amount,date,note,createdAt:dateNow()});req.onsuccess=()=>{saved=true}}catch(err){console.error(err);toast('Biaya gagal disimpan: '+(err.message||'kesalahan database'))}}

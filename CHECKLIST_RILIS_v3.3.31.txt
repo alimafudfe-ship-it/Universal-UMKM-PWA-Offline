@@ -1,0 +1,14 @@
+CHECKLIST RILIS v3.3.31
+
+[OK] Versi aplikasi dinaikkan ke 3.3.31.
+[OK] Cache Service Worker memakai nama baru agar file terbaru diambil.
+[OK] Checkout menghitung kebutuhan bahan dari komposisi resep.
+[OK] Konsumsi bahan mengikuti jumlah terjual dan multiplier varian/ukuran.
+[OK] Konversi satuan memakai helper convertQty yang sudah ada.
+[OK] Bahan yang sama diagregasi sebelum stok dikurangi.
+[OK] Transaksi ditolak jika stok bahan tidak cukup atau komposisi/satuan bermasalah.
+[OK] Pembaruan stok produk dan bahan dilakukan dalam satu transaksi IndexedDB.
+[OK] Riwayat hanya dibaca dan tidak mengubah stok.
+[OK] Tidak ada instruksi penghapusan data lokal atau database.
+
+Catatan pengujian: pemeriksaan sintaks dan integritas ZIP dilakukan. Pengujian klik langsung di browser/HP belum dilakukan.

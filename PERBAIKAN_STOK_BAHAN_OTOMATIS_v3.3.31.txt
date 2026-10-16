@@ -1,0 +1,13 @@
+Universal UMKM Pro v3.3.31 — Pengurangan Stok Bahan Otomatis
+
+Perbaikan utama:
+- Saat transaksi kasir diselesaikan, stok produk berkurang seperti sebelumnya.
+- Stok bahan pada menu Bahan/Belanja ikut berkurang berdasarkan komposisi resep produk yang dijual.
+- Perhitungan memakai jumlah terjual dan pengali ukuran/varian resep.
+- Bahan yang sama dipakai beberapa produk akan dijumlahkan dahulu agar pengurangannya tidak tumpang tindih.
+- Satuan resep dikonversi ke satuan stok bahan jika dimensinya cocok, misalnya gram ke kilogram atau mililiter ke liter.
+- Jika bahan tidak ditemukan, satuan tidak cocok, atau stok bahan tidak cukup, transaksi ditolak dengan pesan agar data diperbaiki.
+- Pengurangan stok terjadi pada saat checkout saja; membuka riwayat transaksi tidak mengurangi stok lagi.
+- Data lokal dan riwayat yang sudah ada tidak dihapus.
+
+Contoh: stok alpukat 4 kg, resep memakai 200 gram per gelas, penjualan 11 gelas mengurangi 2,2 kg sehingga stok tersisa 1,8 kg.
