@@ -1,0 +1,8 @@
+Universal UMKM Pro v3.3.29 — Perbaikan Investasi Peralatan
+
+- Termos Nasi / Es Maspion 40 Liter pada template Katering diperlakukan sebagai Investasi Peralatan.
+- Termos Maspion yang menjadi template aset tidak ditampilkan sebagai bahan/stok atau barang kasir setelah migrasi.
+- Saat aplikasi dibuka, migrasi menambahkan catatan aset jika belum ada, atau memperbaiki kategori aset yang sudah ada.
+- Harga/nilai aset yang sudah tersimpan dipertahankan. Baris lama di bahan/produk dinonaktifkan, bukan dihapus, untuk menjaga jejak data dan cadangan.
+- Data pembelian, stok bahan lain, penjualan, resep, dan riwayat transaksi tidak dihapus.
+- Nilai peralatan tetap tidak otomatis masuk HPP menu.

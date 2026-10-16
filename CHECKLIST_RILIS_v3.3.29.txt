@@ -1,0 +1,8 @@
+CHECKLIST RILIS v3.3.29
+[OK] Versi HTML/script dan cache dinaikkan ke 3.3.29.
+[OK] Migrasi termos Maspion diarahkan ke Investasi Peralatan.
+[OK] Baris lama di bahan/produk dinonaktifkan tanpa menghapus riwayat.
+[OK] app.js lolos pemeriksaan sintaks Node.js.
+[OK] master.json valid sebagai JSON.
+[OK] ZIP diuji integritasnya.
+[CATATAN] Uji interaksi browser/HP belum dilakukan; disarankan periksa menu Investasi & Peralatan dan Kasir setelah deploy.
