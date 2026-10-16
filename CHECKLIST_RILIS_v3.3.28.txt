@@ -1,0 +1,11 @@
+Checklist rilis v3.3.28
+[x] Versi aplikasi dinaikkan ke 3.3.28.
+[x] Pilihan ukuran ditempatkan langsung di bagian Ukuran Menu.
+[x] Klik nama ukuran memperbarui pratinjau jumlah bahan, harga jual, dan HPP.
+[x] Pengali takaran tetap bisa diedit terpisah.
+[x] Resep dasar dan stok tidak diubah oleh pergantian pilihan ukuran.
+[x] Cache service worker diperbarui.
+[x] Catatan perbaikan ditambahkan.
+[ ] Uji langsung di browser desktop.
+[ ] Uji langsung di HP.
+[ ] Uji pembaruan dengan data lama.

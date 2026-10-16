@@ -1,0 +1,10 @@
+Universal UMKM Pro v3.3.28 — Pilihan Ukuran Langsung di Bagian Ukuran Menu
+
+Perubahan:
+- Setelah pengguna memilih “Beberapa ukuran”, tombol Kecil, Sedang, dan Besar (atau nama ukuran yang diatur pengguna) langsung tampil di bawah bagian Ukuran Menu.
+- Pengguna cukup mengeklik nama ukuran untuk melihat komposisi bahan, jumlah bahan yang dikalikan, harga jual ukuran, dan HPP bahan sesuai ukuran tersebut.
+- Pengali takaran tetap dapat diedit di bagian pengaturan ukuran; panah pada input angka bukan lagi cara memilih ukuran.
+- Resep dasar dan stok tidak berubah ketika pilihan ukuran diganti.
+- Versi aplikasi, referensi JavaScript, dan cache service worker dinaikkan ke v3.3.28.
+
+Pemeriksaan statis: sintaks JavaScript, JSON master, referensi versi/cache, dan integritas ZIP. Pengujian browser/HP belum dilakukan.
