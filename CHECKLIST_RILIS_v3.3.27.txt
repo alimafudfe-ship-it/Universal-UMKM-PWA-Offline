@@ -1,0 +1,9 @@
+Checklist rilis v3.3.27
+[x] Versi aplikasi dinaikkan ke 3.3.27.
+[x] Klik/fokus nama ukuran memilih ukuran untuk pratinjau HPP.
+[x] Tombol pilihan ukuran pada pratinjau tetap tersedia.
+[x] Cache service worker diperbarui.
+[x] Catatan perbaikan dan checklist rilis ditambahkan.
+[ ] Uji langsung di browser desktop.
+[ ] Uji langsung di HP.
+[ ] Pastikan data lama tetap terbuka setelah pembaruan.

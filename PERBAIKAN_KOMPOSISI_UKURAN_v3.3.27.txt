@@ -1,0 +1,11 @@
+Universal UMKM Pro v3.3.27 — Pilih HPP dengan Klik Nama Ukuran
+
+Perbaikan:
+- Klik atau fokus kolom Nama ukuran (mis. Kecil, Sedang, Besar) langsung memilih ukuran tersebut untuk pratinjau komposisi dan HPP.
+- Tidak perlu mengubah angka pengali dengan panah atas/bawah hanya untuk menampilkan pilihan ukuran.
+- Tombol pilihan ukuran di area pratinjau tetap tersedia.
+- Perhitungan memakai pengali takaran dan harga jual ukuran terkait.
+- Pergantian pilihan hanya untuk pratinjau; tidak mengubah resep dasar atau stok.
+- Versi aplikasi, URL app.js, dan cache service worker dinaikkan ke 3.3.27.
+
+Pengujian statis: pemeriksaan sintaks JavaScript dan integritas ZIP. Belum diuji interaksi langsung di browser atau perangkat HP.
