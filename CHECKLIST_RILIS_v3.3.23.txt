@@ -1,0 +1,10 @@
+CHECKLIST RILIS UNIVERSAL UMKM PRO v3.3.23
+[OK] Versi index.html, query-string app.js, dan cache Service Worker konsisten v3.3.23.
+[OK] Tombol aksi dibedakan: Tambah Stok dan Nonaktifkan Bahan.
+[OK] Keterangan status Habis, Tersedia, dan Stok nonaktif ditambahkan.
+[OK] Pesan konfirmasi menegaskan data dan riwayat lama tetap disimpan.
+[OK] Sintaks JavaScript diperiksa dengan node --check.
+[OK] JSON master diperiksa.
+[OK] Tidak ada instruksi menghapus database atau data usaha.
+[OK] ZIP diuji integritasnya.
+[NOT TESTED] Belum diuji langsung di browser, hosting, atau HP.

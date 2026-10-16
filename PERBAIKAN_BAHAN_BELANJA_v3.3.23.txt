@@ -1,0 +1,20 @@
+PERBAIKAN UNIVERSAL UMKM PRO v3.3.23
+Judul: Keterangan status dan tombol Bahan & Belanja dibuat lebih jelas
+
+Perubahan:
+- Tombol "Belanja" diganti menjadi "Tambah Stok" agar jelas bahwa tindakan ini membuka proses pembelian.
+- Tombol "Nonaktifkan" pada bahan diganti menjadi "Nonaktifkan Bahan".
+- Tombol diberi jarak, ukuran, dan warna berbeda agar tidak terlihat menyatu.
+- Ditambahkan keterangan status: Habis = stok nol; Tersedia = stok ada; Stok nonaktif = pelacakan stok barang dinonaktifkan.
+- Ditegaskan bahwa menonaktifkan bahan hanya mengeluarkannya dari daftar aktif; data dan riwayat pembelian lama tidak dihapus.
+- Logika pembelian dan penambahan stok tidak diubah.
+- Cache Service Worker dinaikkan ke v3.3.23 agar pembaruan tampilan dikenali.
+
+Keamanan data:
+- Tidak menghapus database.
+- Tidak menghapus profil usaha, bahan, produk, stok, komposisi, atau riwayat transaksi.
+
+Catatan pengujian:
+- Pemeriksaan sintaks JavaScript dilakukan.
+- Pemeriksaan ZIP dan file JSON dilakukan.
+- Belum diuji langsung di browser/hosting/HP.
