@@ -369,12 +369,14 @@ function normalizeRecipeLineForDisplay(line, material){
 }
 function renderRecipeVariantEditor(variants=null){
  const mode=$('recipeSizeMode')?.value||'single',root=$('recipeVariants');if(!root)return;
- if(mode!=='multiple'){root.hidden=true;root.innerHTML='';return}
+ if(mode!=='multiple'){root.hidden=true;root.innerHTML='';renderRecipeSizePreview();return}
  root.hidden=false;
+ $('recipeSizePreview')?.setAttribute('data-selected-index','0');
  const rows=Array.isArray(variants)&&variants.length?variants:[{name:'Kecil',price:'',multiplier:0.75},{name:'Sedang',price:'',multiplier:1},{name:'Besar',price:'',multiplier:1.25}];
  root.innerHTML='<div class="recipe-variant-head"><span>Nama ukuran</span><span>Harga jual (Rp)</span><span>Pengali takaran</span><span></span></div>'+rows.map((v,i)=>`<div class="recipe-variant-row"><input class="variant-name" maxlength="40" value="${esc(v.name||'')}" placeholder="Mis. Kecil" aria-label="Nama ukuran"><input class="variant-price" type="number" min="0" step="1" value="${v.price==null?'':esc(v.price)}" placeholder="Harga jual" aria-label="Harga jual ukuran"><input class="variant-multiplier" type="number" min="0.01" step="0.01" value="${esc(v.multiplier??1)}" aria-label="Pengali takaran"><button type="button" class="recipe-remove" data-remove-variant="${i}" aria-label="Hapus ukuran">×</button></div>`).join('')+'<button type="button" id="addRecipeVariant">+ Tambah ukuran</button><p class="recipe-help">Contoh pengali: kecil 0,75; sedang 1; besar 1,25. Pengali 1 berarti memakai takaran dasar resep.</p>';
- root.querySelectorAll('[data-remove-variant]').forEach(b=>b.onclick=()=>{const data=readRecipeVariants();data.splice(Number(b.dataset.removeVariant),1);renderRecipeVariantEditor(data)});
- $('addRecipeVariant').onclick=()=>{const data=readRecipeVariants();data.push({name:'',price:'',multiplier:1});renderRecipeVariantEditor(data)};
+ root.querySelectorAll('.variant-name,.variant-price,.variant-multiplier').forEach(input=>{input.addEventListener('input',renderRecipeSizePreview);input.addEventListener('change',renderRecipeSizePreview)});
+ root.querySelectorAll('[data-remove-variant]').forEach(b=>b.onclick=()=>{const data=readRecipeVariants();data.splice(Number(b.dataset.removeVariant),1);renderRecipeVariantEditor(data);renderRecipePreviewLive()});
+ $('addRecipeVariant').onclick=()=>{const data=readRecipeVariants();data.push({name:'',price:'',multiplier:1});renderRecipeVariantEditor(data);renderRecipeSizePreview()};
 }
 function readRecipeVariants(){return [...($('recipeVariants')?.querySelectorAll('.recipe-variant-row')||[])].map(row=>({name:row.querySelector('.variant-name').value.trim(),price:row.querySelector('.variant-price').value===''?'':Number(row.querySelector('.variant-price').value),multiplier:Number(row.querySelector('.variant-multiplier').value||0)}))}
 async function renderRecipePage(){
@@ -423,13 +425,29 @@ function appendRecipeLine(data={}){
  row.querySelectorAll('input').forEach(el=>{el.addEventListener('input',renderRecipePreviewLive);el.addEventListener('change',renderRecipePreviewLive)});
  row.querySelector('.recipe-remove').onclick=()=>{row.remove();if(!$('recipeLines').children.length)appendRecipeLine();renderRecipePreviewLive()};
 }
+function renderRecipeSizePreview(){
+ const mode=$('recipeSizeMode')?.value||'single',label=$('recipeSizePreviewLabel'),box=$('recipeSizePreview');
+ if(!label||!box)return;
+ if(mode!=='multiple'){label.hidden=true;box.hidden=true;box.innerHTML='';return}
+ const variants=readRecipeVariants();
+ if(!variants.length){label.hidden=true;box.hidden=true;return}
+ label.hidden=false;box.hidden=false;
+ let selected=Number(box.dataset.selectedIndex||0);if(selected<0||selected>=variants.length)selected=0;
+ const variant=variants[selected]||variants[0],mult=Number(variant.multiplier)||1;
+ const lines=[...$('recipeLines').querySelectorAll('.recipe-line')];let total=0;
+ const rows=lines.map(row=>{const name=row.querySelector('.recipe-material-name').value.trim();const qty=Number(row.querySelector('.recipe-qty').value||0);const unit=row.querySelector('.recipe-unit').value.trim();const raw=row.querySelector('.recipe-price').value;const price=raw===''?0:Math.max(0,Number(raw)||0);const adjusted=qty*mult;const subtotal=adjusted*price;total+=subtotal;return `<tr><td>${esc(name||'—')}</td><td>${adjusted.toLocaleString('id-ID',{maximumFractionDigits:4})} ${esc(unit)}</td><td>${money(price)}</td><td>${money(subtotal)}</td></tr>`}).join('');
+ box.dataset.selectedIndex=String(selected);
+ box.innerHTML=`<div class="recipe-size-choice-list" role="group" aria-label="Pilih ukuran untuk melihat HPP">${variants.map((v,i)=>`<button type="button" class="recipe-size-choice${i===selected?' active':''}" data-size-index="${i}" aria-pressed="${i===selected?'true':'false'}">${esc(v.name||`Ukuran ${i+1}`)}<small>Pengali ${Number(v.multiplier)||1}</small></button>`).join('')}</div><h4>Komposisi ukuran ${esc(variant.name||`Ukuran ${selected+1}`)}</h4><div class="recipe-size-preview-summary"><span>Harga jual: <b>${variant.price===''?'Belum diisi':money(Number(variant.price)||0)}</b></span><span>Pengali takaran: <b>${mult.toLocaleString('id-ID')}</b></span><span>HPP bahan: <b>${money(total)}</b></span></div><div class="recipe-size-preview-table-wrap"><table class="recipe-size-preview-table"><thead><tr><th>Bahan / produk</th><th>Jumlah sesuai ukuran</th><th>Harga per satuan</th><th>Total HPP</th></tr></thead><tbody>${rows||'<tr><td colspan="4">Tambahkan bahan untuk menghitung HPP.</td></tr>'}</tbody></table></div>`;
+ box.querySelectorAll('[data-size-index]').forEach(button=>button.addEventListener('click',()=>{box.dataset.selectedIndex=button.dataset.sizeIndex;renderRecipeSizePreview()}));
+}
 async function renderRecipePreviewLive(){
  const materials=await getAll('materials');let cost=0;
  for(const row of $('recipeLines').querySelectorAll('.recipe-line')){
   const name=row.querySelector('.recipe-material-name').value.trim(),qty=Number(row.querySelector('.recipe-qty').value||0),priceRaw=row.querySelector('.recipe-price').value;
   if(name&&qty>0&&priceRaw!=='')cost+=qty*Math.max(0,Number(priceRaw)||0);
  }
- $('recipeCostPreview').textContent='Perkiraan HPP bahan: '+money(cost);
+ $('recipeCostPreview').textContent='Perkiraan HPP bahan dasar: '+money(cost);
+ renderRecipeSizePreview();
 }
 async function saveRecipePage(){
  const productName=$('recipeProduct').value.trim();if(!productName){toast('Ketik atau pilih nama produk/paket terlebih dahulu.');$('recipeProduct').focus();return}

@@ -1,0 +1,10 @@
+Universal UMKM Pro v3.3.26 — Pilihan Ukuran Terlihat
+
+Perbaikan:
+- Saat mode Beberapa ukuran dipilih, seluruh ukuran (misalnya Kecil, Sedang, Besar) tetap tampil sebagai tombol pilihan yang terlihat.
+- Klik salah satu ukuran memperbarui tampilan komposisi, jumlah bahan hasil pengali, harga jual ukuran, dan HPP bahan untuk ukuran tersebut.
+- HPP dasar ditampilkan terpisah sebagai referensi.
+- Perubahan ukuran hanya menghitung pratinjau; tidak mengubah resep dasar atau stok.
+- Versi aplikasi, cache service worker, dan URL app.js diperbarui ke 3.3.26.
+
+Contoh pengali: Kecil 0,75; Sedang 1; Besar 1,25. HPP dihitung dari jumlah bahan setelah pengali dikalikan harga per satuan.

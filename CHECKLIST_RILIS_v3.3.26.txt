@@ -1,0 +1,9 @@
+Checklist rilis v3.3.26
+[x] Versi aplikasi dinaikkan ke 3.3.26.
+[x] Cache service worker diperbarui.
+[x] Seluruh pilihan ukuran ditampilkan sebagai tombol.
+[x] Pemilihan ukuran menghitung ulang jumlah bahan dan HPP di pratinjau.
+[x] ZIP diuji integritasnya.
+[x] app.js diperiksa dengan node --check.
+[ ] Uji interaksi langsung di browser desktop dan HP — belum dilakukan.
+[ ] Uji alur simpan resep dan penjualan pada data nyata — belum dilakukan.
