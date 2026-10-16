@@ -1,0 +1,8 @@
+CHECKLIST RILIS v3.3.30
+[OK] Versi HTML, script, build marker, manifest, dan cache dinaikkan.
+[OK] Penjelasan beda Produk/Jasa, Komposisi, dan HPP ditambahkan.
+[OK] Katalog Produk/Jasa menampilkan HPP dasar per satuan dan estimasi HPP per ukuran.
+[OK] Perhitungan estimasi ukuran memakai HPP dasar x pengali takaran, sama dengan aturan kasir.
+[OK] JavaScript lolos node --check.
+[OK] master.json valid sebagai JSON.
+[TODO] Belum diuji langsung di browser/HP; lakukan uji manual setelah pemasangan.

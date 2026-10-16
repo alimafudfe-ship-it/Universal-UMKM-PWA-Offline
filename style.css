@@ -212,3 +212,9 @@ nav button{font-size:12px}
 
 /* v3.3.28: pilihan ukuran ditampilkan langsung di bagian Ukuran Menu */
 .recipe-size-choice-top{margin:.65rem 0 1rem}.recipe-size-choice-top .recipe-size-choice{min-width:100px;flex:1}
+
+/* v3.3.30: penjelasan hubungan Produk/Jasa, Komposisi, dan HPP */
+.recipe-help-card{border:1px solid var(--line,#d8e0e8);border-radius:12px;padding:1rem;margin:.75rem 0 1rem;background:var(--card,#fff)}
+.recipe-help-card ol{margin:.55rem 0;padding-left:1.35rem}
+.recipe-help-card li{margin:.35rem 0}
+.recipe-help-card p{margin:.6rem 0 0}

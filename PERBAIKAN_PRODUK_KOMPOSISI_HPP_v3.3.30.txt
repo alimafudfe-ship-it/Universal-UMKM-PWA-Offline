@@ -1,0 +1,14 @@
+Universal UMKM Pro v3.3.30 — Produk/Jasa, Komposisi, dan HPP
+
+Tujuan:
+Memperjelas perbedaan katalog yang dijual, resep/komposisi, dan perhitungan HPP.
+
+Aturan penggunaan:
+1. Produk/Jasa = nama yang dijual ke pelanggan, satuan jual, harga jual, dan HPP per satuan.
+2. Komposisi = daftar bahan beserta jumlah yang diperlukan untuk membuat satu satuan dasar produk.
+3. HPP otomatis = jumlah biaya bahan komposisi untuk satu satuan dasar. HPP manual digunakan bila tidak memakai resep, misalnya jasa atau barang dagangan yang HPP-nya ditentukan sendiri.
+4. Produk berukuran banyak: setiap ukuran mempunyai harga jual dan pengali takaran. Estimasi HPP ukuran = HPP dasar x pengali ukuran.
+5. Daftar Produk/Jasa kini menampilkan harga jual, HPP dasar/satuan, mode HPP, dan estimasi HPP setiap ukuran jika tersedia.
+6. Komposisi bahan tetap terpisah dari daftar produk yang dijual. Investasi/peralatan tidak otomatis masuk ke HPP.
+
+Catatan: HPP masih berupa perhitungan bahan. Biaya tenaga kerja, gas/listrik, transportasi, dan penyusutan perlu ditambahkan secara manual dalam analisis biaya jika ingin menghitung HPP penuh. Penjualan belum mengurangi stok bahan resep secara otomatis.

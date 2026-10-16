@@ -2,7 +2,7 @@
   "id": "./",
   "name": "Universal UMKM Pro",
   "short_name": "UMKM Pro",
-  "description": "Universal UMKM Pro v3.3.19 — pemisahan menu jadi dan bahan belanja untuk usaha jus",
+  "description": "Universal UMKM Pro v3.3.30 — panduan Produk/Jasa, Komposisi, dan HPP",
   "start_url": "./index.html",
   "scope": "./",
   "display": "standalone",
