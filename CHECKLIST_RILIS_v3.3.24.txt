@@ -1,0 +1,9 @@
+CHECKLIST RILIS UNIVERSAL UMKM PRO v3.3.24
+[OK] Versi halaman, query-string app.js, dan cache Service Worker konsisten v3.3.24.
+[OK] Tabel stok hanya merender tombol Tambah Stok; tombol Nonaktifkan Bahan tidak ditampilkan.
+[OK] Keterangan status stok tetap ada.
+[OK] Tidak ada perubahan pada logika pembelian atau database.
+[OK] Sintaks JavaScript diperiksa dengan node --check.
+[OK] JSON master diperiksa.
+[OK] ZIP diuji integritasnya.
+[NOT TESTED] Belum diuji langsung di browser, hosting, atau HP.

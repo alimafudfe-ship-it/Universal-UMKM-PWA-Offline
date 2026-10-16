@@ -1,0 +1,15 @@
+PERBAIKAN UNIVERSAL UMKM PRO v3.3.24
+Judul: Tabel Bahan & Barang hanya menampilkan aksi Tambah Stok
+
+Perubahan:
+- Tombol Nonaktifkan Bahan dihilangkan dari tabel Stok Bahan & Barang.
+- Setiap baris hanya menampilkan tombol utama Tambah Stok agar lebih ringkas dan tidak membingungkan.
+- Keterangan di halaman disederhanakan; arti status Habis, Tersedia, dan Stok nonaktif tetap dijelaskan.
+- Data bahan, produk, stok, komposisi, dan riwayat tidak dihapus atau dimigrasikan.
+- Logika pembelian dan penambahan stok tidak diubah.
+- Cache Service Worker dinaikkan ke v3.3.24.
+
+Catatan pengujian:
+- Pemeriksaan sintaks JavaScript, JSON master, versi cache, dan integritas ZIP dilakukan.
+- Pemeriksaan kode memastikan tombol Nonaktifkan Bahan tidak lagi dirender di tabel.
+- Belum diuji langsung di browser/hosting/HP; mohon uji tampilan desktop dan HP sebelum rilis.
