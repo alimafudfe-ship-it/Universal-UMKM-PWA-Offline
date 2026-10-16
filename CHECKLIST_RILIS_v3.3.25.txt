@@ -1,0 +1,9 @@
+CHECKLIST v3.3.25
+[ ] Buka komposisi paket katering dan pilih Beberapa ukuran.
+[ ] Isi harga jual dan pengali Kecil/Sedang/Besar.
+[ ] Isi bahan dasar, jumlah, satuan, dan modal per satuan.
+[ ] Pilih setiap ukuran dan cocokkan jumlah serta HPP hasil pengali.
+[ ] Simpan lalu buka kembali resep; pastikan data dasar dan ukuran tetap ada.
+[ ] Uji satu penjualan per ukuran di kasir; pastikan harga jual sesuai ukuran.
+[ ] Pastikan data usaha lama tetap tersedia.
+Catatan: belum diuji langsung pada browser/HP/hosting.

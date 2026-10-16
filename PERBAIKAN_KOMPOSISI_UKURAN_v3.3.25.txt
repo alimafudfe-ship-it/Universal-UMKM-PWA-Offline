@@ -1,0 +1,12 @@
+UNIVERSAL UMKM PRO v3.3.25 — PRATINJAU KOMPOSISI PER UKURAN
+
+Perubahan:
+- Pada Komposisi Produk, tersedia pemilih ukuran ketika mode Beberapa Ukuran aktif.
+- Memilih Kecil/Sedang/Besar menampilkan takaran setiap bahan sesuai pengali, harga modal per satuan, total modal bahan, harga jual ukuran, dan perkiraan HPP.
+- Resep dasar tidak ditimpa; pratinjau dihitung dari jumlah resep dasar dikalikan pengali ukuran.
+- Harga modal per satuan tetap sama karena perubahan ukuran memengaruhi jumlah bahan, bukan harga beli per satuan. Total biaya bahan menyesuaikan jumlahnya.
+- Penyimpanan resep dan format data lama tetap dipertahankan. Cache aplikasi diperbarui.
+
+Contoh: resep dasar tepung 100 gram dengan modal Rp20/gram; ukuran Kecil 0,75 menampilkan 75 gram dan Rp1.500, ukuran Sedang 1 menampilkan 100 gram dan Rp2.000, ukuran Besar 1,25 menampilkan 125 gram dan Rp2.500.
+
+Pemeriksaan statis: sintaks JavaScript, JSON master, versi/cache, dan integritas ZIP. Pengujian browser/HP/hosting belum dilakukan.

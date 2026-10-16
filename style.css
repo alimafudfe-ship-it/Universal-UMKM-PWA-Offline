@@ -197,3 +197,14 @@ nav button{font-size:12px}
 .material-actions button{padding:7px 10px;font-size:11px}
 .material-actions button[data-mbuy]{background:#e7f5ed;color:#176447;border-color:#b8ddcb}
 @media(max-width:600px){.material-actions{gap:8px}.material-actions button{font-size:11px;padding:8px 7px}}
+
+/* v3.3.25 — preview takaran dan HPP untuk tiap ukuran resep */
+.recipe-size-preview{margin:.75rem 0;padding:.85rem;border:1px solid var(--line,#d9e1e7);border-radius:10px;background:var(--card,#fff);overflow:hidden}
+#recipeSizePreviewLabel{display:block;margin-top:.85rem;font-weight:600}
+#recipeSizePreviewLabel select{display:block;width:100%;max-width:360px;margin-top:.35rem}
+.recipe-size-preview-summary{display:flex;flex-wrap:wrap;gap:.65rem 1.2rem;margin-bottom:.75rem}
+.recipe-size-preview-table-wrap{overflow-x:auto}
+.recipe-size-preview-table{width:100%;border-collapse:collapse;font-size:.9rem}
+.recipe-size-preview-table th,.recipe-size-preview-table td{padding:.5rem .6rem;text-align:left;border-bottom:1px solid var(--line,#d9e1e7);white-space:nowrap}
+.recipe-size-preview-table th{font-size:.82rem;color:var(--muted,#5d6b78)}
+@media(max-width:560px){.recipe-size-preview{padding:.65rem}.recipe-size-preview-table{font-size:.8rem}.recipe-size-preview-table th,.recipe-size-preview-table td{padding:.45rem}}
