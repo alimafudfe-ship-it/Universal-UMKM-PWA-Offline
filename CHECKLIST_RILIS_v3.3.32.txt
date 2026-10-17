@@ -1,0 +1,12 @@
+CHECKLIST RILIS v3.3.32
+
+[OK] Versi aplikasi dinaikkan ke 3.3.32.
+[OK] Cache service worker diberi nama baru.
+[OK] Stok produk dijumlahkan per produk untuk transaksi dengan beberapa varian.
+[OK] Stok bahan dihitung dari komposisi dan pengali varian.
+[OK] Validasi stok produk dan bahan dilakukan sebelum transaksi.
+[OK] Sintaks JavaScript, JSON, dan integritas ZIP diperiksa.
+[WAJIB UJI DI HP] Satu produk dengan dua varian dalam satu transaksi.
+[WAJIB UJI DI HP] Penjualan resep mengurangi bahan sesuai konversi satuan.
+[WAJIB UJI DI HP] Stok tidak cukup menolak checkout dan tidak membuat transaksi.
+[WAJIB UJI DI HP] Buka riwayat tidak mengurangi stok lagi.

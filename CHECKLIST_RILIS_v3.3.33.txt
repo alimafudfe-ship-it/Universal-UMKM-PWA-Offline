@@ -1,0 +1,7 @@
+Checklist rilis v3.3.33
+[ ] Upload semua file aplikasi, jangan hanya app.js.
+[ ] Pastikan index.html dan service worker versi 3.3.33 terunggah.
+[ ] Uji transaksi pertama, kedua, dan ketiga; stok di halaman Produk harus langsung berubah setelah tiap transaksi.
+[ ] Uji ukuran kecil/sedang/besar dan cocokkan stok bahan dengan resep.
+[ ] Buka riwayat transaksi berulang kali; pastikan stok tidak berubah.
+[ ] Pastikan data lama tetap ada.

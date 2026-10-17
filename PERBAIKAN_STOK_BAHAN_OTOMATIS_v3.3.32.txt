@@ -1,0 +1,9 @@
+Universal UMKM Pro v3.3.32 — Audit sebelum rilis
+
+Perbaikan lanjutan:
+- Stok produk divalidasi dan dikurangi berdasarkan total kuantitas per produk, termasuk jika beberapa varian/ukuran produk yang sama dibeli dalam satu transaksi.
+- Pengurangan stok bahan tetap mengikuti komposisi resep, pengali varian, dan konversi satuan.
+- Stok bahan yang tidak cukup atau satuan tidak cocok menolak checkout sebelum transaksi disimpan.
+- Riwayat transaksi hanya membaca data dan tidak mengurangi stok lagi.
+
+Pemeriksaan dilakukan secara statis dan dengan pengujian logika terisolasi. Pengujian browser/HP langsung tetap perlu dilakukan sebelum rilis.

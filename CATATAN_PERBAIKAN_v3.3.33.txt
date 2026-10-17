@@ -1,0 +1,5 @@
+Universal UMKM Pro v3.3.33
+
+Perbaikan: setelah transaksi kasir berhasil disimpan, aplikasi sekarang memuat ulang tampilan halaman Produk juga, sehingga stok produk yang ditampilkan tidak tertinggal pada nilai transaksi sebelumnya. Pengurangan stok produk dan bahan tetap dilakukan dalam transaksi IndexedDB. Cache PWA dinaikkan agar versi baru tidak memakai cache lama.
+
+Catatan pengujian: pemeriksaan statis dan sintaks dilakukan; pengujian browser/HP langsung tetap perlu dilakukan oleh pengguna.

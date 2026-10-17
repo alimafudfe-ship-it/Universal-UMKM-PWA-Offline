@@ -1,0 +1,12 @@
+Universal UMKM Pro v3.3.34
+Perbaikan ekspor/impor backup dan panduan untuk pengguna awam.
+
+- Ekspor membuat file Universal_UMKM_Backup_TANGGAL.json dengan data lokal dari semua usaha dan tabel terkait.
+- Impor menerima backup baru serta backup lama yang valid dari Universal UMKM Pro.
+- File diperiksa sebelum dipulihkan; master.json ditolak karena bukan file backup pengguna.
+- Sebelum impor, pengguna melihat nama file, tanggal, ringkasan jumlah data, dan peringatan bahwa data lokal akan diganti.
+- Petunjuk menjelaskan lokasi folder Download/Unduhan, fungsi backup, serta perbedaan master.json dan file backup.
+- Nama file menggunakan tanggal lokal perangkat.
+- Build dan cache service worker dinaikkan ke v3.3.34.
+
+Catatan pengujian: pemeriksaan sintaks JavaScript, JSON master, dan integritas ZIP dilakukan. Alur interaktif impor/ekspor belum diuji di browser/HP nyata; perlu pengujian setelah dipasang.

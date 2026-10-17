@@ -1,0 +1,8 @@
+Checklist pengujian v3.3.34
+1. Buka Profil & Backup dan baca keterangan Ekspor/Impor.
+2. Tekan Ekspor / Simpan backup. Pastikan file Universal_UMKM_Backup_TANGGAL.json ada di Download.
+3. Pilih Impor, buka folder Download/Unduhan, lalu pilih file backup tersebut (bukan master.json).
+4. Pastikan layar konfirmasi menampilkan nama file, tanggal, dan jumlah data sebelum melanjutkan.
+5. Untuk tes aman, ekspor backup baru terlebih dahulu. Jangan lanjut impor jika tidak ingin data lokal diganti.
+6. Pastikan data profil, produk, stok, bahan, transaksi, pembelian, komposisi, aset, dan pengeluaran tampil setelah pemulihan.
+7. Pastikan master.json ditolak dengan pesan yang jelas dan data lokal tidak berubah.
