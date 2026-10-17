@@ -1,5 +1,5 @@
 'use strict';
-window.APP_BUILD_VERSION='3.3.31';document.documentElement.dataset.appVersion='3.3.31';
+window.APP_BUILD_VERSION='3.3.32';document.documentElement.dataset.appVersion='3.3.32';
 const DB_NAME='UniversalUMKMProOffline', DB_VERSION=4;
 let db, master, cart=[], lastReceipt=null, selectedPackageId=null, currentProfile=null, recipeDraft=[], businesses=[], activeBusinessId=null, licenseSlots=1, purchaseSearchSeq=0;
 const $=id=>document.getElementById(id);
@@ -180,6 +180,7 @@ async function restartWizard(){const profile=await getCurrentProfile();if(!profi
 
 // v3.3.29: keep catering equipment (including Maspion 40 L thermos) in Assets, not stock/cashier.
 // v3.3.31: clarify Product/Service vs Composition vs HPP and show per-size estimated HPP in catalog.
+// v3.3.32: aggregate stock deductions per product when multiple variants are sold in one checkout.
 async function migrateCateringEquipmentToAssets(){
  if(!master||!Array.isArray(businesses))return;
  const equipment=master.items.filter(i=>String(i.nama_item||'').toLowerCase().includes('termos')&&String(i.nama_item||'').toLowerCase().includes('maspion'));
@@ -555,10 +556,12 @@ async function checkout(){
  const recipeByProduct=new Map(allRecipes.map(r=>[Number(r.productId),r]));
  const materialById=new Map(allMaterials.map(m=>[Number(m.id),m]));
  const materialUsage=new Map();
+ const productUsage=new Map();
  for(const x of cart){
   const p=productById.get(Number(x.id));
   if(!p||p.active===false){toast('Ada produk yang sudah tidak aktif.');return}
-  if(p.stockEnabled&&x.qty>Number(p.stock||0)){toast('Stok '+p.name+' tidak cukup.');return}
+  const productRow=productUsage.get(Number(x.id))||{product:p,qty:0};
+  productRow.qty+=Number(x.qty||0);productUsage.set(Number(x.id),productRow);
   const recipe=recipeByProduct.get(Number(x.id));
   if(!recipe)continue;
   const multiplier=Math.max(0,Number(x.variantMultiplier)||1);
@@ -572,6 +575,9 @@ async function checkout(){
    const current=materialUsage.get(Number(material.id))||{material,qty:0};
    current.qty+=required;materialUsage.set(Number(material.id),current);
   }
+ }
+ for(const {product,qty} of productUsage.values()){
+  if(product.stockEnabled&&qty>Number(product.stock||0)){toast('Stok '+product.name+' tidak cukup untuk total jumlah yang dipilih.');return}
  }
  for(const {material,qty} of materialUsage.values()){
   if(material.stockEnabled!==false&&qty>Number(material.stock||0)+1e-9){
@@ -588,7 +594,7 @@ async function checkout(){
   order={id:internalId,businessId:activeBusinessId,date:dateNow(),number:code,customer:$('customer').value.trim()||'Pelanggan umum',subtotal,taxRate,taxAmount,otherFee,total,paid:received,change,cost:cart.reduce((a,x)=>a+x.qty*x.cost,0),business:prof?.name||'',paymentMethod:'Tunai',status:'Selesai'};
   details=cart.map(x=>({businessId:activeBusinessId,transactionId:internalId,productId:x.id,name:x.variantName?`${x.name} (${x.variantName})`:x.name,unit:x.unit,qty:x.qty,price:x.price,cost:x.cost,subtotal:x.qty*x.price}));
   tx.objectStore('transactions').add(order);details.forEach(d=>tx.objectStore('details').add(d));
-  cart.forEach(x=>{const req=tx.objectStore('products').get(x.id);req.onsuccess=()=>{const p=req.result;if(p&&String(p.businessId??'legacy')===String(activeBusinessId??'legacy')&&p.stockEnabled){p.stock=Math.max(0,Number(p.stock||0)-x.qty);tx.objectStore('products').put(p)}}});
+  for(const {product,qty} of productUsage.values()){const req=tx.objectStore('products').get(product.id);req.onsuccess=()=>{const p=req.result;if(p&&String(p.businessId??'legacy')===String(activeBusinessId??'legacy')&&p.stockEnabled){p.stock=Math.max(0,Number(p.stock||0)-qty);tx.objectStore('products').put(p)}}}
   for(const {material,qty} of materialUsage.values()){
    if(material.stockEnabled===false)continue;
    const req=tx.objectStore('materials').get(material.id);
