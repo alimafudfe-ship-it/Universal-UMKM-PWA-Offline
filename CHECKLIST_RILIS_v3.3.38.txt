@@ -1,0 +1,9 @@
+Checklist rilis v3.3.38
+- [x] Sintaks JavaScript diperiksa dengan node --check.
+- [x] master.json valid sebagai JSON.
+- [x] Konversi kg↔gram dan liter↔ml dipertahankan.
+- [x] Sendok makan/teh ditambahkan sebagai satuan volume.
+- [x] Biaya resep manual dapat dipakai saat satuan stok berbeda dari satuan resep.
+- [x] Kolom biaya kosong ditolak agar HPP tidak menjadi nol tanpa sengaja.
+- [x] Versi app.js, index.html, dan service worker dinaikkan.
+- [ ] Belum diuji interaktif langsung di browser atau HP; uji contoh resep setelah memasang pembaruan.

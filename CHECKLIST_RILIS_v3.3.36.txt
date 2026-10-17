@@ -1,0 +1,8 @@
+Checklist pengujian v3.3.36
+1. Buka PWA dan buat/perbarui data usaha.
+2. Tunggu sekitar 1–2 detik; cek status Backup otomatis di Profil & Backup.
+3. Tutup/buka kembali aplikasi; pastikan data usaha tetap ada.
+4. Tekan Pilih file backup untuk dipulihkan; jika backup otomatis tersedia, pastikan pilihan pulihkan otomatis bekerja.
+5. Pilih Batal pada tawaran backup otomatis; pastikan pemilih file JSON eksternal tetap terbuka.
+6. Uji browser tanpa OPFS (atau blokir akses) dan pastikan fallback snapshot lokal tidak menghapus data usaha.
+7. Uji reset data hanya setelah backup dipastikan ada.

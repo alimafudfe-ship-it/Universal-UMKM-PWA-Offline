@@ -1,0 +1,12 @@
+Universal UMKM Pro v3.3.39 — Edit Satuan Bahan/Belanja
+
+Perubahan:
+- Menu Bahan & Belanja menampilkan tombol Edit Satuan untuk bahan.
+- Satuan dapat diganti dengan mengetik satuan baru, misalnya Kg, Gram, Butir, atau Sendok makan.
+- Untuk satuan yang dapat dikonversi otomatis (kg/gram, liter/ml, dan satuan sejenis yang dikenali), jumlah stok dan biaya modal per satuan dikonversi agar nilai stok tetap sama.
+- Untuk satuan yang tidak kompatibel, perubahan saat stok masih ada ditolak demi mencegah nilai stok/HPP salah. Habiskan stok atau lakukan penyesuaian terlebih dahulu. Jika stok nol, satuan dapat diganti tanpa konversi.
+- Riwayat pembelian lama tetap menjadi catatan historis dengan satuan saat transaksi.
+
+Catatan: satuan pembelian/stok tidak harus sama dengan satuan komposisi jika aplikasi dapat mengonversi keduanya. Untuk sendok, gelas, butir, dan bahan yang tidak memiliki konversi universal, biaya per satuan resep perlu dipastikan per bahan.
+
+Pengujian: node --check app.js; uji manual UI dan database tetap diperlukan pada browser/perangkat.

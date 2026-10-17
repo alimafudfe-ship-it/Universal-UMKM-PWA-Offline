@@ -1,0 +1,9 @@
+Checklist pengujian v3.3.37
+1. Buka aplikasi dan ubah data usaha, lalu tunggu 1–2 detik.
+2. Buka Profil & Backup dan periksa status backup otomatis.
+3. Tekan tombol Keluar di kanan atas.
+4. Pilih Batal pada konfirmasi dan pastikan aplikasi tidak keluar.
+5. Tekan Keluar lagi dan pilih OK; pastikan pesan status backup tampil.
+6. Browser mungkin tidak menutup tab secara otomatis. Tutup tab secara manual lalu buka ulang aplikasi.
+7. Periksa data usaha tetap ada dan tombol pemulihan masih berfungsi.
+8. Jika OPFS tidak didukung, pastikan fallback snapshot lokal digunakan dan data usaha tidak terhapus.

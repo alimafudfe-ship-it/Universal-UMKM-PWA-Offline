@@ -1,0 +1,10 @@
+Universal UMKM Pro v3.3.40 — Edit dan Hapus Bahan/Barang
+
+Perbaikan:
+- Menu Bahan & Belanja > Stok Bahan & Barang sekarang memiliki tombol Edit, Edit Satuan, Tambah Stok, dan Hapus.
+- Edit bahan: memperbarui nama dan kategori. Edit barang jual membuka formulir Edit Produk yang sudah tersedia.
+- Hapus bahan menggunakan nonaktifkan aman: data pembelian dan komposisi lama tetap tersimpan, bahan disembunyikan dari daftar aktif.
+- Hapus barang jual memakai mekanisme nonaktifkan yang sudah ada agar riwayat transaksi tetap tersimpan.
+- Edit Satuan tetap terpisah dari Edit data.
+
+Catatan: pemeriksaan sintaks JavaScript dan integritas ZIP dilakukan; belum diuji langsung di browser/HP. Buat backup sebelum mencoba perubahan data.

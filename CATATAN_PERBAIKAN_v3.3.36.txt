@@ -1,0 +1,16 @@
+Universal UMKM Pro v3.3.36 — Backup Otomatis
+
+Perubahan:
+- Tombol Ekspor / Simpan Backup dihilangkan dari Profil & Backup.
+- Backup otomatis dijadwalkan setelah perubahan data tersimpan.
+- Aplikasi mencoba memperbarui satu file tetap bernama Universal_UMKM_Backup.json pada penyimpanan privat browser (Origin Private File System/OPFS).
+- Jika OPFS tidak tersedia/gagal, aplikasi mencoba menyimpan snapshot otomatis di IndexedDB lokal.
+- Saat pengguna menekan tombol pemulihan, jika backup otomatis lokal tersedia, aplikasi menawarkan pemulihan otomatis atau memilih file JSON dari perangkat.
+- Backup otomatis dicoba lagi saat halaman disembunyikan/ditinggalkan, tetapi browser tidak menjamin proses async selesai ketika aplikasi ditutup.
+- Kegagalan backup tidak menghapus data usaha lokal.
+
+Batasan:
+- File OPFS adalah file privat di penyimpanan browser, tidak muncul seperti file biasa di folder Download/Explorer dan tidak otomatis pindah ke perangkat lain.
+- Untuk pindah perangkat, pengguna masih memerlukan file JSON yang dibawa dari perangkat lain. Di PWA browser tidak aman/andal untuk menimpa file di folder Download tanpa izin eksplisit pengguna.
+- Backup lokal dapat ikut hilang jika data situs/browser dihapus. Simpan file eksternal untuk perlindungan lintas perangkat.
+- Pengujian yang dilakukan: pemeriksaan sintaks JavaScript, validitas JSON master, dan integritas ZIP. Belum diuji langsung pada browser/HP.

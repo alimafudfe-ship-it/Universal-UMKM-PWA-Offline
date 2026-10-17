@@ -1,0 +1,19 @@
+Universal UMKM Pro v3.3.38 — Komposisi dengan Satuan Fleksibel
+
+Perubahan:
+- Petunjuk komposisi menjelaskan pengisian bahan dengan satuan sehari-hari: butir, gram, kg, ml, liter, sendok makan, dan sendok teh.
+- Label biaya diubah menjadi “Biaya per satuan pemakaian”, sehingga pengguna tahu bahwa harga adalah biaya untuk satu unit satuan yang dipilih pada resep.
+- Konversi kg↔gram dan liter↔ml tetap otomatis. Sendok makan/teh memiliki padanan volume 15 ml/5 ml.
+- Konversi massa ke sendok tidak ditebak karena berat per sendok berbeda untuk tiap bahan. Jika satuan resep tidak dapat dikonversi dari satuan stok, pengguna harus mengisi biaya per satuan resep secara eksplisit.
+- HPP otomatis menjumlahkan jumlah resep × biaya per satuan resep, termasuk untuk satuan yang tidak bisa dikonversi ke satuan stok.
+- Perhitungan ulang HPP tidak lagi menggugurkan baris resep hanya karena satuan stok dan satuan resep berbeda ketika biaya per satuan resep sudah tersimpan.
+- Kolom biaya kosong ditolak agar bahan tidak diam-diam menghasilkan HPP nol.
+- Cache service worker dan versi aplikasi dinaikkan ke 3.3.38.
+
+Contoh:
+- Tepung dibeli 1 kg seharga Rp10.000, dipakai 250 gram: biaya tepung Rp2.500.
+- Telur dibeli 10 butir seharga Rp25.000, dipakai 2 butir: biaya telur Rp5.000.
+- Garam dipakai 1 sendok makan: masukkan biaya untuk 1 sendok makan. Berat garam per sendok tidak ditebak aplikasi.
+
+Catatan:
+Untuk bahan dengan satuan resep yang tidak dapat dikonversi otomatis dari satuan stok (misalnya stok garam dalam gram tetapi resep memakai sendok makan), biaya per satuan resep diisi manual dan perlu diperbarui jika harga beli bahan berubah. Aplikasi tidak menebak kepadatan/berat bahan.

@@ -1,3 +1,5 @@
+Universal UMKM Pro v3.3.40 — Komposisi Satuan Fleksibel
+
 UNIVERSAL UMKM PRO v3.1.3
 PWA OFFLINE-FIRST • 24 PAKET USAHA • MASTER DATA LENGKAP
 

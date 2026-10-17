@@ -196,6 +196,7 @@ nav button{font-size:12px}
 .material-actions{gap:8px;min-width:120px}
 .material-actions button{padding:7px 10px;font-size:11px}
 .material-actions button[data-mbuy]{background:#e7f5ed;color:#176447;border-color:#b8ddcb}
+.material-actions button[data-mdelete]{background:#fff8f7;color:#a73d37;border-color:#edc7c3}
 @media(max-width:600px){.material-actions{gap:8px}.material-actions button{font-size:11px;padding:8px 7px}}
 
 /* v3.3.25 — preview takaran dan HPP untuk tiap ukuran resep */
@@ -218,3 +219,6 @@ nav button{font-size:12px}
 .recipe-help-card ol{margin:.55rem 0;padding-left:1.35rem}
 .recipe-help-card li{margin:.35rem 0}
 .recipe-help-card p{margin:.6rem 0 0}
+
+/* v3.3.37: tombol keluar untuk menguji backup otomatis */
+.header-actions{display:flex;align-items:center;gap:8px;flex-shrink:0}.exit-button{background:#fff;color:#173451;border:1px solid #d3e2ef;padding:7px 10px;min-height:36px;font-size:12px;white-space:nowrap}@media(max-width:420px){header{align-items:flex-start}.header-actions{flex-direction:column;align-items:flex-end;gap:6px}.exit-button{padding:6px 9px;min-height:32px}}

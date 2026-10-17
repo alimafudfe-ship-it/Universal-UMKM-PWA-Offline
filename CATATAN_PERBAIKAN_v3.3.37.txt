@@ -1,0 +1,13 @@
+Universal UMKM Pro v3.3.37 — Tombol Keluar untuk Pengujian Backup
+
+Perubahan:
+- Menambahkan tombol Keluar pada bagian kanan header.
+- Tombol meminta konfirmasi, lalu mencoba menulis backup otomatis terbaru sebelum menampilkan hasil.
+- Status memberi tahu bahwa browser/PWA umumnya tidak dapat menutup tab secara paksa; pengguna dapat menutup tab/jendela secara manual.
+- Jika penulisan file backup gagal, mekanisme fallback snapshot IndexedDB tetap digunakan. Data usaha lokal tidak dihapus.
+- Tombol keluar tidak menghapus data dan tidak menggantikan tombol pemulihan backup.
+
+Batasan:
+- Event penutupan tab/browser tidak dijamin selesai oleh browser. Tombol Keluar memberi alur pengujian yang lebih dapat diamati, tetapi aplikasi tetap tidak bisa memaksa browser menutup tab.
+- Backup file otomatis menggunakan dukungan browser terhadap Origin Private File System (OPFS); bila tidak tersedia, aplikasi menyimpan snapshot di IndexedDB.
+- Belum diuji secara langsung di browser/HP pada lingkungan pengguna.
