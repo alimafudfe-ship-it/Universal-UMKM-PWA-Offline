@@ -1,0 +1,15 @@
+Universal UMKM Pro v3.3.35 — Pemilih File Backup Lebih Mudah
+
+Perbaikan:
+- Tombol impor memakai File System Access API pada Chrome/Edge yang mendukung.
+- Pemilih file diminta mulai dari folder Download/Unduhan.
+- Hanya satu file dipilih; format JSON difilter sebagai petunjuk.
+- Nama file yang dipilih ditampilkan pada halaman Profil & Backup.
+- Validasi struktur backup tetap dilakukan sebelum konfirmasi pemulihan.
+- Jika fitur pemilih file langsung tidak tersedia, aplikasi memakai pemilih file standar.
+- Cache service worker dinaikkan agar browser mengambil file aplikasi versi baru.
+
+Catatan:
+- File backup harus dipilih melalui tombol aplikasi, bukan dibuka dengan klik dua kali di File Explorer.
+- Pemulihan mengganti data lokal. Simpan backup kondisi saat ini terlebih dahulu.
+- Pemeriksaan statis tidak menggantikan pengujian langsung di browser/HP.

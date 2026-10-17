@@ -1,0 +1,11 @@
+Checklist pengujian v3.3.35
+
+[ ] Buka Profil & Backup.
+[ ] Klik Ekspor / Simpan backup dan pastikan file JSON masuk ke Download.
+[ ] Klik Pilih file backup untuk dipulihkan.
+[ ] Pastikan Chrome/Edge membuka folder Download jika API didukung.
+[ ] Pilih Universal_UMKM_Backup_TANGGAL.json lalu klik Buka.
+[ ] Periksa nama file dan ringkasan data sebelum menyetujui pemulihan.
+[ ] Setelah pemulihan, cek profil, produk, stok, bahan, transaksi, dan laporan.
+[ ] Pastikan file master.json ditolak sebagai backup usaha.
+[ ] Jangan menguji pertama kali pada satu-satunya salinan data penting.
