@@ -587,7 +587,7 @@ async function checkout(){
  const {subtotal,taxRate,taxAmount,otherFee,total,received,change}=amounts,prof=await getCurrentProfile(),internalId='TRX-'+Date.now().toString(36).toUpperCase()+'-'+Math.random().toString(36).slice(2,5).toUpperCase();
  let order=null,details=[];
  const tx=db.transaction(['settings','transactions','details','products','materials'],'readwrite');
- tx.oncomplete=async()=>{if(!order){toast('Transaksi gagal disimpan: nomor transaksi tidak terbentuk.');return}lastReceipt={order,details,profile:prof};cart=[];$('customer').value='';$('taxRate').value='0';$('otherFee').value='0';$('cashReceived').value='';renderCart();await renderHome();await renderReports();await renderCashItems();await renderMaterials();showReceipt(lastReceipt);toast('Transaksi tersimpan. Stok produk dan bahan resep sudah diperbarui.')};
+ tx.oncomplete=async()=>{if(!order){toast('Transaksi gagal disimpan: nomor transaksi tidak terbentuk.');return}lastReceipt={order,details,profile:prof};cart=[];$('customer').value='';$('taxRate').value='0';$('otherFee').value='0';$('cashReceived').value='';renderCart();await renderHome();await renderProducts();await renderReports();await renderCashItems();await renderMaterials();showReceipt(lastReceipt);toast('Transaksi tersimpan. Stok produk dan bahan resep sudah diperbarui.')};
  tx.onerror=()=>toast('Transaksi gagal disimpan: '+(tx.error?.message||'kesalahan database'));
  tx.onabort=()=>{};
  allocateTransactionCode(tx,activeBusinessId,(code)=>{
