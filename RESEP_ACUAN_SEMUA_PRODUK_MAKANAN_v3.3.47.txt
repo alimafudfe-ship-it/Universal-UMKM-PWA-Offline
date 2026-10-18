@@ -1,0 +1,12 @@
+UNIVERSAL UMKM PRO v3.3.47 — KETERANGAN RESEP ACUAN
+
+Perubahan:
+- Menambahkan keterangan resep acuan di atas editor komposisi produk.
+- Keterangan berubah mengikuti nama produk yang sedang dipilih.
+- Jika basis komposisi Target 1 kg Produk Jadi, aplikasi menampilkan target 1 kg dan estimasi hasil buah/porsi.
+- Jika basis komposisi per satuan, aplikasi menyatakan bahwa takaran berlaku untuk 1 satuan dasar produk.
+- Menjelaskan bahwa pengguna boleh mengedit takaran sesuai selera dan kebutuhan pelanggan; HPP diperbarui dari komposisi yang disimpan.
+- Menegaskan bahwa resep acuan belum tentu teruji untuk semua proses produksi dan perlu diuji/ditimbang sebelum menjadi standar.
+- Tidak mengubah atau menimpa komposisi, stok, transaksi, maupun data usaha yang tersimpan.
+
+Pemeriksaan statis: struktur ZIP, JSON master, dan sintaks JavaScript. Belum dilakukan uji langsung pada HP/peramban pengguna. Backup dianjurkan sebelum pembaruan.
