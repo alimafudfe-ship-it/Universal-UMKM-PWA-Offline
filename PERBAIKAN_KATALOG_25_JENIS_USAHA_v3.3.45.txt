@@ -1,0 +1,13 @@
+UNIVERSAL UMKM PRO PWA OFFLINE — v3.3.45
+PERBAIKAN JUMLAH KATALOG MENJADI 25 JENIS USAHA
+
+Perbaikan:
+- Jumlah paket usaha di beranda diperbarui dari 24 menjadi 25.
+- Pilihan paket lisensi mendukung 1 sampai 25 jenis usaha.
+- Batas validasi JavaScript untuk lisensi dinaikkan menjadi 25, termasuk pemulihan backup.
+- Paket ke-25, Jajanan Pasar & Kue Tradisional, tetap tersedia dalam master.json.
+- Harga mengikuti rumus paket yang sudah digunakan: Rp14.999 untuk 1 usaha, lalu tambah Rp15.000 per usaha berikutnya.
+- Tidak ada data usaha, transaksi, stok, komposisi, atau riwayat yang dihapus.
+
+Pemasangan:
+Backup data terlebih dahulu, ekstrak ZIP, lalu unggah seluruh isi ke root repositori GitHub Pages dan commit. Pastikan index.html, app.js, sw.js, dan master.json ikut diperbarui. Jangan hapus penyimpanan situs.
