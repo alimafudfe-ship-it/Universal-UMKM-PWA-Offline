@@ -1,0 +1,13 @@
+UNIVERSAL UMKM PRO PWA OFFLINE — v3.3.43
+Perbaikan: Komposisi lama dilengkapi dengan aman
+
+Perubahan utama:
+- Memperbaiki kasus komposisi produk yang masih hanya berisi satu bahan setelah aplikasi diperbarui.
+- Untuk resep bawaan yang belum diedit, komposisi mengikuti template terbaru.
+- Untuk resep yang sudah pernah diedit, aplikasi hanya menambahkan bahan template yang belum ada; jumlah, satuan, dan biaya bahan yang sudah ada tidak ditimpa.
+- Pemeriksaan berdasarkan ID bahan dan nama bahan untuk mengurangi risiko bahan ganda.
+- Proses penambahan bersifat idempoten: bahan yang sudah ditambahkan tidak ditambahkan berulang saat aplikasi dibuka kembali.
+- Tidak menghapus data usaha, stok, transaksi, atau riwayat pembelian.
+- Cache service worker dan nomor versi diperbarui ke 3.3.43.
+
+Sebelum update, buat backup dari menu Profil & Backup. Unggah seluruh isi ZIP langsung ke root repositori GitHub Pages. Setelah deploy, pastikan versi aplikasi tampil 3.3.43.
