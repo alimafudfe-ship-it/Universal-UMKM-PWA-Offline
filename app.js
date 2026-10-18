@@ -1,5 +1,5 @@
 'use strict';
-window.APP_BUILD_VERSION='3.3.47';document.documentElement.dataset.appVersion='3.3.47';
+window.APP_BUILD_VERSION='3.3.48';document.documentElement.dataset.appVersion='3.3.48';
 const DB_NAME='UniversalUMKMProOffline', DB_VERSION=4;
 let db, master, cart=[], lastReceipt=null, selectedPackageId=null, currentProfile=null, recipeDraft=[], businesses=[], activeBusinessId=null, licenseSlots=1, purchaseSearchSeq=0;
 const $=id=>document.getElementById(id);
@@ -219,7 +219,7 @@ async function migrateMasterRecipeCompleteness(){
    // Untouched templates may be refreshed from master. For user-edited recipes,
    // add only ingredients that are missing; preserve all existing quantities and prices.
    if(String(recipe.templateRecipeId||'').startsWith('v3-')){
-    recipe.lines=lines;recipe.recipeBasis=r.recipe_basis||recipe.recipeBasis||'unit';recipe.targetFinishedGrams=Number(r.target_finished_grams)||recipe.targetFinishedGrams||0;recipe.expectedYieldUnits=Number(r.expected_yield_units)||recipe.expectedYieldUnits||1;recipe.yieldUnit=r.yield_unit||recipe.yieldUnit||'Pcs';recipe.recipeStatus=r.recipe_status||recipe.recipeStatus||'referensi';recipe.formulaVersion=Number(r.formula_version)||recipe.formulaVersion||1;recipe.updatedAt=dateNow();await put('recipes',recipe);
+    recipe.lines=lines;recipe.recipeBasis=tr.recipe_basis||recipe.recipeBasis||'unit';recipe.targetFinishedGrams=Number(tr.target_finished_grams)||recipe.targetFinishedGrams||0;recipe.expectedYieldUnits=Number(tr.expected_yield_units)||recipe.expectedYieldUnits||1;recipe.yieldUnit=tr.yield_unit||recipe.yieldUnit||'Pcs';recipe.recipeStatus=tr.recipe_status||recipe.recipeStatus||'referensi';recipe.formulaVersion=Number(tr.formula_version)||recipe.formulaVersion||1;recipe.updatedAt=dateNow();await put('recipes',recipe);
     if(product.costMode!=='manual'){product.costMode='auto';await put('products',product)}
    }else{
     const existingLines=Array.isArray(recipe.lines)?recipe.lines:[];

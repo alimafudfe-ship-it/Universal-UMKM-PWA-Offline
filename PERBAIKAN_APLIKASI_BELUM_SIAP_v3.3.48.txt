@@ -1,0 +1,7 @@
+PERBAIKAN UNIVERSAL UMKM PRO v3.3.48
+
+Masalah: aplikasi menampilkan pesan “Aplikasi belum siap” saat proses persiapan resep template.
+
+Perbaikan: migrasi resep acuan sekarang membaca field dari objek resep template yang benar (tr), bukan variabel yang tidak tersedia. Ini mencegah proses boot berhenti ketika memperbarui resep yang berasal dari master. Cache service worker diperbarui agar browser mengambil file versi baru.
+
+Data usaha, transaksi, stok, pembelian, dan komposisi lokal tidak dihapus. Tetap lakukan backup sebelum mengganti file di GitHub Pages.
