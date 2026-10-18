@@ -1,0 +1,8 @@
+UNIVERSAL UMKM PRO v3.3.44 — PAKET JAJANAN PASAR
+
+Ditambahkan paket usaha Jajanan Pasar & Kue Tradisional (paket 25).
+Isi paket: 10 produk awal (Klepon, Onde-onde, Kue Lapis, Dadar Gulung, Nagasari, Pastel Sayur, Lemper Ayam, Putu Ayu, Kue Cucur, Risoles Sayur), 28 bahan/komponen belanja, dan resep awal untuk seluruh 10 produk.
+
+Semua stok awal tetap 0. Harga bahan adalah referensi perkiraan, bukan harga pemasok yang dijamin. Sesuaikan bahan, takaran, hasil produksi, biaya gas/minyak, dan kemasan sesuai cara produksi usaha.
+
+Paket ini muncul sebagai jenis usaha baru setelah master.json diperbarui. Usaha lama dan data lokal tidak dihapus.
