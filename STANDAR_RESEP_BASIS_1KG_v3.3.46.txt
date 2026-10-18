@@ -1,0 +1,12 @@
+UNIVERSAL UMKM PRO v3.3.46 — STANDAR KOMPOSISI BERBASIS 1 KG
+
+Perubahan:
+- 10 produk paket Jajanan Pasar & Kue Tradisional memakai target 1.000 gram produk jadi.
+- Setiap produk memiliki estimasi jumlah buah/porsi hasil dari 1 kg.
+- HPP produk per buah dihitung dari total biaya batch dibagi jumlah hasil.
+- Penjualan mengonsumsi bagian bahan per buah, bukan seluruh batch untuk setiap penjualan.
+- Komposisi produk lain tetap memakai basis per satuan jual sampai diubah oleh pengguna.
+- Resep yang sudah diedit dikonversi secara matematis dari basis per buah ke batch, mempertahankan rasio takaran; resep template bawaan menggunakan formula versi baru.
+- Backup tetap dianjurkan sebelum pembaruan; tidak ada store/database yang dihapus.
+
+PENTING: Formula dan jumlah hasil dalam paket ini adalah FORMULA AWAL UNTUK UJI DAPUR, bukan klaim resep premium yang sudah teruji atau tervalidasi. Uji hasil aktual, timbang produk jadi, nilai rasa/tekstur, dan sesuaikan takaran sebelum dipakai untuk produksi komersial. Harga bahan tetap harus diisi sesuai pemasok pengguna.
