@@ -1,0 +1,15 @@
+UNIVERSAL UMKM PRO v3.3.49 — PETUNJUK HPP MUDAH
+
+Fokus: membuat pengisian komposisi/HPP lebih mudah dipahami pengguna awam.
+
+Perubahan:
+- Panduan langkah demi langkah ditampilkan di atas tabel komposisi.
+- Label biaya diperjelas menjadi biaya untuk 1 satuan resep.
+- Contoh takaran: telur per butir, tepung per gram, garam per sendok makan.
+- Contoh konversi: tepung Rp10.000/kg = Rp10/gram.
+- Rumus: jumlah resep × biaya per satuan = biaya bahan.
+- Placeholder kolom biaya diperjelas.
+
+Penting: bila resep memakai 5.000 gram kol dan biaya kol Rp10/gram, biaya kol adalah Rp50.000. Harga per satuan yang dimasukkan harus sesuai dengan satuan resep.
+
+Dasar file: v3.3.48. Tidak ada instruksi untuk menghapus/reset data pengguna. ZIP dan file inti diperiksa; aplikasi belum diuji penuh di browser/perangkat. Uji salinan terlebih dahulu dan jangan hapus data aplikasi lama.

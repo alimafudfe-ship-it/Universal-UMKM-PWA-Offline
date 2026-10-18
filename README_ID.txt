@@ -114,3 +114,6 @@ PEMBARUAN v3.3.20 — KODE PENJUALAN SAJA
 - Pengeluaran baru tidak lagi memakai kode penjualan; riwayat dan buku kas tampil “Pengeluaran - Nama”.
 - Kode yang tersimpan pada pembelian/pengeluaran lama tetap ada di database untuk menjaga data historis, tetapi tidak ditampilkan pada layar. Penghitung tidak diturunkan sehingga nomor historis tidak dipakai ulang.
 - Perubahan berlaku untuk semua jenis usaha. DB_VERSION tetap 4; tidak ada penghapusan atau reset data.
+
+
+Versi v3.3.49: panduan pengisian HPP diperjelas. Lihat PETUNJUK_HPP_MUDAH_v3.3.49.txt.
