@@ -1,0 +1,13 @@
+Universal UMKM Pro v3.3.41 — Pemisahan tampilan Produk & Bahan
+
+Perubahan:
+- Daftar Bahan & Belanja hanya menampilkan bahan baku aktif.
+- Produk jadi dan barang dagangan tetap tampil di Produk & Jasa, tidak lagi ditampilkan sebagai baris stok kedua di Bahan & Belanja.
+- Form pembelian di Bahan & Belanja tetap dapat memilih barang dagangan yang memiliki pengelolaan stok; pembelian memperbarui products.stock tepat satu kali.
+- Record bahan lama yang namanya sama persis dengan produk aktif disembunyikan dari daftar bahan dan pilihan pembelian, agar pembelian baru diarahkan ke produk. Record lama tidak dihapus otomatis untuk menjaga riwayat.
+- Riwayat pembelian lama tetap dipertahankan.
+
+Catatan keselamatan data:
+Stok lama pada record bahan duplikat tidak digabung otomatis ke stok produk, karena aplikasi tidak dapat memastikan apakah keduanya benar-benar duplikat atau masih dipakai dalam komposisi. Periksa backup dan stok duplikat lama secara manual sebelum menyesuaikan angka.
+
+Uji teknis: periksa sintaks app.js dan integritas ZIP sebelum distribusi.

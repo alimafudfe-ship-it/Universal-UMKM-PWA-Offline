@@ -1,5 +1,5 @@
 'use strict';
-window.APP_BUILD_VERSION='3.3.40';document.documentElement.dataset.appVersion='3.3.40';
+window.APP_BUILD_VERSION='3.3.41';document.documentElement.dataset.appVersion='3.3.41';
 const DB_NAME='UniversalUMKMProOffline', DB_VERSION=4;
 let db, master, cart=[], lastReceipt=null, selectedPackageId=null, currentProfile=null, recipeDraft=[], businesses=[], activeBusinessId=null, licenseSlots=1, purchaseSearchSeq=0;
 const $=id=>document.getElementById(id);
@@ -360,7 +360,8 @@ async function renderMaterials(){
  const [materials,products]=await Promise.all([getAll('materials'),getAll('products')]);
  const term=($('materialSearch').value||'').trim().toLowerCase();
  const juice=isJuiceBusiness();
- const rows=[...visibleMaterialsForJuice(materials,products).map(m=>({...m,_kind:'material'})),...(juice?[]:products.filter(p=>p.active!==false&&!p.legacyMaterial&&p.forSale!==false&&p.stockEnabled).map(p=>({...p,_kind:'product'})))].filter(m=>`${m.name||''} ${m.category||''}`.toLowerCase().includes(term)).sort((a,b)=>String(a.name).localeCompare(String(b.name),'id'));
+ // Daftar ini khusus bahan baku. Produk jadi/barang dagangan hanya tampil di Produk & Jasa.
+ const rows=visibleMaterialsForJuice(materials,products).map(m=>({...m,_kind:'material'})).filter(m=>`${m.name||''} ${m.category||''}`.toLowerCase().includes(term)).sort((a,b)=>String(a.name).localeCompare(String(b.name),'id'));
  const fmtQty=n=>Number(n||0).toLocaleString('id-ID',{maximumFractionDigits:4});
  $('materialsList').innerHTML=rows.length?`<div class="materials-table-wrap"><table class="materials-table"><thead><tr><th>Bahan / barang</th><th>Jenis</th><th>Satuan</th><th>Stok</th><th>Harga modal rata-rata</th><th>Nilai stok</th><th>Status</th><th>Aksi</th></tr></thead><tbody>${rows.map(m=>{const stock=Number(m.stock||0),cost=Number(m.cost||0),status=m.stockEnabled===false?'Stok nonaktif':stock<=0?'Habis':'Tersedia';return `<tr><td data-label="Bahan / barang"><strong>${esc(m.name)}</strong><small>${esc(m.category||'Bahan baku')}</small></td><td data-label="Jenis">${m._kind==='product'?'Barang jual':'Bahan'}</td><td data-label="Satuan">${esc(m.unit||'Pcs')}</td><td data-label="Stok" class="num">${fmtQty(stock)} ${esc(m.unit||'')}</td><td data-label="Harga modal rata-rata" class="num">${money(cost)}<small>/ ${esc(m.unit||'satuan')}</small></td><td data-label="Nilai stok" class="num">${money(stock*cost)}</td><td data-label="Status"><span class="stock-status ${stock<=0&&m.stockEnabled!==false?'empty-stock':m.stockEnabled===false?'disabled-stock':'in-stock'}">${status}</span></td><td data-label="Aksi"><div class="material-actions"><button type="button" data-meditdata="${m._kind}:${m.id}">Edit</button><button type="button" data-medit="${m._kind}:${m.id}" ${m._kind!=='material'?'disabled title="Ubah satuan barang jual dari menu Produk"':''}>Edit Satuan</button><button type="button" data-mbuy="${m._kind}:${m.id}">Tambah Stok</button><button type="button" data-mdelete="${m._kind}:${m.id}">Hapus</button></div></td></tr>`}).join('')}</tbody></table></div>`:'<div class="empty">Belum ada bahan atau barang stok yang cocok.</div>';
  const previousSelection=$('purchaseMaterial').value;
