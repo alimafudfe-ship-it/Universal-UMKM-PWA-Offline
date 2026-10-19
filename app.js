@@ -290,7 +290,7 @@ async function migrateRetailCatalog(){
  if(!master||!Array.isArray(businesses)||!businesses.length)return;
  const originalId=activeBusinessId,originalProfile=currentProfile;
  for(const business of businesses){
-  if(Number(business.packageId)!==14||Number(business.retailCatalogVersion||0)>=2)continue;
+  if(Number(business.packageId)!==14||Number(business.retailCatalogVersion||0)>=3)continue;
   activeBusinessId=business.id;currentProfile=business;
   const rows=master.items.filter(i=>Number(i.paket_id)===14&&i.kelompok!=='Operasional'&&i.bisa_dijual);
   let products=await getAll('products');
@@ -310,7 +310,7 @@ async function migrateRetailCatalog(){
     if(changed){product.referenceVersion=4;product.updatedAt=dateNow();await put('products',product)}
    }
   }
-  business.retailCatalogVersion=2;business.retailCatalogUpdatedAt=dateNow();
+  business.retailCatalogVersion=3;business.retailCatalogUpdatedAt=dateNow();
  }
  activeBusinessId=originalId;businesses=businesses.map(b=>({...b}));currentProfile=businesses.find(b=>String(b.id)===String(originalId))||originalProfile;
  await saveBusinessList();
@@ -477,13 +477,15 @@ async function editMaterialUnit(id){
 async function renderMaterials(){
  const [materials,products]=await Promise.all([getAll('materials'),getAll('products')]);
  const term=($('materialSearch').value||'').trim().toLowerCase();
- const juice=isJuiceBusiness();
- // Daftar ini khusus bahan baku. Produk jadi/barang dagangan hanya tampil di Produk & Jasa.
- const rows=visibleMaterialsForJuice(materials,products).map(m=>({...m,_kind:'material'})).filter(m=>`${m.name||''} ${m.category||''}`.toLowerCase().includes(term)).sort((a,b)=>String(a.name).localeCompare(String(b.name),'id'));
+ const juice=isJuiceBusiness(),retail=Number(currentProfile?.packageId)===14;
+ // Bahan baku selalu ditampilkan. Untuk retail, barang dagangan fisik yang memakai stok juga ditampilkan di sini agar pembelian, stok, dan riwayat menyatu dengan barang yang dijual.
+ const materialRows=visibleMaterialsForJuice(materials,products).map(m=>({...m,_kind:'material'}));
+ const retailProductRows=retail?products.filter(p=>p.active!==false&&!p.legacyMaterial&&p.forSale!==false&&p.stockEnabled).map(p=>({...p,_kind:'product'})):[];
+ const rows=[...materialRows,...retailProductRows].filter(m=>`${m.name||''} ${m.category||''}`.toLowerCase().includes(term)).sort((a,b)=>String(a.name).localeCompare(String(b.name),'id'));
  const fmtQty=n=>Number(n||0).toLocaleString('id-ID',{maximumFractionDigits:4});
  $('materialsList').innerHTML=rows.length?`<div class="materials-table-wrap"><table class="materials-table"><thead><tr><th>Bahan / barang</th><th>Jenis</th><th>Satuan</th><th>Stok</th><th>Harga modal rata-rata</th><th>Nilai stok</th><th>Status</th><th>Aksi</th></tr></thead><tbody>${rows.map(m=>{const stock=Number(m.stock||0),cost=Number(m.cost||0),status=m.stockEnabled===false?'Stok nonaktif':stock<=0?'Habis':'Tersedia';return `<tr><td data-label="Bahan / barang"><strong>${esc(m.name)}</strong><small>${esc(m.category||'Bahan baku')}</small></td><td data-label="Jenis">${m._kind==='product'?'Barang jual':'Bahan'}</td><td data-label="Satuan">${esc(m.unit||'Pcs')}</td><td data-label="Stok" class="num">${fmtQty(stock)} ${esc(m.unit||'')}</td><td data-label="Harga modal rata-rata" class="num">${money(cost)}<small>/ ${esc(m.unit||'satuan')}</small></td><td data-label="Nilai stok" class="num">${money(stock*cost)}</td><td data-label="Status"><span class="stock-status ${stock<=0&&m.stockEnabled!==false?'empty-stock':m.stockEnabled===false?'disabled-stock':'in-stock'}">${status}</span></td><td data-label="Aksi"><div class="material-actions"><button type="button" data-meditdata="${m._kind}:${m.id}">Edit</button><button type="button" data-medit="${m._kind}:${m.id}" ${m._kind!=='material'?'disabled title="Ubah satuan barang jual dari menu Produk"':''}>Edit Satuan</button><button type="button" data-mbuy="${m._kind}:${m.id}">Tambah Stok</button><button type="button" data-mdelete="${m._kind}:${m.id}">Hapus</button></div></td></tr>`}).join('')}</tbody></table></div>`:'<div class="empty">Belum ada bahan atau barang stok yang cocok.</div>';
  const previousSelection=$('purchaseMaterial').value;
- const choices=[...visibleMaterialsForJuice(materials,products).map(m=>({id:m.id,kind:'material',name:m.name,unit:m.unit})),...(juice?[]:products.filter(p=>p.active!==false&&!p.legacyMaterial&&p.forSale!==false&&p.stockEnabled).map(p=>({id:p.id,kind:'product',name:p.name,unit:p.unit})))].sort((a,b)=>String(a.name).localeCompare(String(b.name),'id'));
+ const choices=[...visibleMaterialsForJuice(materials,products).map(m=>({id:m.id,kind:'material',name:m.name,unit:m.unit})),...((juice)?[]:products.filter(p=>p.active!==false&&!p.legacyMaterial&&p.forSale!==false&&p.stockEnabled&&(!retail||p.stockEnabled)).map(p=>({id:p.id,kind:'product',name:p.name,unit:p.unit})))].sort((a,b)=>String(a.name).localeCompare(String(b.name),'id'));
  $('purchaseMaterial').innerHTML='<option value="">Pilih bahan atau barang…</option>'+choices.map(x=>`<option value="${x.kind}:${x.id}" data-unit="${esc(x.unit||'Pcs')}">${esc(x.name)} (${esc(x.unit||'Pcs')})${x.kind==='product'?' · barang jual':''}</option>`).join('')+'<option value="__new__">＋ Tambah bahan baru…</option>';
  if(previousSelection&&[...$('purchaseMaterial').options].some(o=>o.value===previousSelection))$('purchaseMaterial').value=previousSelection;
  const chosen=choices.find(x=>`${x.kind}:${x.id}`===$('purchaseMaterial').value);if(chosen&& !$('purchaseMaterialSearch').value)$('purchaseMaterialSearch').value=chosen.name;

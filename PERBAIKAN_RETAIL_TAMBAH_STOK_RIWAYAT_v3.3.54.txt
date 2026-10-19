@@ -1,0 +1,18 @@
+UNIVERSAL UMKM PRO v3.3.54 — TAMBAH STOK DAN RIWAYAT RETAIL
+
+Perbaikan:
+1. Daftar Bahan & Belanja sekarang menampilkan bahan dan barang dagangan fisik retail yang stoknya dilacak, memakai rekaman produk yang sama dengan Produk & Jasa.
+2. Barang retail fisik seperti air mineral, beras, minyak, dan mi instan dapat dipilih pada Pembelian Baru atau tombol Tambah Stok dari tabel stok.
+3. Pembelian memperbarui stok dan modal produk yang sama; riwayat pembelian menyimpan jenis item sebagai Barang jual dan ditampilkan di Riwayat Pembelian.
+4. Migrasi katalog retail dinaikkan ke versi 3 agar usaha retail yang sudah dibuat sebelumnya juga mengaktifkan pelacakan stok sesuai master untuk barang fisik, sementara layanan nonfisik tetap tidak memakai stok.
+5. Layanan seperti pulsa/token listrik tetap di Produk & Jasa dan tidak tampil sebagai persediaan fisik.
+6. Riwayat transaksi lama tidak dihapus. Barang yang sudah ada tidak dibuat duplikat hanya karena tampil di dua menu.
+
+Contoh pengujian yang disarankan:
+- Buka usaha Toko Retail.
+- Buka Bahan & Belanja dan cari “Air mineral 600 ml”.
+- Tambah pembelian 10 botol; pastikan stok bertambah 10 botol dan transaksi muncul di Riwayat Pembelian.
+- Jual 2 botol di Kasir; pastikan stok yang sama tersisa 8 botol.
+- Pastikan layanan “Jasa isi pulsa” tidak muncul sebagai stok barang.
+
+Pemeriksaan teknis: app.js dan sw.js diperiksa dengan node --check; master.json valid; ZIP integrity diperiksa. Belum dilakukan pengujian browser/HP end-to-end.
