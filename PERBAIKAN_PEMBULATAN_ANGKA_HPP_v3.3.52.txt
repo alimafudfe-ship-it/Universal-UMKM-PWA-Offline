@@ -1,0 +1,10 @@
+Universal UMKM Pro v3.3.52 — Pembulatan Angka dan Tampilan HPP
+
+Perbaikan:
+- Angka pada input harga beli ditampilkan sebagai bilangan rupiah yang rapi, tanpa sisa desimal floating-point.
+- Takaran resep dan jumlah pembelian menampilkan maksimal 4 angka desimal; angka nol/desimal sisa di belakang dihilangkan.
+- Pratinjau jumlah komposisi juga dibulatkan untuk tampilan maksimal 4 angka desimal.
+- Pembulatan tampilan tidak diterapkan berulang pada rumus biaya internal; perhitungan HPP tetap menggunakan nilai numerik presisi.
+- Cache offline dan label versi diperbarui ke v3.3.52.
+
+Catatan pengujian: sintaks JavaScript dan integritas ZIP diperiksa. Pengujian penuh di browser/HP belum dilakukan. Buat backup data sebelum mengganti versi aplikasi.
