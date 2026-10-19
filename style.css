@@ -234,3 +234,6 @@ nav button{font-size:12px}
 @media(max-width:850px){.recipe-line-easy{grid-template-columns:minmax(0,1fr) 36px;gap:8px}.recipe-line-easy .recipe-material-cell,.recipe-line-easy .recipe-buy-fields,.recipe-line-easy .recipe-use-fields,.recipe-line-easy .recipe-auto-help{grid-column:1}.recipe-line-easy .recipe-remove{grid-column:2;grid-row:1;min-width:32px}.recipe-buy-fields{grid-template-columns:1fr 1fr}.recipe-buy-fields label:last-child{grid-column:1/-1}.recipe-use-fields{grid-template-columns:1fr 1fr}}
 .recipe-table-head-easy{grid-template-columns:minmax(150px,1fr) minmax(220px,1.35fr) minmax(190px,1.1fr) minmax(180px,1fr) 36px}
 @media(max-width:850px){.recipe-table-head-easy{display:none}}
+
+/* v3.3.51: make the item's master stock unit visible in every purchase/add-stock flow. */
+.stock-unit-summary{margin:.65rem 0;padding:.7rem .85rem;border:1px solid var(--border,#cbd5e1);border-radius:.65rem;background:var(--soft,#f1f5f9);font-weight:600;line-height:1.45}

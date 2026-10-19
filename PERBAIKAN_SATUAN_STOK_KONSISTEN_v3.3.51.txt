@@ -1,0 +1,20 @@
+Universal UMKM Pro v3.3.51 — Satuan stok konsisten
+
+Perubahan:
+- Form Pembelian/Tambah Stok menampilkan satuan stok utama berdasarkan barang yang dipilih.
+- Jika barang memakai satuan kg, jumlah pembelian biasa dan modalnya ditampilkan per kg; jika butir, per butir; jika liter, per liter, dan seterusnya.
+- Saat membeli dalam kemasan, isi per kemasan secara jelas menggunakan satuan stok barang. Contoh: 1 kotak ayam berisi 10 kg; 1 pack plastik berisi 100 Pcs.
+- Ringkasan sebelum disimpan memperlihatkan jumlah stok yang akan bertambah dan modal per satuan stok.
+- Satuan barang baru dapat dipilih sebelum pembelian disimpan.
+- Pembelian tetap menambah stok tepat satu kali dan riwayat menyimpan jumlah stok dalam satuan utama barang.
+- Satuan resep/HPP tetap dikonversi ke satuan stok jika jenis satuannya kompatibel (misalnya kg ke gram dan liter ke ml).
+- Nama dan struktur data lama dipertahankan; perubahan satuan stok yang sudah ada tetap dilakukan melalui tombol Edit Satuan.
+
+Contoh:
+1) Ayam dengan satuan stok kg: beli 5 kg, stok bertambah 5 kg.
+2) Ayam dengan satuan stok kg: beli 2 kotak, isi 10 kg/kotak, stok bertambah 20 kg.
+3) Plastik dengan satuan stok Pcs: beli 1 pack, isi 100 Pcs/pack, stok bertambah 100 Pcs.
+
+Catatan:
+- Isi per kemasan harus diisi berdasarkan satuan stok yang ditampilkan; aplikasi tidak bisa menebak isi kemasan secara otomatis.
+- Uji sintaks JavaScript dan integritas ZIP dilakukan. Pengujian interaksi penuh di browser/HP dan data usaha nyata belum dilakukan. Backup data sebelum mengganti versi.
