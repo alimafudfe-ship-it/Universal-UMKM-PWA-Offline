@@ -1,9 +1,11 @@
 'use strict';
-window.APP_BUILD_VERSION='3.3.48';document.documentElement.dataset.appVersion='3.3.48';
+window.APP_BUILD_VERSION='3.3.52';document.documentElement.dataset.appVersion='3.3.52';
 const DB_NAME='UniversalUMKMProOffline', DB_VERSION=4;
 let db, master, cart=[], lastReceipt=null, selectedPackageId=null, currentProfile=null, recipeDraft=[], businesses=[], activeBusinessId=null, licenseSlots=1, purchaseSearchSeq=0;
 const $=id=>document.getElementById(id);
 const money=n=>'Rp'+Number(n||0).toLocaleString('id-ID',{maximumFractionDigits:2});
+// Clean floating-point residue for editable display values; calculations retain full precision.
+function cleanNumberString(value,maxDecimals=4){const n=Number(value);if(!Number.isFinite(n))return '';const rounded=Number(n.toFixed(maxDecimals));return String(Object.is(rounded,-0)?0:rounded)}
 const PREMIUM_RECIPE_YIELDS={799:50,800:40,801:20,802:30,803:25,804:25,805:25,806:30,807:20,808:25};
 const PREMIUM_YIELD_BY_NAME={'klepon':50,'onde-onde':40,'kue lapis':20,'dadar gulung':30,'nagasari':25,'pastel sayur':25,'lemper ayam':25,'putu ayu':30,'kue cucur':20,'risoles sayur':25};
 function defaultYieldForProductName(name){return PREMIUM_YIELD_BY_NAME[String(name||'').trim().toLocaleLowerCase('id')]||50}
@@ -586,7 +588,7 @@ async function renderRecipeForm(){
  $('recipeLines').dataset.basisMode=$('recipeBasisMode')?.value||'unit';renderRecipeBasisHelp();updateRecipeReferenceNote(name);renderRecipePreviewLive();
 }
 function renderRecipeBasisHelp(){const mode=$('recipeBasisMode')?.value||'unit',yieldInput=$('recipeExpectedYield'),target=$('recipeTargetFinishedGrams'),help=$('recipeBasisHelp');if(yieldInput)yieldInput.disabled=mode!=='finished_kg';if(target){target.disabled=true;target.value='1000';}if(help)help.textContent=mode==='finished_kg'?'Takaran bahan di bawah adalah untuk target 1 kg produk jadi. Isi perkiraan jumlah buah/porsi yang dihasilkan; HPP per buah dihitung dari total biaya batch dibagi jumlah hasil. Angka hasil perlu dikonfirmasi dengan penimbangan uji dapur.':'Takaran bahan di bawah adalah untuk satu satuan jual. Untuk mengubah ke basis 1 kg, pilih “Target 1 kg produk jadi”; aplikasi akan mengalikan takaran per satuan dengan jumlah hasil.';updateRecipeReferenceNote($('recipeProduct')?.value.trim()||'produk makanan')}
-function changeRecipeBasis(){const next=$('recipeBasisMode')?.value||'unit',prev=$('recipeLines')?.dataset.basisMode||'unit';if(next!==prev){let yieldUnits=Number($('recipeExpectedYield')?.value)||1;if(next==='finished_kg'&&yieldUnits<=1){const productName=$('recipeProduct').value.trim();yieldUnits=defaultYieldForProductName(productName);$('recipeExpectedYield').value=String(yieldUnits)}yieldUnits=Math.max(1,yieldUnits);for(const row of $('recipeLines').querySelectorAll('.recipe-line')){const q=row.querySelector('.recipe-qty'),v=Number(q.value||0);if(v>0)q.value=String(next==='finished_kg'?v*yieldUnits:v/yieldUnits)}$('recipeLines').dataset.basisMode=next;}renderRecipeBasisHelp();renderRecipePreviewLive()}
+function changeRecipeBasis(){const next=$('recipeBasisMode')?.value||'unit',prev=$('recipeLines')?.dataset.basisMode||'unit';if(next!==prev){let yieldUnits=Number($('recipeExpectedYield')?.value)||1;if(next==='finished_kg'&&yieldUnits<=1){const productName=$('recipeProduct').value.trim();yieldUnits=defaultYieldForProductName(productName);$('recipeExpectedYield').value=String(yieldUnits)}yieldUnits=Math.max(1,yieldUnits);for(const row of $('recipeLines').querySelectorAll('.recipe-line')){const q=row.querySelector('.recipe-qty'),v=Number(q.value||0);if(v>0)q.value=cleanNumberString(next==='finished_kg'?v*yieldUnits:v/yieldUnits,4)}$('recipeLines').dataset.basisMode=next;}renderRecipeBasisHelp();renderRecipePreviewLive()}
 function recipeAutoCost(row){
  const purchaseQty=Number(row.querySelector('.recipe-buy-qty')?.value||0),purchaseUnit=row.querySelector('.recipe-buy-unit')?.value.trim()||'',buyPrice=Number(row.querySelector('.recipe-buy-price')?.value||0),recipeUnit=row.querySelector('.recipe-unit')?.value.trim()||'';
  const converted=convertQty(purchaseQty,purchaseUnit,recipeUnit);
@@ -597,17 +599,17 @@ function recipeAutoCost(row){
 function appendRecipeLine(data={}){
  const root=$('recipeLines');if(!root)return;
  const row=document.createElement('div');row.className='recipe-line recipe-line-easy';
- const name=data.name||'',qty=data.qty??'',unit=data.unit||recipeDefaultUnit(name,''),price=data.price??'';
+ const name=data.name||'',qty=data.qty==null?'':cleanNumberString(data.qty,4),unit=data.unit||recipeDefaultUnit(name,''),price=data.price??'';
  row.innerHTML=`<div class="recipe-material-cell"><label>Nama bahan<input class="recipe-material-name" list="recipeMaterialOptions" value="${esc(name)}" placeholder="Mis. tepung" autocomplete="off" aria-label="Nama bahan"></label></div><div class="recipe-buy-fields"><label>Harga beli (Rp)<input class="recipe-buy-price" type="number" min="0" step="1" value="${esc(price)}" placeholder="Mis. 10000" aria-label="Harga beli total"></label><label>Jumlah dibeli<input class="recipe-buy-qty" type="number" min="0.0001" step="0.0001" value="1" placeholder="Mis. 1" aria-label="Jumlah pembelian"></label><label>Satuan beli<input class="recipe-buy-unit" type="text" maxlength="24" value="${esc(unit)}" placeholder="Kg / gram / butir" list="recipeUnitOptions" aria-label="Satuan pembelian"></label></div><div class="recipe-use-fields"><label>Takaran resep<input class="recipe-qty" type="number" min="0.0001" step="0.0001" value="${esc(qty)}" placeholder="Mis. 250" aria-label="Takaran resep"></label><label>Satuan resep<input class="recipe-unit" type="text" maxlength="24" value="${esc(unit)}" placeholder="Gram / butir" list="recipeUnitOptions" aria-label="Satuan resep"></label></div><div class="recipe-auto-help" aria-live="polite">Isi harga dan jumlah pembelian. Biaya resep dihitung otomatis.</div><input class="recipe-price" type="hidden" value="${esc(price)}"><button type="button" class="recipe-remove" aria-label="Hapus bahan" title="Hapus bahan">×</button>`;
  root.appendChild(row);
  if(!$('recipeUnitOptions')){const dl=document.createElement('datalist');dl.id='recipeUnitOptions';dl.innerHTML=['Butir','Buah','Pcs','Porsi','Gram','Ons','Kg','Ml','Liter','Sendok makan','Sendok teh','Lembar','Ikat','Sachet','Bungkus','Potong','Botol','Pack','Roll','Meter','Rim'].map(x=>`<option value="${x}"></option>`).join('');$('page-recipes').appendChild(dl)}
  // Existing recipe line cost is preserved as an equivalent purchase amount until user edits it.
- row.querySelector('.recipe-buy-price').value=price===''?'':String(Number(price));
- row.querySelector('.recipe-buy-qty').value='1';row.querySelector('.recipe-buy-unit').value=unit;
+ row.querySelector('.recipe-buy-price').value=price===''?'':cleanNumberString(price,0);
+ row.querySelector('.recipe-buy-qty').value='1';row.querySelector('.recipe-buy-unit').value=unit;row.querySelector('.recipe-qty').value=qty===''?'':cleanNumberString(qty,4);
  const update=()=>{recipeAutoCost(row);renderRecipePreviewLive()};
  row.querySelector('.recipe-material-name').addEventListener('change',async e=>{
   const n=e.target.value.trim(),m=(await getAll('materials')).find(x=>String(x.name).trim().toLocaleLowerCase('id')===n.toLocaleLowerCase('id'));
-  if(m){const buyUnit=m.unit||recipeDefaultUnit(m.name,'');row.querySelector('.recipe-buy-unit').value=buyUnit;row.querySelector('.recipe-unit').value=recipeDefaultUnit(m.name,m.unit);const cost=Number(m.cost||0);if(cost>0){row.querySelector('.recipe-buy-price').value=String(cost);row.querySelector('.recipe-buy-qty').value='1';}}
+  if(m){const buyUnit=m.unit||recipeDefaultUnit(m.name,'');row.querySelector('.recipe-buy-unit').value=buyUnit;row.querySelector('.recipe-unit').value=recipeDefaultUnit(m.name,m.unit);const cost=Number(m.cost||0);if(cost>0){row.querySelector('.recipe-buy-price').value=cleanNumberString(cost,0);row.querySelector('.recipe-buy-qty').value='1';}}
   else {const suggested=recipeDefaultUnit(n,'');if(!row.querySelector('.recipe-unit').value)row.querySelector('.recipe-unit').value=suggested;if(!row.querySelector('.recipe-buy-unit').value)row.querySelector('.recipe-buy-unit').value=suggested;}
   update();
  });
@@ -626,7 +628,7 @@ function renderRecipeSizePreview(){
  let selected=Number(box.dataset.selectedIndex||0);if(selected<0||selected>=variants.length)selected=0;
  const variant=variants[selected]||variants[0],mult=Number(variant.multiplier)||1;
  const lines=[...$('recipeLines').querySelectorAll('.recipe-line')];let total=0;
- const rows=lines.map(row=>{const name=row.querySelector('.recipe-material-name').value.trim();const qty=Number(row.querySelector('.recipe-qty').value||0);const unit=row.querySelector('.recipe-unit').value.trim();recipeAutoCost(row);const raw=row.querySelector('.recipe-price').value;const price=raw===''?0:Math.max(0,Number(raw)||0);const adjusted=qty*mult;const subtotal=adjusted*price;total+=subtotal;return `<tr><td>${esc(name||'—')}</td><td>${adjusted.toLocaleString('id-ID',{maximumFractionDigits:4})} ${esc(unit)}</td><td>${money(price)}</td><td>${money(subtotal)}</td></tr>`}).join('');
+ const rows=lines.map(row=>{const name=row.querySelector('.recipe-material-name').value.trim();const qty=Number(row.querySelector('.recipe-qty').value||0);const unit=row.querySelector('.recipe-unit').value.trim();recipeAutoCost(row);const raw=row.querySelector('.recipe-price').value;const price=raw===''?0:Math.max(0,Number(raw)||0);const adjusted=qty*mult;const subtotal=adjusted*price;total+=subtotal;return `<tr><td>${esc(name||'—')}</td><td>${Number(adjusted.toFixed(4)).toLocaleString('id-ID',{maximumFractionDigits:4})} ${esc(unit)}</td><td>${money(price)}</td><td>${money(subtotal)}</td></tr>`}).join('');
  box.dataset.selectedIndex=String(selected);
  box.innerHTML=`<h4>Komposisi ukuran ${esc(variant.name||`Ukuran ${selected+1}`)}</h4><div class="recipe-size-preview-summary"><span>Harga jual: <b>${variant.price===''?'Belum diisi':money(Number(variant.price)||0)}</b></span><span>Pengali takaran: <b>${mult.toLocaleString('id-ID')}</b></span><span>HPP bahan ukuran ini: <b>${money(total)}</b></span></div><div class="recipe-size-preview-table-wrap"><table class="recipe-size-preview-table"><thead><tr><th>Bahan / produk</th><th>Jumlah sesuai ukuran</th><th>Harga per satuan</th><th>Total HPP</th></tr></thead><tbody>${rows||'<tr><td colspan="4">Tambahkan bahan untuk menghitung HPP.</td></tr>'}</tbody></table></div>`;
 
