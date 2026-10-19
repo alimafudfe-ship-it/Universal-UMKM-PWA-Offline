@@ -1,0 +1,16 @@
+UNIVERSAL UMKM PRO v3.3.53 — KATALOG RETAIL TERPADU
+
+Perubahan:
+1. Paket Toko Retail diperluas menjadi 60 contoh barang fisik retail umum dan 5 contoh layanan retail.
+2. Katalog mencakup sembako, makanan/minuman kemasan, perawatan diri, kebutuhan rumah tangga, ATK, perlengkapan, frozen food, dan perlengkapan hewan.
+3. Harga jual dan beli yang tampil pada template adalah estimasi referensi, bukan jaminan harga pasar. Sesuaikan dengan pemasok dan harga lokal.
+4. Barang fisik yang dijual menggunakan data produk yang sama untuk transaksi penjualan dan pembelian stok. Barang dengan pengelolaan stok akan muncul pada pilihan Pembelian Baru; pembelian menambah stok produk yang sama.
+5. Layanan seperti pulsa, token listrik, pembayaran tagihan, dan jasa transfer dicatat sebagai Produk & Jasa tanpa stok fisik sehingga tidak dibuat sebagai persediaan barang.
+6. Migrasi katalog retail menambahkan item baru ke usaha Toko Retail yang sudah ada tanpa menghapus riwayat dan tanpa menimpa harga/biaya yang telah diedit pengguna. Nilai stok item baru dimulai dari nol.
+7. Satuan stok dan satuan jual contoh mengikuti kemasan pada katalog. Bila membeli karton lalu menjual eceran, gunakan fitur kemasan pembelian jika tersedia dan tentukan isi kemasan dengan benar.
+
+Pemeriksaan:
+- app.js dan sw.js lolos pemeriksaan sintaks Node.js.
+- master.json dapat dibaca sebagai JSON yang valid.
+- ZIP diperiksa integritasnya setelah dibuat.
+- Belum dilakukan pengujian browser/HP end-to-end.
