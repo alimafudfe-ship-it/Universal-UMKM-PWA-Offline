@@ -1,0 +1,13 @@
+UNIVERSAL UMKM PRO v3.3.55 — KATALOG WARUNG KOPI & MINUMAN
+
+Perubahan utama:
+- Katalog Warung Kopi & Minuman diperluas dengan mi instan goreng/kuah, menu kopi dan teh, minuman sachet, es jeruk dan jeruk hangat, telur setengah matang, aneka gorengan, roti bakar, bubur kacang hijau/ketan hitam, wedang jahe, dan paket hemat.
+- Menambahkan bahan belanja yang dipakai pada resep: kopi bubuk, mi instan, telur, minyak, jeruk, roti tawar, tepung, tempe, tahu, pisang, singkong, sayur, kacang hijau, ketan hitam, santan, jahe, topping, kemasan, dan lainnya.
+- Komposisi resep setiap menu mengacu pada template bahan yang sama dengan Bahan & Belanja agar HPP dihitung dari biaya bahan.
+- Barang kemasan yang dijual kembali seperti air mineral memakai stok produk; tidak lagi memiliki resep bahan yang keliru.
+- Migrasi katalog master v4 menambahkan template yang belum ada ke usaha tersimpan tanpa mengganti data yang sudah diisi pengguna. Harga master adalah referensi, bukan harga pasar yang dijamin.
+
+Penting:
+- Harga dan takaran resep adalah contoh awal. Sesuaikan dengan pemasok, ukuran porsi, resep, harga lokal, dan cara penyajian (dine-in/take-away).
+- Stok awal template tetap 0. Pembelian bahan dicatat melalui Bahan & Belanja.
+- Sintaks JavaScript dan integritas ZIP diperiksa; pengujian penuh browser/HP belum dilakukan. Buat backup sebelum mengganti versi.
