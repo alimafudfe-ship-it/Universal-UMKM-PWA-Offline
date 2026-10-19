@@ -1,0 +1,12 @@
+Universal UMKM Pro v3.3.50 — HPP Mudah Semua Kalangan
+
+Perubahan:
+- Form komposisi menampilkan nama bahan, harga beli total, jumlah dan satuan pembelian, serta takaran resep.
+- Biaya per satuan resep dihitung otomatis dari harga pembelian dan konversi satuan yang didukung.
+- Contoh: harga tepung Rp10.000 untuk 1 kg, takaran resep 250 gram -> biaya bahan Rp2.500.
+- Satuan yang tidak dapat dikonversi tidak menghasilkan biaya otomatis; pengguna diberi petunjuk untuk memperbaiki satuan.
+- Struktur penyimpanan resep yang ada dipertahankan agar data lama tetap dapat dibaca.
+
+Catatan pengujian:
+- Sintaks JavaScript diperiksa dengan node --check.
+- Uji browser/HP, data lama nyata, dan seluruh alur aplikasi belum dilakukan. Backup data sebelum mengganti versi.

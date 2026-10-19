@@ -222,3 +222,15 @@ nav button{font-size:12px}
 
 /* v3.3.37: tombol keluar untuk menguji backup otomatis */
 .header-actions{display:flex;align-items:center;gap:8px;flex-shrink:0}.exit-button{background:#fff;color:#173451;border:1px solid #d3e2ef;padding:7px 10px;min-height:36px;font-size:12px;white-space:nowrap}@media(max-width:420px){header{align-items:flex-start}.header-actions{flex-direction:column;align-items:flex-end;gap:6px}.exit-button{padding:6px 9px;min-height:32px}}
+
+/* v3.3.50: form komposisi dengan harga beli dan takaran resep yang mudah dipahami */
+.recipe-line-easy{display:grid;grid-template-columns:minmax(150px,1fr) minmax(220px,1.35fr) minmax(190px,1.1fr) minmax(180px,1fr) 36px;gap:10px;align-items:start;padding:12px;border-bottom:1px solid var(--line)}
+.recipe-line-easy label{display:block;font-size:12px;font-weight:750;color:var(--muted);margin:0 0 5px}
+.recipe-line-easy input{width:100%;min-width:0;margin:3px 0 0;min-height:40px;padding:8px;font-size:14px}
+.recipe-buy-fields,.recipe-use-fields{display:grid;grid-template-columns:1fr 1fr;gap:7px}
+.recipe-buy-fields label:last-child{grid-column:1/-1}
+.recipe-auto-help{grid-column:1/-1;font-size:12px;line-height:1.4;color:var(--accent);padding:5px 0}
+.recipe-line-easy .recipe-remove{grid-column:5;grid-row:1;min-width:32px;min-height:36px;margin-top:25px}
+@media(max-width:850px){.recipe-line-easy{grid-template-columns:minmax(0,1fr) 36px;gap:8px}.recipe-line-easy .recipe-material-cell,.recipe-line-easy .recipe-buy-fields,.recipe-line-easy .recipe-use-fields,.recipe-line-easy .recipe-auto-help{grid-column:1}.recipe-line-easy .recipe-remove{grid-column:2;grid-row:1;min-width:32px}.recipe-buy-fields{grid-template-columns:1fr 1fr}.recipe-buy-fields label:last-child{grid-column:1/-1}.recipe-use-fields{grid-template-columns:1fr 1fr}}
+.recipe-table-head-easy{grid-template-columns:minmax(150px,1fr) minmax(220px,1.35fr) minmax(190px,1.1fr) minmax(180px,1fr) 36px}
+@media(max-width:850px){.recipe-table-head-easy{display:none}}
