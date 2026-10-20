@@ -1,5 +1,5 @@
 'use strict';
-window.APP_BUILD_VERSION='3.3.58';document.documentElement.dataset.appVersion='3.3.58';
+window.APP_BUILD_VERSION='3.3.60';document.documentElement.dataset.appVersion='3.3.60';
 const DB_NAME='UniversalUMKMProOffline', DB_VERSION=4;
 let db, master, cart=[], lastReceipt=null, selectedPackageId=null, currentProfile=null, recipeDraft=[], businesses=[], activeBusinessId=null, licenseSlots=1, purchaseSearchSeq=0;
 const $=id=>document.getElementById(id);
@@ -12,7 +12,7 @@ function defaultYieldForProductName(name){return PREMIUM_YIELD_BY_NAME[String(na
 function premiumYieldForProduct(product){const id=Number(product?.templateItemId||0);return PREMIUM_RECIPE_YIELDS[id]||50}
 function isPremiumMarketTemplate(product){return Number(currentProfile?.packageId)===25&&Object.prototype.hasOwnProperty.call(PREMIUM_RECIPE_YIELDS,Number(product?.templateItemId||0))}
 const dateNow=()=>new Date().toISOString();
-function toast(s){const t=$('toast');t.textContent=s;t.classList.add('show');clearTimeout(toast.timer);toast.timer=setTimeout(()=>t.classList.remove('show'),2600)}
+function toast(s){const t=$('toast');t.textContent=s;t.classList.add('show');clearTimeout(toast.timer);const duration=String(s).includes('Stok bahan berikut tidak cukup')?Math.min(15000,Math.max(6500,String(s).length*45)):2600;toast.timer=setTimeout(()=>t.classList.remove('show'),duration)}
 function openDB(){return new Promise((resolve,reject)=>{const req=indexedDB.open(DB_NAME,DB_VERSION);req.onupgradeneeded=()=>{const d=req.result;for(const [name,key] of [['settings','key'],['products','id'],['transactions','id'],['details','id'],['materials','id'],['materialPurchases','id'],['recipes','id'],['assets','id'],['expenses','id']]){const st=d.objectStoreNames.contains(name)?req.transaction.objectStore(name):d.createObjectStore(name,{keyPath:key,autoIncrement:key==='id'});if(name!=='settings'&&!st.indexNames.contains('businessId'))st.createIndex('businessId','businessId',{unique:false});} };req.onsuccess=()=>{req.result.onversionchange=()=>req.result.close();resolve(req.result)};req.onerror=()=>reject(req.error)})}
 function request(store,mode,fn){return new Promise((resolve,reject)=>{const tx=db.transaction(store,mode),s=tx.objectStore(store);let result;try{result=fn(s)}catch(e){reject(e);return}tx.oncomplete=()=>{resolve(result&&'result'in result?result.result:result);if(mode==='readwrite'&&!window.__restoringBackup) scheduleAutomaticBackup()};tx.onerror=()=>reject(tx.error);tx.onabort=()=>reject(tx.error)})}
 const scopedStores=new Set(['products','transactions','details','materials','materialPurchases','recipes','assets','expenses']);
@@ -862,10 +862,16 @@ async function checkout(){
  for(const {product,qty} of productUsage.values()){
   if(product.stockEnabled&&qty>Number(product.stock||0)){toast('Stok '+product.name+' tidak cukup untuk total jumlah yang dipilih.');return}
  }
+ const shortages=[];
  for(const {material,qty} of materialUsage.values()){
-  if(material.stockEnabled!==false&&qty>Number(material.stock||0)+1e-9){
-   toast('Stok bahan '+material.name+' tidak cukup. Perlu '+qty.toLocaleString('id-ID',{maximumFractionDigits:3})+' '+(material.unit||'unit')+', tersedia '+Number(material.stock||0).toLocaleString('id-ID',{maximumFractionDigits:3})+'.');return;
+  const available=Number(material.stock||0);
+  if(material.stockEnabled!==false&&qty>available+1e-9){
+   shortages.push(`${material.name}: perlu ${qty.toLocaleString('id-ID',{maximumFractionDigits:3})} ${material.unit||'unit'}, tersedia ${available.toLocaleString('id-ID',{maximumFractionDigits:3})} ${material.unit||'unit'}`);
   }
+ }
+ if(shortages.length){
+  toast('Transaksi belum disimpan. Stok bahan berikut tidak cukup:\n• '+shortages.join('\n• '));
+  return;
  }
  const {subtotal,taxRate,taxAmount,otherFee,total,received,change}=amounts,prof=await getCurrentProfile(),internalId='TRX-'+Date.now().toString(36).toUpperCase()+'-'+Math.random().toString(36).slice(2,5).toUpperCase();
  let order=null,details=[];
