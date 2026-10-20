@@ -1,5 +1,5 @@
 'use strict';
-window.APP_BUILD_VERSION='3.3.61';document.documentElement.dataset.appVersion='3.3.61';
+window.APP_BUILD_VERSION='3.3.62';document.documentElement.dataset.appVersion='3.3.62';
 const DB_NAME='UniversalUMKMProOffline', DB_VERSION=4;
 let db, master, cart=[], lastReceipt=null, selectedPackageId=null, currentProfile=null, recipeDraft=[], businesses=[], activeBusinessId=null, licenseSlots=1, purchaseSearchSeq=0;
 const $=id=>document.getElementById(id);
@@ -12,6 +12,18 @@ function defaultYieldForProductName(name){return PREMIUM_YIELD_BY_NAME[String(na
 function premiumYieldForProduct(product){const id=Number(product?.templateItemId||0);return PREMIUM_RECIPE_YIELDS[id]||50}
 function isPremiumMarketTemplate(product){return Number(currentProfile?.packageId)===25&&Object.prototype.hasOwnProperty.call(PREMIUM_RECIPE_YIELDS,Number(product?.templateItemId||0))}
 const dateNow=()=>new Date().toISOString();
+// Simple drinks are sold as menu items by default, not enforced recipes. Users may still add a custom composition explicitly.
+function isSimpleDrinkProductName(name){
+ const n=String(name||'').trim().toLocaleLowerCase('id');
+ if(!n||n.startsWith('paket '))return false;
+ return ['kopi susu','kopi hitam','kopi tubruk','kopi sachet','es kopi','teh manis','es teh','teh tawar','teh tarik','wedang jahe','susu jahe','jus alpukat','jus mangga','jus jambu','es jeruk','jeruk hangat','air mineral','minuman es','minuman cokelat','minuman coklat','minuman sachet'].some(t=>n.includes(t));
+}
+function isDefaultDrinkRecipe(recipe){
+ if(!recipe||!recipe.templateRecipeId)return false;
+ const item=(master?.items||[]).find(i=>Number(i.id)===Number(recipe.productTemplateId||String(recipe.templateRecipeId).split('-').pop()));
+ return isSimpleDrinkProductName(item?.nama_item||'');
+}
+
 function toast(s){const t=$('toast');t.textContent=s;t.classList.add('show');clearTimeout(toast.timer);const duration=String(s).includes('Stok bahan berikut tidak cukup')?Math.min(15000,Math.max(6500,String(s).length*45)):2600;toast.timer=setTimeout(()=>t.classList.remove('show'),duration)}
 function openDB(){return new Promise((resolve,reject)=>{const req=indexedDB.open(DB_NAME,DB_VERSION);req.onupgradeneeded=()=>{const d=req.result;for(const [name,key] of [['settings','key'],['products','id'],['transactions','id'],['details','id'],['materials','id'],['materialPurchases','id'],['recipes','id'],['assets','id'],['expenses','id']]){const st=d.objectStoreNames.contains(name)?req.transaction.objectStore(name):d.createObjectStore(name,{keyPath:key,autoIncrement:key==='id'});if(name!=='settings'&&!st.indexNames.contains('businessId'))st.createIndex('businessId','businessId',{unique:false});} };req.onsuccess=()=>{req.result.onversionchange=()=>req.result.close();resolve(req.result)};req.onerror=()=>reject(req.error)})}
 function request(store,mode,fn){return new Promise((resolve,reject)=>{const tx=db.transaction(store,mode),s=tx.objectStore(store);let result;try{result=fn(s)}catch(e){reject(e);return}tx.oncomplete=()=>{resolve(result&&'result'in result?result.result:result);if(mode==='readwrite'&&!window.__restoringBackup) scheduleAutomaticBackup()};tx.onerror=()=>reject(tx.error);tx.onabort=()=>reject(tx.error)})}
@@ -88,14 +100,14 @@ async function migrateMasterV3(){
     materialMap.set(Number(item.id),Number(mat.id));continue;
    }
    let prod=byTemplate(products,item.id);
-   if(!prod){prod=products.find(x=>x.source==='master'&&x.name===item.nama_item&&x.active!==false);if(!prod){const hasRecipe=(master.recipes||[]).some(r=>Number(r.product_template_id)===Number(item.id));const id=await add('products',{name:item.nama_item,category:item.kategori||item.kelompok||'',unit:item.satuan||'Pcs',price:Number(item.harga_jual||0),cost:Number(item.harga_beli||0),costMode:hasRecipe?'auto':'manual',stock:0,stockEnabled:!!item.pakai_stok,forSale:true,active:true,source:'master',templateItemId:item.id,referencePrice:true,referenceCost:true,referenceVersion:3,createdAt:dateNow()});prod={id:Number(id),templateItemId:item.id,name:item.nama_item,price:Number(item.harga_jual||0),cost:Number(item.harga_beli||0),costMode:hasRecipe?'auto':'manual',stock:0};products.push(prod);changed=true}}
+   if(!prod){prod=products.find(x=>x.source==='master'&&x.name===item.nama_item&&x.active!==false);if(!prod){const hasRecipe=(master.recipes||[]).some(r=>Number(r.product_template_id)===Number(item.id)&&!isSimpleDrinkProductName(item.nama_item));const id=await add('products',{name:item.nama_item,category:item.kategori||item.kelompok||'',unit:item.satuan||'Pcs',price:Number(item.harga_jual||0),cost:Number(item.harga_beli||0),costMode:hasRecipe?'auto':'manual',stock:0,stockEnabled:!!item.pakai_stok,forSale:true,active:true,source:'master',templateItemId:item.id,referencePrice:true,referenceCost:true,referenceVersion:3,createdAt:dateNow()});prod={id:Number(id),templateItemId:item.id,name:item.nama_item,price:Number(item.harga_jual||0),cost:Number(item.harga_beli||0),costMode:hasRecipe?'auto':'manual',stock:0};products.push(prod);changed=true}}
    // Fill only empty prices/costs. A nonzero user value is never replaced by the master.
    if(Number(prod.price||0)<=0&&Number(item.harga_jual||0)>0){prod.price=Number(item.harga_jual);prod.referencePrice=true;await put('products',prod);changed=true}
-   if(Number(prod.cost||0)<=0&&Number(item.harga_beli||0)>0){prod.cost=Number(item.harga_beli);prod.referenceCost=true;prod.costMode=(master.recipes||[]).some(r=>Number(r.product_template_id)===Number(item.id))?'auto':'manual';await put('products',prod);changed=true}else if(Number(prod.cost||0)>0&&!prod.costMode){prod.costMode='manual';await put('products',prod);changed=true}
+   if(Number(prod.cost||0)<=0&&Number(item.harga_beli||0)>0){prod.cost=Number(item.harga_beli);prod.referenceCost=true;prod.costMode=(master.recipes||[]).some(r=>Number(r.product_template_id)===Number(item.id)&&!isSimpleDrinkProductName(item.nama_item))?'auto':'manual';await put('products',prod);changed=true}else if(Number(prod.cost||0)>0&&!prod.costMode){prod.costMode='manual';await put('products',prod);changed=true}
    productMap.set(Number(item.id),Number(prod.id));
   }
   // Add only missing recipe templates. Existing user recipes are left untouched.
-  for(const r of (master.recipes||[]).filter(x=>Number(x.paket_id)===pid)){
+  for(const r of (master.recipes||[]).filter(x=>Number(x.paket_id)===pid&&!isSimpleDrinkProductName(master.items.find(i=>Number(i.id)===Number(x.product_template_id))?.nama_item))){
    const productId=productMap.get(Number(r.product_template_id));if(!productId)continue;
    if(recipes.some(x=>Number(x.productId)===productId))continue;
    const lines=(r.lines||[]).map(l=>({materialId:materialMap.get(Number(l.material_template_id))||Number(byTemplate(materials,l.material_template_id)?.id),qty:Number(l.qty||0),unit:l.unit||''})).filter(l=>l.materialId&&l.qty>0);
@@ -195,7 +207,7 @@ async function migrateMasterRecipeCompleteness(){
  for(const profile of businesses){
   const pid=Number(profile.packageId||0);if(!pid)continue;
   activeBusinessId=profile.id;currentProfile=profile;
-  const templateRecipes=(master.recipes||[]).filter(r=>Number(r.paket_id)===pid);
+  const templateRecipes=(master.recipes||[]).filter(r=>Number(r.paket_id)===pid&&!isSimpleDrinkProductName(master.items.find(i=>Number(i.id)===Number(r.product_template_id))?.nama_item));
   if(!templateRecipes.length)continue;
   let materials=await getAll('materials'),products=await getAll('products'),recipes=await getAll('recipes');
   const materialMap=new Map();
@@ -417,7 +429,7 @@ async function setupBusiness(){
  const productStore=tx.objectStore('products'),materialStore=tx.objectStore('materials'),assetStore=tx.objectStore('assets'),recipeStore=tx.objectStore('recipes');
  const productIds=new Map(),materialIds=new Map();let pending=templateItems.length,failed=false;
  const finishItem=()=>{pending--;if(pending!==0||failed)return;try{
-   (master.recipes||[]).filter(r=>Number(r.paket_id)===pid).forEach(r=>{
+   (master.recipes||[]).filter(r=>Number(r.paket_id)===pid&&!isSimpleDrinkProductName(master.items.find(i=>Number(i.id)===Number(r.product_template_id))?.nama_item)).forEach(r=>{
      const productId=productIds.get(Number(r.product_template_id));if(!productId)return;
      const lines=(r.lines||[]).map(line=>({materialId:materialIds.get(Number(line.material_template_id)),qty:Number(line.qty||0),unit:line.unit||''})).filter(line=>line.materialId&&line.qty>0);
      if(lines.length)recipeStore.add({businessId:id,productId,lines,mode:'auto',templateRecipeId:`v${master.schema_version||3}-${r.product_template_id}`,recipeBasis:r.recipe_basis||'unit',targetFinishedGrams:Number(r.target_finished_grams)||0,expectedYieldUnits:Number(r.expected_yield_units)||1,yieldUnit:r.yield_unit||'Pcs',recipeStatus:r.recipe_status||'referensi',formulaVersion:Number(r.formula_version)||1,createdAt:dateNow(),updatedAt:dateNow()});
@@ -433,7 +445,7 @@ async function setupBusiness(){
      req.onsuccess=()=>{materialIds.set(Number(i.id),Number(req.result));finishItem()};
      req.onerror=()=>{failed=true;};return;
    }else{
-     const hasRecipeTemplate=(master.recipes||[]).some(r=>Number(r.product_template_id)===Number(i.id));req=productStore.add({...base,price:Math.max(0,Number(i.harga_jual)||0),cost:Math.max(0,Number(i.harga_beli)||0),costMode:hasRecipeTemplate?'auto':'manual',stock:0,stockEnabled:!!i.pakai_stok,forSale:true,referenceCost:true});
+     const hasRecipeTemplate=(master.recipes||[]).some(r=>Number(r.product_template_id)===Number(i.id)&&!isSimpleDrinkProductName(i.nama_item));req=productStore.add({...base,price:Math.max(0,Number(i.harga_jual)||0),cost:Math.max(0,Number(i.harga_beli)||0),costMode:hasRecipeTemplate?'auto':'manual',stock:0,stockEnabled:!!i.pakai_stok,forSale:true,referenceCost:true});
      req.onsuccess=()=>{productIds.set(Number(i.id),Number(req.result));finishItem()};
      req.onerror=()=>{failed=true;};return;
    }
@@ -479,7 +491,7 @@ async function saveProduct(){
 async function deleteProduct(id){const p=await get('products',id);if(!p)return;if((await getAll('recipes')).some(r=>Number(r.productId)===Number(id))){if(!confirm('Produk memiliki komposisi. Hapus produk dan komposisinya?'))return;for(const r of await getAll('recipes'))if(Number(r.productId)===Number(id))await del('recipes',r.id)}else if(!confirm('Hapus produk ini?'))return;p.active=false;await put('products',p);cart=cart.filter(x=>Number(x.id)!==Number(id));await renderProducts();await renderCashItems();renderCart();toast('Produk dinonaktifkan. Riwayat transaksi lama tetap tersimpan.')}
 function unitDimension(unit){const u=String(unit||'').trim().toLowerCase();if(['g','gram','ons','hg','kg','kilo','mg'].includes(u))return {dim:'mass',factor:['kg','kilo'].includes(u)?1000:['ons','hg'].includes(u)?100:['mg'].includes(u)?0.001:1};if(['ml','mililiter','l','liter','litre','sendok makan','sdm','sendok teh','sdt'].includes(u))return {dim:'volume',factor:['l','liter','litre'].includes(u)?1000:['sendok makan','sdm'].includes(u)?15:['sendok teh','sdt'].includes(u)?5:1};if(['cm','m','meter'].includes(u))return {dim:'length',factor:['m','meter'].includes(u)?100:1};if(['pcs','pc','butir','buah','biji','unit','piece','pieces'].includes(u))return {dim:'count',factor:1};return {dim:'count:'+u,factor:1}}
 function convertQty(qty,from,to){const a=unitDimension(from),b=unitDimension(to);return a.dim===b.dim?Number(qty||0)*a.factor/b.factor:null}
-async function migrateInventoryModel(){const originalBusinessId=activeBusinessId;for(const business of businesses){activeBusinessId=business.id;const materials=await getAll('materials'),ps=await getAll('products'),legacy=ps.filter(x=>x.forSale===false),map=new Map();for(const x of legacy){let m=materials.find(y=>Number(y.legacyProductId)===Number(x.id));if(!m){const id=await add('materials',{name:x.name,category:x.category||'Bahan baku',unit:x.unit||'Pcs',cost:Number(x.cost||0),stock:Number(x.stock||0),stockEnabled:x.stockEnabled!==false,active:x.active!==false,legacyProductId:x.id,createdAt:x.createdAt||dateNow()});m={id:Number(id),legacyProductId:x.id};materials.push(m)}map.set(Number(x.id),Number(m.id));}for(const x of legacy){x.active=false;x.legacyMaterial=true;await put('products',x)}const existingRecipes=await getAll('recipes');for(const x of ps.filter(x=>x.forSale!==false&&Array.isArray(x.recipe)&&x.recipe.length)){if(existingRecipes.some(r=>Number(r.productId)===Number(x.id)))continue;const lines=x.recipe.map(r=>({materialId:map.get(Number(r.ingredientId)),qty:Number(r.qty||0),unit:r.unit||''})).filter(r=>r.materialId);if(lines.length)await add('recipes',{productId:x.id,lines,createdAt:dateNow(),updatedAt:dateNow()})}}activeBusinessId=originalBusinessId;currentProfile=await getCurrentProfile()}
+async function migrateInventoryModel(){const originalBusinessId=activeBusinessId;for(const business of businesses){activeBusinessId=business.id;const materials=await getAll('materials'),ps=await getAll('products'),legacy=ps.filter(x=>x.forSale===false),map=new Map();for(const x of legacy){let m=materials.find(y=>Number(y.legacyProductId)===Number(x.id));if(!m){const id=await add('materials',{name:x.name,category:x.category||'Bahan baku',unit:x.unit||'Pcs',cost:Number(x.cost||0),stock:Number(x.stock||0),stockEnabled:x.stockEnabled!==false,active:x.active!==false,legacyProductId:x.id,createdAt:x.createdAt||dateNow()});m={id:Number(id),legacyProductId:x.id};materials.push(m)}map.set(Number(x.id),Number(m.id));}for(const x of legacy){x.active=false;x.legacyMaterial=true;await put('products',x)}const existingRecipes=await getAll('recipes');for(const x of ps.filter(x=>x.forSale!==false&&Array.isArray(x.recipe)&&x.recipe.length)){if(existingRecipes.some(r=>Number(r.productId)===Number(x.id)))continue;const lines=x.recipe.map(r=>({materialId:map.get(Number(r.ingredientId)),qty:Number(r.qty||0),unit:r.unit||''})).filter(r=>r.materialId);if(lines.length)await add('recipes',{productId:x.id,lines,createdAt:dateNow(),updatedAt:dateNow()})}const latestRecipes=await getAll('recipes');for(const r of latestRecipes){const p=ps.find(x=>Number(x.id)===Number(r.productId));if(p&&r.templateRecipeId&&isSimpleDrinkProductName(p.name)){await del('recipes',r.id);if(p.costMode==='auto'){p.costMode='manual';await put('products',p)}}}}activeBusinessId=originalBusinessId;currentProfile=await getCurrentProfile()}
 async function renderProducts(){
  if(!db)return;
  const term=$('productSearch').value.trim().toLowerCase();

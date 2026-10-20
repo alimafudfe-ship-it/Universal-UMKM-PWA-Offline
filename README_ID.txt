@@ -117,3 +117,11 @@ PEMBARUAN v3.3.20 — KODE PENJUALAN SAJA
 
 
 Versi v3.3.49: panduan pengisian HPP diperjelas. Lihat PETUNJUK_HPP_MUDAH_v3.3.49.txt.
+
+
+PERBAIKAN v3.3.62 — KOMPOSISI OPSIONAL
+- Komposisi tetap tersedia untuk semua jenis usaha, tetapi tidak diwajibkan untuk semua produk.
+- Resep bawaan minuman sederhana (kopi susu, kopi hitam, teh manis, wedang jahe, jus, dan minuman sejenis) dihapus dari template.
+- Pada data lama, hanya resep bawaan bertanda template yang dihapus untuk minuman sederhana; komposisi buatan pengguna dipertahankan.
+- Minuman sederhana tidak lagi memicu pemeriksaan satuan komposisi bawaan. Produk kue/produksi tetap dapat memakai resep dan konversi satuan.
+- HPP produk minuman yang resep bawaannya dihapus beralih ke mode manual dengan nilai HPP tersimpan tetap dipertahankan.

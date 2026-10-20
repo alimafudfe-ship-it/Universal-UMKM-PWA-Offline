@@ -2,7 +2,7 @@
   "id": "./",
   "name": "Universal UMKM Pro",
   "short_name": "UMKM Pro",
-  "description": "Universal UMKM Pro v3.3.61 — tambah stok langsung dari peringatan bahan kurang saat transaksi",
+  "description": "Universal UMKM Pro v3.3.62 — komposisi opsional dan minuman sederhana tanpa resep bawaan",
   "start_url": "./index.html",
   "scope": "./",
   "display": "standalone",

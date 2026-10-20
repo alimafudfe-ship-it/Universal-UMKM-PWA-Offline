@@ -1,0 +1,10 @@
+Universal UMKM Pro v3.3.62 — Perbaikan khusus
+
+1. Komposisi tetap tersedia untuk semua jenis usaha dan tetap opsional per produk.
+2. Resep bawaan minuman sederhana seperti kopi susu, kopi hitam, teh manis, wedang jahe, jus, dan minuman sachet tidak lagi dipasang pada paket usaha baru.
+3. Migrasi menghapus hanya resep template bawaan untuk minuman sederhana; resep buatan pengguna yang tidak bertanda template dipertahankan.
+4. Produk kue dan produksi tetap mendukung komposisi, HPP otomatis, konversi satuan, serta pemeriksaan stok bahan.
+5. HPP yang sudah tersimpan untuk minuman tidak dikosongkan; mode HPP menjadi manual agar tidak memaksa resep.
+6. Data transaksi, pembelian, stok, dan riwayat tidak dihapus.
+
+Pengujian teknis: sintaks JavaScript diperiksa; transaksi langsung di perangkat pengguna belum diuji. Backup data sebelum mengganti versi.
