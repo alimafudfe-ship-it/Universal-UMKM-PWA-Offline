@@ -125,3 +125,21 @@ PERBAIKAN v3.3.62 — KOMPOSISI OPSIONAL
 - Pada data lama, hanya resep bawaan bertanda template yang dihapus untuk minuman sederhana; komposisi buatan pengguna dipertahankan.
 - Minuman sederhana tidak lagi memicu pemeriksaan satuan komposisi bawaan. Produk kue/produksi tetap dapat memakai resep dan konversi satuan.
 - HPP produk minuman yang resep bawaannya dihapus beralih ke mode manual dengan nilai HPP tersimpan tetap dipertahankan.
+
+
+VERSI 3.3.63 — KATALOG TOKO KUE & BAKERY PREMIUM
+- Menambah katalog roti premium, roti satuan, cake, pastry, dan jajanan gurih sesuai daftar harga referensi pengguna.
+- Menambahkan bahan baku baru yang dibutuhkan oleh komposisi produk.
+- Menambahkan formula komposisi awal per satuan jual untuk menghitung HPP dan kebutuhan stok bahan.
+- Formula merupakan acuan awal yang belum divalidasi; lakukan uji dapur dan sesuaikan harga pemasok, ukuran hasil, dan takaran sebelum dipakai untuk produksi nyata.
+- Migrasi untuk usaha Toko Kue / Bakery yang sudah ada hanya menambah item template yang belum ada dan resep template; tidak menghapus transaksi, stok, atau riwayat pembelian.
+- Harga jual adalah referensi dari daftar pengguna; harga normal dicatat di deskripsi produk jika tersedia.
+
+
+PATCH v3.3.63 — TAMBAHAN TOKO KUE / BAKERY PREMIUM
+File patch yang perlu diganti: app.js, master.json, sw.js. README_ID.txt berisi catatan versi.
+Katalog baru: 35 produk tambahan termasuk roti premium, roti satuan, cake, pastry, dan jajanan gurih. Formula komposisi awal terhubung ke bahan baku dan unit stok yang sesuai.
+Untuk usaha Toko Kue / Bakery yang sudah ada, migrasi menambahkan item template yang belum ada dan menjaga transaksi, stok, pembelian, serta produk yang sudah tersimpan. Formula bawaan yang belum diedit dapat disegarkan dari master; resep kustom tidak ditimpa.
+Harga normal dicatat pada deskripsi bila diberikan. Roti Tawar Klasik menggunakan harga awal Rp10.000 dengan catatan rentang Rp10.000–14.700 sesuai varian.
+PENTING: formula ini adalah rancangan referensi awal, bukan resep yang telah divalidasi. Uji hasil dapur, ukuran hasil, rasa, keamanan pangan, dan HPP aktual sebelum produksi/penjualan. Sesuaikan harga bahan dan takaran dengan pemasok serta proses usaha Anda.
+Pemasangan patch: ekstrak ZIP, lalu timpa app.js, master.json, dan sw.js pada folder/repository aplikasi. Publikasikan ulang jika memakai GitHub Pages. Setelah terbit, tutup aplikasi dan buka ulang online agar service worker mengambil versi baru. Buat backup data sebelum mencoba.
