@@ -1,0 +1,12 @@
+UNIVERSAL UMKM PRO v3.3.56 — STANDAR SATUAN & KEMASAN UNIVERSAL
+
+Perubahan utama:
+1. Barang jual yang pengelolaan stoknya diaktifkan sekarang muncul di Bahan & Belanja pada semua paket usaha, bukan hanya Toko Retail.
+2. Pembelian barang jual memperbarui catatan produk yang sama dengan yang dipakai Kasir. Penjualan akan mengurangi stok produk tersebut bila Kelola Stok diaktifkan.
+3. Pembelian bahan dan barang tetap mendukung konversi kemasan: renceng, pack, dus, karung, rim, kotak, dan satuan kemasan lain yang diatur per barang.
+4. Contoh: satu renceng kopi berisi 10 sachet; pembelian 3 renceng menambah 30 sachet. Satu dus susu berisi 24 kaleng; pembelian 2 dus menambah 48 kaleng.
+5. Riwayat pembelian menyimpan satuan kemasan, isi per kemasan, jumlah stok masuk, harga dan total belanja.
+6. Barang jual yang stoknya nonaktif dan layanan tidak otomatis menjadi persediaan fisik. Menu racikan tetap bisa memakai komposisi/resep jika ingin stok bahan berkurang otomatis.
+7. Untuk barang dengan kemasan berbeda, isi per kemasan harus ditentukan oleh pengguna; aplikasi tidak menebak isi renceng/dus.
+
+Pengujian yang dilakukan: node --check app.js dan pemeriksaan integritas ZIP. Belum dilakukan pengujian penuh melalui browser/HP. Backup data sebelum mengganti versi.
