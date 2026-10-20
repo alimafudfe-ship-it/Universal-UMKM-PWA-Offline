@@ -1,0 +1,12 @@
+UNIVERSAL UMKM PRO v3.3.61 — TAMBAH STOK LANGSUNG DARI KASIR
+
+Perubahan:
+- Saat simpan transaksi, semua bahan resep yang stoknya kurang ditampilkan sekaligus.
+- Pengguna bisa mengubah jumlah tambahan stok dan harga beli per satuan pada dialog yang sama.
+- Tambahan stok dicatat di riwayat pembelian dan harga modal rata-rata diperbarui.
+- Setelah stok ditambahkan, aplikasi memeriksa kembali dan mencoba melanjutkan transaksi.
+- Jumlah tambahan 0 berarti bahan itu tidak dibeli; bila stok tetap kurang, peringatan akan muncul kembali.
+- Transaksi penjualan tidak disimpan sebelum pemeriksaan stok resep lulus.
+
+Pengujian otomatis yang dilakukan: pemeriksaan sintaks JavaScript (node --check), pengecekan elemen dialog dan tombol, serta pemeriksaan integritas ZIP.
+Pengujian transaksi di HP/browser dengan data pengguna belum dilakukan. Buat backup sebelum mengganti file aplikasi.
