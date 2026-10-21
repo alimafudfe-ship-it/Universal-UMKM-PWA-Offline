@@ -1,5 +1,5 @@
 'use strict';
-window.APP_BUILD_VERSION='3.3.69';document.documentElement.dataset.appVersion='3.3.69';
+window.APP_BUILD_VERSION='3.3.70';document.documentElement.dataset.appVersion='3.3.70';
 const DB_NAME='UniversalUMKMProOffline', DB_VERSION=4;
 let db, master, cart=[], lastReceipt=null, selectedPackageId=null, currentProfile=null, recipeDraft=[], businesses=[], activeBusinessId=null, licenseSlots=1, purchaseSearchSeq=0;
 const $=id=>document.getElementById(id);
@@ -539,7 +539,72 @@ async function migrateDuplicateSaleInventory(){
  }
  activeBusinessId=originalBusinessId;currentProfile=await getCurrentProfile();
 }
-async function boot(){try{db=await openDB();master=await loadMaster();await migrateMultiBusiness();await migrateMasterV3();await migrateBakeryCatalog();await migrateBakeryCompositionSync();await migrateWarungKopiCatalog();await migrateRetailCatalog();await migrateDuplicateSaleInventory();await migratePremiumBatchRecipes();await migrateMasterRecipeCompleteness();await migrateResaleProductRecipes();await migrateCateringEquipmentToAssets();await ensureTransactionNumbering();renderBusinessCatalog();$('nav').hidden=!currentProfile;if(currentProfile){$('shopTitle').textContent=currentProfile.name;$('headerSubtitle').textContent=currentProfile.business+' • data lokal';showPage(currentProfile.setupWizard&&currentProfile.setupWizard.finishedAt?'home':'wizard')}else{$('shopTitle').textContent='Pilih Jenis Usaha';$('headerSubtitle').textContent='Satu aplikasi untuk beberapa usaha';showPage('home')}}catch(e){console.error(e);alert('Aplikasi belum siap. Buka melalui alamat HTTPS dan muat ulang saat online. Detail: '+e.message)}}
+function materialNameKey(value){return String(value||'').trim().toLocaleLowerCase('id').replace(/\s+/g,' ')}
+function collapseRecipeLines(lines){
+ const output=[];
+ for(const raw of (Array.isArray(lines)?lines:[])){
+  const line={...raw,materialId:Number(raw.materialId),qty:Number(raw.qty||0),unit:String(raw.unit||'Pcs').trim()||'Pcs'};
+  if(!line.materialId||!(line.qty>0)||!Number.isFinite(line.qty)){output.push(line);continue}
+  let merged=false;
+  for(const prior of output){
+   if(Number(prior.materialId)!==line.materialId)continue;
+   const converted=convertQty(line.qty,line.unit,prior.unit||line.unit);
+   if(converted===null)continue;
+   const aHas=prior.unitPrice!==undefined&&prior.unitPrice!==null&&Number.isFinite(Number(prior.unitPrice));
+   const bHas=line.unitPrice!==undefined&&line.unitPrice!==null&&Number.isFinite(Number(line.unitPrice));
+   if(aHas!==bHas)continue;
+   const priorQty=Number(prior.qty)||0;
+   if(aHas&&bHas){const priorCost=priorQty*Number(prior.unitPrice),lineCost=line.qty*Number(line.unitPrice);prior.qty=priorQty+converted;prior.unitPrice=(priorCost+lineCost)/Math.max(0.000000001,prior.qty)}
+   else prior.qty=priorQty+converted;
+   merged=true;break;
+  }
+  if(!merged)output.push(line);
+ }
+ return output;
+}
+async function migrateDuplicateMaterialsAndRecipeLines(){
+ const originalId=activeBusinessId,originalProfile=currentProfile;let mergedMaterials=0,collapsedLines=0;
+ for(const business of businesses){
+  activeBusinessId=business.id;currentProfile=business;
+  const allBusinessMaterials=await getAll('materials');
+  // Paket Gorengan & Camilan previously used a broad label that overlapped with the separate Garam item.
+  if(Number(business.packageId)===17){for(const material of allBusinessMaterials){if(Number(material.templateItemId)===530&&String(material.name||'').trim()==='Bumbu & Garam'){material.name='Bumbu Racik (opsional)';material.category='Bumbu dan bahan tambahan';material.updatedAt=dateNow();await put('materials',material)}}}
+  const materials=allBusinessMaterials.filter(m=>m.active!==false);
+  const recipes=await getAll('recipes');
+  const usage=new Map();for(const r of recipes)for(const line of r.lines||[])usage.set(Number(line.materialId),(usage.get(Number(line.materialId))||0)+1);
+  const groups=new Map();
+  for(const m of materials){const key=materialNameKey(m.name);if(!key)continue;if(!groups.has(key))groups.set(key,[]);groups.get(key).push(m)}
+  const redirects=new Map();
+  for(const [key,rows] of groups){
+   if(rows.length<2)continue;
+   rows.sort((a,b)=>Number(!!(b.source==='master'&&b.templateItemId))-Number(!!(a.source==='master'&&a.templateItemId))||(usage.get(Number(b.id))||0)-(usage.get(Number(a.id))||0)||Number(a.id)-Number(b.id));
+   const canonicals=[];
+   for(const row of rows){
+    let target=canonicals.find(c=>convertQty(1,row.unit||'Pcs',c.unit||'Pcs')!==null);
+    if(!target){canonicals.push(row);continue;}
+    const convertedStock=convertQty(Number(row.stock||0),row.unit||'Pcs',target.unit||'Pcs');
+    if(convertedStock===null)continue;
+    const oldStock=Math.max(0,Number(target.stock)||0),newStock=Math.max(0,convertedStock),targetCost=Math.max(0,Number(target.cost)||0);
+    const rowToTarget=convertQty(1,target.unit||'Pcs',row.unit||'Pcs');
+    const rowCost=rowToTarget===null?0:Math.max(0,Number(row.cost)||0)*rowToTarget;
+    if(oldStock+newStock>0){if(newStock>0&&rowCost>0)target.cost=(oldStock*targetCost+newStock*rowCost)/(oldStock+newStock);else if(!(targetCost>0)&&rowCost>0)target.cost=rowCost}
+    else if(!(targetCost>0)&&rowCost>0)target.cost=rowCost;
+    target.stock=oldStock+newStock;target.updatedAt=dateNow();await put('materials',target);
+    row.stock=0;row.active=false;row.mergedIntoMaterialId=Number(target.id);row.updatedAt=dateNow();await put('materials',row);
+    redirects.set(Number(row.id),Number(target.id));mergedMaterials++;
+   }
+  }
+  for(const recipe of recipes){
+   let touched=false;
+   const redirected=(recipe.lines||[]).map(line=>{const next=redirects.get(Number(line.materialId));if(next){touched=true;return {...line,materialId:next}}return line});
+   const collapsed=collapseRecipeLines(redirected);if(collapsed.length!==redirected.length){touched=true;collapsedLines+=redirected.length-collapsed.length}
+   if(touched){recipe.lines=collapsed;recipe.updatedAt=dateNow();await put('recipes',recipe)}
+  }
+ }
+ activeBusinessId=originalId;currentProfile=businesses.find(b=>String(b.id)===String(originalId))||originalProfile;
+ if(mergedMaterials||collapsedLines){console.info(`[3.3.70] Perapian duplikasi: ${mergedMaterials} bahan digabung, ${collapsedLines} baris komposisi dirapikan.`);if(currentProfile)await recalculateRecipeCosts()}
+}
+async function boot(){try{db=await openDB();master=await loadMaster();await migrateMultiBusiness();await migrateMasterV3();await migrateBakeryCatalog();await migrateBakeryCompositionSync();await migrateWarungKopiCatalog();await migrateRetailCatalog();await migrateDuplicateSaleInventory();await migratePremiumBatchRecipes();await migrateMasterRecipeCompleteness();await migrateResaleProductRecipes();await migrateCateringEquipmentToAssets();await migrateDuplicateMaterialsAndRecipeLines();await ensureTransactionNumbering();renderBusinessCatalog();$('nav').hidden=!currentProfile;if(currentProfile){$('shopTitle').textContent=currentProfile.name;$('headerSubtitle').textContent=currentProfile.business+' • data lokal';showPage(currentProfile.setupWizard&&currentProfile.setupWizard.finishedAt?'home':'wizard')}else{$('shopTitle').textContent='Pilih Jenis Usaha';$('headerSubtitle').textContent='Satu aplikasi untuk beberapa usaha';showPage('home')}}catch(e){console.error(e);alert('Aplikasi belum siap. Buka melalui alamat HTTPS dan muat ulang saat online. Detail: '+e.message)}}
 function businessIcon(name){const n=(name||'').toLowerCase();if(n.includes('gorengan')||n.includes('camilan'))return ['🍘','amber'];if(n.includes('kopi')||n.includes('minuman'))return ['☕','amber'];if(n.includes('nasi uduk')||n.includes('sarapan'))return ['🍳','orange'];if(n.includes('pecel lele')||n.includes('warung makan'))return ['🍛','orange'];if(n.includes('bakso')||n.includes('mi ayam')||n.includes('soto'))return ['🍜','orange'];if(n.includes('jajanan jalanan'))return ['🍢','rose'];if(n.includes('martabak')||n.includes('roti bakar'))return ['🥞','amber'];if(n.includes('jus buah')||n.includes('es campur'))return ['🧃','green'];if(n.includes('café')||n.includes('cafe')||n.includes('resto'))return ['☕','amber'];if(n.includes('catering'))return ['🍱','orange'];if(n.includes('depot air'))return ['💧','blue'];if(n.includes('frozen'))return ['❄️','cyan'];if(n.includes('konter hp'))return ['📱','violet'];if(n.includes('laundry'))return ['🧺','blue'];if(n.includes('makanan online'))return ['🍜','orange'];if(n.includes('percetakan')||n.includes('fotokopi'))return ['🖨️','slate'];if(n.includes('pet shop'))return ['🐾','green'];if(n.includes('salon'))return ['✂️','rose'];if(n.includes('kosmetik'))return ['💄','rose'];if(n.includes('kue')||n.includes('bakery'))return ['🧁','amber'];if(n.includes('pakaian'))return ['👕','violet'];if(n.includes('retail'))return ['🛍️','green'];if(n.includes('sembako')||n.includes('grosir'))return ['🛒','green'];if(n.includes('warung makan'))return ['🍛','orange'];return ['🏪','slate']}
 function renderBusinessCatalog(){if(!master)return;const term=($('businessSearch')?.value||'').trim().toLowerCase();const packs=master.packages.filter(p=>p.nama_usaha.toLowerCase().includes(term)||p.deskripsi.toLowerCase().includes(term));$('businessCount').textContent=`${packs.length} paket`;const root=$('businessCatalog');root.innerHTML=packs.length?packs.map(p=>{const [ico,tone]=businessIcon(p.nama_usaha);const active=businesses.find(b=>Number(b.packageId)===Number(p.id));const locked=!active&&businesses.length>=licenseSlots;return `<button type="button" class="business-card ${active?'current-package':''}" data-package="${p.id}"><span class="business-icon ${tone}">${ico}</span><span class="business-copy"><strong>${esc(p.nama_usaha)}</strong><small>${esc(shortBusinessDescription(p.nama_usaha))}${active?' • sudah dibuat':locked?' • 🔒 batas paket tercapai':''}</small></span><span class="business-arrow">${active?'✓':locked?'🔒':'›'}</span></button>`}).join(''):'<div class="empty">Jenis usaha tidak ditemukan. Coba kata kunci lain.</div>';root.querySelectorAll('[data-package]').forEach(b=>b.onclick=()=>selectBusinessPackage(Number(b.dataset.package)));renderExistingBusiness(currentProfile)}
 function renderExistingBusiness(p){const root=$('existingBusiness');if(!businesses.length){root.hidden=true;return}root.hidden=false;root.innerHTML=`<div class="business-manager"><div class="business-manager-head"><div><small>USAHA TERSIMPAN</small><strong>${businesses.length} dari ${licenseSlots} usaha digunakan</strong></div><label class="license-select">Paket lisensi<select id="licenseSlotsSelect">${Array.from({length:25},(_,i)=>i+1).map(n=>`<option value="${n}" ${licenseSlots===n?'selected':''}>${n} usaha • Rp${priceForBusinessCount(n).toLocaleString('id-ID')}</option>`).join('')}</select></label></div><div class="business-switcher">${businesses.map(b=>`<div class="business-switch-row"><button type="button" class="business-switch ${String(b.id)===String(activeBusinessId)?'active':''}" data-switch-business="${esc(b.id)}"><strong>${esc(b.name)}</strong><small>${esc(b.business)}</small></button><span>${String(b.id)===String(activeBusinessId)?'Aktif':'Tersimpan'}</span></div>`).join('')}</div><button type="button" class="primary" id="enterExisting">Masuk ke usaha aktif</button><p class="muted">Data usaha tersimpan terpisah. Usaha yang dikunci tidak dihapus.</p></div>`;$('enterExisting').onclick=()=>enterBusiness();root.querySelectorAll('[data-switch-business]').forEach(b=>b.onclick=async()=>{activeBusinessId=b.dataset.switchBusiness;currentProfile=await getCurrentProfile();cart=[];renderCart();await saveBusinessList();renderBusinessCatalog();$('shopTitle').textContent=currentProfile.name;$('headerSubtitle').textContent=currentProfile.business+' • data lokal';toast('Usaha aktif diganti.');showPage(currentProfile&&!(currentProfile.setupWizard&&currentProfile.setupWizard.finishedAt)?'wizard':'products')});$('licenseSlotsSelect').onchange=async e=>{const n=Number(e.target.value);if(n<businesses.length){toast(`Paket tidak bisa diturunkan: masih ada ${businesses.length} usaha tersimpan. Kunci atau ekspor usaha terlebih dahulu.`);e.target.value=String(licenseSlots);return}licenseSlots=n;if($('packageCount'))$('packageCount').value=String(n);updatePackagePrice();await saveBusinessList();renderBusinessCatalog();toast('Batas paket diperbarui di perangkat ini. Pembayaran belum diverifikasi.')}}
@@ -1039,10 +1104,11 @@ async function saveRecipePage(){
    lines.push({materialId:Number(m.id),qty:item.qty,unit:existingUnit,unitPrice:item.price});
   }
   if(existing)await del('recipes',existing.id);
-  await add('recipes',{productId:Number(product.id),lines,variants,mode:'auto',recipeBasis,targetFinishedGrams:recipeBasis==='finished_kg'?targetFinishedGrams:0,expectedYieldUnits:recipeBasis==='finished_kg'?expectedYieldUnits:1,yieldUnit:product.unit||'Pcs',recipeStatus:recipeBasis==='finished_kg'?'formula_awal_perlu_uji_dapur':'resep_usaha',instructions,instructionStatus,instructionsUpdatedAt:dateNow(),createdAt:existing?.createdAt||dateNow(),updatedAt:dateNow()});
+  const cleanedLines=collapseRecipeLines(lines);
+  await add('recipes',{productId:Number(product.id),lines:cleanedLines,variants,mode:'auto',recipeBasis,targetFinishedGrams:recipeBasis==='finished_kg'?targetFinishedGrams:0,expectedYieldUnits:recipeBasis==='finished_kg'?expectedYieldUnits:1,yieldUnit:product.unit||'Pcs',recipeStatus:recipeBasis==='finished_kg'?'formula_awal_perlu_uji_dapur':'resep_usaha',instructions,instructionStatus,instructionsUpdatedAt:dateNow(),createdAt:existing?.createdAt||dateNow(),updatedAt:dateNow()});
   if(variants.length){const defaultVariant=variants.find(v=>v.name.toLocaleLowerCase('id')==='sedang')||variants[0];product.price=Number(defaultVariant.price)||0;product.defaultRecipeSize=defaultVariant.name;}product.costMode='auto';await put('products',product);
   await recalculateRecipeCosts();await renderProducts();await renderCashItems();await renderRecipePage();$('recipeProduct').value=product.name;await renderRecipeForm();
-  toast(`Komposisi ${product.name} tersimpan. HPP bahan dasar ${money(prepared.reduce((a,x)=>a+x.qty*x.price,0))}. HPP ukuran mengikuti pengali takaran.`);
+  toast(`Komposisi ${product.name} tersimpan. ${lines.length-cleanedLines.length>0?`${lines.length-cleanedLines.length} bahan berulang digabung. `:''}HPP bahan dasar ${money(prepared.reduce((a,x)=>a+x.qty*x.price,0))}. HPP ukuran mengikuti pengali takaran.`);
  }catch(err){console.error(err);toast('Gagal menyimpan komposisi: '+(err.message||'kesalahan database'));}
 }
 async function renderAssets(){const assets=(await getAll('assets')).filter(a=>a.active!==false&&((($('assetSearch').value||'').trim().toLowerCase())===''||a.name.toLowerCase().includes(($('assetSearch').value||'').trim().toLowerCase())));$('assetsList').innerHTML=assets.length?assets.map(a=>`<div class="productrow"><div class="info"><strong>${esc(a.name)}</strong><div class="muted">${esc(a.category||'Peralatan')} · Beli ${money(a.cost)} · ${esc(a.date||'Tanggal belum diisi')}</div>${a.lifeMonths?`<div class="muted">Penyusutan opsional: ${money(Number(a.cost||0)/Number(a.lifeMonths))}/bulan</div>`:''}</div><div class="rowactions"><button data-aedit="${a.id}">Edit</button><button data-adel="${a.id}">Hapus</button></div></div>`).join(''):'<div class="empty">Belum ada investasi/peralatan.</div>';const all=await getAll('assets');$('assetsList').querySelectorAll('[data-aedit]').forEach(b=>b.onclick=()=>{const a=all.find(x=>x.id===Number(b.dataset.aedit));$('assetId').value=a.id;$('assetName').value=a.name;$('assetCategory').value=a.category||'';$('assetCost').value=a.cost||0;$('assetDate').value=a.date||'';$('assetLife').value=a.lifeMonths||'';window.scrollTo({top:0,behavior:'smooth'})});$('assetsList').querySelectorAll('[data-adel]').forEach(b=>b.onclick=async()=>{if(!confirm('Hapus catatan aset ini?'))return;const a=await get('assets',Number(b.dataset.adel));a.active=false;await put('assets',a);renderAssets()})}

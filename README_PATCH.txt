@@ -1,19 +1,17 @@
-Universal UMKM Pro v3.3.69 — Patch prinsip satu catatan stok
+Universal UMKM Pro v3.3.70 — Patch perapian bahan dan komposisi ganda
 
-Isi patch: app.js, index.html, sw.js.
+Isi patch: app.js, index.html, sw.js, master.json.
 
-Perubahan utama:
-- Bahan & Belanja dipertegas sebagai pusat pembelian, penambahan stok, penyesuaian stok, dan riwayat pembelian.
-- Pembelian produk yang sudah terdaftar mengubah stok pada record produk yang sama; produk jual yang belum mengaktifkan stok tetap dapat dipilih pada jenis usaha toko barang jadi.
-- Pada jenis usaha toko barang jadi (termasuk pakaian), menu Bahan & Belanja menampilkan produk dagangan, bukan daftar bahan baku.
-- Produk dagangan baru pada jenis usaha toko barang jadi dibuat sebagai produk dan stok awalnya berasal dari transaksi pembelian yang disimpan.
-- Pada jenis usaha produksi, bahan baku tetap dikelola sebagai bahan, dan produk yang stoknya dikelola tetap tersedia untuk pembelian.
-- Tidak menghapus data transaksi, riwayat pembelian, produk, atau bahan yang sudah tersimpan. Catatan bahan lama yang memiliki nama sama dengan produk tidak dimigrasikan otomatis; buat/aktifkan produk yang sesuai terlebih dahulu untuk mencegah dua stok baru yang terpisah.
+Perbaikan:
+- Menyatukan bahan aktif yang memiliki nama sama (beda kapitalisasi/spasi) dan satuan yang bisa dikonversi, agar tidak tampil sebagai bahan ganda. Stok dikonversi lalu dijumlahkan ke satu bahan utama; bahan duplikat dinonaktifkan, bukan dihapus permanen.
+- Mengalihkan relasi komposisi ke bahan utama dan menggabungkan baris komposisi berulang yang merujuk bahan sama dengan satuan yang kompatibel. Jika biaya per satuan tersedia, biaya total dijaga saat baris digabung.
+- Saat komposisi baru disimpan, baris bahan berulang yang kompatibel juga digabung.
+- Pada paket Gorengan & Camilan, label “Bumbu & Garam” diubah menjadi “Bumbu Racik (opsional)” agar tidak tampak sama dengan bahan “Garam”; bahan template lama di perangkat juga ikut diganti namanya.
+- Versi halaman, script, dan cache service worker diseragamkan ke v3.3.70.
 
-Pemasangan:
-1. Cadangkan data aplikasi.
-2. Ganti app.js, index.html, dan sw.js di repositori GitHub Pages.
-3. Commit perubahan dan tunggu deploy selesai.
-4. Buka aplikasi online, pilih jenis usaha, lalu uji pembelian kecil pada produk contoh.
+Penting:
+- Sebelum memasang, unduh backup data aplikasi.
+- Migrasi hanya menggabungkan bahan aktif dengan nama sama dan satuan kompatibel. Riwayat pembelian lama dipertahankan; baris bahan duplikat dinonaktifkan, tidak dihapus.
+- Setelah commit ke GitHub Pages, buka aplikasi online dan tekan Ctrl+Shift+R. Data lokal akan diperiksa dan dirapikan saat aplikasi mulai.
 
-Pemeriksaan lokal: node --check app.js dan sw.js serta integritas ZIP. Belum diuji langsung pada browser/HP pengguna.
+Pemeriksaan lokal: jalankan node --check pada app.js dan sw.js, lalu unzip -t pada ZIP. Belum diuji dengan transaksi langsung di browser pengguna.
