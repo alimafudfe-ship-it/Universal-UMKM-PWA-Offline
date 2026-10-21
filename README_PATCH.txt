@@ -1,17 +1,18 @@
-Universal UMKM Pro v3.3.70 — Patch perapian bahan dan komposisi ganda
+Universal UMKM Pro v3.3.71 — Patch duplikasi Bahan & Belanja
 
 Isi patch: app.js, index.html, sw.js, master.json.
 
 Perbaikan:
-- Menyatukan bahan aktif yang memiliki nama sama (beda kapitalisasi/spasi) dan satuan yang bisa dikonversi, agar tidak tampil sebagai bahan ganda. Stok dikonversi lalu dijumlahkan ke satu bahan utama; bahan duplikat dinonaktifkan, bukan dihapus permanen.
-- Mengalihkan relasi komposisi ke bahan utama dan menggabungkan baris komposisi berulang yang merujuk bahan sama dengan satuan yang kompatibel. Jika biaya per satuan tersedia, biaya total dijaga saat baris digabung.
-- Saat komposisi baru disimpan, baris bahan berulang yang kompatibel juga digabung.
-- Pada paket Gorengan & Camilan, label “Bumbu & Garam” diubah menjadi “Bumbu Racik (opsional)” agar tidak tampak sama dengan bahan “Garam”; bahan template lama di perangkat juga ikut diganti namanya.
-- Versi halaman, script, dan cache service worker diseragamkan ke v3.3.70.
+- Melanjutkan migrasi v3.3.70 untuk menggabungkan bahan aktif bernama sama dengan satuan yang kompatibel dan merapikan baris komposisi ganda.
+- Menambahkan penyaringan cadangan pada daftar Bahan & Belanja dan pilihan pembelian agar record dengan jenis, nama, dan satuan stok yang sama tidak ditampilkan berulang.
+- Pilihan pembelian tetap mengarah ke satu record bahan/produk; stok duplikat yang kompatibel dirapikan oleh migrasi data, bukan sekadar disembunyikan.
+- Riwayat pembelian tidak dihapus karena setiap baris merupakan transaksi historis.
+- Versi halaman dan cache service worker dinaikkan ke v3.3.71 agar perangkat mengambil file terbaru.
 
-Penting:
-- Sebelum memasang, unduh backup data aplikasi.
-- Migrasi hanya menggabungkan bahan aktif dengan nama sama dan satuan kompatibel. Riwayat pembelian lama dipertahankan; baris bahan duplikat dinonaktifkan, tidak dihapus.
-- Setelah commit ke GitHub Pages, buka aplikasi online dan tekan Ctrl+Shift+R. Data lokal akan diperiksa dan dirapikan saat aplikasi mulai.
+Cara memasang:
+1. Buat backup data dari menu Profil & Backup.
+2. Ekstrak ZIP ini dan unggah/commit semua file di dalamnya ke root repositori GitHub Pages, menimpa file lama.
+3. Buka aplikasi saat online lalu tekan Ctrl+Shift+R. Di HP, tutup aplikasi/PWA sepenuhnya, buka kembali saat online, dan tunggu pemuatan selesai.
+4. Periksa Bahan & Belanja, pilihan bahan pada formulir pembelian, dan komposisi Gorengan & Camilan.
 
-Pemeriksaan lokal: jalankan node --check pada app.js dan sw.js, lalu unzip -t pada ZIP. Belum diuji dengan transaksi langsung di browser pengguna.
+Catatan pengujian: pemeriksaan sintaks dan integritas ZIP dilakukan secara lokal. Belum diuji melalui transaksi langsung pada perangkat pengguna.
