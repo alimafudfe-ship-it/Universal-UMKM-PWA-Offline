@@ -1,15 +1,7 @@
-Universal UMKM Pro v3.3.72 — Perbaikan pilihan duplikat Bahan & Belanja (Gorengan & Camilan)
+Universal UMKM Pro v3.3.73 — Produk Berkomposisi Tidak Masuk Bahan & Belanja
 
-Perubahan utama:
-- Penyaringan daftar stok dan pilihan pembelian sekarang menganggap nama sama dengan satuan yang kompatibel sebagai satu pilihan, meskipun data lama tersimpan sebagai record bahan dan produk berbeda.
-- Tidak menggabungkan otomatis satuan yang tidak kompatibel, untuk menghindari stok salah (contoh kg dan butir).
-- Cache service worker dan versi halaman dinaikkan agar perangkat meminta file terbaru.
-- Riwayat pembelian lama tidak dihapus.
+Patch ini melanjutkan file v3.3.72. Produk yang memiliki komposisi/resep tersimpan (recipe dengan baris bahan) tetap ada di Produk & Jasa dan Kasir, tetapi tidak lagi ditampilkan di daftar Bahan & Belanja atau pilihan pembelian. Bahan baku tetap tampil untuk usaha produksi. Produk yang dibeli untuk dijual kembali dan tidak memiliki resep tetap dapat dibeli sebagai barang dagangan.
 
-Pemasangan:
-1. Backup data lewat Profil & Backup.
-2. Ekstrak ZIP dan unggah/commit app.js, index.html, sw.js, dan master.json ke root repositori GitHub Pages, timpa file lama.
-3. Tunggu deployment GitHub Pages selesai. Di desktop buka situs lalu Ctrl+Shift+R. Di HP tutup PWA sepenuhnya, buka ulang saat online dan tunggu sampai selesai memuat.
-4. Buka paket Gorengan & Camilan, periksa Bahan & Belanja serta pilihan pembelian.
+Pemasangan: backup data lokal terlebih dahulu. Unggah dan timpa app.js, index.html, dan sw.js di root repositori GitHub Pages. master.json tidak diubah oleh patch ini. Setelah Pages selesai, buka aplikasi online lalu lakukan hard refresh (Ctrl+Shift+R) di desktop atau tutup penuh dan buka kembali PWA di HP.
 
-Catatan: Patch memperbaiki tampilan/pilihan yang dobel untuk nama dan satuan kompatibel. Belum diuji dengan database lokal pengguna secara langsung. Setelah pemasangan, pastikan satu bahan hanya muncul sekali dan stok/HPP tetap benar.
+Catatan: patch menyaring produk berdasarkan komposisi yang tersimpan pada database perangkat. Produk yang secara konsep dibuat sendiri tetapi belum memiliki komposisi tersimpan belum bisa dikenali sebagai produk resep. Uji daftar Bahan & Belanja, pilihan pembelian, Produk & Jasa, dan Kasir setelah pemasangan.
