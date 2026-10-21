@@ -1,18 +1,15 @@
-Universal UMKM Pro v3.3.71 — Patch duplikasi Bahan & Belanja
+Universal UMKM Pro v3.3.72 — Perbaikan pilihan duplikat Bahan & Belanja (Gorengan & Camilan)
 
-Isi patch: app.js, index.html, sw.js, master.json.
+Perubahan utama:
+- Penyaringan daftar stok dan pilihan pembelian sekarang menganggap nama sama dengan satuan yang kompatibel sebagai satu pilihan, meskipun data lama tersimpan sebagai record bahan dan produk berbeda.
+- Tidak menggabungkan otomatis satuan yang tidak kompatibel, untuk menghindari stok salah (contoh kg dan butir).
+- Cache service worker dan versi halaman dinaikkan agar perangkat meminta file terbaru.
+- Riwayat pembelian lama tidak dihapus.
 
-Perbaikan:
-- Melanjutkan migrasi v3.3.70 untuk menggabungkan bahan aktif bernama sama dengan satuan yang kompatibel dan merapikan baris komposisi ganda.
-- Menambahkan penyaringan cadangan pada daftar Bahan & Belanja dan pilihan pembelian agar record dengan jenis, nama, dan satuan stok yang sama tidak ditampilkan berulang.
-- Pilihan pembelian tetap mengarah ke satu record bahan/produk; stok duplikat yang kompatibel dirapikan oleh migrasi data, bukan sekadar disembunyikan.
-- Riwayat pembelian tidak dihapus karena setiap baris merupakan transaksi historis.
-- Versi halaman dan cache service worker dinaikkan ke v3.3.71 agar perangkat mengambil file terbaru.
+Pemasangan:
+1. Backup data lewat Profil & Backup.
+2. Ekstrak ZIP dan unggah/commit app.js, index.html, sw.js, dan master.json ke root repositori GitHub Pages, timpa file lama.
+3. Tunggu deployment GitHub Pages selesai. Di desktop buka situs lalu Ctrl+Shift+R. Di HP tutup PWA sepenuhnya, buka ulang saat online dan tunggu sampai selesai memuat.
+4. Buka paket Gorengan & Camilan, periksa Bahan & Belanja serta pilihan pembelian.
 
-Cara memasang:
-1. Buat backup data dari menu Profil & Backup.
-2. Ekstrak ZIP ini dan unggah/commit semua file di dalamnya ke root repositori GitHub Pages, menimpa file lama.
-3. Buka aplikasi saat online lalu tekan Ctrl+Shift+R. Di HP, tutup aplikasi/PWA sepenuhnya, buka kembali saat online, dan tunggu pemuatan selesai.
-4. Periksa Bahan & Belanja, pilihan bahan pada formulir pembelian, dan komposisi Gorengan & Camilan.
-
-Catatan pengujian: pemeriksaan sintaks dan integritas ZIP dilakukan secara lokal. Belum diuji melalui transaksi langsung pada perangkat pengguna.
+Catatan: Patch memperbaiki tampilan/pilihan yang dobel untuk nama dan satuan kompatibel. Belum diuji dengan database lokal pengguna secara langsung. Setelah pemasangan, pastikan satu bahan hanya muncul sekali dan stok/HPP tetap benar.

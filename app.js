@@ -541,8 +541,18 @@ async function migrateDuplicateSaleInventory(){
 }
 function materialNameKey(value){return String(value||'').trim().toLocaleLowerCase('id').replace(/\s+/g,' ')}
 function dedupeSameStockRows(rows,kindKey='kind'){
- const seen=new Set(),out=[];
- for(const row of rows){const nameKey=materialNameKey(row.name),unitKey=String(row.unit||'Pcs').trim().toLocaleLowerCase('id'),kind=String(row[kindKey]||row._kind||'');const key=`${kind}|${nameKey}|${unitKey}`;if(!nameKey||seen.has(key))continue;seen.add(key);out.push(row)}
+ // Jangan tampilkan dua pilihan stok untuk nama bahan/barang yang sama jika satuannya kompatibel.
+ // Urutan masukan menentukan record utama: daftar bahan lebih dulu pada usaha produksi,
+ // sedangkan daftar produk lebih dulu pada usaha retail. Record berbeda satuan dimensi
+ // (mis. kg vs butir) tidak digabung otomatis karena bisa merupakan barang yang berbeda.
+ const out=[];
+ for(const row of rows){
+  const nameKey=materialNameKey(row.name);
+  if(!nameKey)continue;
+  const duplicate=out.some(prior=>materialNameKey(prior.name)===nameKey&&convertQty(1,row.unit||'Pcs',prior.unit||'Pcs')!==null);
+  if(duplicate)continue;
+  out.push(row);
+ }
  return out;
 }
 function collapseRecipeLines(lines){
