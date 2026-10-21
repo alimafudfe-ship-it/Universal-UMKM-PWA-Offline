@@ -1,21 +1,19 @@
-Universal UMKM Pro v3.3.66 — Patch Tampilan Cara Pembuatan Profesional
+Universal UMKM Pro v3.3.67 — Patch Perbaikan Tombol Proses Kerja
 
-Isi ZIP hanya file yang berubah: app.js, index.html, sw.js, README_PATCH.txt.
+Isi ZIP: app.js, index.html, sw.js, README_PATCH.txt.
 
-Perubahan:
-- Bagian “Proses Kerja” kini berupa tombol yang dapat diklik untuk membuka/menutup panduan.
-- Setelah diklik, muncul “Cara Pembuatan” dengan langkah bernomor otomatis 1, 2, 3, dan seterusnya.
-- Nomor tidak perlu diketik pengguna; jika teks lama sudah bernomor, nomor lama dibersihkan pada tampilan agar tidak ganda.
-- Pengguna dapat membuka “Edit cara pembuatan” untuk mengubah langkah. Satu baris teks menjadi satu langkah.
-- Label status panduan tampil jelas: “Panduan awal — belum divalidasi” atau “Sudah diuji di usaha saya”; status kedua bukan validasi ahli.
-- Perubahan ini hanya memperbaiki tampilan dan penyuntingan proses kerja; tidak mengubah resep, stok, pembelian, atau transaksi.
-- Cache Service Worker dinaikkan ke v3.3.66.
+Perbaikan:
+- Memperbaiki event klik tombol Proses Kerja agar membuka/menutup bagian Cara Pembuatan dengan aman.
+- Memperbaiki referensi versi app.js di index.html yang sebelumnya masih menunjuk ke v3.3.65; sekarang v3.3.67 agar browser mengambil JavaScript terbaru.
+- Menaikkan versi cache Service Worker ke v3.3.67 agar cache lama dibersihkan saat versi baru diaktifkan.
+- Tidak mengubah data produk, komposisi, stok, pembelian, atau transaksi.
 
 Cara memasang:
-1. Backup data usaha dan repositori terlebih dahulu.
-2. Ekstrak ZIP.
-3. Ganti app.js, index.html, dan sw.js di repositori aplikasi. File lain tidak berubah.
-4. Publish ke GitHub Pages, lalu buka aplikasi saat online.
-5. Masuk ke Komposisi Produk, pilih produk, klik “Proses Kerja”, lalu lihat “Cara Pembuatan”.
+1. Backup repositori dan data usaha terlebih dahulu.
+2. Ekstrak ZIP ini.
+3. Ganti app.js, index.html, dan sw.js di repositori GitHub Pages dengan file dari ZIP.
+4. Commit/publish perubahan, lalu tunggu GitHub Pages selesai memperbarui.
+5. Buka aplikasi saat online dan refresh. Jika masih versi lama, tutup tab aplikasi lalu buka lagi; di Chrome dapat lakukan hard refresh (Ctrl+F5).
+6. Masuk ke Komposisi Produk, pilih produk, lalu klik Proses Kerja. Bagian Cara Pembuatan seharusnya terbuka.
 
-Pemeriksaan: sintaks JavaScript, sintaks JSON master (jika ada), dan struktur ZIP diperiksa. Belum diuji langsung di HP pengguna.
+Pemeriksaan: node --check app.js dan sw.js, pemeriksaan struktur ZIP. Belum diuji langsung pada browser/HP pengguna.
