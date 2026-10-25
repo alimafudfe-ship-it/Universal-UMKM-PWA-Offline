@@ -77,7 +77,7 @@ async function migrateMasterV3(){
  if(!master||!Array.isArray(businesses)||!businesses.length)return;
  const originalId=activeBusinessId,originalProfile=currentProfile;let changed=false;
  for(const business of businesses){
-  if(Number(business.masterDataVersion||0)>=4)continue;
+  if(Number(business.masterDataVersion||0)>=5)continue;
   activeBusinessId=business.id;currentProfile=business;
   const pid=Number(business.packageId||0);if(!pid)continue;
   const templateItems=master.items.filter(i=>Number(i.paket_id)===pid);
@@ -110,10 +110,10 @@ async function migrateMasterV3(){
   for(const r of (master.recipes||[]).filter(x=>Number(x.paket_id)===pid&&!isSimpleDrinkProductName(master.items.find(i=>Number(i.id)===Number(x.product_template_id))?.nama_item))){
    const productId=productMap.get(Number(r.product_template_id));if(!productId)continue;
    if(recipes.some(x=>Number(x.productId)===productId))continue;
-   const lines=(r.lines||[]).map(l=>({materialId:materialMap.get(Number(l.material_template_id))||Number(byTemplate(materials,l.material_template_id)?.id),qty:Number(l.qty||0),unit:l.unit||''})).filter(l=>l.materialId&&l.qty>0);
+   const lines=(r.lines||[]).map(l=>{const materialId=materialMap.get(Number(l.material_template_id))||Number(byTemplate(materials,l.material_template_id)?.id);const material=materials.find(m=>Number(m.id)===Number(materialId));return {materialId,qty:Number(l.qty||0),unit:material?.unit||l.unit||''}}).filter(l=>l.materialId&&l.qty>0);
    if(lines.length){await add('recipes',{productId,lines,mode:'auto',templateRecipeId:`v3-${r.product_template_id}`,recipeBasis:r.recipe_basis||'unit',targetFinishedGrams:Number(r.target_finished_grams)||0,expectedYieldUnits:Number(r.expected_yield_units)||1,yieldUnit:r.yield_unit||'Pcs',recipeStatus:r.recipe_status||'referensi',formulaVersion:Number(r.formula_version)||1,createdAt:dateNow(),updatedAt:dateNow()});recipes.push({productId,lines});const prod=products.find(x=>Number(x.id)===productId);if(prod&&Number(prod.cost||0)<=0){prod.costMode='auto';await put('products',prod)}changed=true}
   }
-  business.masterDataVersion=4;business.packageVersion='3.0';business.masterUpdatedAt=dateNow();changed=true;
+  business.masterDataVersion=5;business.packageVersion='3.0';business.masterUpdatedAt=dateNow();changed=true;
  }
  activeBusinessId=originalId;businesses=businesses.map(b=>({...b}));currentProfile=businesses.find(b=>String(b.id)===String(originalId))||originalProfile;
  if(changed)await saveBusinessList();
@@ -227,7 +227,7 @@ async function migrateMasterRecipeCompleteness(){
    if(!product)product=products.find(p=>p.source==='master'&&String(p.name||'').trim().toLocaleLowerCase('id')===String(productItem.nama_item||'').trim().toLocaleLowerCase('id')&&p.active!==false);
    if(!product)continue;
    let recipe=recipes.find(r=>Number(r.productId)===Number(product.id));
-   const lines=(tr.lines||[]).map(l=>({materialId:materialMap.get(Number(l.material_template_id)),qty:Number(l.qty||0),unit:l.unit||''})).filter(l=>l.materialId&&l.qty>0);
+   const lines=(tr.lines||[]).map(l=>{const materialId=materialMap.get(Number(l.material_template_id));const material=materials.find(m=>Number(m.id)===Number(materialId));return {materialId,qty:Number(l.qty||0),unit:material?.unit||l.unit||''}}).filter(l=>l.materialId&&l.qty>0);
    if(!lines.length)continue;
    if(!recipe){const rid=await add('recipes',{productId:Number(product.id),lines,mode:'auto',templateRecipeId:`v3-${templateProductId}`,createdAt:dateNow(),updatedAt:dateNow()});recipes.push({id:Number(rid),productId:Number(product.id),lines,templateRecipeId:`v3-${templateProductId}`});if(product.costMode!=='manual'){product.costMode='auto';await put('products',product)}continue;}
    // Untouched templates may be refreshed from master. For user-edited recipes,
@@ -247,7 +247,7 @@ async function migrateMasterRecipeCompleteness(){
      const mat=materials.find(m=>Number(m.id)===Number(line.materialId));
      const nameKey=String(mat?.name||'').trim().toLocaleLowerCase('id');
      if(existingIds.has(Number(line.materialId))||(nameKey&&existingNames.has(nameKey)))continue;
-     existingLines.push({...line});existingIds.add(Number(line.materialId));if(nameKey)existingNames.add(nameKey);addedMissing=true;
+     existingLines.push({...line,unit:mat?.unit||line.unit||''});existingIds.add(Number(line.materialId));if(nameKey)existingNames.add(nameKey);addedMissing=true;
     }
     if(addedMissing){recipe.lines=existingLines;recipe.updatedAt=dateNow();await put('recipes',recipe);}
    }
@@ -515,7 +515,7 @@ async function migrateWarungMakanPecelLeleCatalog(){
    if(!productId)continue;
    const product=products.find(p=>Number(p.id)===productId);
    if(isSimpleDrinkProductName(product?.name))continue;
-   const lines=(tr.lines||[]).map(l=>({materialId:materialMap.get(Number(l.material_template_id)),qty:Number(l.qty||0),unit:l.unit||''})).filter(l=>l.materialId&&l.qty>0);
+   const lines=(tr.lines||[]).map(l=>{const materialId=materialMap.get(Number(l.material_template_id));const material=materials.find(m=>Number(m.id)===Number(materialId));return {materialId,qty:Number(l.qty||0),unit:material?.unit||l.unit||''}}).filter(l=>l.materialId&&l.qty>0);
    if(!lines.length)continue;
    let recipe=recipes.find(r=>Number(r.productId)===productId);
    if(!recipe){const id=await add('recipes',{productId,lines,mode:'auto',templateRecipeId:`v4-${templateProductId}`,recipeBasis:tr.recipe_basis||'unit',targetFinishedGrams:Number(tr.target_finished_grams)||0,expectedYieldUnits:Number(tr.expected_yield_units)||1,yieldUnit:tr.yield_unit||product?.unit||'Pcs',recipeStatus:tr.recipe_status||'referensi',formulaVersion:Number(tr.formula_version)||1,createdAt:dateNow(),updatedAt:dateNow()});recipes.push({id:Number(id),productId,lines,templateRecipeId:`v4-${templateProductId}`,recipeStatus:tr.recipe_status||'referensi'});continue}
@@ -1249,6 +1249,7 @@ async function checkout(){
   }
  }
  for(const {product,qty} of productUsage.values()){
+  if(recipeByProduct.has(Number(product.id)))continue;
   if(product.stockEnabled&&qty>Number(product.stock||0)){toast('Stok '+product.name+' tidak cukup untuk total jumlah yang dipilih.');return}
  }
  const shortages=[];
@@ -1272,7 +1273,7 @@ async function checkout(){
   order={id:internalId,businessId:activeBusinessId,date:dateNow(),number:code,customer:$('customer').value.trim()||'Pelanggan umum',subtotal,taxRate,taxAmount,otherFee,total,paid:received,change,cost:cart.reduce((a,x)=>a+x.qty*x.cost,0),business:prof?.name||'',paymentMethod:'Tunai',status:'Selesai'};
   details=cart.map(x=>({businessId:activeBusinessId,transactionId:internalId,productId:x.id,name:x.variantName?`${x.name} (${x.variantName})`:x.name,unit:x.unit,qty:x.qty,price:x.price,cost:x.cost,subtotal:x.qty*x.price}));
   tx.objectStore('transactions').add(order);details.forEach(d=>tx.objectStore('details').add(d));
-  for(const {product,qty} of productUsage.values()){const req=tx.objectStore('products').get(product.id);req.onsuccess=()=>{const p=req.result;if(p&&String(p.businessId??'legacy')===String(activeBusinessId??'legacy')&&p.stockEnabled){p.stock=Math.max(0,Number(p.stock||0)-qty);tx.objectStore('products').put(p)}}}
+  for(const {product,qty} of productUsage.values()){if(recipeByProduct.has(Number(product.id)))continue;const req=tx.objectStore('products').get(product.id);req.onsuccess=()=>{const p=req.result;if(p&&String(p.businessId??'legacy')===String(activeBusinessId??'legacy')&&p.stockEnabled){p.stock=Math.max(0,Number(p.stock||0)-qty);tx.objectStore('products').put(p)}}}
   for(const {material,qty} of materialUsage.values()){
    if(material.stockEnabled===false)continue;
    const req=tx.objectStore('materials').get(material.id);

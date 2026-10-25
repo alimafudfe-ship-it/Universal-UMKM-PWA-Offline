@@ -1,24 +1,19 @@
-PATCH UNIVERSAL UMKM PRO v3.3.75 — WARUNG MAKAN & PECEL LELE LENGKAP
+UNIVERSAL UMKM PRO v3.3.76 — AUDIT KATALOG 25 JENIS USAHA
 
-Isi ZIP: app.js, index.html, master.json, sw.js.
+Isi patch: app.js, index.html, master.json, sw.js.
 
-Yang diperbaiki:
-- Menambah katalog menu Warung Makan & Pecel Lele agar pengguna tidak perlu memasukkan banyak menu dari awal.
-- Menambah bahan baku yang dipakai menu.
-- Memperbarui komposisi awal untuk menu masakan yang dibuat dari bahan. Minuman sederhana dan air mineral tidak dipaksa memakai resep.
-- Harga jual, harga beli, dan stok awal template paket ini diset 0 agar pemilik mengisi sesuai harga dan kondisi usahanya. Takaran resep adalah acuan awal dan harus disesuaikan dengan resep nyata usaha.
-- Migrasi katalog hanya menambahkan item yang belum ada dan memperbarui komposisi template yang belum diedit; tidak menghapus transaksi, stok, atau data usaha. Komposisi yang sudah diedit pengguna dipertahankan.
-- Cache service worker dinaikkan agar file master dan aplikasi diperbarui.
+Tujuan:
+- Memperluas katalog produk/jasa pada semua 25 jenis usaha.
+- Menambah bahan baku/pendukung yang sesuai dengan katalog masing-masing.
+- Menambah resep acuan untuk produk makanan yang dibuat dari bahan, bukan untuk barang dagangan siap jual/minuman sederhana.
+- Menjalankan migrasi master versi 5: katalog yang belum ada ditambahkan ke profil usaha yang tersimpan tanpa menimpa baris produk/bahan yang sudah ada.
 
-CARA PASANG DI GITHUB PAGES:
-1. Unduh ZIP dan ekstrak.
-2. Buka repository Universal-UMKM-PWA-Offline.
-3. Unggah/ganti tiga file di root repository: app.js, master.json, sw.js. Jangan hapus file lain.
-4. Commit perubahan, tunggu GitHub Pages selesai menerbitkan.
-5. Buka aplikasi saat online satu kali agar versi baru terunduh. Jika masih versi lama, tutup aplikasi lalu buka ulang atau refresh halaman.
-6. Setelah pembaruan, data usaha lama tetap disimpan. Saat membuka aplikasi, migrasi akan menambahkan katalog ke usaha Warung Makan & Pecel Lele yang sudah ada tanpa menimpa stok, harga, transaksi, atau resep yang telah disesuaikan.
+PENTING:
+- Harga dan takaran resep adalah referensi awal, bukan harga pasar yang dijamin dan bukan resep tervalidasi. Pemilik usaha harus menyesuaikan harga beli, harga jual, satuan, dan takaran aktual.
+- Backup data aplikasi sebelum mengganti file.
+- Upload ke folder utama GitHub Pages, lalu tunggu deploy dan buka aplikasi online agar master baru terunduh.
+- Uji kasir, HPP, dan pengurangan stok sebelum dipakai untuk transaksi nyata.
+- Tidak mengubah aturan harga paket.
 
-CATATAN:
-- Rumus komposisi adalah resep awal, bukan klaim resep baku/tervalidasi. Uji takaran dan biaya nyata sebelum dipakai menghitung HPP produksi.
-- Buat backup data sebelum pembaruan sebagai langkah kehati-hatian.
-- Belum diuji pada perangkat HP pengguna; pemeriksaan dilakukan pada struktur JSON, referensi resep, dan sintaks JavaScript.
+
+CATATAN PERHITUNGAN: Resep baru ditandai formula_awal_perlu_uji_dapur. Satuan baris resep diselaraskan dengan satuan stok bahan agar tidak gagal saat kasir; pemilik usaha wajib memeriksa takaran dan HPP sebelum digunakan. Produk dengan komposisi mengonsumsi bahan, bukan stok produk jadi, untuk menghindari stok ganda.
