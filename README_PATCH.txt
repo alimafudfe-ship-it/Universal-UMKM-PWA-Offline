@@ -1,34 +1,29 @@
-Universal UMKM Pro v3.3.79 — Ruang Kerja Terpadu per Produk
+Universal UMKM Pro v3.3.80 — Menu Utama Ringkas & Ruang Kerja Produk
 
 TUJUAN
-Memudahkan pengguna mengelola produk dari satu titik. Setelah memilih produk, pengguna dapat langsung membuka bahan/belanja yang digunakan produk tersebut atau membuka komposisi/HPP untuk produk yang sama.
+Menghilangkan menu Bahan & Belanja dan Komposisi Produk dari navigasi utama. Pengguna masuk melalui Produk/Jasa, memilih produk, lalu membuka bahan/belanja atau komposisi dari ruang kerja produk.
 
 PERUBAHAN
-- Menambahkan tombol “Kelola” pada setiap produk di menu Produk & Jasa.
-- Halaman ruang kerja produk menampilkan harga jual, HPP, status komposisi, dan stok produk.
-- Tombol “Bahan & Belanja” membuka daftar stok dengan filter ke bahan yang digunakan produk terpilih. Pembelian dan catatan stok tetap terpusat; bahan yang dipakai beberapa produk tidak digandakan.
-- Tombol “Komposisi Produk & HPP” membuka komposisi dengan produk yang sama sudah dipilih.
-- Tombol “Edit produk” tetap tersedia dari ruang kerja.
-- Tombol “Daftar produk” kembali ke katalog produk.
-- Memperbarui versi tampilan dan cache service worker agar file baru dapat dimuat.
-- Tidak mengubah data lokal, skema database, daftar produk, harga paket, atau rumus HPP.
+- Menu utama kini berisi 7 item: Jenis Usaha, Panduan Usaha, Produk/Jasa, Investasi & Peralatan, Kasir, Laporan, Profil & Backup.
+- Menu Bahan & Belanja tetap tersedia sebagai halaman internal yang dibuka dari ruang kerja produk; tidak dihapus dan data stok/pembelian tidak dihapus.
+- Menu Komposisi Produk & HPP tetap tersedia sebagai halaman internal dari ruang kerja produk; data resep dan HPP tidak dihapus.
+- Ditambahkan tombol kembali ke Produk/Jasa pada halaman Bahan & Belanja dan Komposisi Produk. Jika sebelumnya memilih produk tertentu, ruang kerja produk itu tetap dipertahankan.
+- Stok bahan tetap terpusat; bahan bersama tidak dibuat ganda untuk setiap produk.
+- Memperbarui nomor versi dan cache service worker agar file terbaru dimuat.
+- Tidak mengubah skema database, data lokal, produk, harga paket, atau perhitungan HPP.
 
-CARA MEMASANG
-1. Cadangkan data aplikasi dari menu Profil & Backup sebelum mengganti file.
-2. Buka repositori GitHub Pages Universal-UMKM-PWA-Offline.
-3. Ganti file app.js, index.html, dan sw.js di root repositori menggunakan tiga file dari ZIP ini.
-4. Commit perubahan dan tunggu GitHub Pages selesai diperbarui.
-5. Buka aplikasi saat online agar file versi baru terunduh. Jika tampilan lama masih muncul, tutup PWA sepenuhnya lalu buka lagi.
+PEMASANGAN
+1. Backup data dari Profil & Backup.
+2. Ganti app.js, index.html, dan sw.js di root repositori GitHub Pages dengan file dari ZIP ini.
+3. Commit perubahan, tunggu GitHub Pages diperbarui, lalu buka aplikasi saat online.
+4. Jika PWA masih menampilkan versi lama, tutup aplikasi sepenuhnya lalu buka kembali.
 
-CARA UJI
-1. Buka Produk & Jasa, lalu tekan “Kelola” pada Pecel Lele.
-2. Pastikan ringkasan harga jual, HPP, komposisi, dan stok tampil.
-3. Tekan “Bahan & Belanja”; filter seharusnya otomatis memilih Pecel Lele dan menampilkan bahan komposisinya.
-4. Kembali ke Produk & Jasa, tekan “Kelola” lagi, lalu tekan “Komposisi Produk & HPP”; Pecel Lele seharusnya sudah terpilih.
-5. Kembali ke daftar produk dan pastikan fitur Edit dan Hapus masih ada.
-6. Pastikan pembelian bahan yang sama tidak membuat catatan stok terpisah untuk setiap produk.
+UJI YANG DISARANKAN
+1. Pastikan navigasi utama hanya menampilkan 7 menu yang disebut di atas.
+2. Buka Produk/Jasa > Kelola > Pecel Lele > Bahan & Belanja; pastikan filter bahan mengikuti Pecel Lele.
+3. Tekan Kembali ke Produk/Jasa; pastikan ruang kerja Pecel Lele masih terbuka.
+4. Buka Komposisi Produk & HPP; pastikan Pecel Lele terpilih. Kembali lagi dan pastikan ruang kerja tetap terbuka.
+5. Cek riwayat pembelian, stok, komposisi, dan HPP tidak hilang.
 
 VALIDASI
-- Pemeriksaan sintaks JavaScript dengan Node.js: lulus.
-- Struktur ZIP dan keberadaan tiga file aplikasi: diperiksa.
-- Belum diuji langsung pada browser/HP pengguna. Uji terlebih dahulu dengan backup dan jangan gunakan untuk transaksi nyata sebelum alur diuji.
+Pemeriksaan sintaks JavaScript dan struktur ZIP dilakukan. Belum diuji langsung di browser/HP pengguna. Backup dan uji sebelum dipakai untuk transaksi nyata.
