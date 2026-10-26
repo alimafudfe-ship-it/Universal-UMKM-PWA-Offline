@@ -1,29 +1,34 @@
-Universal UMKM Pro v3.3.78 — Filter Stok Bahan Berdasarkan Produk
+Universal UMKM Pro v3.3.79 — Ruang Kerja Terpadu per Produk
 
 TUJUAN
-Memudahkan pengguna melihat bahan yang diperlukan untuk produk tertentu tanpa memecah catatan pembelian atau stok.
+Memudahkan pengguna mengelola produk dari satu titik. Setelah memilih produk, pengguna dapat langsung membuka bahan/belanja yang digunakan produk tersebut atau membuka komposisi/HPP untuk produk yang sama.
 
 PERUBAHAN
-- Menambahkan pilihan "Filter bahan berdasarkan produk" pada bagian Stok Bahan & Barang.
-- Jika pengguna memilih produk yang memiliki komposisi tersimpan, tabel stok hanya menampilkan bahan yang tercatat pada komposisi produk tersebut.
-- Jika produk belum memiliki komposisi, aplikasi menampilkan penjelasan agar komposisi diatur terlebih dahulu.
-- Pilihan "Semua bahan dan barang" menampilkan daftar stok lengkap seperti sebelumnya.
-- Formulir Pembelian Baru dan Riwayat Pembelian tetap terpusat. Pembelian bahan yang sama tetap menambah satu catatan stok bersama, meskipun bahan digunakan oleh beberapa produk.
-- Tidak mengubah data usaha, katalog master, rumus harga paket, atau skema database.
+- Menambahkan tombol “Kelola” pada setiap produk di menu Produk & Jasa.
+- Halaman ruang kerja produk menampilkan harga jual, HPP, status komposisi, dan stok produk.
+- Tombol “Bahan & Belanja” membuka daftar stok dengan filter ke bahan yang digunakan produk terpilih. Pembelian dan catatan stok tetap terpusat; bahan yang dipakai beberapa produk tidak digandakan.
+- Tombol “Komposisi Produk & HPP” membuka komposisi dengan produk yang sama sudah dipilih.
+- Tombol “Edit produk” tetap tersedia dari ruang kerja.
+- Tombol “Daftar produk” kembali ke katalog produk.
+- Memperbarui versi tampilan dan cache service worker agar file baru dapat dimuat.
+- Tidak mengubah data lokal, skema database, daftar produk, harga paket, atau rumus HPP.
 
 CARA MEMASANG
-1. Cadangkan data aplikasi melalui menu Profil & Backup.
-2. Salin app.js, index.html, dan sw.js ke root repositori Universal-UMKM-PWA-Offline, timpa file lama.
-3. Commit/push perubahan dan tunggu GitHub Pages selesai diperbarui.
-4. Buka aplikasi saat online sekali agar file terbaru terunduh. Jika masih terlihat versi lama, tutup PWA sepenuhnya lalu buka lagi.
+1. Cadangkan data aplikasi dari menu Profil & Backup sebelum mengganti file.
+2. Buka repositori GitHub Pages Universal-UMKM-PWA-Offline.
+3. Ganti file app.js, index.html, dan sw.js di root repositori menggunakan tiga file dari ZIP ini.
+4. Commit perubahan dan tunggu GitHub Pages selesai diperbarui.
+5. Buka aplikasi saat online agar file versi baru terunduh. Jika tampilan lama masih muncul, tutup PWA sepenuhnya lalu buka lagi.
 
 CARA UJI
-1. Buka Bahan & Belanja.
-2. Di bagian Stok Bahan & Barang, pilih produk misalnya Pecel Lele.
-3. Pastikan yang tampil hanya bahan yang dipakai dalam komposisi Pecel Lele.
-4. Pilih produk lain dan pastikan daftar bahan berubah mengikuti komposisi produk itu.
-5. Pilih "Semua bahan dan barang" untuk kembali melihat semua stok.
-6. Lakukan pembelian salah satu bahan melalui formulir Pembelian Baru, lalu pastikan stok bahan yang sama bertambah satu kali.
+1. Buka Produk & Jasa, lalu tekan “Kelola” pada Pecel Lele.
+2. Pastikan ringkasan harga jual, HPP, komposisi, dan stok tampil.
+3. Tekan “Bahan & Belanja”; filter seharusnya otomatis memilih Pecel Lele dan menampilkan bahan komposisinya.
+4. Kembali ke Produk & Jasa, tekan “Kelola” lagi, lalu tekan “Komposisi Produk & HPP”; Pecel Lele seharusnya sudah terpilih.
+5. Kembali ke daftar produk dan pastikan fitur Edit dan Hapus masih ada.
+6. Pastikan pembelian bahan yang sama tidak membuat catatan stok terpisah untuk setiap produk.
 
-VALIDASI DAN BATASAN
-Sintaks JavaScript dan struktur ZIP diperiksa. Belum diuji langsung di browser atau HP pengguna. Uji menggunakan cadangan data terlebih dahulu sebelum dipakai untuk transaksi nyata.
+VALIDASI
+- Pemeriksaan sintaks JavaScript dengan Node.js: lulus.
+- Struktur ZIP dan keberadaan tiga file aplikasi: diperiksa.
+- Belum diuji langsung pada browser/HP pengguna. Uji terlebih dahulu dengan backup dan jangan gunakan untuk transaksi nyata sebelum alur diuji.

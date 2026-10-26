@@ -1,7 +1,8 @@
 'use strict';
-window.APP_BUILD_VERSION='3.3.73';document.documentElement.dataset.appVersion='3.3.73';
+window.APP_BUILD_VERSION='3.3.79';document.documentElement.dataset.appVersion='3.3.79';
 const DB_NAME='UniversalUMKMProOffline', DB_VERSION=4;
 let db, master, cart=[], lastReceipt=null, selectedPackageId=null, currentProfile=null, recipeDraft=[], businesses=[], activeBusinessId=null, licenseSlots=1, purchaseSearchSeq=0;
+let activeProductWorkspaceId = null;
 const $=id=>document.getElementById(id);
 const money=n=>'Rp'+Number(n||0).toLocaleString('id-ID',{maximumFractionDigits:2});
 // Clean floating-point residue for editable display values; calculations retain full precision.
@@ -754,14 +755,35 @@ async function renderProducts(){
  const products=allProducts.filter(p=>p.active!==false&&!p.legacyMaterial&&p.name.toLowerCase().includes(term));
  const recipeByProduct=new Map(recipes.map(r=>[Number(r.productId),r]));
  const root=$('productsList');
+ const workspace=$('productWorkspace');
+ root.hidden=Boolean(activeProductWorkspaceId);$('productSearch').hidden=Boolean(activeProductWorkspaceId);
+ if(activeProductWorkspaceId){workspace.hidden=false;await renderProductWorkspace();return}else{workspace.hidden=true;workspace.innerHTML=''}
  if(!products.length){root.innerHTML='<div class="empty">Belum ada produk yang cocok.</div>';return}
  root.innerHTML=products.map(p=>{
   const recipe=recipeByProduct.get(Number(p.id));
   const sizes=recipe?.variants?.length?`<div class="muted">${recipe.variants.map(v=>`${esc(v.name)}: jual ${money(Number(v.price)||0)} · HPP bahan ${money((Number(p.cost)||0)*(Number(v.multiplier)||1))}`).join(' | ')}</div>`:'';
-  return `<div class="productrow"><div class="info"><strong>${esc(p.name)}</strong><div class="muted">${esc(p.category||'Tanpa kategori')} · Satuan jual: ${esc(p.unit||'Pcs')}</div><div class="muted">${p.referencePrice?'Harga jual referensi ': 'Harga jual '}${money(p.price)} · HPP dasar/satuan ${money(p.cost)}${p.costMode==='auto'?' (otomatis dari komposisi)':' (manual)'} · Stok ${Number(p.stock||0)}${p.stockEnabled?'':' (tidak dikelola)'}</div>${sizes}</div><div class="rowactions"><button data-edit="${p.id}">Edit</button><button data-del="${p.id}">Hapus</button></div></div>`;
+  return `<div class="productrow"><div class="info"><strong>${esc(p.name)}</strong><div class="muted">${esc(p.category||'Tanpa kategori')} · Satuan jual: ${esc(p.unit||'Pcs')}</div><div class="muted">${p.referencePrice?'Harga jual referensi ': 'Harga jual '}${money(p.price)} · HPP dasar/satuan ${money(p.cost)}${p.costMode==='auto'?' (otomatis dari komposisi)':' (manual)'} · Stok ${Number(p.stock||0)}${p.stockEnabled?'':' (tidak dikelola)'}</div>${sizes}</div><div class="rowactions"><button data-manage="${p.id}" class="primary">Kelola</button><button data-edit="${p.id}">Edit</button><button data-del="${p.id}">Hapus</button></div></div>`;
  }).join('');
+ root.querySelectorAll('[data-manage]').forEach(b=>b.onclick=()=>openProductWorkspace(Number(b.dataset.manage)));
  root.querySelectorAll('[data-edit]').forEach(b=>b.onclick=()=>openProduct(Number(b.dataset.edit)));
  root.querySelectorAll('[data-del]').forEach(b=>b.onclick=()=>deleteProduct(Number(b.dataset.del)));
+}
+async function openProductWorkspace(productId){
+ const product=await get('products',Number(productId));if(!product)return;
+ activeProductWorkspaceId=Number(productId);await renderProductWorkspace();
+ $('productsList').hidden=true;$('productSearch').hidden=true;$('productWorkspace').hidden=false;
+}
+async function renderProductWorkspace(){
+ const root=$('productWorkspace');if(!root||!activeProductWorkspaceId)return;
+ const [products,recipes]=await Promise.all([getAll('products'),getAll('recipes')]);
+ const product=products.find(p=>Number(p.id)===Number(activeProductWorkspaceId));
+ if(!product){activeProductWorkspaceId=null;root.hidden=true;$('productsList').hidden=false;$('productSearch').hidden=false;return}
+ const recipe=recipes.find(r=>Number(r.productId)===Number(product.id)&&Array.isArray(r.lines)&&r.lines.length);
+ root.innerHTML=`<div class="product-workspace"><div class="product-workspace-head"><button type="button" id="backToProductList">← Daftar produk</button><div><h2>${esc(product.name)}</h2><p class="muted">Ruang kerja produk — pengaturan yang berkaitan dengan produk ini tersedia di bawah.</p></div><button type="button" id="workspaceEditProduct">Edit produk</button></div><div class="card"><div class="product-workspace-stat"><span>Harga jual: <b>${money(product.price)}</b></span><span>HPP per satuan: <b>${money(product.cost)}</b></span><span>Komposisi: <b>${recipe?`${recipe.lines.length} bahan`:'Belum diatur'}</b></span><span>Stok produk: <b>${Number(product.stock||0)} ${esc(product.unit||'Pcs')}</b></span></div></div><div class="product-workspace-actions"><button type="button" class="product-workspace-action" id="workspaceMaterials"><span class="pwa-icon">🧺</span><span><strong>Bahan & Belanja</strong><small>Lihat hanya bahan yang digunakan produk ini, catat pembelian, dan pantau stok bahan bersama.</small></span></button><button type="button" class="product-workspace-action" id="workspaceRecipe"><span class="pwa-icon">📋</span><span><strong>Komposisi Produk & HPP</strong><small>Atur takaran bahan untuk satu porsi/satuan dan hitung HPP produk ini.</small></span></button></div><p class="muted">Catatan: bahan yang sama tetap memakai satu catatan stok bersama meskipun digunakan oleh beberapa produk. Pengaturan di sini hanya memudahkan akses, bukan membuat stok bahan duplikat.</p></div>`;
+ $('backToProductList').onclick=async()=>{activeProductWorkspaceId=null;root.hidden=true;root.innerHTML='';$('productsList').hidden=false;$('productSearch').hidden=false;await renderProducts()};
+ $('workspaceEditProduct').onclick=()=>openProduct(Number(product.id));
+ $('workspaceMaterials').onclick=async()=>{showPage('materials');await renderMaterials();const filter=$('materialProductFilter');if(filter){filter.value=String(product.id);await renderMaterials();}};
+ $('workspaceRecipe').onclick=async()=>{if(!compositionIsEnabled()){toast('Komposisi Produk sedang disembunyikan. Aktifkan melalui Profil & Backup jika diperlukan.');return}showPage('recipes');await renderRecipePage();$('recipeProductSelect').value=product.name;$('recipeProduct').value=product.name;await renderRecipeForm();};
 }
 async function recalculateRecipeCosts(){const [products,recipes,materials]=await Promise.all([getAll('products'),getAll('recipes'),getAll('materials')]);const byId=new Map(materials.map(m=>[Number(m.id),m]));for(const r of recipes){const prod=products.find(p=>Number(p.id)===Number(r.productId));if(!prod||prod.costMode==='manual')continue;let total=0,valid=true;for(const line of r.lines||[]){const m=byId.get(Number(line.materialId));if(!m){valid=false;continue}if(line.unitPrice!==undefined&&line.unitPrice!==null&&Number.isFinite(Number(line.unitPrice))){total+=Number(line.qty||0)*Number(line.unitPrice||0);continue}const qty=convertQty(line.qty,line.unit||m.unit,m.unit);if(qty===null){valid=false;continue}total+=qty*Number(m.cost||0)}if(valid){const unitCost=r.recipeBasis==='finished_kg'?total/Math.max(1,Number(r.expectedYieldUnits)||1):total;prod.cost=Math.round(unitCost*100)/100;prod.costMode='auto';prod.costUpdatedAt=dateNow();await put('products',prod)}}}
 function businessMaterialOptions(){
