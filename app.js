@@ -1055,6 +1055,7 @@ async function renderRecipePage(){
 }
 async function renderRecipeForm(){
  const name=$('recipeProduct').value.trim();
+ const activeProductLabel=$('recipeActiveProductName');if(activeProductLabel)activeProductLabel.textContent=name||'Pilih produk terlebih dahulu';
  const products=(await getAll('products')).filter(p=>p.active!==false&&!p.legacyMaterial&&p.forSale!==false);
  const product=products.find(p=>String(p.name).trim().toLocaleLowerCase('id')===name.toLocaleLowerCase('id'));
  const recipe=product?(await getAll('recipes')).find(r=>Number(r.productId)===Number(product.id)):null;

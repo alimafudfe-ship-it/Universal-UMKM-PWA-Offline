@@ -1,19 +1,22 @@
-UNIVERSAL UMKM PRO v3.3.76 — AUDIT KATALOG 25 JENIS USAHA
+Universal UMKM Pro v3.3.77 — Patch alur bahan per produk
 
-Isi patch: app.js, index.html, master.json, sw.js.
+TUJUAN
+Memperjelas cara mengisi bahan dan komposisi satu produk pada satu waktu, misalnya Pecel Lele.
 
-Tujuan:
-- Memperluas katalog produk/jasa pada semua 25 jenis usaha.
-- Menambah bahan baku/pendukung yang sesuai dengan katalog masing-masing.
-- Menambah resep acuan untuk produk makanan yang dibuat dari bahan, bukan untuk barang dagangan siap jual/minuman sederhana.
-- Menjalankan migrasi master versi 5: katalog yang belum ada ditambahkan ke profil usaha yang tersimpan tanpa menimpa baris produk/bahan yang sudah ada.
+ISI PATCH
+- app.js: menampilkan nama produk aktif di bagian komposisi.
+- index.html: panduan pengisian bahan per produk; memperjelas bahwa takaran diisi untuk satu produk/porsi; memperbarui petunjuk stok resep.
+- sw.js: versi cache baru agar browser mengambil file terbaru.
+- Katalog master dan data bisnis tidak diubah pada patch ini.
+- Harga paket tidak diubah.
 
-PENTING:
-- Harga dan takaran resep adalah referensi awal, bukan harga pasar yang dijamin dan bukan resep tervalidasi. Pemilik usaha harus menyesuaikan harga beli, harga jual, satuan, dan takaran aktual.
-- Backup data aplikasi sebelum mengganti file.
-- Upload ke folder utama GitHub Pages, lalu tunggu deploy dan buka aplikasi online agar master baru terunduh.
-- Uji kasir, HPP, dan pengurangan stok sebelum dipakai untuk transaksi nyata.
-- Tidak mengubah aturan harga paket.
+CARA MEMASANG
+1. Cadangkan data dari menu Profil & Backup sebelum mengganti file.
+2. Salin app.js, index.html, dan sw.js ke root repositori Universal-UMKM-PWA-Offline, timpa file lama.
+3. Commit/push perubahan dan tunggu GitHub Pages selesai diperbarui.
+4. Buka aplikasi saat online sekali agar file baru terunduh. Jika masih tampak versi lama, tutup aplikasi/PWA sepenuhnya lalu buka lagi.
+5. Uji menu Komposisi Produk: pilih Pecel Lele, isi bahan per satu porsi, simpan; kemudian pilih produk lain dan pastikan komposisinya terpisah.
+6. Uji penjualan satu porsi dan periksa apakah stok bahan yang digunakan berkurang sesuai resep.
 
-
-CATATAN PERHITUNGAN: Resep baru ditandai formula_awal_perlu_uji_dapur. Satuan baris resep diselaraskan dengan satuan stok bahan agar tidak gagal saat kasir; pemilik usaha wajib memeriksa takaran dan HPP sebelum digunakan. Produk dengan komposisi mengonsumsi bahan, bukan stok produk jadi, untuk menghindari stok ganda.
+CATATAN
+Patch ini memperjelas antarmuka dan petunjuk; sistem komposisi per productId dan pengurangan stok bahan pada kasir sudah ada pada basis v3.3.76. Pemeriksaan yang dilakukan: validasi sintaks JavaScript, referensi elemen UI, dan integritas ZIP. Belum diuji di browser/ponsel pengguna. Uji dengan salinan data/backup sebelum dipakai untuk transaksi nyata.
