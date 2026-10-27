@@ -1,24 +1,20 @@
-Universal UMKM Pro v3.3.86 — Perbaikan Stok Awal Produk
+Universal UMKM Pro v3.3.87 — Alur Stok Sederhana
 
 Isi ZIP: app.js, index.html, sw.js.
 
 Perubahan utama:
-- Komposisi/resep disimpan di dalam data produk sebagai snapshot nama bahan, takaran, satuan, dan biaya; tidak membuat atau memerlukan catatan Bahan & Belanja.
-- HPP tetap dihitung otomatis dari harga dan takaran yang diisi pada resep.
-- Penjualan tidak mengurangi stok bahan dari resep mandiri. Stok produk jadi berkurang jika stok produk diaktifkan.
-- Data resep lama dikonversi menjadi resep mandiri saat aplikasi dibuka. Catatan stok bahan dan riwayat pembelian yang sudah ada tidak dihapus atau diubah.
-- Mempertahankan perubahan v3.3.84 untuk menyembunyikan riwayat pembelian secara default.
+- Mengganti label “Tambah Stok” menjadi “Barang Masuk” pada alur terkait.
+- Mengganti “Penyesuaian Stok” menjadi “Koreksi Stok”. Pengguna memasukkan jumlah fisik akhir, bukan selisih.
+- Menampilkan ringkasan stok aplikasi, stok fisik, dan selisih lalu meminta konfirmasi sebelum koreksi disimpan.
+- Koreksi disimpan sebagai catatan riwayat dengan stok sebelum/sesudah, selisih, tanggal, dan alasan. Tipe data internal lama transactionType=adjustment dipertahankan agar kompatibel dengan riwayat lama.
+- Riwayat stok menampilkan pembelian/barang masuk dan koreksi; membuka riwayat tidak mengubah stok.
+- Tidak menghapus riwayat pembelian, barang masuk, penjualan, atau data usaha lama. Tidak melakukan migrasi stok massal pada versi ini.
+- Cache service worker dinaikkan ke v3.3.87.
 
 Pemasangan:
-1. Buat backup data usaha melalui Profil & Backup.
+1. Buat backup data melalui Profil & Backup terlebih dahulu.
 2. Ganti app.js, index.html, dan sw.js di root repositori dengan file dari ZIP.
-3. Commit/publish, lalu buka aplikasi online sekali agar service worker mendapat versi baru.
-4. Periksa Produk > Komposisi Produk & HPP, lalu uji penjualan dan pembelian.
+3. Commit/publish, lalu buka aplikasi online agar versi baru dimuat.
+4. Uji Barang Masuk pada satu item contoh, lalu uji Koreksi Stok dengan jumlah fisik berbeda. Periksa Riwayat Stok dan pastikan stok berubah tepat satu kali.
 
-Catatan: pemeriksaan sintaks/arsip dilakukan secara lokal; belum diuji langsung di perangkat HP atau browser produksi.
-
-
-Perbaikan v3.3.86:
-- Produk template dengan stok positif tetapi tanpa catatan pembelian, stok masuk/produksi, atau penyesuaian stok dikembalikan ke stok 0 satu kali.
-- Produk yang memiliki riwayat stok berdasarkan ID atau nama tetap dipertahankan agar stok nyata tidak terhapus.
-- Riwayat transaksi penjualan tidak dihapus.
+Validasi yang dilakukan: pemeriksaan sintaks JavaScript dan integritas ZIP. Belum diuji langsung di browser/HP atau terhadap data usaha pengguna.
