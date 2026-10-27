@@ -1,16 +1,18 @@
-Universal UMKM Pro v3.3.84 — Riwayat Pembelian Ringkas
+Universal UMKM Pro v3.3.85 — Resep Mandiri per Produk
 
-Perubahan:
-- Riwayat pembelian tidak ditampilkan otomatis pada halaman Bahan & Belanja.
-- Tombol “Riwayat Pembelian” membuka tampilan khusus yang hanya menampilkan daftar riwayat dan filter tanggal.
-- Tombol “Kembali ke Pembelian” mengembalikan formulir pembelian dan tabel stok.
-- Perubahan hanya pada tampilan; data riwayat tidak dihapus dan membuka riwayat tidak menambah stok.
-- Logika stok kasir dari versi sebelumnya dipertahankan.
+Isi ZIP: app.js, index.html, sw.js.
+
+Perubahan utama:
+- Komposisi/resep disimpan di dalam data produk sebagai snapshot nama bahan, takaran, satuan, dan biaya; tidak membuat atau memerlukan catatan Bahan & Belanja.
+- HPP tetap dihitung otomatis dari harga dan takaran yang diisi pada resep.
+- Penjualan tidak mengurangi stok bahan dari resep mandiri. Stok produk jadi berkurang jika stok produk diaktifkan.
+- Data resep lama dikonversi menjadi resep mandiri saat aplikasi dibuka. Catatan stok bahan dan riwayat pembelian yang sudah ada tidak dihapus atau diubah.
+- Mempertahankan perubahan v3.3.84 untuk menyembunyikan riwayat pembelian secara default.
 
 Pemasangan:
-1. Ekspor backup dari Profil & Backup terlebih dahulu.
-2. Ganti app.js, index.html, dan sw.js di root repository.
-3. Commit/push, tunggu GitHub Pages selesai.
-4. Di desktop tekan Ctrl+Shift+R. Di HP tutup PWA, buka ulang, lalu bila perlu buka situs dari browser dan refresh.
+1. Buat backup data usaha melalui Profil & Backup.
+2. Ganti app.js, index.html, dan sw.js di root repositori dengan file dari ZIP.
+3. Commit/publish, lalu buka aplikasi online sekali agar service worker mendapat versi baru.
+4. Periksa Produk > Komposisi Produk & HPP, lalu uji penjualan dan pembelian.
 
-Validasi lokal: pemeriksaan sintaks JavaScript dan integritas ZIP. Belum diuji langsung pada perangkat pengguna.
+Catatan: pemeriksaan sintaks/arsip dilakukan secara lokal; belum diuji langsung di perangkat HP atau browser produksi.
