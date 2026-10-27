@@ -1,5 +1,5 @@
 'use strict';
-window.APP_BUILD_VERSION='3.3.90';document.documentElement.dataset.appVersion='3.3.90';
+window.APP_BUILD_VERSION='3.3.91';document.documentElement.dataset.appVersion='3.3.91';
 const DB_NAME='UniversalUMKMProOffline', DB_VERSION=4;
 let db, master, cart=[], lastReceipt=null, selectedPackageId=null, currentProfile=null, recipeDraft=[], businesses=[], activeBusinessId=null, licenseSlots=1, purchaseSearchSeq=0;
 let activeProductWorkspaceId = null;
@@ -1199,7 +1199,7 @@ function recipeAutoCost(row){
  const converted=convertQty(purchaseQty,purchaseUnit,recipeUnit);
  const costInput=row.querySelector('.recipe-price');
  if(!purchaseQty||purchaseQty<=0||!buyPrice||buyPrice<0||converted===null||converted<=0){if(costInput)costInput.value='';const out=row.querySelector('.recipe-auto-help');if(out)out.textContent=converted===null?'Satuan pembelian dan resep berbeda jenis. Pilih satuan yang bisa dikonversi.':'Isi jumlah dan harga beli untuk menghitung biaya otomatis.';return null}
- const cost=buyPrice/converted;if(costInput)costInput.value=String(cost);const out=row.querySelector('.recipe-auto-help');if(out)out.textContent=`Biaya otomatis: ${money(cost)} per ${recipeUnit}.`;return cost;
+ const cost=buyPrice/converted;if(costInput)costInput.value=String(cost);const out=row.querySelector('.recipe-auto-help');if(out){const recipeQty=Number(row.querySelector('.recipe-qty')?.value||0);const unitKey=recipeUnit.toLocaleLowerCase('id').trim();const buyUnitKey=purchaseUnit.toLocaleLowerCase('id').trim();const portionPackHint=(['ikat','ikatan'].includes(unitKey)&&['ikat','ikatan'].includes(buyUnitKey)&&Math.abs(recipeQty-1)<0.000001)?' Jika 1 ikat untuk 10 porsi, ubah takaran resep menjadi 0,1 ikat per porsi agar biayanya Rp500.':'';out.textContent=`Biaya otomatis: ${money(cost)} per ${recipeUnit}.${portionPackHint}`;}return cost;
 }
 function appendRecipeLine(data={}){
  const root=$('recipeLines');if(!root)return;
