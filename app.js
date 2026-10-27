@@ -1,5 +1,5 @@
 'use strict';
-window.APP_BUILD_VERSION='3.3.92';document.documentElement.dataset.appVersion='3.3.92';
+window.APP_BUILD_VERSION='3.3.93';document.documentElement.dataset.appVersion='3.3.93';
 const DB_NAME='UniversalUMKMProOffline', DB_VERSION=4;
 let db, master, cart=[], lastReceipt=null, selectedPackageId=null, currentProfile=null, recipeDraft=[], businesses=[], activeBusinessId=null, licenseSlots=1, purchaseSearchSeq=0;
 let activeProductWorkspaceId = null;
@@ -913,13 +913,8 @@ async function editMaterialCost(id){
  const stock=Number(item.stock||0);
  if(!confirm('Ubah modal '+item.name+' dari '+money(oldCost)+' menjadi '+money(newCost)+' per '+(item.unit||'satuan')+'?\n\nStok tidak berubah. Nilai stok dan modal rata-rata akan mengikuti harga baru. Riwayat pembelian lama tetap tersimpan.'))return;
  item.cost=newCost;item.updatedAt=dateNow();await put('materials',item);
- // Update recipe lines only when their saved price clearly matched the previous master cost.
- const recipes=await getAll('recipes');
- for(const recipe of recipes){if(String(recipe.businessId??'legacy')!==String(activeBusinessId??'legacy'))continue;let changed=false;
-  for(const line of recipe.lines||[]){if(Number(line.materialId)!==Number(item.id))continue;const lineUnit=line.unit||item.unit||'Pcs';const factor=convertQty(1,lineUnit,item.unit||lineUnit);if(factor===null)continue;const expected=oldCost*factor,price=Number(line.unitPrice);if(Number.isFinite(price)&&Math.abs(price-expected)<Math.max(0.000001,Math.abs(expected)*0.000001)){line.unitPrice=newCost*factor;changed=true}}
-  if(changed){recipe.updatedAt=dateNow();await put('recipes',recipe)}
- }
- await recalculateRecipeCosts();await renderMaterials();await renderProducts();await renderCashItems();await renderRecipePage();await renderReports();toast('Harga modal bahan diperbarui. Stok dan riwayat pembelian tidak diubah.');
+ // Harga master Bahan & Belanja tidak menimpa biaya yang sudah tersimpan pada Komposisi.
+ await renderMaterials();await renderProducts();await renderCashItems();await renderRecipePage();await renderReports();toast('Harga modal bahan diperbarui. Stok dan riwayat pembelian tidak diubah.');
 }
 async function deleteMaterial(id){
  const item=await get('materials',Number(id));if(!item)return;
@@ -1052,7 +1047,7 @@ async function savePurchase(){
    }
   }else{
    const store=tx.objectStore(kind==='product'?'products':'materials'),req=store.get(itemId);req.onsuccess=()=>{const item=req.result;if(!item||String(item.businessId??'legacy')!==String(activeBusinessId??'legacy')){requestFailed=true;try{tx.abort()}catch{}return}const oldQty=Math.max(0,Number(item.stock||0)),oldCost=Math.max(0,Number(item.cost||0)),newStock=oldQty+qty;item.cost=newStock>0?((oldQty*oldCost)+(qty*unitCost))/newStock:unitCost;item.stock=newStock;item.stockEnabled=true;item.active=true;item.updatedAt=stamp;store.put(item);
-    if(kind==='material'){const recipeReq=tx.objectStore('recipes').getAll();recipeReq.onsuccess=()=>{for(const recipe of recipeReq.result||[]){if(String(recipe.businessId??'legacy')!==String(activeBusinessId??'legacy'))continue;let changed=false;for(const line of recipe.lines||[]){if(Number(line.materialId)!==itemId)continue;const recipeUnit=line.unit||item.unit||'Pcs';const stockQtyPerRecipeUnit=convertQty(1,recipeUnit,item.unit||recipeUnit);const expectedOldLinePrice=stockQtyPerRecipeUnit===null?NaN:oldCost*stockQtyPerRecipeUnit;const linePrice=Number(line.unitPrice);if(Number.isFinite(expectedOldLinePrice)&&Number.isFinite(linePrice)&&Math.abs(linePrice-expectedOldLinePrice)<Math.max(0.000001,Math.abs(expectedOldLinePrice)*0.000001)){line.unitPrice=Number(item.cost||0)*stockQtyPerRecipeUnit;changed=true}}if(changed){recipe.updatedAt=stamp;tx.objectStore('recipes').put(recipe)}}};recipeReq.onerror=()=>{requestFailed=true}}
+    // Pembelian memperbarui stok dan modal rata-rata di Bahan & Belanja saja; biaya Komposisi tetap tersimpan.
     savePurchaseRow(itemId,kind,item.name,item.unit||'Pcs')};req.onerror=()=>{requestFailed=true};
   }
   tx.oncomplete=async()=>{try{await recalculateRecipeCosts();await renderMaterials();await renderProducts();await renderCashItems();await renderRecipePage();$('purchaseQty').value='';$('purchaseUnitPrice').value='';$('purchaseTotal').value='';$('purchaseMaterialSearch').value='';$('purchaseMaterial').value='';$('purchaseMaterialSuggestions').hidden=true;$('newMaterialFields').hidden=true;$('purchasePackageMode').checked=false;$('purchasePackageUnit').value='Pack';$('purchasePackageContentQty').value='1';togglePurchasePackageMode();$('purchaseHistoryDate').value=date;await renderPurchaseHistory();const noun=(isNew?newKind:kind)==='product'?'produk':'bahan';toast(`Pembelian tersimpan. Stok ${noun} bertambah ${qty.toLocaleString('id-ID',{maximumFractionDigits:4})} ${newUnit||'unit'} satu kali.`)}catch(err){console.error(err);toast('Pembelian tersimpan, tetapi tampilan gagal diperbarui. Muat ulang aplikasi untuk memeriksa stok.')}finally{btn.disabled=false}};
