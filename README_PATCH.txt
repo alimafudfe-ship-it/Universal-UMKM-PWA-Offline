@@ -1,4 +1,4 @@
-Universal UMKM Pro v3.3.85 — Resep Mandiri per Produk
+Universal UMKM Pro v3.3.86 — Perbaikan Stok Awal Produk
 
 Isi ZIP: app.js, index.html, sw.js.
 
@@ -16,3 +16,9 @@ Pemasangan:
 4. Periksa Produk > Komposisi Produk & HPP, lalu uji penjualan dan pembelian.
 
 Catatan: pemeriksaan sintaks/arsip dilakukan secara lokal; belum diuji langsung di perangkat HP atau browser produksi.
+
+
+Perbaikan v3.3.86:
+- Produk template dengan stok positif tetapi tanpa catatan pembelian, stok masuk/produksi, atau penyesuaian stok dikembalikan ke stok 0 satu kali.
+- Produk yang memiliki riwayat stok berdasarkan ID atau nama tetap dipertahankan agar stok nyata tidak terhapus.
+- Riwayat transaksi penjualan tidak dihapus.
