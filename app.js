@@ -1,5 +1,5 @@
 'use strict';
-window.APP_BUILD_VERSION='3.3.85';document.documentElement.dataset.appVersion='3.3.85';
+window.APP_BUILD_VERSION='3.3.89';document.documentElement.dataset.appVersion='3.3.89';
 const DB_NAME='UniversalUMKMProOffline', DB_VERSION=4;
 let db, master, cart=[], lastReceipt=null, selectedPackageId=null, currentProfile=null, recipeDraft=[], businesses=[], activeBusinessId=null, licenseSlots=1, purchaseSearchSeq=0;
 let activeProductWorkspaceId = null;
@@ -238,11 +238,14 @@ async function migrateMasterRecipeCompleteness(){
     if(product.costMode!=='manual'){product.costMode='auto';await put('products',product)}
    }else{
     const existingLines=Array.isArray(recipe.lines)?recipe.lines:[];
+    // Resep mandiri v3.3.85+ menyimpan nama bahan langsung dan tidak lagi
+    // menyimpan materialId. Periksa nama pada baris resep terlebih dahulu agar
+    // migrasi ini tidak menambahkan ulang bahan yang sama setiap kali aplikasi dibuka.
     const existingNames=new Set(existingLines.map(line=>{
      const m=materials.find(x=>Number(x.id)===Number(line.materialId));
-     return String(m?.name||'').trim().toLocaleLowerCase('id');
+     return String(line.name||m?.name||'').trim().toLocaleLowerCase('id');
     }).filter(Boolean));
-    const existingIds=new Set(existingLines.map(line=>Number(line.materialId)));
+    const existingIds=new Set(existingLines.map(line=>Number(line.materialId)).filter(Number.isFinite));
     let addedMissing=false;
     for(const line of lines){
      const mat=materials.find(m=>Number(m.id)===Number(line.materialId));
