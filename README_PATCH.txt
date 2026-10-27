@@ -1,20 +1,21 @@
-Universal UMKM Pro v3.3.87 — Alur Stok Sederhana
+Universal UMKM Pro v3.3.88 — Perbaikan Filter Bahan Resep
 
-Isi ZIP: app.js, index.html, sw.js.
+Berdasarkan v3.3.87.
 
-Perubahan utama:
-- Mengganti label “Tambah Stok” menjadi “Barang Masuk” pada alur terkait.
-- Mengganti “Penyesuaian Stok” menjadi “Koreksi Stok”. Pengguna memasukkan jumlah fisik akhir, bukan selisih.
-- Menampilkan ringkasan stok aplikasi, stok fisik, dan selisih lalu meminta konfirmasi sebelum koreksi disimpan.
-- Koreksi disimpan sebagai catatan riwayat dengan stok sebelum/sesudah, selisih, tanggal, dan alasan. Tipe data internal lama transactionType=adjustment dipertahankan agar kompatibel dengan riwayat lama.
-- Riwayat stok menampilkan pembelian/barang masuk dan koreksi; membuka riwayat tidak mengubah stok.
-- Tidak menghapus riwayat pembelian, barang masuk, penjualan, atau data usaha lama. Tidak melakukan migrasi stok massal pada versi ini.
-- Cache service worker dinaikkan ke v3.3.87.
+Perbaikan:
+- Filter “Bahan berdasarkan produk” kini membaca komposisi resep mandiri (format nama, takaran, satuan, dan harga bahan) yang digunakan sejak v3.3.85.
+- Jika nama bahan resep sudah ada sebagai catatan stok Bahan/Belanja aktif, baris menampilkan catatan stok tersebut.
+- Jika bahan resep belum didaftarkan sebagai catatan stok, bahan tetap ditampilkan sebagai “Bahan resep (mandiri)” beserta takaran resep, dan diberi keterangan bahwa stoknya belum dikelola.
+- Baris resep mandiri yang belum didaftarkan sebagai stok tidak memiliki tombol edit, barang masuk, koreksi, atau hapus sehingga tidak membuat perubahan stok yang keliru.
+- Teks bantuan menjelaskan bahwa resep mandiri digunakan untuk HPP; untuk mengelola pembelian/stok bahan, bahan harus didaftarkan di Bahan/Belanja.
+- Tidak mengubah atau menghapus resep, stok, riwayat pembelian, riwayat penjualan, atau data usaha yang sudah ada.
+- Cache service worker dinaikkan ke v3.3.88.
 
 Pemasangan:
-1. Buat backup data melalui Profil & Backup terlebih dahulu.
-2. Ganti app.js, index.html, dan sw.js di root repositori dengan file dari ZIP.
-3. Commit/publish, lalu buka aplikasi online agar versi baru dimuat.
-4. Uji Barang Masuk pada satu item contoh, lalu uji Koreksi Stok dengan jumlah fisik berbeda. Periksa Riwayat Stok dan pastikan stok berubah tepat satu kali.
+1. Buat backup data usaha terlebih dahulu.
+2. Ekstrak ZIP.
+3. Ganti app.js, index.html, dan sw.js di root repositori GitHub dengan file di ZIP.
+4. Commit/publish dan tunggu GitHub Pages selesai.
+5. Buka ulang aplikasi, pilih Bahan/Belanja, lalu pilih produk Bakwan pada filter. Bahan komposisi resep seharusnya tampil meskipun belum terdaftar sebagai stok.
 
-Validasi yang dilakukan: pemeriksaan sintaks JavaScript dan integritas ZIP. Belum diuji langsung di browser/HP atau terhadap data usaha pengguna.
+Validasi: pemeriksaan sintaks JavaScript dan integritas ZIP. Belum diuji langsung di browser/HP dengan database pengguna.
