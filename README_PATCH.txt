@@ -1,8 +1,7 @@
-Universal UMKM Pro v3.3.91 — Petunjuk HPP bahan per porsi
+Universal UMKM Pro v3.3.92 — Fitur Edit Harga Bahan
 
-Basis: v3.3.90 Perbaikan Kembalian.
-Perubahan: memperjelas bahwa takaran komposisi harus diisi sesuai pemakaian per satuan jual/porsi. Contoh kemangi: harga beli Rp5.000 per 1 ikat, cukup untuk 10 porsi, sehingga takaran untuk 1 porsi adalah 0,1 ikat dan HPP Rp500. Jika takaran masih 1 ikat, aplikasi menampilkan pengingat. Perhitungan tidak membagi otomatis karena hasil tiap bahan/ikat bisa berbeda.
-Versi aplikasi dan cache service worker diperbarui ke 3.3.91.
+Basis: v3.3.91 HPP Bahan per Porsi.
+Perubahan: menu Bahan & Belanja kini menyediakan tombol Edit Harga untuk bahan. Pengguna dapat mengoreksi modal per satuan stok tanpa mengubah jumlah stok atau menghapus riwayat pembelian. Baris komposisi yang tertaut ke bahan dan masih memakai harga lama dari master akan diperbarui; harga komposisi mandiri/kustom tidak ditimpa secara membabi buta. Tombol Edit Nama tetap untuk nama/kategori, sedangkan Edit Satuan tetap terpisah.
 
-Penting: patch ini tidak menghapus atau mereset data usaha.
-Validasi: pemeriksaan sintaks JavaScript dan integritas ZIP dilakukan; belum diuji langsung di browser/perangkat pengguna.
+Versi aplikasi dan cache service worker diperbarui ke 3.3.92. Data usaha lokal tidak direset.
+Validasi: sintaks JavaScript dan integritas ZIP diperiksa; belum diuji langsung di browser/HP.
