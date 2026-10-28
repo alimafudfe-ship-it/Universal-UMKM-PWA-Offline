@@ -833,7 +833,7 @@ async function renderProductWorkspace(){
  const product=products.find(p=>Number(p.id)===Number(activeProductWorkspaceId));
  if(!product){activeProductWorkspaceId=null;root.hidden=true;$('productsList').hidden=false;$('productSearch').hidden=false;return}
  const recipe=recipes.find(r=>Number(r.productId)===Number(product.id)&&Array.isArray(r.lines)&&r.lines.length);
- root.innerHTML=`<div class="product-workspace"><div class="product-workspace-head"><button type="button" id="backToProductList">← Daftar produk</button><div><h2>${esc(product.name)}</h2><p class="muted">Ruang kerja produk — pengaturan yang berkaitan dengan produk ini tersedia di bawah.</p></div><button type="button" id="workspaceEditProduct">Edit produk</button></div><div class="card"><div class="product-workspace-stat"><span>Harga jual: <b>${money(product.price)}</b></span><span>HPP per satuan: <b>${money(product.cost)}</b></span><span>Komposisi: <b>${recipe?`${recipe.lines.length} bahan`:'Belum diatur'}</b></span><span>Stok produk: <b>${Number(product.stock||0)} ${esc(product.unit||'Pcs')}</b></span></div></div><div class="product-workspace-actions"><button type="button" class="product-workspace-action" id="workspaceAddProductStock"><span class="pwa-icon">➕</span><span><strong>Barang Masuk</strong><small>Catat jumlah barang jadi atau hasil produksi yang benar-benar masuk. Isi jumlah tambahan, bukan stok akhir.</small></span></button><button type="button" class="product-workspace-action" id="workspaceAdjustProductStock"><span class="pwa-icon">🧮</span><span><strong>Koreksi Stok</strong><small>Masukkan jumlah fisik sebenarnya; aplikasi menghitung selisih secara otomatis.</small></span></button><button type="button" class="product-workspace-action" id="workspaceMaterials"><span class="pwa-icon">🧺</span><span><strong>Bahan & Belanja</strong><small>Catat pembelian produk/bahan. Produk dagangan memakai stok Produk/Jasa yang sama; bahan baku tetap terpisah.</small></span></button><button type="button" class="product-workspace-action" id="workspaceRecipe"><span class="pwa-icon">📋</span><span><strong>Komposisi Produk & HPP</strong><small>Atur takaran bahan untuk satu porsi/satuan dan hitung HPP produk ini.</small></span></button></div><p class="muted">Catatan: Komposisi Produk & HPP berdiri sendiri: hanya menghitung HPP dari harga dan takaran resep. Komposisi tidak membuat stok bahan baru, tidak mengubah pembelian, dan tidak mengurangi stok bahan saat penjualan.</p></div>`;
+ root.innerHTML=`<div class="product-workspace"><div class="product-workspace-head"><button type="button" id="backToProductList">← Daftar produk</button><div><h2>${esc(product.name)}</h2><p class="muted">Ruang kerja produk — pengaturan yang berkaitan dengan produk ini tersedia di bawah.</p></div><button type="button" id="workspaceEditProduct">Edit produk</button></div><div class="card"><div class="product-workspace-stat"><span>Harga jual: <b>${money(product.price)}</b></span><span>HPP per satuan: <b>${money(product.cost)}</b></span><span>Komposisi: <b>${recipe?`${recipe.lines.length} bahan`:'Belum diatur'}</b></span><span>Stok produk: <b>${Number(product.stock||0)} ${esc(product.unit||'Pcs')}</b></span></div></div><div class="product-workspace-actions"><button type="button" class="product-workspace-action" id="workspaceAddProductStock"><span class="pwa-icon">➕</span><span><strong>Produksi / Tambah Stok Produk Jadi</strong><small>Catat jumlah produk jadi yang selesai dibuat atau barang jadi yang diterima. Isi jumlah tambahan, bukan stok akhir.</small></span></button><button type="button" class="product-workspace-action" id="workspaceAdjustProductStock"><span class="pwa-icon">🧮</span><span><strong>Koreksi Stok</strong><small>Masukkan jumlah fisik sebenarnya; aplikasi menghitung selisih secara otomatis.</small></span></button><button type="button" class="product-workspace-action" id="workspaceMaterials"><span class="pwa-icon">🧺</span><span><strong>Bahan & Belanja</strong><small>Catat pembelian produk/bahan. Produk dagangan memakai stok Produk/Jasa yang sama; bahan baku tetap terpisah.</small></span></button><button type="button" class="product-workspace-action" id="workspaceRecipe"><span class="pwa-icon">📋</span><span><strong>Komposisi Produk & HPP</strong><small>Atur takaran bahan untuk satu porsi/satuan dan hitung HPP produk ini.</small></span></button></div><p class="muted">Catatan: Komposisi Produk & HPP berdiri sendiri: hanya menghitung HPP dari harga dan takaran resep. Komposisi tidak membuat stok bahan baru, tidak mengubah pembelian, dan tidak mengurangi stok bahan saat penjualan.</p></div>`;
  $('backToProductList').onclick=async()=>{activeProductWorkspaceId=null;root.hidden=true;root.innerHTML='';$('productsList').hidden=false;$('productSearch').hidden=false;await renderProducts()};
  $('workspaceEditProduct').onclick=()=>openProduct(Number(product.id));
  $('workspaceAddProductStock').onclick=()=>addProductStockFromWorkspace(Number(product.id));
@@ -843,7 +843,7 @@ async function renderProductWorkspace(){
 }
 async function addProductStockFromWorkspace(id){
  const product=await get('products',Number(id));if(!product){toast('Produk tidak ditemukan.');return}
- const raw=window.prompt(`BARANG MASUK\n${product.name}\nStok saat ini: ${Number(product.stock||0)} ${product.unit||'Pcs'}\n\nMasukkan jumlah tambahan yang benar-benar masuk (bukan stok akhir):`,'1');
+ const raw=window.prompt(`PRODUKSI / TAMBAH STOK PRODUK JADI\n${product.name}\nStok saat ini: ${Number(product.stock||0)} ${product.unit||'Pcs'}\n\nMasukkan jumlah tambahan yang benar-benar masuk (bukan stok akhir):`,'1');
  if(raw===null)return;const qty=Number(raw.trim());
  if(raw.trim()===''||!Number.isFinite(qty)||qty<=0){toast('Jumlah stok masuk harus lebih dari nol.');return}
  const reason=window.prompt('Keterangan barang masuk (wajib), misalnya hasil produksi atau barang diterima:','Hasil produksi');if(reason===null)return;if(!reason.trim()){toast('Keterangan barang masuk wajib diisi.');return}
@@ -962,7 +962,7 @@ async function renderMaterials(){
  }
  const rows=availableRows.filter(m=>`${m.name||''} ${m.category||''}`.toLowerCase().includes(term)).sort((a,b)=>String(a.name).localeCompare(String(b.name),'id'));
  const filterHelp=$('materialProductFilterHelp');
- if(filterHelp){const selected=filterProducts.find(p=>Number(p.id)===selectedProductId);const recipeOnlyCount=rows.filter(m=>m._kind==='recipe').length;filterHelp.textContent=!selectedProductId?'Pilih produk untuk melihat bahan komposisinya. Produk dengan resep mandiri tetap dapat ditampilkan meskipun bahannya belum didaftarkan sebagai stok.':selectedRecipe?`Bahan komposisi untuk ${selected?.name||'produk ini'}. ${recipeOnlyCount?recipeOnlyCount+' bahan belum terdaftar sebagai stok Bahan/Belanja. ':''}Resep mandiri hanya untuk HPP; agar stok/pembeliannya tercatat, daftarkan bahan tersebut melalui Barang Masuk. Tidak ada stok yang diubah oleh filter ini.`:`${selected?.name||'Produk ini'} belum memiliki komposisi tersimpan. Atur bahan terlebih dahulu di menu Komposisi Produk & HPP.`;}
+ if(filterHelp){const selected=filterProducts.find(p=>Number(p.id)===selectedProductId);const recipeOnlyCount=rows.filter(m=>m._kind==='recipe').length;filterHelp.textContent=!selectedProductId?'Pilih produk untuk melihat bahan komposisinya. Produk dengan resep mandiri tetap dapat ditampilkan meskipun bahannya belum didaftarkan sebagai stok.':selectedRecipe?`Bahan komposisi untuk ${selected?.name||'produk ini'}. ${recipeOnlyCount?recipeOnlyCount+' bahan belum terdaftar sebagai stok Bahan/Belanja. ':''}Komposisi hanya panduan HPP; bila ingin mencatat persediaan bahan, daftarkan melalui pembelian di Bahan & Belanja. Tidak ada stok yang diubah oleh filter ini.`:`${selected?.name||'Produk ini'} belum memiliki komposisi tersimpan. Atur bahan terlebih dahulu di menu Komposisi Produk & HPP.`;}
  const fmtQty=n=>Number(n||0).toLocaleString('id-ID',{maximumFractionDigits:4});
  $('materialsList').innerHTML=rows.length?`<div class="materials-table-wrap"><table class="materials-table"><thead><tr><th>Bahan / barang</th><th>Jenis</th><th>Satuan</th><th>Stok</th><th>Harga modal rata-rata</th><th>Nilai stok</th><th>Status</th><th>Aksi</th></tr></thead><tbody>${rows.map(m=>{const isRecipe=m._kind==='recipe',stock=Number(m.stock||0),cost=Number(m.cost||0),status=isRecipe?'Belum dicatat sebagai stok':m.stockEnabled===false?'Stok nonaktif':stock<=0?'Habis':'Tersedia';return `<tr><td data-label="Bahan / barang"><strong>${esc(m.name)}</strong><small>${isRecipe?'Takaran resep: '+fmtQty(m._recipeQty)+' '+esc(m._recipeUnit):esc(m.category||'Bahan baku')}</small></td><td data-label="Jenis">${isRecipe?'Bahan resep (mandiri)':m._kind==='product'?'Barang jual':'Bahan'}</td><td data-label="Satuan">${esc(m.unit||'Pcs')}</td><td data-label="Stok" class="num">${isRecipe?'Belum dikelola':fmtQty(stock)+' '+esc(m.unit||'')}</td><td data-label="Harga modal rata-rata" class="num">${money(cost)}<small>/ ${esc(m.unit||'satuan')}</small></td><td data-label="Nilai stok" class="num">${isRecipe?'—':money(stock*cost)}</td><td data-label="Status"><span class="stock-status ${isRecipe?'disabled-stock':stock<=0&&m.stockEnabled!==false?'empty-stock':m.stockEnabled===false?'disabled-stock':'in-stock'}">${status}</span></td><td data-label="Aksi">${isRecipe?'<span class="muted">Daftarkan bahan bila ingin mengelola stok</span>':`<div class="material-actions"><button type="button" data-meditdata="${m._kind}:${m.id}">Edit Nama</button>${m._kind==='material'?`<button type="button" data-mcost="${m.id}">Edit Harga</button>`:''}<button type="button" data-medit="${m._kind}:${m.id}" ${m._kind!=='material'?'disabled title="Ubah satuan barang jual dari menu Produk"':''}>Edit Satuan</button><button type="button" data-mbuy="${m._kind}:${m.id}">Barang Masuk</button><button type="button" data-adjust="${m._kind}:${m.id}">Koreksi Stok</button><button type="button" data-mdelete="${m._kind}:${m.id}">Hapus</button></div>`}</td></tr>`}).join('')}</tbody></table></div>`:'<div class="empty">Belum ada bahan atau barang stok yang cocok.</div>';
  const previousSelection=$('purchaseMaterial').value;
@@ -1362,47 +1362,23 @@ async function checkout(){
  const productById=new Map(allProducts.map(p=>[Number(p.id),p]));
  const recipeByProduct=new Map(allRecipes.map(r=>[Number(r.productId),r]));
  const materialById=new Map(allMaterials.map(m=>[Number(m.id),m]));
- const materialUsage=new Map();
  const productUsage=new Map();
  for(const x of cart){
   const p=productById.get(Number(x.id));
   if(!p||p.active===false){toast('Ada produk yang sudah tidak aktif.');return}
   const productRow=productUsage.get(Number(x.id))||{product:p,qty:0};
   productRow.qty+=Number(x.qty||0);productUsage.set(Number(x.id),productRow);
-  const recipe=recipeByProduct.get(Number(x.id));
-  if(!recipe||recipe.stockMode!=='linked'||productInventoryMode(p,true)==='finished_stock')continue;
-  const multiplier=Math.max(0,Number(x.variantMultiplier)||1);
-  for(const line of recipe.lines||[]){
-   const batchDivisor=recipe.recipeBasis==='finished_kg'?Math.max(1,Number(recipe.expectedYieldUnits)||1):1;const recipeQty=Number(line.qty||0)*Number(x.qty||0)*multiplier/batchDivisor;
-   if(!(recipeQty>0))continue;
-   const material=materialById.get(Number(line.materialId));
-   if(!material){toast('Bahan pada komposisi '+p.name+' tidak ditemukan. Periksa kembali menu Komposisi Produk.');return}
-   const required=convertQty(recipeQty,line.unit||material.unit||'Pcs',material.unit||line.unit||'Pcs');
-   if(required===null||!Number.isFinite(required)){toast('Satuan bahan '+material.name+' tidak cocok dengan satuan komposisi. Perbaiki satuannya sebelum menjual.');return}
-   const current=materialUsage.get(Number(material.id))||{material,qty:0};
-   current.qty+=required;materialUsage.set(Number(material.id),current);
-  }
  }
+ // Komposisi hanya panduan resep dan HPP. Penjualan tidak mengurangi stok bahan baku.
  for(const {product,qty} of productUsage.values()){
   const hasRecipe=recipeByProduct.has(Number(product.id));
   if(productInventoryMode(product,hasRecipe)!=='finished_stock')continue;
   if(product.stockEnabled&&qty>Number(product.stock||0)){toast('Stok '+product.name+' tidak cukup untuk total jumlah yang dipilih.');return}
  }
- const shortages=[];
- for(const {material,qty} of materialUsage.values()){
-  const available=Number(material.stock||0);
-  if(material.stockEnabled!==false&&qty>available+1e-9){
-   shortages.push(`${material.name}: perlu ${qty.toLocaleString('id-ID',{maximumFractionDigits:3})} ${material.unit||'unit'}, tersedia ${available.toLocaleString('id-ID',{maximumFractionDigits:3})} ${material.unit||'unit'}`);
-  }
- }
- if(shortages.length){
-  await openStockShortageDialog([...materialUsage.values()].filter(({material,qty})=>material.stockEnabled!==false&&qty>Number(material.stock||0)+1e-9).map(({material,qty})=>({material,required:qty,available:Number(material.stock||0),shortage:Math.max(0,qty-Number(material.stock||0))})));
-  return;
- }
  const {subtotal,taxRate,taxAmount,otherFee,total,received,change}=amounts,prof=await getCurrentProfile(),internalId='TRX-'+Date.now().toString(36).toUpperCase()+'-'+Math.random().toString(36).slice(2,5).toUpperCase();
  let order=null,details=[];
- const tx=db.transaction(['settings','transactions','details','products','materials'],'readwrite');
- tx.oncomplete=async()=>{if(!order){toast('Transaksi gagal disimpan: nomor transaksi tidak terbentuk.');return}lastReceipt={order,details,profile:prof};cart=[];$('customer').value='';$('taxRate').value='0';$('otherFee').value='0';$('cashReceived').value='';renderCart();await renderHome();await renderProducts();await renderReports();await renderCashItems();await renderMaterials();showReceipt(lastReceipt);toast('Transaksi tersimpan. Stok barang jual dan bahan berkomposisi sudah diperbarui.')};
+ const tx=db.transaction(['settings','transactions','details','products'],'readwrite');
+ tx.oncomplete=async()=>{if(!order){toast('Transaksi gagal disimpan: nomor transaksi tidak terbentuk.');return}lastReceipt={order,details,profile:prof};cart=[];$('customer').value='';$('taxRate').value='0';$('otherFee').value='0';$('cashReceived').value='';renderCart();await renderHome();await renderProducts();await renderReports();await renderCashItems();await renderMaterials();showReceipt(lastReceipt);toast('Transaksi tersimpan. Stok produk jadi berkurang; stok bahan baku dan komposisi tidak berubah.')};
  tx.onerror=()=>toast('Transaksi gagal disimpan: '+(tx.error?.message||'kesalahan database'));
  tx.onabort=()=>{};
  allocateTransactionCode(tx,activeBusinessId,(code)=>{
@@ -1410,11 +1386,7 @@ async function checkout(){
   details=cart.map(x=>({businessId:activeBusinessId,transactionId:internalId,productId:x.id,name:x.variantName?`${x.name} (${x.variantName})`:x.name,unit:x.unit,qty:x.qty,price:x.price,cost:x.cost,subtotal:Math.round(x.qty*x.price)}));
   tx.objectStore('transactions').add(order);details.forEach(d=>tx.objectStore('details').add(d));
   for(const {product,qty} of productUsage.values()){const hasRecipe=recipeByProduct.has(Number(product.id));if(productInventoryMode(product,hasRecipe)!=='finished_stock')continue;const req=tx.objectStore('products').get(product.id);req.onsuccess=()=>{const p=req.result;if(p&&String(p.businessId??'legacy')===String(activeBusinessId??'legacy')&&p.stockEnabled){p.stock=Math.max(0,Number(p.stock||0)-qty);p.updatedAt=dateNow();tx.objectStore('products').put(p)}}}
-  for(const {material,qty} of materialUsage.values()){
-   if(material.stockEnabled===false)continue;
-   const req=tx.objectStore('materials').get(material.id);
-   req.onsuccess=()=>{const m=req.result;if(!m||String(m.businessId??'legacy')!==String(activeBusinessId??'legacy')){try{tx.abort()}catch{}return}m.stock=Number(m.stock||0)-qty;m.updatedAt=dateNow();tx.objectStore('materials').put(m)};
-  }
+
  });
 }
 function showReceipt(data){const {order,details,profile}=data;const subtotal=Number(order.subtotal??details.reduce((a,d)=>a+Number(d.subtotal||0),0));const taxAmount=Number(order.taxAmount||0),otherFee=Number(order.otherFee||0),total=Number(order.total||subtotal+taxAmount+otherFee);const paymentRows=`<tr><td>Subtotal</td><td>${money(subtotal)}</td></tr>${Number(order.taxRate||0)>0||taxAmount>0?`<tr><td>Pajak${Number(order.taxRate||0)>0?` (${Number(order.taxRate)}%)`:''}</td><td>${money(taxAmount)}</td></tr>`:''}${otherFee>0?`<tr><td>Biaya lain-lain</td><td>${money(otherFee)}</td></tr>`:''}<tr><td><b>TOTAL</b></td><td><b>${money(total)}</b></td></tr>${order.paid!==undefined?`<tr><td>Tunai diterima</td><td>${money(order.paid)}</td></tr><tr><td><b>Kembalian</b></td><td><b>${money(order.change||0)}</b></td></tr>`:''}`;$('receiptContent').innerHTML=`<div class="receipt"><h2>${esc(profile?.name||order.business||'Usaha Anda')}</h2><div class="center">${esc(profile?.address||'')}${profile?.phone?'<br>Telp. '+esc(profile.phone):''}</div><hr><div>No: ${esc(order.number)}<br>Tanggal: ${new Date(order.date).toLocaleString('id-ID')}<br>Pelanggan: ${esc(order.customer)}</div><hr><table><thead><tr><th>Item</th><th>Jumlah</th><th>Harga</th><th>Total</th></tr></thead><tbody>${details.map(d=>`<tr><td>${esc(d.name)}</td><td>${d.qty} ${esc(d.unit||'')}</td><td>${money(d.price)}</td><td>${money(d.subtotal)}</td></tr>`).join('')}</tbody></table><hr><table>${paymentRows}</table><hr><div class="center">${esc(profile?.footer||'Terima kasih atas kunjungan Anda.')}</div></div>`;$('receiptDialog').showModal()}
