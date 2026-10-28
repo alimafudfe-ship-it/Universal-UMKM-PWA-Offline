@@ -1,11 +1,5 @@
-Universal UMKM Pro v3.3.93 — Harga Bahan & Komposisi Terpisah
+Universal UMKM Pro v3.3.94
 
-Perbaikan:
-- Mengubah harga modal di menu Bahan & Belanja tidak lagi otomatis mengubah biaya yang tersimpan pada Komposisi.
-- Pembelian bahan tetap memperbarui stok dan modal rata-rata di Bahan & Belanja saja.
-- HPP produk dihitung dari biaya yang tersimpan pada Komposisi. Jika biaya bahan resep memang ingin diubah, edit dan simpan biaya tersebut di menu Komposisi.
-- Riwayat pembelian dan stok tidak dihapus atau direset.
+Perubahan: penegasan alur stok dan komposisi. Produk dagangan yang sudah terdaftar di Produk/Jasa dapat dipilih pada Bahan & Belanja; transaksi pembelian menambah stok produk yang sama satu kali dan memperbarui modal rata-rata. Bahan baku memiliki stok tersendiri. Komposisi Produk & HPP mandiri untuk perhitungan HPP saja; tidak membuat bahan otomatis dan tidak mengurangi stok bahan ketika penjualan.
 
-File patch: app.js, index.html, sw.js.
-
-Pemeriksaan: sintaks JavaScript dan integritas ZIP diperiksa. Belum diuji langsung pada browser/HP pengguna.
+Data lokal tidak dihapus oleh pembaruan ini. Sebelum mengganti file aplikasi yang sudah dipakai, ekspor backup data terlebih dahulu.
