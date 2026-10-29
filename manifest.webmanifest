@@ -2,7 +2,7 @@
   "id": "./",
   "name": "Universal UMKM Pro",
   "short_name": "UMKM Pro",
-  "description": "Universal UMKM Pro v3.3.63 — katalog toko kue dan bakery premium",
+  "description": "Kasir dan administrasi UMKM offline",
   "start_url": "./index.html",
   "scope": "./",
   "display": "standalone",

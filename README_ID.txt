@@ -1,145 +1,33 @@
-Universal UMKM Pro v3.3.40 — Komposisi Satuan Fleksibel
-
-UNIVERSAL UMKM PRO v3.1.3
-PWA OFFLINE-FIRST • 24 PAKET USAHA • MASTER DATA LENGKAP
+Universal UMKM Pro PWA Offline — v3.3.103
+Perbaikan Bahan/Belanja, Komposisi, dan Sumber Resmi
 
 ISI PAKET
-- index.html: antarmuka responsif HP dan desktop
-- app.js: logika aplikasi, IndexedDB, paket usaha, transaksi, stok, resep/HPP, laporan, backup/restore
-- style.css: tampilan
-- master.json: 24 paket usaha, katalog produk/jasa/bahan/peralatan, harga referensi, 101 template komposisi awal
-- sw.js: cache offline v3.0
-- manifest.webmanifest dan ikon aplikasi
-- AUDIT_PERBAIKAN_v3.0.txt: ringkasan perubahan dan batas pengujian
+- index.html, style.css, app.js, sw.js: aplikasi PWA
+- master.json: katalog paket usaha, bahan baku, komposisi acuan, dan sumber resmi
+- ikon dan manifest: aset instalasi PWA
 
-KONSEP v3.0
-1. Penjual aplikasi menyiapkan master katalog produk/jasa, bahan, peralatan, harga referensi, dan komposisi yang relevan.
-2. Saat pembeli memilih paket, aplikasi menyalin master ke data usaha pembeli dengan ID operasional baru.
-3. Harga referensi bisa diedit. Harga referensi hanya estimasi dan harus disesuaikan dengan pemasok serta harga lokal.
-4. Stok awal produk dan bahan selalu nol; aplikasi tidak membuat stok atau transaksi palsu.
-5. Produk/jasa disimpan di products; bahan baku di materials; peralatan di assets; komposisi di recipes.
-6. HPP bisa otomatis dari komposisi atau manual. HPP manual tidak ditimpa saat harga bahan berubah.
-7. Data per usaha dipisahkan oleh businessId. Mengedit usaha tidak mengubah master atau usaha lain.
-8. Laporan keuangan memiliki ringkasan, buku kas pemasukan/pengeluaran, dan riwayat.
+PERUBAHAN UTAMA
+1. Bahan/Belanja menampilkan bahan baku dan barang stok tanpa harus memilih produk terlebih dahulu.
+2. Produk jadi yang memiliki komposisi tidak dimunculkan lagi sebagai barang pembelian/stok kedua. Saat produk dipilih pada filter Bahan/Belanja, daftar berubah menjadi bahan komposisi produk itu.
+3. Katalog master kini memiliki 788 item template, 82 komposisi acuan untuk produk yang dibuat/diracik, dan 5 sumber resmi.
+4. Komposisi template menyimpan metadata sumber dan status sebagai referensi awal yang dapat diedit.
+5. Halaman Komposisi Produk & HPP menampilkan tautan sumber resmi Kementerian Pertanian dan BPOM beserta ruang lingkup penggunaannya.
+6. Cache PWA diperbarui ke build v3.3.103.
 
-CARA MENJALANKAN
-PWA membutuhkan HTTPS atau localhost untuk service worker.
-1. Cadangkan data lama melalui menu Profil & Backup jika sudah ada data penting.
-2. Unggah seluruh isi folder Universal_UMKM_PWA_Offline ke hosting HTTPS atau jalankan server lokal.
-3. Buka aplikasi melalui alamat HTTPS/localhost dan pastikan terhubung internet saat aset pertama kali dimuat.
-4. Lakukan hard refresh (Ctrl+Shift+R) jika browser masih menampilkan versi lama.
-5. Buat profil usaha dan pilih jenis usaha. Katalog, harga referensi, bahan, dan komposisi akan disalin ke data usaha baru. Pengguna lama dimigrasikan otomatis dengan menjaga data yang sudah diisi.
-6. Periksa harga jual/HPP, koreksi harga bahan dan resep, lalu masukkan stok aktual.
-7. Buat backup berkala.
+CATATAN PENTING
+- Takaran komposisi adalah takaran awal untuk membantu memulai pengisian, bukan formula resmi yang disahkan pemerintah. Uji dan sesuaikan resep, hasil jadi, dan biaya aktual usaha sebelum dipakai sebagai standar HPP.
+- Sumber Kementerian Pertanian membahas pembuatan nugget ayam. Jangan menerapkannya sebagai resep semua produk atau pada nugget bermerek yang dibeli untuk dijual kembali.
+- Sumber BPOM digunakan sesuai cakupannya: penanganan pangan beku, kategori/registrasi, pangan siap saji terkemas, dan penetapan masa simpan. Jangan menetapkan masa simpan/kedaluwarsa hanya berdasarkan perkiraan.
+- Produk yang dibeli untuk dijual kembali (misalnya barang retail, air mineral kemasan, dan frozen food bermerek) tetap dikelola sebagai barang dagangan, bukan diberi resep buatan sendiri.
+- Data transaksi, stok, pembelian, dan usaha pengguna berada di IndexedDB lokal; paket ini tidak membawa database transaksi pengguna. Tetap lakukan backup sebelum mengganti file aplikasi.
 
-PENTING
-- Harga dan komposisi adalah titik awal referensi, bukan jaminan harga pasar atau resep baku.
-- Data yang dibuat pada satu perangkat belum tersinkron otomatis ke perangkat lain.
-- Pemilih paket 1–24 adalah batas lokal; pembayaran/verifikasi lisensi server belum terhubung.
-- Pengujian browser end-to-end di semua perangkat belum dilakukan. Uji transaksi, stok, HPP, backup, dan laporan sebelum dipakai untuk pencatatan usaha nyata.
+PEMASANGAN
+- Untuk uji lokal, ekstrak seluruh isi folder ini ke folder PWA yang sama.
+- Untuk GitHub Pages, unggah file-file paket ke repositori PWA yang digunakan, lalu tunggu deployment selesai.
+- Setelah deployment, buka aplikasi dalam keadaan online sekali agar file baru terunduh; lalu muat ulang. Jika versi lama tetap muncul, tutup aplikasi PWA dan buka kembali setelah cache diperbarui.
 
-
-PEMBARUAN v3.0.3 — PEMBELIAN DAN RIWAYAT
-- Tanggal pembelian wajib diisi.
-- Simpan Pembelian menambah stok item yang dipilih dan membuat catatan riwayat.
-- Riwayat bisa difilter berdasarkan tanggal dan tidak mengubah stok.
-- Pembelian barang jual yang mengelola stok (contoh HVS A4/F4 dan toner pada paket fotokopi) juga tersedia dari menu Bahan & Belanja.
-- Bahan baru dapat dibuat langsung di formulir pembelian; nama, kategori, dan satuan mengikuti jenis usaha.
-- Form pembelian hanya memiliki Simpan Pembelian dan Batal; tidak ada tombol Simpan Bahan.
-- Cadangkan data usaha sebelum mengganti file hosting.
-
-
-PEMBARUAN v3.0.5 — KOMPOSISI SESUAI JENIS USAHA
-- Menu Komposisi Produk mengikuti pengaturan di Profil & Backup.
-- Pilihan: Otomatis sesuai jenis usaha, Aktifkan, atau Sembunyikan.
-- Mode otomatis menampilkan komposisi untuk jenis usaha makanan/minuman/kue/produksi yang dikenali. Jenis usaha lain dapat mengaktifkannya sendiri.
-- Menyembunyikan menu tidak menghapus resep/komposisi tersimpan. Tidak ada migrasi database atau penghapusan data produk, pembelian, stok, transaksi, maupun riwayat.
-
-PEMBARUAN v3.0.6 — KOMPOSISI BISA DIKETIK
-- Nama produk/paket bisa diketik langsung; produk baru dibuat ketika komposisi disimpan.
-- Nama bahan bisa diketik; bahan yang sudah ada digunakan kembali, bahan baru dibuat saat disimpan.
-- Kolom komposisi: bahan/produk, jumlah & satuan, harga per satuan.
-- Satuan butir untuk telur dapat dipakai; stok bahan baru tetap nol.
-- Database dan riwayat lama tidak dihapus.
-
-
-PEMBARUAN v3.0.8 — STANDAR PERMANEN DATA AMAN
-- Pembaruan aplikasi tidak boleh menghapus atau membuat ulang usaha pengguna secara otomatis.
-- Usaha tersimpan tetap dibuka melalui daftar USAHA TERSIMPAN; memilih jenis usaha yang sudah dibuat membuka usaha tersebut, bukan membuat duplikat.
-- Jenis usaha baru yang tersedia di master dapat dipilih untuk membuat usaha baru, tanpa mengubah data usaha yang sudah ada.
-- Data produk, harga, stok, bahan, komposisi, pembelian, penjualan, pengeluaran, aset, dan riwayat wajib dipertahankan.
-- Perubahan database harus menggunakan migrasi yang mempertahankan data; jangan menaikkan DB_VERSION dengan menghapus object store atau memanggil clear() pada saat pembaruan.
-- Perubahan master hanya boleh menambahkan item yang belum ada dan tidak boleh menimpa nilai yang telah diedit pengguna. Jika migrasi tidak aman atau gagal, hentikan migrasi dan tampilkan pesan; jangan melanjutkan dengan penghapusan data.
-- Setiap rilis wajib diuji dengan data contoh: buka usaha lama, buat usaha baru, pastikan data usaha terpisah, cek stok/pembelian/riwayat, ekspor dan impor cadangan.
-- Jangan menghapus data lokal saat memasang versi baru. Ekspor cadangan sebelum mengganti file hosting.
-- Versi ini tidak mengubah struktur database IndexedDB (DB_VERSION tetap 4); perubahan ini memperbarui label versi, cache service worker, dan dokumentasi standar rilis.
-
-
-PEMBARUAN v3.0.9 — KODE TRANSAKSI PER TOKO
-- Kode transaksi baru memakai dua karakter awal nama toko dan nomor urut 7 digit, contoh AZ-0000001.
-- Penjualan, pembelian, dan pengeluaran memakai satu urutan nomor per toko. Nomor dapat bertambah melewati 9.999.999 dengan menambah digit otomatis.
-- Penghitung disimpan bersama profil usaha dan dialokasikan secara atomik dalam transaksi database agar nomor tidak dipakai ulang ketika transaksi tersimpan.
-- Kode transaksi lama tidak diubah; ID internal penjualan dan hubungan rincian transaksi tetap dipertahankan. Migrasi menghitung nomor berikutnya dari kode yang sudah ada tanpa menghapus data.
-- Awalan kode yang sudah dibuat tidak berubah saat nama toko diedit. Setiap toko memiliki penghitung terpisah. Saat restore cadangan dengan ID usaha sama, penghitung yang lebih tinggi pada perangkat tidak diturunkan.
-
-
-PEMBARUAN v3.1.3 — WIZARD PANDUAN MEMULAI USAHA
-- Usaha baru langsung membuka Panduan Usaha bertahap setelah profil dan katalog awal berhasil dibuat.
-- Panduan meliputi profil, produk/jasa, harga dan modal, bahan/perlengkapan, stok awal, komposisi/resep jika relevan, kasir, dan laporan.
-- Langkah komposisi disesuaikan dengan jenis usaha dan dapat dilewati bila tidak diperlukan.
-- Tombol panduan membuka fitur aplikasi terkait; pengguna menandai langkah selesai sendiri setelah memeriksa data.
-- Progres panduan disimpan di properti setupWizard pada profil usaha dalam store settings yang sudah ada. Tidak ada object store baru, tidak ada perubahan DB_VERSION, dan tidak ada penghapusan data usaha.
-- Progres terpisah per profil usaha. Mengulang panduan hanya mereset status panduan, tidak mengubah produk, harga, stok, bahan, resep, transaksi, pembelian, aset, atau pengeluaran.
-- Pengguna usaha lama dapat membuka Panduan Usaha dari navigasi; progres awalnya kosong dan tidak memengaruhi data lama.
-
-
-PEMBARUAN v3.1.3 — PANDUAN KHUSUS PER JENIS USAHA
-- Menu Panduan Usaha tetap tersedia dari navigasi di setiap profil usaha; panduan tidak memaksa pengguna ketika membuka aplikasi.
-- Setiap panduan menampilkan tepat 8 langkah: profil, pengaturan usaha, produk/jasa, harga/modal, bahan dan stok, fokus khusus usaha, transaksi, serta laporan.
-- Langkah fokus menyesuaikan 24 paket, termasuk kuliner, katering, depot air, frozen food, konter HP, laundry, makanan online, percetakan/fotokopi, pet shop, salon, kosmetik, bakery, pakaian, retail, sembako/grosir, serta berbagai jenis makanan/minuman.
-- Progres disimpan pada profil usaha yang sudah ada; ID langkah lama yang masih dipakai dipertahankan. Data progres lama yang tidak lagi ditampilkan tidak dihapus dari profil.
-- Tidak ada perubahan skema database, DB_VERSION tetap 4, dan tidak ada operasi penghapusan/penulisan ulang produk atau transaksi saat panduan dibuka.
-- Cache service worker dinaikkan untuk memastikan file baru dapat dimuat.
-
-
-Versi v3.1.5: formulir pembelian menggunakan harga beli per satuan dan total otomatis; data lokal tidak direset. Lihat PERBAIKAN_PEMBELIAN_v3.1.5.txt.
-
-
-VERSI TERBARU: v3.3.20
-Perubahan: menu jadi seperti Jus Alpukat, Jus Mangga, Jus Jambu, dan Es Campur tidak ditampilkan sebagai bahan/opsi belanja pada jenis usaha Jus Buah & Es Campur. Data lama tidak dihapus; riwayat tetap disimpan. Lihat PERBAIKAN_BAHAN_JUS_v3.3.19.txt dan CHECKLIST_RILIS_v3.3.19.txt.
-
-PEMBARUAN v3.3.20 — KODE PENJUALAN SAJA
-- Kode bernomor hanya dibuat untuk transaksi penjualan di Kasir dan ditampilkan pada nota penjualan.
-- Pembelian baru tidak lagi mengalokasikan kode penjualan atau menghabiskan nomor urut penjualan. Riwayat tampil “Pembelian - Nama Bahan/Barang”.
-- Pengeluaran baru tidak lagi memakai kode penjualan; riwayat dan buku kas tampil “Pengeluaran - Nama”.
-- Kode yang tersimpan pada pembelian/pengeluaran lama tetap ada di database untuk menjaga data historis, tetapi tidak ditampilkan pada layar. Penghitung tidak diturunkan sehingga nomor historis tidak dipakai ulang.
-- Perubahan berlaku untuk semua jenis usaha. DB_VERSION tetap 4; tidak ada penghapusan atau reset data.
-
-
-Versi v3.3.49: panduan pengisian HPP diperjelas. Lihat PETUNJUK_HPP_MUDAH_v3.3.49.txt.
-
-
-PERBAIKAN v3.3.62 — KOMPOSISI OPSIONAL
-- Komposisi tetap tersedia untuk semua jenis usaha, tetapi tidak diwajibkan untuk semua produk.
-- Resep bawaan minuman sederhana (kopi susu, kopi hitam, teh manis, wedang jahe, jus, dan minuman sejenis) dihapus dari template.
-- Pada data lama, hanya resep bawaan bertanda template yang dihapus untuk minuman sederhana; komposisi buatan pengguna dipertahankan.
-- Minuman sederhana tidak lagi memicu pemeriksaan satuan komposisi bawaan. Produk kue/produksi tetap dapat memakai resep dan konversi satuan.
-- HPP produk minuman yang resep bawaannya dihapus beralih ke mode manual dengan nilai HPP tersimpan tetap dipertahankan.
-
-
-VERSI 3.3.63 — KATALOG TOKO KUE & BAKERY PREMIUM
-- Menambah katalog roti premium, roti satuan, cake, pastry, dan jajanan gurih sesuai daftar harga referensi pengguna.
-- Menambahkan bahan baku baru yang dibutuhkan oleh komposisi produk.
-- Menambahkan formula komposisi awal per satuan jual untuk menghitung HPP dan kebutuhan stok bahan.
-- Formula merupakan acuan awal yang belum divalidasi; lakukan uji dapur dan sesuaikan harga pemasok, ukuran hasil, dan takaran sebelum dipakai untuk produksi nyata.
-- Migrasi untuk usaha Toko Kue / Bakery yang sudah ada hanya menambah item template yang belum ada dan resep template; tidak menghapus transaksi, stok, atau riwayat pembelian.
-- Harga jual adalah referensi dari daftar pengguna; harga normal dicatat di deskripsi produk jika tersedia.
-
-
-PATCH v3.3.63 — TAMBAHAN TOKO KUE / BAKERY PREMIUM
-File patch yang perlu diganti: app.js, master.json, sw.js. README_ID.txt berisi catatan versi.
-Katalog baru: 35 produk tambahan termasuk roti premium, roti satuan, cake, pastry, dan jajanan gurih. Formula komposisi awal terhubung ke bahan baku dan unit stok yang sesuai.
-Untuk usaha Toko Kue / Bakery yang sudah ada, migrasi menambahkan item template yang belum ada dan menjaga transaksi, stok, pembelian, serta produk yang sudah tersimpan. Formula bawaan yang belum diedit dapat disegarkan dari master; resep kustom tidak ditimpa.
-Harga normal dicatat pada deskripsi bila diberikan. Roti Tawar Klasik menggunakan harga awal Rp10.000 dengan catatan rentang Rp10.000–14.700 sesuai varian.
-PENTING: formula ini adalah rancangan referensi awal, bukan resep yang telah divalidasi. Uji hasil dapur, ukuran hasil, rasa, keamanan pangan, dan HPP aktual sebelum produksi/penjualan. Sesuaikan harga bahan dan takaran dengan pemasok serta proses usaha Anda.
-Pemasangan patch: ekstrak ZIP, lalu timpa app.js, master.json, dan sw.js pada folder/repository aplikasi. Publikasikan ulang jika memakai GitHub Pages. Setelah terbit, tutup aplikasi dan buka ulang online agar service worker mengambil versi baru. Buat backup data sebelum mencoba.
+PENGUJIAN YANG DILAKUKAN
+- Pemeriksaan sintaks JavaScript dengan node --check app.js.
+- Pemeriksaan JSON dan integritas referensi item/komposisi.
+- Pemeriksaan integritas arsip ZIP.
+- Pengujian interaksi browser dan uji fisik alur stok belum dilakukan di sesi ini; lakukan backup dan uji transaksi dummy sebelum digunakan untuk transaksi nyata.
