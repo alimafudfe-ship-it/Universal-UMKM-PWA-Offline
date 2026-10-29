@@ -1,0 +1,15 @@
+PAKET DATA ACUAN, BUKAN PATCH APLIKASI
+
+File JSON berisi data produk, bahan, takaran, langkah kerja, status, dan sumber per produk. CSV adalah tampilan datar untuk pemeriksaan.
+
+Kategori yang tercakup pada contoh ini:
+- Toko Kue & Bakery
+- Gorengan & Cemilan
+- Warung Kopi & Minuman
+- Warung Makan
+- Jajanan Pasar
+- Toko Retail
+
+Paket ini belum mengubah master.json atau katalog PWA di GitHub Pages. Untuk integrasi aman ke semua jenis usaha, diperlukan master.json terbaru dari repo agar produk yang ada tidak tertimpa atau terduplikasi.
+
+Harga bahan tidak diisi karena harus berasal dari pembelian aktual pengguna. Hasil batch juga harus diuji dan dicatat sebelum HPP final dihitung.

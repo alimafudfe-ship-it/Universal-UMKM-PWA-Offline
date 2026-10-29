@@ -1,0 +1,879 @@
+{
+  "schema_version": "1.0",
+  "title": "Universal UMKM Pro — Data Acuan Resep dan Produk Usaha Lain",
+  "created": "2026-10-29",
+  "scope": "Contoh data awal untuk 5 kategori usaha selain Frozen Food",
+  "important": "Bukan paket lengkap semua jenis usaha di katalog aplikasi. Formula produksi/racikan adalah formula kerja awal yang belum tervalidasi. Sumber pemerintah pada paket ini terutama menjadi acuan keamanan, kategori, atau proses; bukan berarti setiap takaran resep disahkan pemerintah.",
+  "business_types": [
+    "Gorengan & Cemilan",
+    "Jajanan Pasar",
+    "Toko Kue & Bakery",
+    "Toko Retail",
+    "Warung Kopi & Minuman",
+    "Warung Makan"
+  ],
+  "products": [
+    {
+      "business_type": "Toko Kue & Bakery",
+      "name": "Roti Tawar",
+      "kind": "produksi_sendiri",
+      "unit": "loaf",
+      "recipe_status": "formula_awal_perlu_uji",
+      "validation_status": "Formula awal; belum tervalidasi melalui uji produksi",
+      "source_refs": [
+        "P1"
+      ],
+      "ingredients": [
+        {
+          "name": "Tepung terigu protein tinggi",
+          "quantity": 500,
+          "unit": "g",
+          "price": "isi harga beli aktual"
+        },
+        {
+          "name": "Air",
+          "quantity": 300,
+          "unit": "ml",
+          "price": "isi harga beli aktual"
+        },
+        {
+          "name": "Ragi instan",
+          "quantity": 7,
+          "unit": "g",
+          "price": "isi harga beli aktual"
+        },
+        {
+          "name": "Gula",
+          "quantity": 35,
+          "unit": "g",
+          "price": "isi harga beli aktual"
+        },
+        {
+          "name": "Garam",
+          "quantity": 8,
+          "unit": "g",
+          "price": "isi harga beli aktual"
+        },
+        {
+          "name": "Margarin/mentega",
+          "quantity": 30,
+          "unit": "g",
+          "price": "isi harga beli aktual"
+        }
+      ],
+      "method": [
+        "Campur tepung, gula, dan ragi; masukkan air bertahap.",
+        "Uleni, masukkan garam dan margarin, lalu uleni sampai elastis.",
+        "Fermentasikan sampai mengembang, bentuk dalam loyang.",
+        "Panggang sampai matang; catat waktu/suhu aktual oven dan berat hasil."
+      ],
+      "notes": "Formula kerja umum untuk uji, bukan resep kuantitatif resmi Kementan."
+    },
+    {
+      "business_type": "Toko Kue & Bakery",
+      "name": "Roti Manis Isi Cokelat",
+      "kind": "produksi_sendiri",
+      "unit": "pcs",
+      "recipe_status": "formula_awal_perlu_uji",
+      "validation_status": "Formula awal; belum tervalidasi melalui uji produksi",
+      "source_refs": [
+        "P1"
+      ],
+      "ingredients": [
+        {
+          "name": "Tepung terigu protein tinggi",
+          "quantity": 500,
+          "unit": "g",
+          "price": "isi harga beli aktual"
+        },
+        {
+          "name": "Susu cair",
+          "quantity": 250,
+          "unit": "ml",
+          "price": "isi harga beli aktual"
+        },
+        {
+          "name": "Telur",
+          "quantity": 1,
+          "unit": "butir",
+          "price": "isi harga beli aktual"
+        },
+        {
+          "name": "Gula",
+          "quantity": 70,
+          "unit": "g",
+          "price": "isi harga beli aktual"
+        },
+        {
+          "name": "Ragi instan",
+          "quantity": 7,
+          "unit": "g",
+          "price": "isi harga beli aktual"
+        },
+        {
+          "name": "Margarin",
+          "quantity": 50,
+          "unit": "g",
+          "price": "isi harga beli aktual"
+        },
+        {
+          "name": "Garam",
+          "quantity": 7,
+          "unit": "g",
+          "price": "isi harga beli aktual"
+        },
+        {
+          "name": "Cokelat meses/isian",
+          "quantity": 150,
+          "unit": "g",
+          "price": "isi harga beli aktual"
+        }
+      ],
+      "method": [
+        "Campur bahan adonan kecuali margarin dan garam.",
+        "Uleni, masukkan margarin dan garam, uleni hingga elastis.",
+        "Fermentasikan, timbang adonan per pcs, beri isian dan bentuk.",
+        "Fermentasikan kembali hingga mengembang lalu panggang sampai matang."
+      ],
+      "notes": "Hasil pcs bergantung berat adonan per buah; timbang batch nyata."
+    },
+    {
+      "business_type": "Toko Kue & Bakery",
+      "name": "Brownies Panggang",
+      "kind": "produksi_sendiri",
+      "unit": "potong",
+      "recipe_status": "formula_awal_perlu_uji",
+      "validation_status": "Formula awal; belum tervalidasi melalui uji produksi",
+      "source_refs": [
+        "P1"
+      ],
+      "ingredients": [
+        {
+          "name": "Telur",
+          "quantity": 4,
+          "unit": "butir",
+          "price": "isi harga beli aktual"
+        },
+        {
+          "name": "Gula",
+          "quantity": 200,
+          "unit": "g",
+          "price": "isi harga beli aktual"
+        },
+        {
+          "name": "Tepung terigu",
+          "quantity": 100,
+          "unit": "g",
+          "price": "isi harga beli aktual"
+        },
+        {
+          "name": "Cokelat batang",
+          "quantity": 200,
+          "unit": "g",
+          "price": "isi harga beli aktual"
+        },
+        {
+          "name": "Margarin/mentega",
+          "quantity": 150,
+          "unit": "g",
+          "price": "isi harga beli aktual"
+        },
+        {
+          "name": "Bubuk kakao",
+          "quantity": 30,
+          "unit": "g",
+          "price": "isi harga beli aktual"
+        }
+      ],
+      "method": [
+        "Lelehkan cokelat bersama margarin, lalu hangatkan.",
+        "Aduk telur dan gula sampai tercampur; jangan menganggap volume sebagai ukuran hasil.",
+        "Masukkan cokelat leleh, tepung dan kakao yang diayak.",
+        "Panggang hingga tingkat kematangan yang ditetapkan dalam uji batch; dinginkan sebelum dipotong."
+      ],
+      "notes": "Ukuran loyang dan waktu oven harus diuji dan dicatat."
+    },
+    {
+      "business_type": "Gorengan & Cemilan",
+      "name": "Bakwan Sayur",
+      "kind": "produksi_sendiri",
+      "unit": "pcs",
+      "recipe_status": "formula_awal_perlu_uji",
+      "validation_status": "Formula awal; belum tervalidasi melalui uji produksi",
+      "source_refs": [
+        "P1"
+      ],
+      "ingredients": [
+        {
+          "name": "Tepung terigu",
+          "quantity": 250,
+          "unit": "g",
+          "price": "isi harga beli aktual"
+        },
+        {
+          "name": "Kol",
+          "quantity": 200,
+          "unit": "g",
+          "price": "isi harga beli aktual"
+        },
+        {
+          "name": "Wortel",
+          "quantity": 100,
+          "unit": "g",
+          "price": "isi harga beli aktual"
+        },
+        {
+          "name": "Daun bawang",
+          "quantity": 30,
+          "unit": "g",
+          "price": "isi harga beli aktual"
+        },
+        {
+          "name": "Bawang putih",
+          "quantity": 10,
+          "unit": "g",
+          "price": "isi harga beli aktual"
+        },
+        {
+          "name": "Air",
+          "quantity": 250,
+          "unit": "ml",
+          "price": "isi harga beli aktual"
+        },
+        {
+          "name": "Garam",
+          "quantity": 6,
+          "unit": "g",
+          "price": "isi harga beli aktual"
+        },
+        {
+          "name": "Minyak goreng",
+          "quantity": 0,
+          "unit": "ml",
+          "price": "isi harga beli aktual"
+        }
+      ],
+      "method": [
+        "Iris sayuran dan tiriskan.",
+        "Campur tepung, bumbu, air dan sayuran hingga rata.",
+        "Goreng dalam minyak panas sampai matang dan berwarna sesuai standar produk.",
+        "Catat berat hasil, jumlah pcs dan pemakaian minyak aktual."
+      ],
+      "notes": "Takaran air/minyak dan hasil harus ditetapkan melalui uji."
+    },
+    {
+      "business_type": "Gorengan & Cemilan",
+      "name": "Pisang Goreng",
+      "kind": "produksi_sendiri",
+      "unit": "pcs",
+      "recipe_status": "formula_awal_perlu_uji",
+      "validation_status": "Formula awal; belum tervalidasi melalui uji produksi",
+      "source_refs": [
+        "P1"
+      ],
+      "ingredients": [
+        {
+          "name": "Pisang",
+          "quantity": 1000,
+          "unit": "g",
+          "price": "isi harga beli aktual"
+        },
+        {
+          "name": "Tepung terigu",
+          "quantity": 200,
+          "unit": "g",
+          "price": "isi harga beli aktual"
+        },
+        {
+          "name": "Tepung beras",
+          "quantity": 50,
+          "unit": "g",
+          "price": "isi harga beli aktual"
+        },
+        {
+          "name": "Gula",
+          "quantity": 30,
+          "unit": "g",
+          "price": "isi harga beli aktual"
+        },
+        {
+          "name": "Garam",
+          "quantity": 3,
+          "unit": "g",
+          "price": "isi harga beli aktual"
+        },
+        {
+          "name": "Air",
+          "quantity": 250,
+          "unit": "ml",
+          "price": "isi harga beli aktual"
+        },
+        {
+          "name": "Minyak goreng",
+          "quantity": 0,
+          "unit": "ml",
+          "price": "isi harga beli aktual"
+        }
+      ],
+      "method": [
+        "Kupas dan timbang pisang yang dapat digunakan.",
+        "Campur bahan pelapis dan air sampai konsistensi tercatat.",
+        "Balur pisang dan goreng sampai matang.",
+        "Catat jumlah buah dan pemakaian minyak aktual."
+      ],
+      "notes": "Pilih jenis pisang dan ukuran standar; formula ini belum tervalidasi."
+    },
+    {
+      "business_type": "Gorengan & Cemilan",
+      "name": "Cireng",
+      "kind": "produksi_sendiri",
+      "unit": "pcs",
+      "recipe_status": "formula_awal_perlu_uji",
+      "validation_status": "Formula awal; belum tervalidasi melalui uji produksi",
+      "source_refs": [
+        "P1",
+        "B3"
+      ],
+      "ingredients": [
+        {
+          "name": "Tepung tapioka",
+          "quantity": 300,
+          "unit": "g",
+          "price": "isi harga beli aktual"
+        },
+        {
+          "name": "Tepung terigu",
+          "quantity": 50,
+          "unit": "g",
+          "price": "isi harga beli aktual"
+        },
+        {
+          "name": "Bawang putih",
+          "quantity": 10,
+          "unit": "g",
+          "price": "isi harga beli aktual"
+        },
+        {
+          "name": "Daun bawang",
+          "quantity": 20,
+          "unit": "g",
+          "price": "isi harga beli aktual"
+        },
+        {
+          "name": "Garam",
+          "quantity": 6,
+          "unit": "g",
+          "price": "isi harga beli aktual"
+        },
+        {
+          "name": "Air panas",
+          "quantity": 200,
+          "unit": "ml",
+          "price": "isi harga beli aktual"
+        },
+        {
+          "name": "Minyak goreng",
+          "quantity": 0,
+          "unit": "ml",
+          "price": "isi harga beli aktual"
+        }
+      ],
+      "method": [
+        "Campur bahan kering dan bumbu.",
+        "Tuang air panas bertahap, aduk hingga bisa dibentuk.",
+        "Bentuk ukuran seragam dan goreng sampai matang.",
+        "Catat hasil batch dan pemakaian minyak."
+      ],
+      "notes": "Jika dijual beku, gunakan aturan rantai dingin BPOM dan uji proses khusus."
+    },
+    {
+      "business_type": "Warung Kopi & Minuman",
+      "name": "Kopi Susu Gula Aren",
+      "kind": "racikan_minuman",
+      "unit": "gelas",
+      "recipe_status": "formula_awal_perlu_uji",
+      "validation_status": "Formula awal; belum tervalidasi melalui uji produksi",
+      "source_refs": [
+        "P1"
+      ],
+      "ingredients": [
+        {
+          "name": "Kopi seduh pekat",
+          "quantity": 30,
+          "unit": "ml",
+          "price": "isi harga beli aktual"
+        },
+        {
+          "name": "Susu cair",
+          "quantity": 120,
+          "unit": "ml",
+          "price": "isi harga beli aktual"
+        },
+        {
+          "name": "Sirup gula aren",
+          "quantity": 20,
+          "unit": "ml",
+          "price": "isi harga beli aktual"
+        },
+        {
+          "name": "Es batu",
+          "quantity": 150,
+          "unit": "g",
+          "price": "isi harga beli aktual"
+        }
+      ],
+      "method": [
+        "Siapkan gelas bersih dan ukur bahan.",
+        "Campur kopi, susu dan gula aren sesuai takaran standar.",
+        "Tambahkan es; sajikan segera.",
+        "Tetapkan gramasi gelas, es, dan takaran resep agar rasa serta HPP konsisten."
+      ],
+      "notes": "Formula operasional awal; sesuaikan dengan jenis kopi dan ukuran gelas."
+    },
+    {
+      "business_type": "Warung Kopi & Minuman",
+      "name": "Teh Manis Dingin",
+      "kind": "racikan_minuman",
+      "unit": "gelas",
+      "recipe_status": "formula_awal_perlu_uji",
+      "validation_status": "Formula awal; belum tervalidasi melalui uji produksi",
+      "source_refs": [
+        "P1"
+      ],
+      "ingredients": [
+        {
+          "name": "Teh seduh",
+          "quantity": 180,
+          "unit": "ml",
+          "price": "isi harga beli aktual"
+        },
+        {
+          "name": "Gula pasir",
+          "quantity": 15,
+          "unit": "g",
+          "price": "isi harga beli aktual"
+        },
+        {
+          "name": "Es batu",
+          "quantity": 150,
+          "unit": "g",
+          "price": "isi harga beli aktual"
+        }
+      ],
+      "method": [
+        "Seduh teh dengan standar waktu dan konsentrasi yang konsisten.",
+        "Larutkan gula saat teh masih hangat.",
+        "Dinginkan dengan penanganan higienis, tambahkan es saat penyajian.",
+        "Catat volume akhir per gelas."
+      ],
+      "notes": "Jika dibuat dalam jumlah besar, atur waktu/suhu simpan secara aman."
+    },
+    {
+      "business_type": "Warung Kopi & Minuman",
+      "name": "Jeruk Peras",
+      "kind": "racikan_minuman",
+      "unit": "gelas",
+      "recipe_status": "formula_awal_perlu_uji",
+      "validation_status": "Formula awal; belum tervalidasi melalui uji produksi",
+      "source_refs": [
+        "P1"
+      ],
+      "ingredients": [
+        {
+          "name": "Jeruk segar",
+          "quantity": 250,
+          "unit": "g",
+          "price": "isi harga beli aktual"
+        },
+        {
+          "name": "Air matang",
+          "quantity": 100,
+          "unit": "ml",
+          "price": "isi harga beli aktual"
+        },
+        {
+          "name": "Gula pasir",
+          "quantity": 15,
+          "unit": "g",
+          "price": "isi harga beli aktual"
+        },
+        {
+          "name": "Es batu",
+          "quantity": 150,
+          "unit": "g",
+          "price": "isi harga beli aktual"
+        }
+      ],
+      "method": [
+        "Cuci jeruk dan alat pemeras dengan benar.",
+        "Peras, saring bila diperlukan, lalu ukur volume sari.",
+        "Campur air dan gula sesuai standar, tambahkan es saat disajikan.",
+        "Catat hasil sari aktual karena ukuran dan jenis jeruk berbeda."
+      ],
+      "notes": "Jangan menganggap berat jeruk sama dengan volume sari; ukur hasil nyata."
+    },
+    {
+      "business_type": "Warung Makan",
+      "name": "Nasi Goreng Sederhana",
+      "kind": "produksi_per_porsi",
+      "unit": "porsi",
+      "recipe_status": "formula_awal_perlu_uji",
+      "validation_status": "Formula awal; belum tervalidasi melalui uji produksi",
+      "source_refs": [
+        "P1"
+      ],
+      "ingredients": [
+        {
+          "name": "Nasi matang",
+          "quantity": 250,
+          "unit": "g",
+          "price": "isi harga beli aktual"
+        },
+        {
+          "name": "Telur",
+          "quantity": 1,
+          "unit": "butir",
+          "price": "isi harga beli aktual"
+        },
+        {
+          "name": "Bawang putih",
+          "quantity": 5,
+          "unit": "g",
+          "price": "isi harga beli aktual"
+        },
+        {
+          "name": "Kecap manis",
+          "quantity": 15,
+          "unit": "ml",
+          "price": "isi harga beli aktual"
+        },
+        {
+          "name": "Minyak goreng",
+          "quantity": 10,
+          "unit": "ml",
+          "price": "isi harga beli aktual"
+        },
+        {
+          "name": "Garam",
+          "quantity": 2,
+          "unit": "g",
+          "price": "isi harga beli aktual"
+        },
+        {
+          "name": "Daun bawang",
+          "quantity": 10,
+          "unit": "g",
+          "price": "isi harga beli aktual"
+        }
+      ],
+      "method": [
+        "Siapkan satu porsi bahan yang sudah ditimbang.",
+        "Tumis bawang dengan minyak, masukkan telur dan nasi.",
+        "Tambahkan kecap dan bumbu, masak merata sampai panas menyeluruh.",
+        "Sajikan; catat bahan tambahan opsional terpisah."
+      ],
+      "notes": "Standarkan nasi matang per porsi, bukan beras mentah."
+    },
+    {
+      "business_type": "Warung Makan",
+      "name": "Mie Goreng Telur",
+      "kind": "produksi_per_porsi",
+      "unit": "porsi",
+      "recipe_status": "formula_awal_perlu_uji",
+      "validation_status": "Formula awal; belum tervalidasi melalui uji produksi",
+      "source_refs": [
+        "P1"
+      ],
+      "ingredients": [
+        {
+          "name": "Mi basah/mi matang",
+          "quantity": 200,
+          "unit": "g",
+          "price": "isi harga beli aktual"
+        },
+        {
+          "name": "Telur",
+          "quantity": 1,
+          "unit": "butir",
+          "price": "isi harga beli aktual"
+        },
+        {
+          "name": "Sawi",
+          "quantity": 40,
+          "unit": "g",
+          "price": "isi harga beli aktual"
+        },
+        {
+          "name": "Bawang putih",
+          "quantity": 5,
+          "unit": "g",
+          "price": "isi harga beli aktual"
+        },
+        {
+          "name": "Kecap manis",
+          "quantity": 15,
+          "unit": "ml",
+          "price": "isi harga beli aktual"
+        },
+        {
+          "name": "Minyak goreng",
+          "quantity": 10,
+          "unit": "ml",
+          "price": "isi harga beli aktual"
+        }
+      ],
+      "method": [
+        "Timbang mi dalam kondisi siap masak.",
+        "Tumis bawang, masukkan telur lalu sayuran.",
+        "Masukkan mi dan bumbu, aduk sampai panas merata.",
+        "Catat varian topping sebagai komposisi terpisah."
+      ],
+      "notes": "Jangan campur satuan mi kering dan mi matang dalam satu formula."
+    },
+    {
+      "business_type": "Warung Makan",
+      "name": "Telur Dadar",
+      "kind": "produksi_per_porsi",
+      "unit": "porsi",
+      "recipe_status": "formula_awal_perlu_uji",
+      "validation_status": "Formula awal; belum tervalidasi melalui uji produksi",
+      "source_refs": [
+        "P1"
+      ],
+      "ingredients": [
+        {
+          "name": "Telur",
+          "quantity": 2,
+          "unit": "butir",
+          "price": "isi harga beli aktual"
+        },
+        {
+          "name": "Garam",
+          "quantity": 2,
+          "unit": "g",
+          "price": "isi harga beli aktual"
+        },
+        {
+          "name": "Daun bawang",
+          "quantity": 10,
+          "unit": "g",
+          "price": "isi harga beli aktual"
+        },
+        {
+          "name": "Minyak goreng",
+          "quantity": 5,
+          "unit": "ml",
+          "price": "isi harga beli aktual"
+        }
+      ],
+      "method": [
+        "Kocok telur dan bumbu.",
+        "Panaskan minyak secukupnya, masak hingga matang menyeluruh.",
+        "Sajikan per porsi dan catat pemakaian minyak aktual."
+      ],
+      "notes": "Formula sederhana untuk standardisasi porsi."
+    },
+    {
+      "business_type": "Jajanan Pasar",
+      "name": "Klepon",
+      "kind": "produksi_sendiri",
+      "unit": "pcs",
+      "recipe_status": "formula_awal_perlu_uji",
+      "validation_status": "Formula awal; belum tervalidasi melalui uji produksi",
+      "source_refs": [
+        "P1"
+      ],
+      "ingredients": [
+        {
+          "name": "Tepung ketan",
+          "quantity": 250,
+          "unit": "g",
+          "price": "isi harga beli aktual"
+        },
+        {
+          "name": "Air pandan",
+          "quantity": 180,
+          "unit": "ml",
+          "price": "isi harga beli aktual"
+        },
+        {
+          "name": "Gula merah",
+          "quantity": 100,
+          "unit": "g",
+          "price": "isi harga beli aktual"
+        },
+        {
+          "name": "Kelapa parut",
+          "quantity": 150,
+          "unit": "g",
+          "price": "isi harga beli aktual"
+        },
+        {
+          "name": "Garam",
+          "quantity": 3,
+          "unit": "g",
+          "price": "isi harga beli aktual"
+        }
+      ],
+      "method": [
+        "Campur tepung ketan dengan air pandan bertahap sampai adonan dapat dibentuk.",
+        "Isi dengan gula merah dan bulatkan rapat.",
+        "Rebus hingga mengapung dan matang.",
+        "Gulingkan pada kelapa parut yang telah dikukus/dipanaskan secara higienis."
+      ],
+      "notes": "Kelapa parut mudah rusak; atur penanganan dan waktu jual dengan aman."
+    },
+    {
+      "business_type": "Jajanan Pasar",
+      "name": "Dadar Gulung",
+      "kind": "produksi_sendiri",
+      "unit": "pcs",
+      "recipe_status": "formula_awal_perlu_uji",
+      "validation_status": "Formula awal; belum tervalidasi melalui uji produksi",
+      "source_refs": [
+        "P1"
+      ],
+      "ingredients": [
+        {
+          "name": "Tepung terigu",
+          "quantity": 200,
+          "unit": "g",
+          "price": "isi harga beli aktual"
+        },
+        {
+          "name": "Telur",
+          "quantity": 1,
+          "unit": "butir",
+          "price": "isi harga beli aktual"
+        },
+        {
+          "name": "Santan",
+          "quantity": 400,
+          "unit": "ml",
+          "price": "isi harga beli aktual"
+        },
+        {
+          "name": "Pasta/pandan",
+          "quantity": 5,
+          "unit": "ml",
+          "price": "isi harga beli aktual"
+        },
+        {
+          "name": "Kelapa parut",
+          "quantity": 200,
+          "unit": "g",
+          "price": "isi harga beli aktual"
+        },
+        {
+          "name": "Gula merah",
+          "quantity": 150,
+          "unit": "g",
+          "price": "isi harga beli aktual"
+        }
+      ],
+      "method": [
+        "Masak kelapa parut dan gula merah hingga menjadi unti; dinginkan secara higienis.",
+        "Campur terigu, telur, santan dan pandan menjadi adonan kulit.",
+        "Masak kulit tipis, isi dengan unti, lalu gulung.",
+        "Catat hasil pcs dan batas waktu penyajian berdasarkan praktik aman."
+      ],
+      "notes": "Formula awal; hasil tergantung ketebalan kulit dan ukuran."
+    },
+    {
+      "business_type": "Toko Retail",
+      "name": "Air Mineral Kemasan (Reseller)",
+      "kind": "produk_dagangan",
+      "unit": "botol/pcs",
+      "recipe_status": "tidak_perlu_resep",
+      "validation_status": "Tidak perlu resep",
+      "source_refs": [
+        "B1"
+      ],
+      "ingredients": [],
+      "method": [
+        "Masukkan sebagai produk dagangan, bukan resep produksi.",
+        "Isi harga beli per dus dan isi dus yang sebenarnya.",
+        "Konversi ke harga pokok per botol: harga dus dibagi jumlah botol, lalu catat stok dengan satuan konsisten.",
+        "Periksa kemasan, label, izin edar dan kedaluwarsa."
+      ],
+      "notes": "Tidak perlu komposisi resep; gunakan data produk pada kemasan dan dokumen pemasok."
+    },
+    {
+      "business_type": "Toko Retail",
+      "name": "Mi Instan Kemasan (Reseller)",
+      "kind": "produk_dagangan",
+      "unit": "bungkus",
+      "recipe_status": "tidak_perlu_resep",
+      "validation_status": "Tidak perlu resep",
+      "source_refs": [
+        "B1"
+      ],
+      "ingredients": [],
+      "method": [
+        "Masukkan sebagai produk dagangan tanpa resep.",
+        "Catat jumlah bungkus per dus sesuai kemasan pemasok.",
+        "Harga pokok per bungkus = harga dus dibagi jumlah bungkus; catat pembelian dan stok.",
+        "Periksa kemasan, label dan tanggal kedaluwarsa."
+      ],
+      "notes": "Tidak perlu komposisi resep."
+    }
+  ],
+  "sources": [
+    {
+      "id": "K1",
+      "organization": "Kementerian Pertanian RI",
+      "title": "Membuat Nugget Ayam",
+      "url": "https://pustaka.bppsdmp.pertanian.go.id/info-literasi/membuat-nugget-ayam",
+      "supports": "Acuan proses dan bahan nugget; hanya digunakan untuk nugget, bukan untuk mengklaim semua formula di paket resmi Kementan."
+    },
+    {
+      "id": "K2",
+      "organization": "Kementerian Pertanian RI - Repository",
+      "title": "Membuat Nugget Ayam",
+      "url": "https://repository.pertanian.go.id/items/4ad053e3-7540-4701-8310-4713742c85f3",
+      "supports": "Rujukan resmi pengolahan nugget ayam."
+    },
+    {
+      "id": "B1",
+      "organization": "BPOM RI",
+      "title": "Pedoman Registrasi Pangan Olahan",
+      "url": "https://registrasipangan.pom.go.id/storage/medialain/Registrasi-Pangan-file1713848654.pdf",
+      "supports": "Klasifikasi pangan olahan dan kategori produk."
+    },
+    {
+      "id": "B2",
+      "organization": "BPOM RI",
+      "title": "Tip Bijak Kelola Pangan Olahan Beku",
+      "url": "https://www.pom.go.id/katabpom/infografis/tips-bijak-kelola-pangan-olahan-beku",
+      "supports": "Rantai dingin, penyimpanan beku -18°C atau lebih dingin, FIFO."
+    },
+    {
+      "id": "B3",
+      "organization": "BPOM RI",
+      "title": "Pedoman Pangan Siap Saji (Terkemas)",
+      "url": "https://perpustakaan.pom.go.id/slims/index.php?id=28970&p=show_detail",
+      "supports": "Persyaratan keamanan, label, komposisi dan penyimpanan pangan siap saji terkemas."
+    },
+    {
+      "id": "B4",
+      "organization": "BPOM RI",
+      "title": "Pedoman Penetapan Masa Simpan Pangan Olahan yang Diproduksi oleh UMK",
+      "url": "https://perpustakaan.pom.go.id/detail_berita/MjAyNC0xMi0yMy8xMzA%3D",
+      "supports": "Prinsip penetapan masa simpan; masa simpan tidak boleh ditebak."
+    },
+    {
+      "id": "P1",
+      "organization": "Pusat Informasi dan Pengembangan Pangan Nusantara (Kementan/Badan Pangan)",
+      "title": "Portal informasi pangan dan diversifikasi pangan",
+      "url": "https://pangan.go.id/",
+      "supports": "Rujukan umum pangan; bukan resep kuantitatif."
+    },
+    {
+      "id": "R1",
+      "organization": "Sajiku / Ajinomoto Indonesia",
+      "title": "Sajiku Chicken Nugget",
+      "url": "https://www.ajinomoto.co.id/id/horeka/resep/sajiku-chicken-nugget",
+      "supports": "Resep komersial contoh nugget; bukan lembaga pemerintah."
+    }
+  ]
+}
