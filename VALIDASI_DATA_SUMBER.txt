@@ -1,0 +1,20 @@
+UNIVERSAL UMKM PRO — v3.3.105 DATA SUMBER
+
+Isi ZIP ini adalah pembaruan dari v3.3.104. Struktur aplikasi dan 24 jenis usaha dipertahankan.
+
+PERUBAHAN DATA
+1. Komposisi bawaan yang sebelumnya memakai tautan BPOM seolah-olah sumber resep sekarang diberi status BELUM TERVERIFIKASI. BPOM tidak otomatis menjadi sumber takaran resep.
+2. Ditambahkan satu contoh formula Nugget Ayam Produksi Sendiri berdasarkan penelitian/kajiwidya Polbangtan Gowa yang tersimpan di repository Kementerian Pertanian. Formula awal: ayam 300 g; tepung terigu 30 g; roti tawar 20 g; telur 50 g; es batu 70 g; bawang putih 20 g; merica 1 g; garam 2 g; penyedap rasa 2 g. Total bahan awal 495 g.
+3. Formula penelitian adalah acuan untuk diuji, bukan resep resmi wajib, bukan klaim BPOM, dan bukan formula untuk nugget bermerek yang dibeli untuk dijual kembali. Hasil akhir setelah dimasak harus ditimbang agar HPP per unit tidak dihitung dari asumsi hasil jadi.
+4. Katalog barang dagangan siap jual tetap diperlakukan sebagai stok barang; tidak dipaksa menjadi resep. Untuk jasa/nonpangan, bahan operasional harus dinilai sesuai proses bisnisnya.
+
+SUMBER KHUSUS FORMULA NUGGET
+Judul: Inovasi Nugget Ayam dengan Substitusi Tepung Ubi Jalar Ungu
+Repository: https://repository.pertanian.go.id/items/d3d57a86-8b01-4348-a6a4-534e5762579b
+File: https://repository.pertanian.go.id/bitstreams/59244278-53b7-4478-bd31-e58179113136/download
+
+PENTING
+ZIP ini belum mengklaim semua produk dan komposisi dari 24 jenis usaha sudah tervalidasi oleh sumber resmi. Laporan validasi awal tersedia pada validasi_data_sumber.json. Komposisi lama yang statusnya belum terverifikasi perlu ditinjau dan ditautkan satu per satu ke sumber resep/formulasi yang benar-benar mendukung takarannya.
+
+PENGGUNAAN
+Ekstrak isi ZIP ke root repository GitHub Pages seperti alur pemasangan sebelumnya. Sebelum mengganti versi yang dipakai, simpan cadangan data usaha dari aplikasi.

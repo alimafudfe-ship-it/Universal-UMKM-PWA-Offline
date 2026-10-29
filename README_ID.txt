@@ -24,3 +24,6 @@ PENTING SEBELUM PEMAKAIAN
 4. Setelah deploy, buka dengan HTTPS dan lakukan hard refresh. Jika PWA terpasang masih memakai versi lama, tutup aplikasi dan buka kembali setelah online agar service worker baru terpasang.
 
 Pemeriksaan pada paket: sintaks JavaScript, kelengkapan ID HTML yang dipakai fungsi init, JSON master, referensi resep/sumber, dan integritas ZIP. Pengujian transaksi interaktif di perangkat pengguna belum dilakukan.
+
+
+Versi 3.3.105 — Data Sumber: status validasi komposisi dibuat transparan. Lihat VALIDASI_DATA_SUMBER.txt dan validasi_data_sumber.json.

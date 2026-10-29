@@ -1,0 +1,229 @@
+{
+  "version": "3.3.105",
+  "purpose": "Pemetaan awal sumber dan status validasi data katalog; tidak mengklaim semua resep sudah tervalidasi.",
+  "businesses": [
+    {
+      "paket_id": 1,
+      "jenis_usaha": "Café & Resto",
+      "jumlah_item": 72,
+      "jumlah_komposisi": 13,
+      "status": "Katalog produk/bahan dipertahankan; komposisi lama adalah draft belum terverifikasi"
+    },
+    {
+      "paket_id": 2,
+      "jenis_usaha": "Catering",
+      "jumlah_item": 47,
+      "jumlah_komposisi": 10,
+      "status": "Katalog produk/bahan dipertahankan; komposisi lama adalah draft belum terverifikasi"
+    },
+    {
+      "paket_id": 3,
+      "jenis_usaha": "Depot Air Isi Ulang",
+      "jumlah_item": 20,
+      "jumlah_komposisi": 0,
+      "status": "Katalog barang/jasa dan bahan dipertahankan; komposisi tidak dipaksakan untuk barang siap jual/jasa"
+    },
+    {
+      "paket_id": 4,
+      "jenis_usaha": "Frozen Food",
+      "jumlah_item": 20,
+      "jumlah_komposisi": 0,
+      "status": "Katalog barang/jasa dan bahan dipertahankan; komposisi tidak dipaksakan untuk barang siap jual/jasa"
+    },
+    {
+      "paket_id": 5,
+      "jenis_usaha": "Konter HP",
+      "jumlah_item": 20,
+      "jumlah_komposisi": 0,
+      "status": "Katalog barang/jasa dan bahan dipertahankan; komposisi tidak dipaksakan untuk barang siap jual/jasa"
+    },
+    {
+      "paket_id": 6,
+      "jenis_usaha": "Laundry & Cuci Sepatu",
+      "jumlah_item": 20,
+      "jumlah_komposisi": 0,
+      "status": "Katalog barang/jasa dan bahan dipertahankan; komposisi tidak dipaksakan untuk barang siap jual/jasa"
+    },
+    {
+      "paket_id": 7,
+      "jenis_usaha": "Penjual Makanan Online",
+      "jumlah_item": 54,
+      "jumlah_komposisi": 9,
+      "status": "Katalog produk/bahan dipertahankan; komposisi lama adalah draft belum terverifikasi"
+    },
+    {
+      "paket_id": 8,
+      "jenis_usaha": "Percetakan / Fotokopi Kecil",
+      "jumlah_item": 202,
+      "jumlah_komposisi": 0,
+      "status": "Katalog barang/jasa dan bahan dipertahankan; komposisi tidak dipaksakan untuk barang siap jual/jasa"
+    },
+    {
+      "paket_id": 9,
+      "jenis_usaha": "Pet Shop",
+      "jumlah_item": 20,
+      "jumlah_komposisi": 0,
+      "status": "Katalog barang/jasa dan bahan dipertahankan; komposisi tidak dipaksakan untuk barang siap jual/jasa"
+    },
+    {
+      "paket_id": 10,
+      "jenis_usaha": "Salon",
+      "jumlah_item": 20,
+      "jumlah_komposisi": 0,
+      "status": "Katalog barang/jasa dan bahan dipertahankan; komposisi tidak dipaksakan untuk barang siap jual/jasa"
+    },
+    {
+      "paket_id": 11,
+      "jenis_usaha": "Toko Kosmetik",
+      "jumlah_item": 20,
+      "jumlah_komposisi": 0,
+      "status": "Katalog barang/jasa dan bahan dipertahankan; komposisi tidak dipaksakan untuk barang siap jual/jasa"
+    },
+    {
+      "paket_id": 12,
+      "jenis_usaha": "Toko Kue / Bakery",
+      "jumlah_item": 49,
+      "jumlah_komposisi": 10,
+      "status": "Katalog produk/bahan dipertahankan; komposisi lama adalah draft belum terverifikasi"
+    },
+    {
+      "paket_id": 13,
+      "jenis_usaha": "Toko Pakaian",
+      "jumlah_item": 20,
+      "jumlah_komposisi": 0,
+      "status": "Katalog barang/jasa dan bahan dipertahankan; komposisi tidak dipaksakan untuk barang siap jual/jasa"
+    },
+    {
+      "paket_id": 14,
+      "jenis_usaha": "Toko Retail",
+      "jumlah_item": 20,
+      "jumlah_komposisi": 0,
+      "status": "Katalog barang/jasa dan bahan dipertahankan; komposisi tidak dipaksakan untuk barang siap jual/jasa"
+    },
+    {
+      "paket_id": 15,
+      "jenis_usaha": "Toko Sembako & Grosir",
+      "jumlah_item": 22,
+      "jumlah_komposisi": 0,
+      "status": "Katalog barang/jasa dan bahan dipertahankan; komposisi tidak dipaksakan untuk barang siap jual/jasa"
+    },
+    {
+      "paket_id": 16,
+      "jenis_usaha": "Warung Makan",
+      "jumlah_item": 50,
+      "jumlah_komposisi": 9,
+      "status": "Katalog produk/bahan dipertahankan; komposisi lama adalah draft belum terverifikasi"
+    },
+    {
+      "paket_id": 17,
+      "jenis_usaha": "Gorengan & Camilan",
+      "jumlah_item": 18,
+      "jumlah_komposisi": 6,
+      "status": "Katalog produk/bahan dipertahankan; komposisi lama adalah draft belum terverifikasi"
+    },
+    {
+      "paket_id": 18,
+      "jenis_usaha": "Warung Kopi & Minuman",
+      "jumlah_item": 13,
+      "jumlah_komposisi": 0,
+      "status": "Katalog barang/jasa dan bahan dipertahankan; komposisi tidak dipaksakan untuk barang siap jual/jasa"
+    },
+    {
+      "paket_id": 19,
+      "jenis_usaha": "Nasi Uduk & Sarapan",
+      "jumlah_item": 16,
+      "jumlah_komposisi": 5,
+      "status": "Katalog produk/bahan dipertahankan; komposisi lama adalah draft belum terverifikasi"
+    },
+    {
+      "paket_id": 20,
+      "jenis_usaha": "Warung Makan & Pecel Lele",
+      "jumlah_item": 16,
+      "jumlah_komposisi": 6,
+      "status": "Katalog produk/bahan dipertahankan; komposisi lama adalah draft belum terverifikasi"
+    },
+    {
+      "paket_id": 21,
+      "jenis_usaha": "Bakso, Mi Ayam & Soto",
+      "jumlah_item": 13,
+      "jumlah_komposisi": 5,
+      "status": "Katalog produk/bahan dipertahankan; komposisi lama adalah draft belum terverifikasi"
+    },
+    {
+      "paket_id": 22,
+      "jenis_usaha": "Jajanan Jalanan",
+      "jumlah_item": 14,
+      "jumlah_komposisi": 6,
+      "status": "Katalog produk/bahan dipertahankan; komposisi lama adalah draft belum terverifikasi"
+    },
+    {
+      "paket_id": 23,
+      "jenis_usaha": "Martabak & Roti Bakar",
+      "jumlah_item": 15,
+      "jumlah_komposisi": 4,
+      "status": "Katalog produk/bahan dipertahankan; komposisi lama adalah draft belum terverifikasi"
+    },
+    {
+      "paket_id": 24,
+      "jenis_usaha": "Jus Buah & Es Campur",
+      "jumlah_item": 13,
+      "jumlah_komposisi": 0,
+      "status": "Katalog barang/jasa dan bahan dipertahankan; komposisi tidak dipaksakan untuk barang siap jual/jasa"
+    }
+  ],
+  "formula_with_specific_research_source": [
+    {
+      "product": "Nugget Ayam Produksi Sendiri (Formula Penelitian)",
+      "source_id": "polbangtan-gowa-nugget-research",
+      "source_url": "https://repository.pertanian.go.id/items/d3d57a86-8b01-4348-a6a4-534e5762579b",
+      "raw_input_total_g": 495,
+      "status": "formula penelitian untuk uji produksi; bukan standar wajib"
+    }
+  ],
+  "important_limit": "Tidak ada dasar untuk menyatakan seluruh 788 item dan semua 82 komposisi lama sudah valid dari sumber resmi. Untuk menghindari informasi menyesatkan, komposisi lama ditandai belum terverifikasi. Data nonpangan dan jasa perlu sumber sesuai kategori produk/proses masing-masing.",
+  "source_catalog": [
+    {
+      "id": "kementan-nugget",
+      "title": "Membuat Nugget Ayam",
+      "publisher": "Kementerian Pertanian — Pusat Perpustakaan dan Literasi Pertanian",
+      "url": "https://repository.pertanian.go.id/items/4ad053e3-7540-4701-8310-4713742c85f3",
+      "scope": "Panduan pembuatan nugget ayam bila usaha memproduksi nugget sendiri dari bahan baku. Bukan resep untuk produk nugget bermerek yang dibeli untuk dijual kembali."
+    },
+    {
+      "id": "bpom-frozen-handling",
+      "title": "Tip Bijak Kelola Pangan Olahan Beku",
+      "publisher": "Badan Pengawas Obat dan Makanan (BPOM)",
+      "url": "https://www.pom.go.id/katabpom/infografis/tips-bijak-kelola-pangan-olahan-beku",
+      "scope": "Penyimpanan pangan beku pada −18 °C atau lebih dingin sesuai petunjuk produk, pemeriksaan label/kedaluwarsa, dan FIFO."
+    },
+    {
+      "id": "bpom-registration-2023",
+      "title": "Pedoman Registrasi Pangan Olahan (2023)",
+      "publisher": "Badan Pengawas Obat dan Makanan (BPOM)",
+      "url": "https://registrasipangan.pom.go.id/storage/medialain/Registrasi-Pangan-file1713848654.pdf",
+      "scope": "Acuan kategori dan ketentuan registrasi pangan olahan, termasuk pangan beku. Bukan formula resep."
+    },
+    {
+      "id": "bpom-ready-to-eat",
+      "title": "Pedoman Pangan Siap Saji (Terkemas)",
+      "publisher": "Badan Pengawas Obat dan Makanan (BPOM), Direktorat Standardisasi Pangan Olahan",
+      "url": "https://perpustakaan.pom.go.id/slims/index.php?id=28970&p=show_detail",
+      "scope": "Acuan pangan siap saji terkemas, daftar bahan, label, cara penyimpanan dan penyiapan."
+    },
+    {
+      "id": "bpom-shelf-life-umk",
+      "title": "Pedoman Penetapan Masa Simpan Pangan Olahan yang Diproduksi oleh UMK",
+      "publisher": "Badan Pengawas Obat dan Makanan (BPOM), Direktorat Pengawasan Peredaran Pangan Olahan",
+      "url": "https://perpustakaan.pom.go.id/detail_berita/MjAyNC0xMi0yMy8xMzA%3D",
+      "scope": "Panduan penetapan dan pengelolaan masa simpan; jangan menetapkan tanggal kedaluwarsa hanya berdasarkan perkiraan resep."
+    },
+    {
+      "id": "polbangtan-gowa-nugget-research",
+      "title": "Inovasi Nugget Ayam dengan Substitusi Tepung Ubi Jalar Ungu",
+      "publisher": "Politeknik Pembangunan Pertanian (Polbangtan) Gowa — repository Kementerian Pertanian",
+      "url": "https://repository.pertanian.go.id/items/d3d57a86-8b01-4348-a6a4-534e5762579b",
+      "direct_file_url": "https://repository.pertanian.go.id/bitstreams/59244278-53b7-4478-bd31-e58179113136/download",
+      "scope": "Penelitian/kajiwidya nugget ayam dengan perlakuan formula; dapat dijadikan acuan formula uji untuk produksi sendiri, bukan standar wajib BPOM dan bukan formula produk nugget kemasan untuk dijual kembali."
+    }
+  ]
+}

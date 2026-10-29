@@ -14499,6 +14499,114 @@
       "tipe_asli": "Bahan Baku",
       "deskripsi": "",
       "aktif": 1
+    },
+    {
+      "id": 789,
+      "paket_id": 16,
+      "urutan": 45,
+      "nama_item": "Roti tawar (untuk formula nugget)",
+      "kelompok": "Bahan Baku",
+      "satuan": "kg",
+      "bisa_dijual": 0,
+      "pakai_stok": 1,
+      "harga_jual": 0.0,
+      "harga_beli": 0.0,
+      "stok_awal": 0.0,
+      "stok_minimum": 0.0,
+      "kategori": "Bahan resep — formula penelitian",
+      "tipe_asli": "Bahan Baku",
+      "deskripsi": "Bahan baku formula penelitian nugget ayam; timbang dalam kg.",
+      "aktif": 1
+    },
+    {
+      "id": 790,
+      "paket_id": 16,
+      "urutan": 46,
+      "nama_item": "Telur (ditimbang untuk formula nugget)",
+      "kelompok": "Bahan Baku",
+      "satuan": "kg",
+      "bisa_dijual": 0,
+      "pakai_stok": 1,
+      "harga_jual": 0.0,
+      "harga_beli": 0.0,
+      "stok_awal": 0.0,
+      "stok_minimum": 0.0,
+      "kategori": "Bahan resep — formula penelitian",
+      "tipe_asli": "Bahan Baku",
+      "deskripsi": "Telur ditimbang sesuai formulasi penelitian; stok dalam kg untuk menjaga takaran gram.",
+      "aktif": 1
+    },
+    {
+      "id": 791,
+      "paket_id": 16,
+      "urutan": 47,
+      "nama_item": "Es batu (untuk formula nugget)",
+      "kelompok": "Bahan Baku",
+      "satuan": "kg",
+      "bisa_dijual": 0,
+      "pakai_stok": 1,
+      "harga_jual": 0.0,
+      "harga_beli": 0.0,
+      "stok_awal": 0.0,
+      "stok_minimum": 0.0,
+      "kategori": "Bahan resep — formula penelitian",
+      "tipe_asli": "Bahan Baku",
+      "deskripsi": "Es batu ditimbang sesuai formulasi penelitian.",
+      "aktif": 1
+    },
+    {
+      "id": 792,
+      "paket_id": 16,
+      "urutan": 48,
+      "nama_item": "Merica bubuk",
+      "kelompok": "Bahan Baku",
+      "satuan": "kg",
+      "bisa_dijual": 0,
+      "pakai_stok": 1,
+      "harga_jual": 0.0,
+      "harga_beli": 0.0,
+      "stok_awal": 0.0,
+      "stok_minimum": 0.0,
+      "kategori": "Bahan resep — formula penelitian",
+      "tipe_asli": "Bahan Baku",
+      "deskripsi": "Bahan formula nugget ayam; takaran kecil ditimbang dalam kg.",
+      "aktif": 1
+    },
+    {
+      "id": 793,
+      "paket_id": 16,
+      "urutan": 49,
+      "nama_item": "Penyedap rasa",
+      "kelompok": "Bahan Baku",
+      "satuan": "kg",
+      "bisa_dijual": 0,
+      "pakai_stok": 1,
+      "harga_jual": 0.0,
+      "harga_beli": 0.0,
+      "stok_awal": 0.0,
+      "stok_minimum": 0.0,
+      "kategori": "Bahan resep — formula penelitian",
+      "tipe_asli": "Bahan Baku",
+      "deskripsi": "Bahan formula nugget ayam; gunakan sesuai label bahan dan kebutuhan usaha.",
+      "aktif": 1
+    },
+    {
+      "id": 794,
+      "paket_id": 16,
+      "urutan": 50,
+      "nama_item": "Nugget Ayam Produksi Sendiri (Formula Penelitian)",
+      "kelompok": "Produk / Barang Dijual",
+      "satuan": "Batch",
+      "bisa_dijual": 1,
+      "pakai_stok": 0,
+      "harga_jual": 0.0,
+      "harga_beli": 0.0,
+      "stok_awal": 0.0,
+      "stok_minimum": 0.0,
+      "kategori": "Produk olahan — perlu uji produksi",
+      "tipe_asli": "Dijual (Produk)",
+      "deskripsi": "Formula uji yang diturunkan dari penelitian Polbangtan Gowa; bukan formula standar wajib. Hasil jadi perlu ditimbang setelah proses dan HPP perlu dihitung ulang berdasarkan hasil aktual.",
+      "aktif": 1
     }
   ],
   "workflows": [
@@ -14993,6 +15101,14 @@
       "publisher": "Badan Pengawas Obat dan Makanan (BPOM), Direktorat Pengawasan Peredaran Pangan Olahan",
       "url": "https://perpustakaan.pom.go.id/detail_berita/MjAyNC0xMi0yMy8xMzA%3D",
       "scope": "Panduan penetapan dan pengelolaan masa simpan; jangan menetapkan tanggal kedaluwarsa hanya berdasarkan perkiraan resep."
+    },
+    {
+      "id": "polbangtan-gowa-nugget-research",
+      "title": "Inovasi Nugget Ayam dengan Substitusi Tepung Ubi Jalar Ungu",
+      "publisher": "Politeknik Pembangunan Pertanian (Polbangtan) Gowa — repository Kementerian Pertanian",
+      "url": "https://repository.pertanian.go.id/items/d3d57a86-8b01-4348-a6a4-534e5762579b",
+      "direct_file_url": "https://repository.pertanian.go.id/bitstreams/59244278-53b7-4478-bd31-e58179113136/download",
+      "scope": "Penelitian/kajiwidya nugget ayam dengan perlakuan formula; dapat dijadikan acuan formula uji untuk produksi sendiri, bukan standar wajib BPOM dan bukan formula produk nugget kemasan untuk dijual kembali."
     }
   ],
   "recipes": [
@@ -15004,13 +15120,10 @@
       "target_finished_grams": 0,
       "expected_yield_units": 1,
       "yield_unit": "Porsi",
-      "recipe_status": "referensi_awal",
+      "recipe_status": "referensi_awal_belum_terverifikasi",
       "formula_version": 1,
-      "source_refs": [
-        "bpom-ready-to-eat",
-        "bpom-shelf-life-umk"
-      ],
-      "source_note": "Takaran adalah komposisi awal yang dapat diedit, bukan formula resmi yang disahkan instansi. Sumber BPOM yang ditautkan dipakai untuk acuan keamanan, penanganan, label, atau masa simpan; bukan untuk mengklaim takaran resep ini resmi.",
+      "source_refs": [],
+      "source_note": "Takaran ini adalah contoh awal untuk membantu pengisian aplikasi dan BELUM diverifikasi terhadap resep/formulasi dari sumber yang dapat diperiksa. Jangan dianggap resep resmi atau hasil validasi teknis. Uji hasil produksi, timbang hasil jadi, dan sesuaikan dengan usaha sendiri sebelum memakai HPP.",
       "instructions": "",
       "lines": [
         {
@@ -15063,13 +15176,10 @@
       "target_finished_grams": 0,
       "expected_yield_units": 1,
       "yield_unit": "Porsi",
-      "recipe_status": "referensi_awal",
+      "recipe_status": "referensi_awal_belum_terverifikasi",
       "formula_version": 1,
-      "source_refs": [
-        "bpom-ready-to-eat",
-        "bpom-shelf-life-umk"
-      ],
-      "source_note": "Takaran adalah komposisi awal yang dapat diedit, bukan formula resmi yang disahkan instansi. Sumber BPOM yang ditautkan dipakai untuk acuan keamanan, penanganan, label, atau masa simpan; bukan untuk mengklaim takaran resep ini resmi.",
+      "source_refs": [],
+      "source_note": "Takaran ini adalah contoh awal untuk membantu pengisian aplikasi dan BELUM diverifikasi terhadap resep/formulasi dari sumber yang dapat diperiksa. Jangan dianggap resep resmi atau hasil validasi teknis. Uji hasil produksi, timbang hasil jadi, dan sesuaikan dengan usaha sendiri sebelum memakai HPP.",
       "instructions": "",
       "lines": [
         {
@@ -15112,13 +15222,10 @@
       "target_finished_grams": 0,
       "expected_yield_units": 1,
       "yield_unit": "Porsi",
-      "recipe_status": "referensi_awal",
+      "recipe_status": "referensi_awal_belum_terverifikasi",
       "formula_version": 1,
-      "source_refs": [
-        "bpom-ready-to-eat",
-        "bpom-shelf-life-umk"
-      ],
-      "source_note": "Takaran adalah komposisi awal yang dapat diedit, bukan formula resmi yang disahkan instansi. Sumber BPOM yang ditautkan dipakai untuk acuan keamanan, penanganan, label, atau masa simpan; bukan untuk mengklaim takaran resep ini resmi.",
+      "source_refs": [],
+      "source_note": "Takaran ini adalah contoh awal untuk membantu pengisian aplikasi dan BELUM diverifikasi terhadap resep/formulasi dari sumber yang dapat diperiksa. Jangan dianggap resep resmi atau hasil validasi teknis. Uji hasil produksi, timbang hasil jadi, dan sesuaikan dengan usaha sendiri sebelum memakai HPP.",
       "instructions": "",
       "lines": [
         {
@@ -15161,13 +15268,10 @@
       "target_finished_grams": 0,
       "expected_yield_units": 1,
       "yield_unit": "Porsi",
-      "recipe_status": "referensi_awal",
+      "recipe_status": "referensi_awal_belum_terverifikasi",
       "formula_version": 1,
-      "source_refs": [
-        "bpom-ready-to-eat",
-        "bpom-shelf-life-umk"
-      ],
-      "source_note": "Takaran adalah komposisi awal yang dapat diedit, bukan formula resmi yang disahkan instansi. Sumber BPOM yang ditautkan dipakai untuk acuan keamanan, penanganan, label, atau masa simpan; bukan untuk mengklaim takaran resep ini resmi.",
+      "source_refs": [],
+      "source_note": "Takaran ini adalah contoh awal untuk membantu pengisian aplikasi dan BELUM diverifikasi terhadap resep/formulasi dari sumber yang dapat diperiksa. Jangan dianggap resep resmi atau hasil validasi teknis. Uji hasil produksi, timbang hasil jadi, dan sesuaikan dengan usaha sendiri sebelum memakai HPP.",
       "instructions": "",
       "lines": [
         {
@@ -15205,13 +15309,10 @@
       "target_finished_grams": 0,
       "expected_yield_units": 1,
       "yield_unit": "Porsi",
-      "recipe_status": "referensi_awal",
+      "recipe_status": "referensi_awal_belum_terverifikasi",
       "formula_version": 1,
-      "source_refs": [
-        "bpom-ready-to-eat",
-        "bpom-shelf-life-umk"
-      ],
-      "source_note": "Takaran adalah komposisi awal yang dapat diedit, bukan formula resmi yang disahkan instansi. Sumber BPOM yang ditautkan dipakai untuk acuan keamanan, penanganan, label, atau masa simpan; bukan untuk mengklaim takaran resep ini resmi.",
+      "source_refs": [],
+      "source_note": "Takaran ini adalah contoh awal untuk membantu pengisian aplikasi dan BELUM diverifikasi terhadap resep/formulasi dari sumber yang dapat diperiksa. Jangan dianggap resep resmi atau hasil validasi teknis. Uji hasil produksi, timbang hasil jadi, dan sesuaikan dengan usaha sendiri sebelum memakai HPP.",
       "instructions": "",
       "lines": [
         {
@@ -15264,13 +15365,10 @@
       "target_finished_grams": 0,
       "expected_yield_units": 1,
       "yield_unit": "Porsi",
-      "recipe_status": "referensi_awal",
+      "recipe_status": "referensi_awal_belum_terverifikasi",
       "formula_version": 1,
-      "source_refs": [
-        "bpom-ready-to-eat",
-        "bpom-shelf-life-umk"
-      ],
-      "source_note": "Takaran adalah komposisi awal yang dapat diedit, bukan formula resmi yang disahkan instansi. Sumber BPOM yang ditautkan dipakai untuk acuan keamanan, penanganan, label, atau masa simpan; bukan untuk mengklaim takaran resep ini resmi.",
+      "source_refs": [],
+      "source_note": "Takaran ini adalah contoh awal untuk membantu pengisian aplikasi dan BELUM diverifikasi terhadap resep/formulasi dari sumber yang dapat diperiksa. Jangan dianggap resep resmi atau hasil validasi teknis. Uji hasil produksi, timbang hasil jadi, dan sesuaikan dengan usaha sendiri sebelum memakai HPP.",
       "instructions": "",
       "lines": [
         {
@@ -15298,13 +15396,10 @@
       "target_finished_grams": 0,
       "expected_yield_units": 1,
       "yield_unit": "Porsi",
-      "recipe_status": "referensi_awal",
+      "recipe_status": "referensi_awal_belum_terverifikasi",
       "formula_version": 1,
-      "source_refs": [
-        "bpom-ready-to-eat",
-        "bpom-shelf-life-umk"
-      ],
-      "source_note": "Takaran adalah komposisi awal yang dapat diedit, bukan formula resmi yang disahkan instansi. Sumber BPOM yang ditautkan dipakai untuk acuan keamanan, penanganan, label, atau masa simpan; bukan untuk mengklaim takaran resep ini resmi.",
+      "source_refs": [],
+      "source_note": "Takaran ini adalah contoh awal untuk membantu pengisian aplikasi dan BELUM diverifikasi terhadap resep/formulasi dari sumber yang dapat diperiksa. Jangan dianggap resep resmi atau hasil validasi teknis. Uji hasil produksi, timbang hasil jadi, dan sesuaikan dengan usaha sendiri sebelum memakai HPP.",
       "instructions": "",
       "lines": [
         {
@@ -15342,13 +15437,10 @@
       "target_finished_grams": 0,
       "expected_yield_units": 1,
       "yield_unit": "Porsi",
-      "recipe_status": "referensi_awal",
+      "recipe_status": "referensi_awal_belum_terverifikasi",
       "formula_version": 1,
-      "source_refs": [
-        "bpom-ready-to-eat",
-        "bpom-shelf-life-umk"
-      ],
-      "source_note": "Takaran adalah komposisi awal yang dapat diedit, bukan formula resmi yang disahkan instansi. Sumber BPOM yang ditautkan dipakai untuk acuan keamanan, penanganan, label, atau masa simpan; bukan untuk mengklaim takaran resep ini resmi.",
+      "source_refs": [],
+      "source_note": "Takaran ini adalah contoh awal untuk membantu pengisian aplikasi dan BELUM diverifikasi terhadap resep/formulasi dari sumber yang dapat diperiksa. Jangan dianggap resep resmi atau hasil validasi teknis. Uji hasil produksi, timbang hasil jadi, dan sesuaikan dengan usaha sendiri sebelum memakai HPP.",
       "instructions": "",
       "lines": [
         {
@@ -15386,13 +15478,10 @@
       "target_finished_grams": 0,
       "expected_yield_units": 1,
       "yield_unit": "Porsi",
-      "recipe_status": "referensi_awal",
+      "recipe_status": "referensi_awal_belum_terverifikasi",
       "formula_version": 1,
-      "source_refs": [
-        "bpom-ready-to-eat",
-        "bpom-shelf-life-umk"
-      ],
-      "source_note": "Takaran adalah komposisi awal yang dapat diedit, bukan formula resmi yang disahkan instansi. Sumber BPOM yang ditautkan dipakai untuk acuan keamanan, penanganan, label, atau masa simpan; bukan untuk mengklaim takaran resep ini resmi.",
+      "source_refs": [],
+      "source_note": "Takaran ini adalah contoh awal untuk membantu pengisian aplikasi dan BELUM diverifikasi terhadap resep/formulasi dari sumber yang dapat diperiksa. Jangan dianggap resep resmi atau hasil validasi teknis. Uji hasil produksi, timbang hasil jadi, dan sesuaikan dengan usaha sendiri sebelum memakai HPP.",
       "instructions": "",
       "lines": [
         {
@@ -15420,13 +15509,10 @@
       "target_finished_grams": 0,
       "expected_yield_units": 1,
       "yield_unit": "Porsi",
-      "recipe_status": "referensi_awal",
+      "recipe_status": "referensi_awal_belum_terverifikasi",
       "formula_version": 1,
-      "source_refs": [
-        "bpom-ready-to-eat",
-        "bpom-shelf-life-umk"
-      ],
-      "source_note": "Takaran adalah komposisi awal yang dapat diedit, bukan formula resmi yang disahkan instansi. Sumber BPOM yang ditautkan dipakai untuk acuan keamanan, penanganan, label, atau masa simpan; bukan untuk mengklaim takaran resep ini resmi.",
+      "source_refs": [],
+      "source_note": "Takaran ini adalah contoh awal untuk membantu pengisian aplikasi dan BELUM diverifikasi terhadap resep/formulasi dari sumber yang dapat diperiksa. Jangan dianggap resep resmi atau hasil validasi teknis. Uji hasil produksi, timbang hasil jadi, dan sesuaikan dengan usaha sendiri sebelum memakai HPP.",
       "instructions": "",
       "lines": [
         {
@@ -15464,13 +15550,10 @@
       "target_finished_grams": 0,
       "expected_yield_units": 1,
       "yield_unit": "Pcs",
-      "recipe_status": "referensi_awal",
+      "recipe_status": "referensi_awal_belum_terverifikasi",
       "formula_version": 1,
-      "source_refs": [
-        "bpom-ready-to-eat",
-        "bpom-shelf-life-umk"
-      ],
-      "source_note": "Takaran adalah komposisi awal yang dapat diedit, bukan formula resmi yang disahkan instansi. Sumber BPOM yang ditautkan dipakai untuk acuan keamanan, penanganan, label, atau masa simpan; bukan untuk mengklaim takaran resep ini resmi.",
+      "source_refs": [],
+      "source_note": "Takaran ini adalah contoh awal untuk membantu pengisian aplikasi dan BELUM diverifikasi terhadap resep/formulasi dari sumber yang dapat diperiksa. Jangan dianggap resep resmi atau hasil validasi teknis. Uji hasil produksi, timbang hasil jadi, dan sesuaikan dengan usaha sendiri sebelum memakai HPP.",
       "instructions": "",
       "lines": [
         {
@@ -15513,13 +15596,10 @@
       "target_finished_grams": 0,
       "expected_yield_units": 1,
       "yield_unit": "Pcs",
-      "recipe_status": "referensi_awal",
+      "recipe_status": "referensi_awal_belum_terverifikasi",
       "formula_version": 1,
-      "source_refs": [
-        "bpom-ready-to-eat",
-        "bpom-shelf-life-umk"
-      ],
-      "source_note": "Takaran adalah komposisi awal yang dapat diedit, bukan formula resmi yang disahkan instansi. Sumber BPOM yang ditautkan dipakai untuk acuan keamanan, penanganan, label, atau masa simpan; bukan untuk mengklaim takaran resep ini resmi.",
+      "source_refs": [],
+      "source_note": "Takaran ini adalah contoh awal untuk membantu pengisian aplikasi dan BELUM diverifikasi terhadap resep/formulasi dari sumber yang dapat diperiksa. Jangan dianggap resep resmi atau hasil validasi teknis. Uji hasil produksi, timbang hasil jadi, dan sesuaikan dengan usaha sendiri sebelum memakai HPP.",
       "instructions": "",
       "lines": [
         {
@@ -15562,13 +15642,10 @@
       "target_finished_grams": 0,
       "expected_yield_units": 1,
       "yield_unit": "Pcs",
-      "recipe_status": "referensi_awal",
+      "recipe_status": "referensi_awal_belum_terverifikasi",
       "formula_version": 1,
-      "source_refs": [
-        "bpom-ready-to-eat",
-        "bpom-shelf-life-umk"
-      ],
-      "source_note": "Takaran adalah komposisi awal yang dapat diedit, bukan formula resmi yang disahkan instansi. Sumber BPOM yang ditautkan dipakai untuk acuan keamanan, penanganan, label, atau masa simpan; bukan untuk mengklaim takaran resep ini resmi.",
+      "source_refs": [],
+      "source_note": "Takaran ini adalah contoh awal untuk membantu pengisian aplikasi dan BELUM diverifikasi terhadap resep/formulasi dari sumber yang dapat diperiksa. Jangan dianggap resep resmi atau hasil validasi teknis. Uji hasil produksi, timbang hasil jadi, dan sesuaikan dengan usaha sendiri sebelum memakai HPP.",
       "instructions": "",
       "lines": [
         {
@@ -15611,13 +15688,10 @@
       "target_finished_grams": 0,
       "expected_yield_units": 1,
       "yield_unit": "Pax",
-      "recipe_status": "referensi_awal",
+      "recipe_status": "referensi_awal_belum_terverifikasi",
       "formula_version": 1,
-      "source_refs": [
-        "bpom-ready-to-eat",
-        "bpom-shelf-life-umk"
-      ],
-      "source_note": "Takaran adalah komposisi awal yang dapat diedit, bukan formula resmi yang disahkan instansi. Sumber BPOM yang ditautkan dipakai untuk acuan keamanan, penanganan, label, atau masa simpan; bukan untuk mengklaim takaran resep ini resmi.",
+      "source_refs": [],
+      "source_note": "Takaran ini adalah contoh awal untuk membantu pengisian aplikasi dan BELUM diverifikasi terhadap resep/formulasi dari sumber yang dapat diperiksa. Jangan dianggap resep resmi atau hasil validasi teknis. Uji hasil produksi, timbang hasil jadi, dan sesuaikan dengan usaha sendiri sebelum memakai HPP.",
       "instructions": "",
       "lines": [
         {
@@ -15665,13 +15739,10 @@
       "target_finished_grams": 0,
       "expected_yield_units": 1,
       "yield_unit": "Box",
-      "recipe_status": "referensi_awal",
+      "recipe_status": "referensi_awal_belum_terverifikasi",
       "formula_version": 1,
-      "source_refs": [
-        "bpom-ready-to-eat",
-        "bpom-shelf-life-umk"
-      ],
-      "source_note": "Takaran adalah komposisi awal yang dapat diedit, bukan formula resmi yang disahkan instansi. Sumber BPOM yang ditautkan dipakai untuk acuan keamanan, penanganan, label, atau masa simpan; bukan untuk mengklaim takaran resep ini resmi.",
+      "source_refs": [],
+      "source_note": "Takaran ini adalah contoh awal untuk membantu pengisian aplikasi dan BELUM diverifikasi terhadap resep/formulasi dari sumber yang dapat diperiksa. Jangan dianggap resep resmi atau hasil validasi teknis. Uji hasil produksi, timbang hasil jadi, dan sesuaikan dengan usaha sendiri sebelum memakai HPP.",
       "instructions": "",
       "lines": [
         {
@@ -15714,13 +15785,10 @@
       "target_finished_grams": 0,
       "expected_yield_units": 1,
       "yield_unit": "Paket",
-      "recipe_status": "referensi_awal",
+      "recipe_status": "referensi_awal_belum_terverifikasi",
       "formula_version": 1,
-      "source_refs": [
-        "bpom-ready-to-eat",
-        "bpom-shelf-life-umk"
-      ],
-      "source_note": "Takaran adalah komposisi awal yang dapat diedit, bukan formula resmi yang disahkan instansi. Sumber BPOM yang ditautkan dipakai untuk acuan keamanan, penanganan, label, atau masa simpan; bukan untuk mengklaim takaran resep ini resmi.",
+      "source_refs": [],
+      "source_note": "Takaran ini adalah contoh awal untuk membantu pengisian aplikasi dan BELUM diverifikasi terhadap resep/formulasi dari sumber yang dapat diperiksa. Jangan dianggap resep resmi atau hasil validasi teknis. Uji hasil produksi, timbang hasil jadi, dan sesuaikan dengan usaha sendiri sebelum memakai HPP.",
       "instructions": "",
       "lines": [
         {
@@ -15768,13 +15836,10 @@
       "target_finished_grams": 0,
       "expected_yield_units": 1,
       "yield_unit": "Box",
-      "recipe_status": "referensi_awal",
+      "recipe_status": "referensi_awal_belum_terverifikasi",
       "formula_version": 1,
-      "source_refs": [
-        "bpom-ready-to-eat",
-        "bpom-shelf-life-umk"
-      ],
-      "source_note": "Takaran adalah komposisi awal yang dapat diedit, bukan formula resmi yang disahkan instansi. Sumber BPOM yang ditautkan dipakai untuk acuan keamanan, penanganan, label, atau masa simpan; bukan untuk mengklaim takaran resep ini resmi.",
+      "source_refs": [],
+      "source_note": "Takaran ini adalah contoh awal untuk membantu pengisian aplikasi dan BELUM diverifikasi terhadap resep/formulasi dari sumber yang dapat diperiksa. Jangan dianggap resep resmi atau hasil validasi teknis. Uji hasil produksi, timbang hasil jadi, dan sesuaikan dengan usaha sendiri sebelum memakai HPP.",
       "instructions": "",
       "lines": [
         {
@@ -15812,13 +15877,10 @@
       "target_finished_grams": 0,
       "expected_yield_units": 1,
       "yield_unit": "Pax",
-      "recipe_status": "referensi_awal",
+      "recipe_status": "referensi_awal_belum_terverifikasi",
       "formula_version": 1,
-      "source_refs": [
-        "bpom-ready-to-eat",
-        "bpom-shelf-life-umk"
-      ],
-      "source_note": "Takaran adalah komposisi awal yang dapat diedit, bukan formula resmi yang disahkan instansi. Sumber BPOM yang ditautkan dipakai untuk acuan keamanan, penanganan, label, atau masa simpan; bukan untuk mengklaim takaran resep ini resmi.",
+      "source_refs": [],
+      "source_note": "Takaran ini adalah contoh awal untuk membantu pengisian aplikasi dan BELUM diverifikasi terhadap resep/formulasi dari sumber yang dapat diperiksa. Jangan dianggap resep resmi atau hasil validasi teknis. Uji hasil produksi, timbang hasil jadi, dan sesuaikan dengan usaha sendiri sebelum memakai HPP.",
       "instructions": "",
       "lines": [
         {
@@ -15856,13 +15918,10 @@
       "target_finished_grams": 0,
       "expected_yield_units": 1,
       "yield_unit": "Paket",
-      "recipe_status": "referensi_awal",
+      "recipe_status": "referensi_awal_belum_terverifikasi",
       "formula_version": 1,
-      "source_refs": [
-        "bpom-ready-to-eat",
-        "bpom-shelf-life-umk"
-      ],
-      "source_note": "Takaran adalah komposisi awal yang dapat diedit, bukan formula resmi yang disahkan instansi. Sumber BPOM yang ditautkan dipakai untuk acuan keamanan, penanganan, label, atau masa simpan; bukan untuk mengklaim takaran resep ini resmi.",
+      "source_refs": [],
+      "source_note": "Takaran ini adalah contoh awal untuk membantu pengisian aplikasi dan BELUM diverifikasi terhadap resep/formulasi dari sumber yang dapat diperiksa. Jangan dianggap resep resmi atau hasil validasi teknis. Uji hasil produksi, timbang hasil jadi, dan sesuaikan dengan usaha sendiri sebelum memakai HPP.",
       "instructions": "",
       "lines": [
         {
@@ -15910,13 +15969,10 @@
       "target_finished_grams": 0,
       "expected_yield_units": 1,
       "yield_unit": "Box",
-      "recipe_status": "referensi_awal",
+      "recipe_status": "referensi_awal_belum_terverifikasi",
       "formula_version": 1,
-      "source_refs": [
-        "bpom-ready-to-eat",
-        "bpom-shelf-life-umk"
-      ],
-      "source_note": "Takaran adalah komposisi awal yang dapat diedit, bukan formula resmi yang disahkan instansi. Sumber BPOM yang ditautkan dipakai untuk acuan keamanan, penanganan, label, atau masa simpan; bukan untuk mengklaim takaran resep ini resmi.",
+      "source_refs": [],
+      "source_note": "Takaran ini adalah contoh awal untuk membantu pengisian aplikasi dan BELUM diverifikasi terhadap resep/formulasi dari sumber yang dapat diperiksa. Jangan dianggap resep resmi atau hasil validasi teknis. Uji hasil produksi, timbang hasil jadi, dan sesuaikan dengan usaha sendiri sebelum memakai HPP.",
       "instructions": "",
       "lines": [
         {
@@ -15959,13 +16015,10 @@
       "target_finished_grams": 0,
       "expected_yield_units": 1,
       "yield_unit": "Paket",
-      "recipe_status": "referensi_awal",
+      "recipe_status": "referensi_awal_belum_terverifikasi",
       "formula_version": 1,
-      "source_refs": [
-        "bpom-ready-to-eat",
-        "bpom-shelf-life-umk"
-      ],
-      "source_note": "Takaran adalah komposisi awal yang dapat diedit, bukan formula resmi yang disahkan instansi. Sumber BPOM yang ditautkan dipakai untuk acuan keamanan, penanganan, label, atau masa simpan; bukan untuk mengklaim takaran resep ini resmi.",
+      "source_refs": [],
+      "source_note": "Takaran ini adalah contoh awal untuk membantu pengisian aplikasi dan BELUM diverifikasi terhadap resep/formulasi dari sumber yang dapat diperiksa. Jangan dianggap resep resmi atau hasil validasi teknis. Uji hasil produksi, timbang hasil jadi, dan sesuaikan dengan usaha sendiri sebelum memakai HPP.",
       "instructions": "",
       "lines": [
         {
@@ -16003,13 +16056,10 @@
       "target_finished_grams": 0,
       "expected_yield_units": 1,
       "yield_unit": "Pcs",
-      "recipe_status": "referensi_awal",
+      "recipe_status": "referensi_awal_belum_terverifikasi",
       "formula_version": 1,
-      "source_refs": [
-        "bpom-ready-to-eat",
-        "bpom-shelf-life-umk"
-      ],
-      "source_note": "Takaran adalah komposisi awal yang dapat diedit, bukan formula resmi yang disahkan instansi. Sumber BPOM yang ditautkan dipakai untuk acuan keamanan, penanganan, label, atau masa simpan; bukan untuk mengklaim takaran resep ini resmi.",
+      "source_refs": [],
+      "source_note": "Takaran ini adalah contoh awal untuk membantu pengisian aplikasi dan BELUM diverifikasi terhadap resep/formulasi dari sumber yang dapat diperiksa. Jangan dianggap resep resmi atau hasil validasi teknis. Uji hasil produksi, timbang hasil jadi, dan sesuaikan dengan usaha sendiri sebelum memakai HPP.",
       "instructions": "",
       "lines": [
         {
@@ -16047,13 +16097,10 @@
       "target_finished_grams": 0,
       "expected_yield_units": 1,
       "yield_unit": "Loyang",
-      "recipe_status": "referensi_awal",
+      "recipe_status": "referensi_awal_belum_terverifikasi",
       "formula_version": 1,
-      "source_refs": [
-        "bpom-ready-to-eat",
-        "bpom-shelf-life-umk"
-      ],
-      "source_note": "Takaran adalah komposisi awal yang dapat diedit, bukan formula resmi yang disahkan instansi. Sumber BPOM yang ditautkan dipakai untuk acuan keamanan, penanganan, label, atau masa simpan; bukan untuk mengklaim takaran resep ini resmi.",
+      "source_refs": [],
+      "source_note": "Takaran ini adalah contoh awal untuk membantu pengisian aplikasi dan BELUM diverifikasi terhadap resep/formulasi dari sumber yang dapat diperiksa. Jangan dianggap resep resmi atau hasil validasi teknis. Uji hasil produksi, timbang hasil jadi, dan sesuaikan dengan usaha sendiri sebelum memakai HPP.",
       "instructions": "",
       "lines": [
         {
@@ -16091,13 +16138,10 @@
       "target_finished_grams": 0,
       "expected_yield_units": 1,
       "yield_unit": "Porsi",
-      "recipe_status": "referensi_awal",
+      "recipe_status": "referensi_awal_belum_terverifikasi",
       "formula_version": 1,
-      "source_refs": [
-        "bpom-ready-to-eat",
-        "bpom-shelf-life-umk"
-      ],
-      "source_note": "Takaran adalah komposisi awal yang dapat diedit, bukan formula resmi yang disahkan instansi. Sumber BPOM yang ditautkan dipakai untuk acuan keamanan, penanganan, label, atau masa simpan; bukan untuk mengklaim takaran resep ini resmi.",
+      "source_refs": [],
+      "source_note": "Takaran ini adalah contoh awal untuk membantu pengisian aplikasi dan BELUM diverifikasi terhadap resep/formulasi dari sumber yang dapat diperiksa. Jangan dianggap resep resmi atau hasil validasi teknis. Uji hasil produksi, timbang hasil jadi, dan sesuaikan dengan usaha sendiri sebelum memakai HPP.",
       "instructions": "",
       "lines": [
         {
@@ -16145,13 +16189,10 @@
       "target_finished_grams": 0,
       "expected_yield_units": 1,
       "yield_unit": "Botol",
-      "recipe_status": "referensi_awal",
+      "recipe_status": "referensi_awal_belum_terverifikasi",
       "formula_version": 1,
-      "source_refs": [
-        "bpom-ready-to-eat",
-        "bpom-shelf-life-umk"
-      ],
-      "source_note": "Takaran ini adalah komposisi awal yang dapat diedit, bukan formula resmi yang disahkan instansi. Sumber BPOM ditautkan untuk acuan keamanan, penanganan, pelabelan, dan masa simpan; bukan untuk mengklaim takaran resep ini resmi.",
+      "source_refs": [],
+      "source_note": "Takaran ini adalah contoh awal untuk membantu pengisian aplikasi dan BELUM diverifikasi terhadap resep/formulasi dari sumber yang dapat diperiksa. Jangan dianggap resep resmi atau hasil validasi teknis. Uji hasil produksi, timbang hasil jadi, dan sesuaikan dengan usaha sendiri sebelum memakai HPP.",
       "lines": [
         {
           "material_template_id": 689,
@@ -16193,13 +16234,10 @@
       "target_finished_grams": 0,
       "expected_yield_units": 1,
       "yield_unit": "Box",
-      "recipe_status": "referensi_awal",
+      "recipe_status": "referensi_awal_belum_terverifikasi",
       "formula_version": 1,
-      "source_refs": [
-        "bpom-ready-to-eat",
-        "bpom-shelf-life-umk"
-      ],
-      "source_note": "Takaran adalah komposisi awal yang dapat diedit, bukan formula resmi yang disahkan instansi. Sumber BPOM yang ditautkan dipakai untuk acuan keamanan, penanganan, label, atau masa simpan; bukan untuk mengklaim takaran resep ini resmi.",
+      "source_refs": [],
+      "source_note": "Takaran ini adalah contoh awal untuk membantu pengisian aplikasi dan BELUM diverifikasi terhadap resep/formulasi dari sumber yang dapat diperiksa. Jangan dianggap resep resmi atau hasil validasi teknis. Uji hasil produksi, timbang hasil jadi, dan sesuaikan dengan usaha sendiri sebelum memakai HPP.",
       "instructions": "",
       "lines": [
         {
@@ -16247,13 +16285,10 @@
       "target_finished_grams": 0,
       "expected_yield_units": 1,
       "yield_unit": "Pouch",
-      "recipe_status": "referensi_awal",
+      "recipe_status": "referensi_awal_belum_terverifikasi",
       "formula_version": 1,
-      "source_refs": [
-        "bpom-ready-to-eat",
-        "bpom-shelf-life-umk"
-      ],
-      "source_note": "Takaran adalah komposisi awal yang dapat diedit, bukan formula resmi yang disahkan instansi. Sumber BPOM yang ditautkan dipakai untuk acuan keamanan, penanganan, label, atau masa simpan; bukan untuk mengklaim takaran resep ini resmi.",
+      "source_refs": [],
+      "source_note": "Takaran ini adalah contoh awal untuk membantu pengisian aplikasi dan BELUM diverifikasi terhadap resep/formulasi dari sumber yang dapat diperiksa. Jangan dianggap resep resmi atau hasil validasi teknis. Uji hasil produksi, timbang hasil jadi, dan sesuaikan dengan usaha sendiri sebelum memakai HPP.",
       "instructions": "",
       "lines": [
         {
@@ -16296,13 +16331,10 @@
       "target_finished_grams": 0,
       "expected_yield_units": 1,
       "yield_unit": "Botol",
-      "recipe_status": "referensi_awal",
+      "recipe_status": "referensi_awal_belum_terverifikasi",
       "formula_version": 1,
-      "source_refs": [
-        "bpom-ready-to-eat",
-        "bpom-shelf-life-umk"
-      ],
-      "source_note": "Takaran adalah komposisi awal yang dapat diedit, bukan formula resmi yang disahkan instansi. Sumber BPOM yang ditautkan dipakai untuk acuan keamanan, penanganan, label, atau masa simpan; bukan untuk mengklaim takaran resep ini resmi.",
+      "source_refs": [],
+      "source_note": "Takaran ini adalah contoh awal untuk membantu pengisian aplikasi dan BELUM diverifikasi terhadap resep/formulasi dari sumber yang dapat diperiksa. Jangan dianggap resep resmi atau hasil validasi teknis. Uji hasil produksi, timbang hasil jadi, dan sesuaikan dengan usaha sendiri sebelum memakai HPP.",
       "instructions": "",
       "lines": [
         {
@@ -16340,13 +16372,10 @@
       "target_finished_grams": 0,
       "expected_yield_units": 1,
       "yield_unit": "Bowl",
-      "recipe_status": "referensi_awal",
+      "recipe_status": "referensi_awal_belum_terverifikasi",
       "formula_version": 1,
-      "source_refs": [
-        "bpom-ready-to-eat",
-        "bpom-shelf-life-umk"
-      ],
-      "source_note": "Takaran adalah komposisi awal yang dapat diedit, bukan formula resmi yang disahkan instansi. Sumber BPOM yang ditautkan dipakai untuk acuan keamanan, penanganan, label, atau masa simpan; bukan untuk mengklaim takaran resep ini resmi.",
+      "source_refs": [],
+      "source_note": "Takaran ini adalah contoh awal untuk membantu pengisian aplikasi dan BELUM diverifikasi terhadap resep/formulasi dari sumber yang dapat diperiksa. Jangan dianggap resep resmi atau hasil validasi teknis. Uji hasil produksi, timbang hasil jadi, dan sesuaikan dengan usaha sendiri sebelum memakai HPP.",
       "instructions": "",
       "lines": [
         {
@@ -16384,13 +16413,10 @@
       "target_finished_grams": 0,
       "expected_yield_units": 1,
       "yield_unit": "Porsi",
-      "recipe_status": "referensi_awal",
+      "recipe_status": "referensi_awal_belum_terverifikasi",
       "formula_version": 1,
-      "source_refs": [
-        "bpom-ready-to-eat",
-        "bpom-shelf-life-umk"
-      ],
-      "source_note": "Takaran adalah komposisi awal yang dapat diedit, bukan formula resmi yang disahkan instansi. Sumber BPOM yang ditautkan dipakai untuk acuan keamanan, penanganan, label, atau masa simpan; bukan untuk mengklaim takaran resep ini resmi.",
+      "source_refs": [],
+      "source_note": "Takaran ini adalah contoh awal untuk membantu pengisian aplikasi dan BELUM diverifikasi terhadap resep/formulasi dari sumber yang dapat diperiksa. Jangan dianggap resep resmi atau hasil validasi teknis. Uji hasil produksi, timbang hasil jadi, dan sesuaikan dengan usaha sendiri sebelum memakai HPP.",
       "instructions": "",
       "lines": [
         {
@@ -16438,13 +16464,10 @@
       "target_finished_grams": 0,
       "expected_yield_units": 1,
       "yield_unit": "Box",
-      "recipe_status": "referensi_awal",
+      "recipe_status": "referensi_awal_belum_terverifikasi",
       "formula_version": 1,
-      "source_refs": [
-        "bpom-ready-to-eat",
-        "bpom-shelf-life-umk"
-      ],
-      "source_note": "Takaran ini adalah komposisi awal yang dapat diedit, bukan formula resmi yang disahkan instansi. Sumber BPOM ditautkan untuk acuan keamanan, penanganan, pelabelan, dan masa simpan; bukan untuk mengklaim takaran resep ini resmi.",
+      "source_refs": [],
+      "source_note": "Takaran ini adalah contoh awal untuk membantu pengisian aplikasi dan BELUM diverifikasi terhadap resep/formulasi dari sumber yang dapat diperiksa. Jangan dianggap resep resmi atau hasil validasi teknis. Uji hasil produksi, timbang hasil jadi, dan sesuaikan dengan usaha sendiri sebelum memakai HPP.",
       "lines": [
         {
           "material_template_id": 687,
@@ -16486,13 +16509,10 @@
       "target_finished_grams": 0,
       "expected_yield_units": 1,
       "yield_unit": "Kaleng",
-      "recipe_status": "referensi_awal",
+      "recipe_status": "referensi_awal_belum_terverifikasi",
       "formula_version": 1,
-      "source_refs": [
-        "bpom-ready-to-eat",
-        "bpom-shelf-life-umk"
-      ],
-      "source_note": "Takaran ini adalah komposisi awal yang dapat diedit, bukan formula resmi yang disahkan instansi. Sumber BPOM ditautkan untuk acuan keamanan, penanganan, pelabelan, dan masa simpan; bukan untuk mengklaim takaran resep ini resmi.",
+      "source_refs": [],
+      "source_note": "Takaran ini adalah contoh awal untuk membantu pengisian aplikasi dan BELUM diverifikasi terhadap resep/formulasi dari sumber yang dapat diperiksa. Jangan dianggap resep resmi atau hasil validasi teknis. Uji hasil produksi, timbang hasil jadi, dan sesuaikan dengan usaha sendiri sebelum memakai HPP.",
       "lines": [
         {
           "material_template_id": 693,
@@ -16539,13 +16559,10 @@
       "target_finished_grams": 0,
       "expected_yield_units": 1,
       "yield_unit": "Pack",
-      "recipe_status": "referensi_awal",
+      "recipe_status": "referensi_awal_belum_terverifikasi",
       "formula_version": 1,
-      "source_refs": [
-        "bpom-ready-to-eat",
-        "bpom-shelf-life-umk"
-      ],
-      "source_note": "Takaran adalah komposisi awal yang dapat diedit, bukan formula resmi yang disahkan instansi. Sumber BPOM yang ditautkan dipakai untuk acuan keamanan, penanganan, label, atau masa simpan; bukan untuk mengklaim takaran resep ini resmi.",
+      "source_refs": [],
+      "source_note": "Takaran ini adalah contoh awal untuk membantu pengisian aplikasi dan BELUM diverifikasi terhadap resep/formulasi dari sumber yang dapat diperiksa. Jangan dianggap resep resmi atau hasil validasi teknis. Uji hasil produksi, timbang hasil jadi, dan sesuaikan dengan usaha sendiri sebelum memakai HPP.",
       "instructions": "",
       "lines": [
         {
@@ -16588,13 +16605,10 @@
       "target_finished_grams": 0,
       "expected_yield_units": 1,
       "yield_unit": "Pcs",
-      "recipe_status": "referensi_awal",
+      "recipe_status": "referensi_awal_belum_terverifikasi",
       "formula_version": 1,
-      "source_refs": [
-        "bpom-ready-to-eat",
-        "bpom-shelf-life-umk"
-      ],
-      "source_note": "Takaran adalah komposisi awal yang dapat diedit, bukan formula resmi yang disahkan instansi. Sumber BPOM yang ditautkan dipakai untuk acuan keamanan, penanganan, label, atau masa simpan; bukan untuk mengklaim takaran resep ini resmi.",
+      "source_refs": [],
+      "source_note": "Takaran ini adalah contoh awal untuk membantu pengisian aplikasi dan BELUM diverifikasi terhadap resep/formulasi dari sumber yang dapat diperiksa. Jangan dianggap resep resmi atau hasil validasi teknis. Uji hasil produksi, timbang hasil jadi, dan sesuaikan dengan usaha sendiri sebelum memakai HPP.",
       "instructions": "",
       "lines": [
         {
@@ -16637,13 +16651,10 @@
       "target_finished_grams": 0,
       "expected_yield_units": 1,
       "yield_unit": "Pcs",
-      "recipe_status": "referensi_awal",
+      "recipe_status": "referensi_awal_belum_terverifikasi",
       "formula_version": 1,
-      "source_refs": [
-        "bpom-ready-to-eat",
-        "bpom-shelf-life-umk"
-      ],
-      "source_note": "Takaran adalah komposisi awal yang dapat diedit, bukan formula resmi yang disahkan instansi. Sumber BPOM yang ditautkan dipakai untuk acuan keamanan, penanganan, label, atau masa simpan; bukan untuk mengklaim takaran resep ini resmi.",
+      "source_refs": [],
+      "source_note": "Takaran ini adalah contoh awal untuk membantu pengisian aplikasi dan BELUM diverifikasi terhadap resep/formulasi dari sumber yang dapat diperiksa. Jangan dianggap resep resmi atau hasil validasi teknis. Uji hasil produksi, timbang hasil jadi, dan sesuaikan dengan usaha sendiri sebelum memakai HPP.",
       "instructions": "",
       "lines": [
         {
@@ -16686,13 +16697,10 @@
       "target_finished_grams": 0,
       "expected_yield_units": 1,
       "yield_unit": "Toples",
-      "recipe_status": "referensi_awal",
+      "recipe_status": "referensi_awal_belum_terverifikasi",
       "formula_version": 1,
-      "source_refs": [
-        "bpom-ready-to-eat",
-        "bpom-shelf-life-umk"
-      ],
-      "source_note": "Takaran adalah komposisi awal yang dapat diedit, bukan formula resmi yang disahkan instansi. Sumber BPOM yang ditautkan dipakai untuk acuan keamanan, penanganan, label, atau masa simpan; bukan untuk mengklaim takaran resep ini resmi.",
+      "source_refs": [],
+      "source_note": "Takaran ini adalah contoh awal untuk membantu pengisian aplikasi dan BELUM diverifikasi terhadap resep/formulasi dari sumber yang dapat diperiksa. Jangan dianggap resep resmi atau hasil validasi teknis. Uji hasil produksi, timbang hasil jadi, dan sesuaikan dengan usaha sendiri sebelum memakai HPP.",
       "instructions": "",
       "lines": [
         {
@@ -16730,13 +16738,10 @@
       "target_finished_grams": 0,
       "expected_yield_units": 1,
       "yield_unit": "Box",
-      "recipe_status": "referensi_awal",
+      "recipe_status": "referensi_awal_belum_terverifikasi",
       "formula_version": 1,
-      "source_refs": [
-        "bpom-ready-to-eat",
-        "bpom-shelf-life-umk"
-      ],
-      "source_note": "Takaran adalah komposisi awal yang dapat diedit, bukan formula resmi yang disahkan instansi. Sumber BPOM yang ditautkan dipakai untuk acuan keamanan, penanganan, label, atau masa simpan; bukan untuk mengklaim takaran resep ini resmi.",
+      "source_refs": [],
+      "source_note": "Takaran ini adalah contoh awal untuk membantu pengisian aplikasi dan BELUM diverifikasi terhadap resep/formulasi dari sumber yang dapat diperiksa. Jangan dianggap resep resmi atau hasil validasi teknis. Uji hasil produksi, timbang hasil jadi, dan sesuaikan dengan usaha sendiri sebelum memakai HPP.",
       "instructions": "",
       "lines": [
         {
@@ -16774,13 +16779,10 @@
       "target_finished_grams": 0,
       "expected_yield_units": 1,
       "yield_unit": "Pcs",
-      "recipe_status": "referensi_awal",
+      "recipe_status": "referensi_awal_belum_terverifikasi",
       "formula_version": 1,
-      "source_refs": [
-        "bpom-ready-to-eat",
-        "bpom-shelf-life-umk"
-      ],
-      "source_note": "Takaran adalah komposisi awal yang dapat diedit, bukan formula resmi yang disahkan instansi. Sumber BPOM yang ditautkan dipakai untuk acuan keamanan, penanganan, label, atau masa simpan; bukan untuk mengklaim takaran resep ini resmi.",
+      "source_refs": [],
+      "source_note": "Takaran ini adalah contoh awal untuk membantu pengisian aplikasi dan BELUM diverifikasi terhadap resep/formulasi dari sumber yang dapat diperiksa. Jangan dianggap resep resmi atau hasil validasi teknis. Uji hasil produksi, timbang hasil jadi, dan sesuaikan dengan usaha sendiri sebelum memakai HPP.",
       "instructions": "",
       "lines": [
         {
@@ -16823,13 +16825,10 @@
       "target_finished_grams": 0,
       "expected_yield_units": 1,
       "yield_unit": "Pcs",
-      "recipe_status": "referensi_awal",
+      "recipe_status": "referensi_awal_belum_terverifikasi",
       "formula_version": 1,
-      "source_refs": [
-        "bpom-ready-to-eat",
-        "bpom-shelf-life-umk"
-      ],
-      "source_note": "Takaran ini adalah komposisi awal yang dapat diedit, bukan formula resmi yang disahkan instansi. Sumber BPOM ditautkan untuk acuan keamanan, penanganan, pelabelan, dan masa simpan; bukan untuk mengklaim takaran resep ini resmi.",
+      "source_refs": [],
+      "source_note": "Takaran ini adalah contoh awal untuk membantu pengisian aplikasi dan BELUM diverifikasi terhadap resep/formulasi dari sumber yang dapat diperiksa. Jangan dianggap resep resmi atau hasil validasi teknis. Uji hasil produksi, timbang hasil jadi, dan sesuaikan dengan usaha sendiri sebelum memakai HPP.",
       "lines": [
         {
           "material_template_id": 716,
@@ -16871,13 +16870,10 @@
       "target_finished_grams": 0,
       "expected_yield_units": 1,
       "yield_unit": "Pack",
-      "recipe_status": "referensi_awal",
+      "recipe_status": "referensi_awal_belum_terverifikasi",
       "formula_version": 1,
-      "source_refs": [
-        "bpom-ready-to-eat",
-        "bpom-shelf-life-umk"
-      ],
-      "source_note": "Takaran ini adalah komposisi awal yang dapat diedit, bukan formula resmi yang disahkan instansi. Sumber BPOM ditautkan untuk acuan keamanan, penanganan, pelabelan, dan masa simpan; bukan untuk mengklaim takaran resep ini resmi.",
+      "source_refs": [],
+      "source_note": "Takaran ini adalah contoh awal untuk membantu pengisian aplikasi dan BELUM diverifikasi terhadap resep/formulasi dari sumber yang dapat diperiksa. Jangan dianggap resep resmi atau hasil validasi teknis. Uji hasil produksi, timbang hasil jadi, dan sesuaikan dengan usaha sendiri sebelum memakai HPP.",
       "lines": [
         {
           "material_template_id": 716,
@@ -16924,13 +16920,10 @@
       "target_finished_grams": 0,
       "expected_yield_units": 1,
       "yield_unit": "Pcs",
-      "recipe_status": "referensi_awal",
+      "recipe_status": "referensi_awal_belum_terverifikasi",
       "formula_version": 1,
-      "source_refs": [
-        "bpom-ready-to-eat",
-        "bpom-shelf-life-umk"
-      ],
-      "source_note": "Takaran ini adalah komposisi awal yang dapat diedit, bukan formula resmi yang disahkan instansi. Sumber BPOM ditautkan untuk acuan keamanan, penanganan, pelabelan, dan masa simpan; bukan untuk mengklaim takaran resep ini resmi.",
+      "source_refs": [],
+      "source_note": "Takaran ini adalah contoh awal untuk membantu pengisian aplikasi dan BELUM diverifikasi terhadap resep/formulasi dari sumber yang dapat diperiksa. Jangan dianggap resep resmi atau hasil validasi teknis. Uji hasil produksi, timbang hasil jadi, dan sesuaikan dengan usaha sendiri sebelum memakai HPP.",
       "lines": [
         {
           "material_template_id": 715,
@@ -16972,13 +16965,10 @@
       "target_finished_grams": 0,
       "expected_yield_units": 1,
       "yield_unit": "Toples",
-      "recipe_status": "referensi_awal",
+      "recipe_status": "referensi_awal_belum_terverifikasi",
       "formula_version": 1,
-      "source_refs": [
-        "bpom-ready-to-eat",
-        "bpom-shelf-life-umk"
-      ],
-      "source_note": "Takaran ini adalah komposisi awal yang dapat diedit, bukan formula resmi yang disahkan instansi. Sumber BPOM ditautkan untuk acuan keamanan, penanganan, pelabelan, dan masa simpan; bukan untuk mengklaim takaran resep ini resmi.",
+      "source_refs": [],
+      "source_note": "Takaran ini adalah contoh awal untuk membantu pengisian aplikasi dan BELUM diverifikasi terhadap resep/formulasi dari sumber yang dapat diperiksa. Jangan dianggap resep resmi atau hasil validasi teknis. Uji hasil produksi, timbang hasil jadi, dan sesuaikan dengan usaha sendiri sebelum memakai HPP.",
       "lines": [
         {
           "material_template_id": 716,
@@ -17015,13 +17005,10 @@
       "target_finished_grams": 0,
       "expected_yield_units": 1,
       "yield_unit": "Porsi",
-      "recipe_status": "referensi_awal",
+      "recipe_status": "referensi_awal_belum_terverifikasi",
       "formula_version": 1,
-      "source_refs": [
-        "bpom-ready-to-eat",
-        "bpom-shelf-life-umk"
-      ],
-      "source_note": "Takaran adalah komposisi awal yang dapat diedit, bukan formula resmi yang disahkan instansi. Sumber BPOM yang ditautkan dipakai untuk acuan keamanan, penanganan, label, atau masa simpan; bukan untuk mengklaim takaran resep ini resmi.",
+      "source_refs": [],
+      "source_note": "Takaran ini adalah contoh awal untuk membantu pengisian aplikasi dan BELUM diverifikasi terhadap resep/formulasi dari sumber yang dapat diperiksa. Jangan dianggap resep resmi atau hasil validasi teknis. Uji hasil produksi, timbang hasil jadi, dan sesuaikan dengan usaha sendiri sebelum memakai HPP.",
       "instructions": "",
       "lines": [
         {
@@ -17064,13 +17051,10 @@
       "target_finished_grams": 0,
       "expected_yield_units": 1,
       "yield_unit": "Porsi",
-      "recipe_status": "referensi_awal",
+      "recipe_status": "referensi_awal_belum_terverifikasi",
       "formula_version": 1,
-      "source_refs": [
-        "bpom-ready-to-eat",
-        "bpom-shelf-life-umk"
-      ],
-      "source_note": "Takaran adalah komposisi awal yang dapat diedit, bukan formula resmi yang disahkan instansi. Sumber BPOM yang ditautkan dipakai untuk acuan keamanan, penanganan, label, atau masa simpan; bukan untuk mengklaim takaran resep ini resmi.",
+      "source_refs": [],
+      "source_note": "Takaran ini adalah contoh awal untuk membantu pengisian aplikasi dan BELUM diverifikasi terhadap resep/formulasi dari sumber yang dapat diperiksa. Jangan dianggap resep resmi atau hasil validasi teknis. Uji hasil produksi, timbang hasil jadi, dan sesuaikan dengan usaha sendiri sebelum memakai HPP.",
       "instructions": "",
       "lines": [
         {
@@ -17108,13 +17092,10 @@
       "target_finished_grams": 0,
       "expected_yield_units": 1,
       "yield_unit": "Porsi",
-      "recipe_status": "referensi_awal",
+      "recipe_status": "referensi_awal_belum_terverifikasi",
       "formula_version": 1,
-      "source_refs": [
-        "bpom-ready-to-eat",
-        "bpom-shelf-life-umk"
-      ],
-      "source_note": "Takaran adalah komposisi awal yang dapat diedit, bukan formula resmi yang disahkan instansi. Sumber BPOM yang ditautkan dipakai untuk acuan keamanan, penanganan, label, atau masa simpan; bukan untuk mengklaim takaran resep ini resmi.",
+      "source_refs": [],
+      "source_note": "Takaran ini adalah contoh awal untuk membantu pengisian aplikasi dan BELUM diverifikasi terhadap resep/formulasi dari sumber yang dapat diperiksa. Jangan dianggap resep resmi atau hasil validasi teknis. Uji hasil produksi, timbang hasil jadi, dan sesuaikan dengan usaha sendiri sebelum memakai HPP.",
       "instructions": "",
       "lines": [
         {
@@ -17147,13 +17128,10 @@
       "target_finished_grams": 0,
       "expected_yield_units": 1,
       "yield_unit": "Porsi",
-      "recipe_status": "referensi_awal",
+      "recipe_status": "referensi_awal_belum_terverifikasi",
       "formula_version": 1,
-      "source_refs": [
-        "bpom-ready-to-eat",
-        "bpom-shelf-life-umk"
-      ],
-      "source_note": "Takaran adalah komposisi awal yang dapat diedit, bukan formula resmi yang disahkan instansi. Sumber BPOM yang ditautkan dipakai untuk acuan keamanan, penanganan, label, atau masa simpan; bukan untuk mengklaim takaran resep ini resmi.",
+      "source_refs": [],
+      "source_note": "Takaran ini adalah contoh awal untuk membantu pengisian aplikasi dan BELUM diverifikasi terhadap resep/formulasi dari sumber yang dapat diperiksa. Jangan dianggap resep resmi atau hasil validasi teknis. Uji hasil produksi, timbang hasil jadi, dan sesuaikan dengan usaha sendiri sebelum memakai HPP.",
       "instructions": "",
       "lines": [
         {
@@ -17191,13 +17169,10 @@
       "target_finished_grams": 0,
       "expected_yield_units": 1,
       "yield_unit": "Porsi",
-      "recipe_status": "referensi_awal",
+      "recipe_status": "referensi_awal_belum_terverifikasi",
       "formula_version": 1,
-      "source_refs": [
-        "bpom-ready-to-eat",
-        "bpom-shelf-life-umk"
-      ],
-      "source_note": "Takaran adalah komposisi awal yang dapat diedit, bukan formula resmi yang disahkan instansi. Sumber BPOM yang ditautkan dipakai untuk acuan keamanan, penanganan, label, atau masa simpan; bukan untuk mengklaim takaran resep ini resmi.",
+      "source_refs": [],
+      "source_note": "Takaran ini adalah contoh awal untuk membantu pengisian aplikasi dan BELUM diverifikasi terhadap resep/formulasi dari sumber yang dapat diperiksa. Jangan dianggap resep resmi atau hasil validasi teknis. Uji hasil produksi, timbang hasil jadi, dan sesuaikan dengan usaha sendiri sebelum memakai HPP.",
       "instructions": "",
       "lines": [
         {
@@ -17235,13 +17210,10 @@
       "target_finished_grams": 0,
       "expected_yield_units": 1,
       "yield_unit": "Porsi",
-      "recipe_status": "referensi_awal",
+      "recipe_status": "referensi_awal_belum_terverifikasi",
       "formula_version": 1,
-      "source_refs": [
-        "bpom-ready-to-eat",
-        "bpom-shelf-life-umk"
-      ],
-      "source_note": "Takaran adalah komposisi awal yang dapat diedit, bukan formula resmi yang disahkan instansi. Sumber BPOM yang ditautkan dipakai untuk acuan keamanan, penanganan, label, atau masa simpan; bukan untuk mengklaim takaran resep ini resmi.",
+      "source_refs": [],
+      "source_note": "Takaran ini adalah contoh awal untuk membantu pengisian aplikasi dan BELUM diverifikasi terhadap resep/formulasi dari sumber yang dapat diperiksa. Jangan dianggap resep resmi atau hasil validasi teknis. Uji hasil produksi, timbang hasil jadi, dan sesuaikan dengan usaha sendiri sebelum memakai HPP.",
       "instructions": "",
       "lines": [
         {
@@ -17279,13 +17251,10 @@
       "target_finished_grams": 0,
       "expected_yield_units": 1,
       "yield_unit": "Porsi",
-      "recipe_status": "referensi_awal",
+      "recipe_status": "referensi_awal_belum_terverifikasi",
       "formula_version": 1,
-      "source_refs": [
-        "bpom-ready-to-eat",
-        "bpom-shelf-life-umk"
-      ],
-      "source_note": "Takaran adalah komposisi awal yang dapat diedit, bukan formula resmi yang disahkan instansi. Sumber BPOM yang ditautkan dipakai untuk acuan keamanan, penanganan, label, atau masa simpan; bukan untuk mengklaim takaran resep ini resmi.",
+      "source_refs": [],
+      "source_note": "Takaran ini adalah contoh awal untuk membantu pengisian aplikasi dan BELUM diverifikasi terhadap resep/formulasi dari sumber yang dapat diperiksa. Jangan dianggap resep resmi atau hasil validasi teknis. Uji hasil produksi, timbang hasil jadi, dan sesuaikan dengan usaha sendiri sebelum memakai HPP.",
       "instructions": "",
       "lines": [
         {
@@ -17323,13 +17292,10 @@
       "target_finished_grams": 0,
       "expected_yield_units": 1,
       "yield_unit": "Porsi",
-      "recipe_status": "referensi_awal",
+      "recipe_status": "referensi_awal_belum_terverifikasi",
       "formula_version": 1,
-      "source_refs": [
-        "bpom-ready-to-eat",
-        "bpom-shelf-life-umk"
-      ],
-      "source_note": "Takaran adalah komposisi awal yang dapat diedit, bukan formula resmi yang disahkan instansi. Sumber BPOM yang ditautkan dipakai untuk acuan keamanan, penanganan, label, atau masa simpan; bukan untuk mengklaim takaran resep ini resmi.",
+      "source_refs": [],
+      "source_note": "Takaran ini adalah contoh awal untuk membantu pengisian aplikasi dan BELUM diverifikasi terhadap resep/formulasi dari sumber yang dapat diperiksa. Jangan dianggap resep resmi atau hasil validasi teknis. Uji hasil produksi, timbang hasil jadi, dan sesuaikan dengan usaha sendiri sebelum memakai HPP.",
       "instructions": "",
       "lines": [
         {
@@ -17367,13 +17333,10 @@
       "target_finished_grams": 0,
       "expected_yield_units": 1,
       "yield_unit": "Pcs",
-      "recipe_status": "referensi_awal",
+      "recipe_status": "referensi_awal_belum_terverifikasi",
       "formula_version": 1,
-      "source_refs": [
-        "bpom-ready-to-eat",
-        "bpom-shelf-life-umk"
-      ],
-      "source_note": "Takaran adalah komposisi awal yang dapat diedit, bukan formula resmi yang disahkan instansi. Sumber BPOM yang ditautkan dipakai untuk acuan keamanan, penanganan, label, atau masa simpan; bukan untuk mengklaim takaran resep ini resmi.",
+      "source_refs": [],
+      "source_note": "Takaran ini adalah contoh awal untuk membantu pengisian aplikasi dan BELUM diverifikasi terhadap resep/formulasi dari sumber yang dapat diperiksa. Jangan dianggap resep resmi atau hasil validasi teknis. Uji hasil produksi, timbang hasil jadi, dan sesuaikan dengan usaha sendiri sebelum memakai HPP.",
       "instructions": "",
       "lines": [
         {
@@ -17416,13 +17379,10 @@
       "target_finished_grams": 0,
       "expected_yield_units": 1,
       "yield_unit": "Pcs",
-      "recipe_status": "referensi_awal",
+      "recipe_status": "referensi_awal_belum_terverifikasi",
       "formula_version": 1,
-      "source_refs": [
-        "bpom-ready-to-eat",
-        "bpom-shelf-life-umk"
-      ],
-      "source_note": "Takaran adalah komposisi awal yang dapat diedit, bukan formula resmi yang disahkan instansi. Sumber BPOM yang ditautkan dipakai untuk acuan keamanan, penanganan, label, atau masa simpan; bukan untuk mengklaim takaran resep ini resmi.",
+      "source_refs": [],
+      "source_note": "Takaran ini adalah contoh awal untuk membantu pengisian aplikasi dan BELUM diverifikasi terhadap resep/formulasi dari sumber yang dapat diperiksa. Jangan dianggap resep resmi atau hasil validasi teknis. Uji hasil produksi, timbang hasil jadi, dan sesuaikan dengan usaha sendiri sebelum memakai HPP.",
       "instructions": "",
       "lines": [
         {
@@ -17465,13 +17425,10 @@
       "target_finished_grams": 0,
       "expected_yield_units": 1,
       "yield_unit": "Pcs",
-      "recipe_status": "referensi_awal",
+      "recipe_status": "referensi_awal_belum_terverifikasi",
       "formula_version": 1,
-      "source_refs": [
-        "bpom-ready-to-eat",
-        "bpom-shelf-life-umk"
-      ],
-      "source_note": "Takaran adalah komposisi awal yang dapat diedit, bukan formula resmi yang disahkan instansi. Sumber BPOM yang ditautkan dipakai untuk acuan keamanan, penanganan, label, atau masa simpan; bukan untuk mengklaim takaran resep ini resmi.",
+      "source_refs": [],
+      "source_note": "Takaran ini adalah contoh awal untuk membantu pengisian aplikasi dan BELUM diverifikasi terhadap resep/formulasi dari sumber yang dapat diperiksa. Jangan dianggap resep resmi atau hasil validasi teknis. Uji hasil produksi, timbang hasil jadi, dan sesuaikan dengan usaha sendiri sebelum memakai HPP.",
       "instructions": "",
       "lines": [
         {
@@ -17504,13 +17461,10 @@
       "target_finished_grams": 0,
       "expected_yield_units": 1,
       "yield_unit": "Pcs",
-      "recipe_status": "referensi_awal",
+      "recipe_status": "referensi_awal_belum_terverifikasi",
       "formula_version": 1,
-      "source_refs": [
-        "bpom-ready-to-eat",
-        "bpom-shelf-life-umk"
-      ],
-      "source_note": "Takaran adalah komposisi awal yang dapat diedit, bukan formula resmi yang disahkan instansi. Sumber BPOM yang ditautkan dipakai untuk acuan keamanan, penanganan, label, atau masa simpan; bukan untuk mengklaim takaran resep ini resmi.",
+      "source_refs": [],
+      "source_note": "Takaran ini adalah contoh awal untuk membantu pengisian aplikasi dan BELUM diverifikasi terhadap resep/formulasi dari sumber yang dapat diperiksa. Jangan dianggap resep resmi atau hasil validasi teknis. Uji hasil produksi, timbang hasil jadi, dan sesuaikan dengan usaha sendiri sebelum memakai HPP.",
       "instructions": "",
       "lines": [
         {
@@ -17548,13 +17502,10 @@
       "target_finished_grams": 0,
       "expected_yield_units": 1,
       "yield_unit": "Pcs",
-      "recipe_status": "referensi_awal",
+      "recipe_status": "referensi_awal_belum_terverifikasi",
       "formula_version": 1,
-      "source_refs": [
-        "bpom-ready-to-eat",
-        "bpom-shelf-life-umk"
-      ],
-      "source_note": "Takaran adalah komposisi awal yang dapat diedit, bukan formula resmi yang disahkan instansi. Sumber BPOM yang ditautkan dipakai untuk acuan keamanan, penanganan, label, atau masa simpan; bukan untuk mengklaim takaran resep ini resmi.",
+      "source_refs": [],
+      "source_note": "Takaran ini adalah contoh awal untuk membantu pengisian aplikasi dan BELUM diverifikasi terhadap resep/formulasi dari sumber yang dapat diperiksa. Jangan dianggap resep resmi atau hasil validasi teknis. Uji hasil produksi, timbang hasil jadi, dan sesuaikan dengan usaha sendiri sebelum memakai HPP.",
       "instructions": "",
       "lines": [
         {
@@ -17587,13 +17538,10 @@
       "target_finished_grams": 0,
       "expected_yield_units": 1,
       "yield_unit": "Pcs",
-      "recipe_status": "referensi_awal",
+      "recipe_status": "referensi_awal_belum_terverifikasi",
       "formula_version": 1,
-      "source_refs": [
-        "bpom-ready-to-eat",
-        "bpom-shelf-life-umk"
-      ],
-      "source_note": "Takaran adalah komposisi awal yang dapat diedit, bukan formula resmi yang disahkan instansi. Sumber BPOM yang ditautkan dipakai untuk acuan keamanan, penanganan, label, atau masa simpan; bukan untuk mengklaim takaran resep ini resmi.",
+      "source_refs": [],
+      "source_note": "Takaran ini adalah contoh awal untuk membantu pengisian aplikasi dan BELUM diverifikasi terhadap resep/formulasi dari sumber yang dapat diperiksa. Jangan dianggap resep resmi atau hasil validasi teknis. Uji hasil produksi, timbang hasil jadi, dan sesuaikan dengan usaha sendiri sebelum memakai HPP.",
       "instructions": "",
       "lines": [
         {
@@ -17636,13 +17584,10 @@
       "target_finished_grams": 0,
       "expected_yield_units": 1,
       "yield_unit": "Porsi",
-      "recipe_status": "referensi_awal",
+      "recipe_status": "referensi_awal_belum_terverifikasi",
       "formula_version": 1,
-      "source_refs": [
-        "bpom-ready-to-eat",
-        "bpom-shelf-life-umk"
-      ],
-      "source_note": "Takaran adalah komposisi awal yang dapat diedit, bukan formula resmi yang disahkan instansi. Sumber BPOM yang ditautkan dipakai untuk acuan keamanan, penanganan, label, atau masa simpan; bukan untuk mengklaim takaran resep ini resmi.",
+      "source_refs": [],
+      "source_note": "Takaran ini adalah contoh awal untuk membantu pengisian aplikasi dan BELUM diverifikasi terhadap resep/formulasi dari sumber yang dapat diperiksa. Jangan dianggap resep resmi atau hasil validasi teknis. Uji hasil produksi, timbang hasil jadi, dan sesuaikan dengan usaha sendiri sebelum memakai HPP.",
       "instructions": "",
       "lines": [
         {
@@ -17675,13 +17620,10 @@
       "target_finished_grams": 0,
       "expected_yield_units": 1,
       "yield_unit": "Porsi",
-      "recipe_status": "referensi_awal",
+      "recipe_status": "referensi_awal_belum_terverifikasi",
       "formula_version": 1,
-      "source_refs": [
-        "bpom-ready-to-eat",
-        "bpom-shelf-life-umk"
-      ],
-      "source_note": "Takaran adalah komposisi awal yang dapat diedit, bukan formula resmi yang disahkan instansi. Sumber BPOM yang ditautkan dipakai untuk acuan keamanan, penanganan, label, atau masa simpan; bukan untuk mengklaim takaran resep ini resmi.",
+      "source_refs": [],
+      "source_note": "Takaran ini adalah contoh awal untuk membantu pengisian aplikasi dan BELUM diverifikasi terhadap resep/formulasi dari sumber yang dapat diperiksa. Jangan dianggap resep resmi atau hasil validasi teknis. Uji hasil produksi, timbang hasil jadi, dan sesuaikan dengan usaha sendiri sebelum memakai HPP.",
       "instructions": "",
       "lines": [
         {
@@ -17714,13 +17656,10 @@
       "target_finished_grams": 0,
       "expected_yield_units": 1,
       "yield_unit": "Porsi",
-      "recipe_status": "referensi_awal",
+      "recipe_status": "referensi_awal_belum_terverifikasi",
       "formula_version": 1,
-      "source_refs": [
-        "bpom-ready-to-eat",
-        "bpom-shelf-life-umk"
-      ],
-      "source_note": "Takaran adalah komposisi awal yang dapat diedit, bukan formula resmi yang disahkan instansi. Sumber BPOM yang ditautkan dipakai untuk acuan keamanan, penanganan, label, atau masa simpan; bukan untuk mengklaim takaran resep ini resmi.",
+      "source_refs": [],
+      "source_note": "Takaran ini adalah contoh awal untuk membantu pengisian aplikasi dan BELUM diverifikasi terhadap resep/formulasi dari sumber yang dapat diperiksa. Jangan dianggap resep resmi atau hasil validasi teknis. Uji hasil produksi, timbang hasil jadi, dan sesuaikan dengan usaha sendiri sebelum memakai HPP.",
       "instructions": "",
       "lines": [
         {
@@ -17753,13 +17692,10 @@
       "target_finished_grams": 0,
       "expected_yield_units": 1,
       "yield_unit": "Pcs",
-      "recipe_status": "referensi_awal",
+      "recipe_status": "referensi_awal_belum_terverifikasi",
       "formula_version": 1,
-      "source_refs": [
-        "bpom-ready-to-eat",
-        "bpom-shelf-life-umk"
-      ],
-      "source_note": "Takaran adalah komposisi awal yang dapat diedit, bukan formula resmi yang disahkan instansi. Sumber BPOM yang ditautkan dipakai untuk acuan keamanan, penanganan, label, atau masa simpan; bukan untuk mengklaim takaran resep ini resmi.",
+      "source_refs": [],
+      "source_note": "Takaran ini adalah contoh awal untuk membantu pengisian aplikasi dan BELUM diverifikasi terhadap resep/formulasi dari sumber yang dapat diperiksa. Jangan dianggap resep resmi atau hasil validasi teknis. Uji hasil produksi, timbang hasil jadi, dan sesuaikan dengan usaha sendiri sebelum memakai HPP.",
       "instructions": "",
       "lines": [
         {
@@ -17782,13 +17718,10 @@
       "target_finished_grams": 0,
       "expected_yield_units": 1,
       "yield_unit": "Porsi",
-      "recipe_status": "referensi_awal",
+      "recipe_status": "referensi_awal_belum_terverifikasi",
       "formula_version": 1,
-      "source_refs": [
-        "bpom-ready-to-eat",
-        "bpom-shelf-life-umk"
-      ],
-      "source_note": "Takaran adalah komposisi awal yang dapat diedit, bukan formula resmi yang disahkan instansi. Sumber BPOM yang ditautkan dipakai untuk acuan keamanan, penanganan, label, atau masa simpan; bukan untuk mengklaim takaran resep ini resmi.",
+      "source_refs": [],
+      "source_note": "Takaran ini adalah contoh awal untuk membantu pengisian aplikasi dan BELUM diverifikasi terhadap resep/formulasi dari sumber yang dapat diperiksa. Jangan dianggap resep resmi atau hasil validasi teknis. Uji hasil produksi, timbang hasil jadi, dan sesuaikan dengan usaha sendiri sebelum memakai HPP.",
       "instructions": "",
       "lines": [
         {
@@ -17821,13 +17754,10 @@
       "target_finished_grams": 0,
       "expected_yield_units": 1,
       "yield_unit": "Porsi",
-      "recipe_status": "referensi_awal",
+      "recipe_status": "referensi_awal_belum_terverifikasi",
       "formula_version": 1,
-      "source_refs": [
-        "bpom-ready-to-eat",
-        "bpom-shelf-life-umk"
-      ],
-      "source_note": "Takaran adalah komposisi awal yang dapat diedit, bukan formula resmi yang disahkan instansi. Sumber BPOM yang ditautkan dipakai untuk acuan keamanan, penanganan, label, atau masa simpan; bukan untuk mengklaim takaran resep ini resmi.",
+      "source_refs": [],
+      "source_note": "Takaran ini adalah contoh awal untuk membantu pengisian aplikasi dan BELUM diverifikasi terhadap resep/formulasi dari sumber yang dapat diperiksa. Jangan dianggap resep resmi atau hasil validasi teknis. Uji hasil produksi, timbang hasil jadi, dan sesuaikan dengan usaha sendiri sebelum memakai HPP.",
       "instructions": "",
       "lines": [
         {
@@ -17845,13 +17775,10 @@
       "target_finished_grams": 0,
       "expected_yield_units": 1,
       "yield_unit": "Porsi",
-      "recipe_status": "referensi_awal",
+      "recipe_status": "referensi_awal_belum_terverifikasi",
       "formula_version": 1,
-      "source_refs": [
-        "bpom-ready-to-eat",
-        "bpom-shelf-life-umk"
-      ],
-      "source_note": "Takaran adalah komposisi awal yang dapat diedit, bukan formula resmi yang disahkan instansi. Sumber BPOM yang ditautkan dipakai untuk acuan keamanan, penanganan, label, atau masa simpan; bukan untuk mengklaim takaran resep ini resmi.",
+      "source_refs": [],
+      "source_note": "Takaran ini adalah contoh awal untuk membantu pengisian aplikasi dan BELUM diverifikasi terhadap resep/formulasi dari sumber yang dapat diperiksa. Jangan dianggap resep resmi atau hasil validasi teknis. Uji hasil produksi, timbang hasil jadi, dan sesuaikan dengan usaha sendiri sebelum memakai HPP.",
       "instructions": "",
       "lines": [
         {
@@ -17894,13 +17821,10 @@
       "target_finished_grams": 0,
       "expected_yield_units": 1,
       "yield_unit": "Porsi",
-      "recipe_status": "referensi_awal",
+      "recipe_status": "referensi_awal_belum_terverifikasi",
       "formula_version": 1,
-      "source_refs": [
-        "bpom-ready-to-eat",
-        "bpom-shelf-life-umk"
-      ],
-      "source_note": "Takaran adalah komposisi awal yang dapat diedit, bukan formula resmi yang disahkan instansi. Sumber BPOM yang ditautkan dipakai untuk acuan keamanan, penanganan, label, atau masa simpan; bukan untuk mengklaim takaran resep ini resmi.",
+      "source_refs": [],
+      "source_note": "Takaran ini adalah contoh awal untuk membantu pengisian aplikasi dan BELUM diverifikasi terhadap resep/formulasi dari sumber yang dapat diperiksa. Jangan dianggap resep resmi atau hasil validasi teknis. Uji hasil produksi, timbang hasil jadi, dan sesuaikan dengan usaha sendiri sebelum memakai HPP.",
       "instructions": "",
       "lines": [
         {
@@ -17943,13 +17867,10 @@
       "target_finished_grams": 0,
       "expected_yield_units": 1,
       "yield_unit": "Mangkuk",
-      "recipe_status": "referensi_awal",
+      "recipe_status": "referensi_awal_belum_terverifikasi",
       "formula_version": 1,
-      "source_refs": [
-        "bpom-ready-to-eat",
-        "bpom-shelf-life-umk"
-      ],
-      "source_note": "Takaran adalah komposisi awal yang dapat diedit, bukan formula resmi yang disahkan instansi. Sumber BPOM yang ditautkan dipakai untuk acuan keamanan, penanganan, label, atau masa simpan; bukan untuk mengklaim takaran resep ini resmi.",
+      "source_refs": [],
+      "source_note": "Takaran ini adalah contoh awal untuk membantu pengisian aplikasi dan BELUM diverifikasi terhadap resep/formulasi dari sumber yang dapat diperiksa. Jangan dianggap resep resmi atau hasil validasi teknis. Uji hasil produksi, timbang hasil jadi, dan sesuaikan dengan usaha sendiri sebelum memakai HPP.",
       "instructions": "",
       "lines": [
         {
@@ -17982,13 +17903,10 @@
       "target_finished_grams": 0,
       "expected_yield_units": 1,
       "yield_unit": "Porsi",
-      "recipe_status": "referensi_awal",
+      "recipe_status": "referensi_awal_belum_terverifikasi",
       "formula_version": 1,
-      "source_refs": [
-        "bpom-ready-to-eat",
-        "bpom-shelf-life-umk"
-      ],
-      "source_note": "Takaran adalah komposisi awal yang dapat diedit, bukan formula resmi yang disahkan instansi. Sumber BPOM yang ditautkan dipakai untuk acuan keamanan, penanganan, label, atau masa simpan; bukan untuk mengklaim takaran resep ini resmi.",
+      "source_refs": [],
+      "source_note": "Takaran ini adalah contoh awal untuk membantu pengisian aplikasi dan BELUM diverifikasi terhadap resep/formulasi dari sumber yang dapat diperiksa. Jangan dianggap resep resmi atau hasil validasi teknis. Uji hasil produksi, timbang hasil jadi, dan sesuaikan dengan usaha sendiri sebelum memakai HPP.",
       "instructions": "",
       "lines": [
         {
@@ -18026,13 +17944,10 @@
       "target_finished_grams": 0,
       "expected_yield_units": 1,
       "yield_unit": "Porsi",
-      "recipe_status": "referensi_awal",
+      "recipe_status": "referensi_awal_belum_terverifikasi",
       "formula_version": 1,
-      "source_refs": [
-        "bpom-ready-to-eat",
-        "bpom-shelf-life-umk"
-      ],
-      "source_note": "Takaran adalah komposisi awal yang dapat diedit, bukan formula resmi yang disahkan instansi. Sumber BPOM yang ditautkan dipakai untuk acuan keamanan, penanganan, label, atau masa simpan; bukan untuk mengklaim takaran resep ini resmi.",
+      "source_refs": [],
+      "source_note": "Takaran ini adalah contoh awal untuk membantu pengisian aplikasi dan BELUM diverifikasi terhadap resep/formulasi dari sumber yang dapat diperiksa. Jangan dianggap resep resmi atau hasil validasi teknis. Uji hasil produksi, timbang hasil jadi, dan sesuaikan dengan usaha sendiri sebelum memakai HPP.",
       "instructions": "",
       "lines": [
         {
@@ -18065,13 +17980,10 @@
       "target_finished_grams": 0,
       "expected_yield_units": 1,
       "yield_unit": "Mangkuk",
-      "recipe_status": "referensi_awal",
+      "recipe_status": "referensi_awal_belum_terverifikasi",
       "formula_version": 1,
-      "source_refs": [
-        "bpom-ready-to-eat",
-        "bpom-shelf-life-umk"
-      ],
-      "source_note": "Takaran adalah komposisi awal yang dapat diedit, bukan formula resmi yang disahkan instansi. Sumber BPOM yang ditautkan dipakai untuk acuan keamanan, penanganan, label, atau masa simpan; bukan untuk mengklaim takaran resep ini resmi.",
+      "source_refs": [],
+      "source_note": "Takaran ini adalah contoh awal untuk membantu pengisian aplikasi dan BELUM diverifikasi terhadap resep/formulasi dari sumber yang dapat diperiksa. Jangan dianggap resep resmi atau hasil validasi teknis. Uji hasil produksi, timbang hasil jadi, dan sesuaikan dengan usaha sendiri sebelum memakai HPP.",
       "instructions": "",
       "lines": [
         {
@@ -18109,13 +18021,10 @@
       "target_finished_grams": 0,
       "expected_yield_units": 1,
       "yield_unit": "Mangkuk",
-      "recipe_status": "referensi_awal",
+      "recipe_status": "referensi_awal_belum_terverifikasi",
       "formula_version": 1,
-      "source_refs": [
-        "bpom-ready-to-eat",
-        "bpom-shelf-life-umk"
-      ],
-      "source_note": "Takaran adalah komposisi awal yang dapat diedit, bukan formula resmi yang disahkan instansi. Sumber BPOM yang ditautkan dipakai untuk acuan keamanan, penanganan, label, atau masa simpan; bukan untuk mengklaim takaran resep ini resmi.",
+      "source_refs": [],
+      "source_note": "Takaran ini adalah contoh awal untuk membantu pengisian aplikasi dan BELUM diverifikasi terhadap resep/formulasi dari sumber yang dapat diperiksa. Jangan dianggap resep resmi atau hasil validasi teknis. Uji hasil produksi, timbang hasil jadi, dan sesuaikan dengan usaha sendiri sebelum memakai HPP.",
       "instructions": "",
       "lines": [
         {
@@ -18153,13 +18062,10 @@
       "target_finished_grams": 0,
       "expected_yield_units": 1,
       "yield_unit": "Mangkuk",
-      "recipe_status": "referensi_awal",
+      "recipe_status": "referensi_awal_belum_terverifikasi",
       "formula_version": 1,
-      "source_refs": [
-        "bpom-ready-to-eat",
-        "bpom-shelf-life-umk"
-      ],
-      "source_note": "Takaran adalah komposisi awal yang dapat diedit, bukan formula resmi yang disahkan instansi. Sumber BPOM yang ditautkan dipakai untuk acuan keamanan, penanganan, label, atau masa simpan; bukan untuk mengklaim takaran resep ini resmi.",
+      "source_refs": [],
+      "source_note": "Takaran ini adalah contoh awal untuk membantu pengisian aplikasi dan BELUM diverifikasi terhadap resep/formulasi dari sumber yang dapat diperiksa. Jangan dianggap resep resmi atau hasil validasi teknis. Uji hasil produksi, timbang hasil jadi, dan sesuaikan dengan usaha sendiri sebelum memakai HPP.",
       "instructions": "",
       "lines": [
         {
@@ -18197,13 +18103,10 @@
       "target_finished_grams": 0,
       "expected_yield_units": 1,
       "yield_unit": "Pcs",
-      "recipe_status": "referensi_awal",
+      "recipe_status": "referensi_awal_belum_terverifikasi",
       "formula_version": 1,
-      "source_refs": [
-        "bpom-ready-to-eat",
-        "bpom-shelf-life-umk"
-      ],
-      "source_note": "Takaran adalah komposisi awal yang dapat diedit, bukan formula resmi yang disahkan instansi. Sumber BPOM yang ditautkan dipakai untuk acuan keamanan, penanganan, label, atau masa simpan; bukan untuk mengklaim takaran resep ini resmi.",
+      "source_refs": [],
+      "source_note": "Takaran ini adalah contoh awal untuk membantu pengisian aplikasi dan BELUM diverifikasi terhadap resep/formulasi dari sumber yang dapat diperiksa. Jangan dianggap resep resmi atau hasil validasi teknis. Uji hasil produksi, timbang hasil jadi, dan sesuaikan dengan usaha sendiri sebelum memakai HPP.",
       "instructions": "",
       "lines": [
         {
@@ -18236,13 +18139,10 @@
       "target_finished_grams": 0,
       "expected_yield_units": 1,
       "yield_unit": "Pcs",
-      "recipe_status": "referensi_awal",
+      "recipe_status": "referensi_awal_belum_terverifikasi",
       "formula_version": 1,
-      "source_refs": [
-        "bpom-ready-to-eat",
-        "bpom-shelf-life-umk"
-      ],
-      "source_note": "Takaran adalah komposisi awal yang dapat diedit, bukan formula resmi yang disahkan instansi. Sumber BPOM yang ditautkan dipakai untuk acuan keamanan, penanganan, label, atau masa simpan; bukan untuk mengklaim takaran resep ini resmi.",
+      "source_refs": [],
+      "source_note": "Takaran ini adalah contoh awal untuk membantu pengisian aplikasi dan BELUM diverifikasi terhadap resep/formulasi dari sumber yang dapat diperiksa. Jangan dianggap resep resmi atau hasil validasi teknis. Uji hasil produksi, timbang hasil jadi, dan sesuaikan dengan usaha sendiri sebelum memakai HPP.",
       "instructions": "",
       "lines": [
         {
@@ -18265,13 +18165,10 @@
       "target_finished_grams": 0,
       "expected_yield_units": 1,
       "yield_unit": "Porsi",
-      "recipe_status": "referensi_awal",
+      "recipe_status": "referensi_awal_belum_terverifikasi",
       "formula_version": 1,
-      "source_refs": [
-        "bpom-ready-to-eat",
-        "bpom-shelf-life-umk"
-      ],
-      "source_note": "Takaran adalah komposisi awal yang dapat diedit, bukan formula resmi yang disahkan instansi. Sumber BPOM yang ditautkan dipakai untuk acuan keamanan, penanganan, label, atau masa simpan; bukan untuk mengklaim takaran resep ini resmi.",
+      "source_refs": [],
+      "source_note": "Takaran ini adalah contoh awal untuk membantu pengisian aplikasi dan BELUM diverifikasi terhadap resep/formulasi dari sumber yang dapat diperiksa. Jangan dianggap resep resmi atau hasil validasi teknis. Uji hasil produksi, timbang hasil jadi, dan sesuaikan dengan usaha sendiri sebelum memakai HPP.",
       "instructions": "",
       "lines": [
         {
@@ -18304,13 +18201,10 @@
       "target_finished_grams": 0,
       "expected_yield_units": 1,
       "yield_unit": "Porsi",
-      "recipe_status": "referensi_awal",
+      "recipe_status": "referensi_awal_belum_terverifikasi",
       "formula_version": 1,
-      "source_refs": [
-        "bpom-ready-to-eat",
-        "bpom-shelf-life-umk"
-      ],
-      "source_note": "Takaran adalah komposisi awal yang dapat diedit, bukan formula resmi yang disahkan instansi. Sumber BPOM yang ditautkan dipakai untuk acuan keamanan, penanganan, label, atau masa simpan; bukan untuk mengklaim takaran resep ini resmi.",
+      "source_refs": [],
+      "source_note": "Takaran ini adalah contoh awal untuk membantu pengisian aplikasi dan BELUM diverifikasi terhadap resep/formulasi dari sumber yang dapat diperiksa. Jangan dianggap resep resmi atau hasil validasi teknis. Uji hasil produksi, timbang hasil jadi, dan sesuaikan dengan usaha sendiri sebelum memakai HPP.",
       "instructions": "",
       "lines": [
         {
@@ -18343,13 +18237,10 @@
       "target_finished_grams": 0,
       "expected_yield_units": 1,
       "yield_unit": "Porsi",
-      "recipe_status": "referensi_awal",
+      "recipe_status": "referensi_awal_belum_terverifikasi",
       "formula_version": 1,
-      "source_refs": [
-        "bpom-ready-to-eat",
-        "bpom-shelf-life-umk"
-      ],
-      "source_note": "Takaran adalah komposisi awal yang dapat diedit, bukan formula resmi yang disahkan instansi. Sumber BPOM yang ditautkan dipakai untuk acuan keamanan, penanganan, label, atau masa simpan; bukan untuk mengklaim takaran resep ini resmi.",
+      "source_refs": [],
+      "source_note": "Takaran ini adalah contoh awal untuk membantu pengisian aplikasi dan BELUM diverifikasi terhadap resep/formulasi dari sumber yang dapat diperiksa. Jangan dianggap resep resmi atau hasil validasi teknis. Uji hasil produksi, timbang hasil jadi, dan sesuaikan dengan usaha sendiri sebelum memakai HPP.",
       "instructions": "",
       "lines": [
         {
@@ -18387,13 +18278,10 @@
       "target_finished_grams": 0,
       "expected_yield_units": 1,
       "yield_unit": "Tusuk",
-      "recipe_status": "referensi_awal",
+      "recipe_status": "referensi_awal_belum_terverifikasi",
       "formula_version": 1,
-      "source_refs": [
-        "bpom-ready-to-eat",
-        "bpom-shelf-life-umk"
-      ],
-      "source_note": "Takaran adalah komposisi awal yang dapat diedit, bukan formula resmi yang disahkan instansi. Sumber BPOM yang ditautkan dipakai untuk acuan keamanan, penanganan, label, atau masa simpan; bukan untuk mengklaim takaran resep ini resmi.",
+      "source_refs": [],
+      "source_note": "Takaran ini adalah contoh awal untuk membantu pengisian aplikasi dan BELUM diverifikasi terhadap resep/formulasi dari sumber yang dapat diperiksa. Jangan dianggap resep resmi atau hasil validasi teknis. Uji hasil produksi, timbang hasil jadi, dan sesuaikan dengan usaha sendiri sebelum memakai HPP.",
       "instructions": "",
       "lines": [
         {
@@ -18426,13 +18314,10 @@
       "target_finished_grams": 0,
       "expected_yield_units": 1,
       "yield_unit": "Tusuk",
-      "recipe_status": "referensi_awal",
+      "recipe_status": "referensi_awal_belum_terverifikasi",
       "formula_version": 1,
-      "source_refs": [
-        "bpom-ready-to-eat",
-        "bpom-shelf-life-umk"
-      ],
-      "source_note": "Takaran adalah komposisi awal yang dapat diedit, bukan formula resmi yang disahkan instansi. Sumber BPOM yang ditautkan dipakai untuk acuan keamanan, penanganan, label, atau masa simpan; bukan untuk mengklaim takaran resep ini resmi.",
+      "source_refs": [],
+      "source_note": "Takaran ini adalah contoh awal untuk membantu pengisian aplikasi dan BELUM diverifikasi terhadap resep/formulasi dari sumber yang dapat diperiksa. Jangan dianggap resep resmi atau hasil validasi teknis. Uji hasil produksi, timbang hasil jadi, dan sesuaikan dengan usaha sendiri sebelum memakai HPP.",
       "instructions": "",
       "lines": [
         {
@@ -18460,13 +18345,10 @@
       "target_finished_grams": 0,
       "expected_yield_units": 1,
       "yield_unit": "Pcs",
-      "recipe_status": "referensi_awal",
+      "recipe_status": "referensi_awal_belum_terverifikasi",
       "formula_version": 1,
-      "source_refs": [
-        "bpom-ready-to-eat",
-        "bpom-shelf-life-umk"
-      ],
-      "source_note": "Takaran adalah komposisi awal yang dapat diedit, bukan formula resmi yang disahkan instansi. Sumber BPOM yang ditautkan dipakai untuk acuan keamanan, penanganan, label, atau masa simpan; bukan untuk mengklaim takaran resep ini resmi.",
+      "source_refs": [],
+      "source_note": "Takaran ini adalah contoh awal untuk membantu pengisian aplikasi dan BELUM diverifikasi terhadap resep/formulasi dari sumber yang dapat diperiksa. Jangan dianggap resep resmi atau hasil validasi teknis. Uji hasil produksi, timbang hasil jadi, dan sesuaikan dengan usaha sendiri sebelum memakai HPP.",
       "instructions": "",
       "lines": [
         {
@@ -18499,13 +18381,10 @@
       "target_finished_grams": 0,
       "expected_yield_units": 1,
       "yield_unit": "Porsi",
-      "recipe_status": "referensi_awal",
+      "recipe_status": "referensi_awal_belum_terverifikasi",
       "formula_version": 1,
-      "source_refs": [
-        "bpom-ready-to-eat",
-        "bpom-shelf-life-umk"
-      ],
-      "source_note": "Takaran adalah komposisi awal yang dapat diedit, bukan formula resmi yang disahkan instansi. Sumber BPOM yang ditautkan dipakai untuk acuan keamanan, penanganan, label, atau masa simpan; bukan untuk mengklaim takaran resep ini resmi.",
+      "source_refs": [],
+      "source_note": "Takaran ini adalah contoh awal untuk membantu pengisian aplikasi dan BELUM diverifikasi terhadap resep/formulasi dari sumber yang dapat diperiksa. Jangan dianggap resep resmi atau hasil validasi teknis. Uji hasil produksi, timbang hasil jadi, dan sesuaikan dengan usaha sendiri sebelum memakai HPP.",
       "instructions": "",
       "lines": [
         {
@@ -18553,13 +18432,10 @@
       "target_finished_grams": 0,
       "expected_yield_units": 1,
       "yield_unit": "Porsi",
-      "recipe_status": "referensi_awal",
+      "recipe_status": "referensi_awal_belum_terverifikasi",
       "formula_version": 1,
-      "source_refs": [
-        "bpom-ready-to-eat",
-        "bpom-shelf-life-umk"
-      ],
-      "source_note": "Takaran adalah komposisi awal yang dapat diedit, bukan formula resmi yang disahkan instansi. Sumber BPOM yang ditautkan dipakai untuk acuan keamanan, penanganan, label, atau masa simpan; bukan untuk mengklaim takaran resep ini resmi.",
+      "source_refs": [],
+      "source_note": "Takaran ini adalah contoh awal untuk membantu pengisian aplikasi dan BELUM diverifikasi terhadap resep/formulasi dari sumber yang dapat diperiksa. Jangan dianggap resep resmi atau hasil validasi teknis. Uji hasil produksi, timbang hasil jadi, dan sesuaikan dengan usaha sendiri sebelum memakai HPP.",
       "instructions": "",
       "lines": [
         {
@@ -18592,13 +18468,10 @@
       "target_finished_grams": 0,
       "expected_yield_units": 1,
       "yield_unit": "Porsi",
-      "recipe_status": "referensi_awal",
+      "recipe_status": "referensi_awal_belum_terverifikasi",
       "formula_version": 1,
-      "source_refs": [
-        "bpom-ready-to-eat",
-        "bpom-shelf-life-umk"
-      ],
-      "source_note": "Takaran adalah komposisi awal yang dapat diedit, bukan formula resmi yang disahkan instansi. Sumber BPOM yang ditautkan dipakai untuk acuan keamanan, penanganan, label, atau masa simpan; bukan untuk mengklaim takaran resep ini resmi.",
+      "source_refs": [],
+      "source_note": "Takaran ini adalah contoh awal untuk membantu pengisian aplikasi dan BELUM diverifikasi terhadap resep/formulasi dari sumber yang dapat diperiksa. Jangan dianggap resep resmi atau hasil validasi teknis. Uji hasil produksi, timbang hasil jadi, dan sesuaikan dengan usaha sendiri sebelum memakai HPP.",
       "instructions": "",
       "lines": [
         {
@@ -18636,13 +18509,10 @@
       "target_finished_grams": 0,
       "expected_yield_units": 1,
       "yield_unit": "Pcs",
-      "recipe_status": "referensi_awal",
+      "recipe_status": "referensi_awal_belum_terverifikasi",
       "formula_version": 1,
-      "source_refs": [
-        "bpom-ready-to-eat",
-        "bpom-shelf-life-umk"
-      ],
-      "source_note": "Takaran adalah komposisi awal yang dapat diedit, bukan formula resmi yang disahkan instansi. Sumber BPOM yang ditautkan dipakai untuk acuan keamanan, penanganan, label, atau masa simpan; bukan untuk mengklaim takaran resep ini resmi.",
+      "source_refs": [],
+      "source_note": "Takaran ini adalah contoh awal untuk membantu pengisian aplikasi dan BELUM diverifikasi terhadap resep/formulasi dari sumber yang dapat diperiksa. Jangan dianggap resep resmi atau hasil validasi teknis. Uji hasil produksi, timbang hasil jadi, dan sesuaikan dengan usaha sendiri sebelum memakai HPP.",
       "instructions": "",
       "lines": [
         {
@@ -18671,14 +18541,78 @@
           "unit": "liter"
         }
       ]
+    },
+    {
+      "id": 86,
+      "paket_id": 16,
+      "product_template_id": 794,
+      "recipe_basis": "unit",
+      "target_finished_grams": 0,
+      "expected_yield_units": 1,
+      "yield_unit": "Batch bahan awal 495 g",
+      "recipe_status": "formula_penelitian_perlu_uji_produksi",
+      "formula_version": 1,
+      "source_refs": [
+        "polbangtan-gowa-nugget-research"
+      ],
+      "source_note": "Formula penelitian P0 yang tercatat pada kajiwidya nugget ayam. Jumlah bahan awal = 495 g. Ini bukan standar resep wajib, bukan klaim BPOM, dan bukan untuk nugget kemasan yang dibeli lalu dijual kembali. Timbang hasil setelah dimasak untuk menghitung hasil jadi dan HPP per unit.",
+      "instructions": "1. Timbang seluruh bahan sesuai komposisi. 2. Haluskan/campur bahan dan bentuk nugget mengikuti prosedur lengkap pada dokumen penelitian. 3. Masak sampai matang dan lakukan penanganan pangan yang aman. 4. Timbang hasil akhir aktual; masukkan jumlah hasil jadi untuk menghitung HPP. 5. Uji rasa, tekstur, susut masak, dan keamanan proses sebelum dijual.",
+      "lines": [
+        {
+          "material_template_id": 743,
+          "qty": 0.3,
+          "unit": "kg"
+        },
+        {
+          "material_template_id": 752,
+          "qty": 0.03,
+          "unit": "kg"
+        },
+        {
+          "material_template_id": 789,
+          "qty": 0.02,
+          "unit": "kg"
+        },
+        {
+          "material_template_id": 790,
+          "qty": 0.05,
+          "unit": "kg"
+        },
+        {
+          "material_template_id": 791,
+          "qty": 0.07,
+          "unit": "kg"
+        },
+        {
+          "material_template_id": 750,
+          "qty": 0.02,
+          "unit": "kg"
+        },
+        {
+          "material_template_id": 792,
+          "qty": 0.001,
+          "unit": "kg"
+        },
+        {
+          "material_template_id": 761,
+          "qty": 0.002,
+          "unit": "kg"
+        },
+        {
+          "material_template_id": 793,
+          "qty": 0.002,
+          "unit": "kg"
+        }
+      ]
     }
   ],
-  "catalog_version": "3.3.103",
+  "catalog_version": "3.3.105",
   "catalog_notes": {
     "materials_rule": "Bahan Baku dan barang pendukung dikelola satu kali di Bahan & Belanja. Produk jadi yang memiliki komposisi tidak boleh diduplikasi sebagai bahan/belanja.",
-    "recipe_rule": "Komposisi bawaan adalah takaran awal yang dapat diedit. Barang dagangan siap jual tidak diberi resep kecuali benar-benar diproduksi/diracik sendiri.",
+    "recipe_rule": "Komposisi bawaan selain resep yang secara eksplisit memiliki sumber penelitian/teknis diberi status belum terverifikasi. Gunakan sebagai draft yang bisa diedit, bukan resep resmi. Barang dagangan siap jual tidak diberi resep kecuali benar-benar diproduksi/diracik sendiri.",
     "unit_rule": "Satuan stok mengikuti satuan utama bahan; takaran resep harus memakai satuan yang dapat dikonversi (kg/gram, liter/ml, butir/pcs) atau harga satuan resep diisi langsung.",
     "safety_rule": "Untuk pangan, ikuti petunjuk penyimpanan dan penyiapan produk, terapkan FIFO/FEFO, dan tetapkan masa simpan berdasarkan pengujian yang sesuai; jangan menebak masa kedaluwarsa.",
-    "source_scope": "Sumber resmi di bagian sources adalah rujukan teknis. Hanya panduan nugget Kementerian Pertanian yang membahas proses pembuatan nugget secara spesifik; sumber BPOM lainnya membahas keamanan, penanganan, kategori, pelabelan, atau masa simpan."
+    "source_scope": "BPOM dipakai untuk pemeriksaan produk terdaftar, keamanan, penanganan, label, dan masa simpan; BPOM bukan sumber takaran resep umum. Satu formula nugget diberi rujukan penelitian Polbangtan Gowa. Formula bawaan lain belum dinyatakan valid secara sumber dan perlu ditinjau satu per satu.",
+    "validation_status": "v3.3.105: 24 jenis usaha tetap dipertahankan; semua komposisi lama ditandai belum terverifikasi agar tidak disalahartikan sebagai formula resmi. Ditambahkan satu formula uji nugget ayam dengan sumber penelitian yang ditautkan. Barang jual kembali tetap tidak diberi resep."
   }
 }
