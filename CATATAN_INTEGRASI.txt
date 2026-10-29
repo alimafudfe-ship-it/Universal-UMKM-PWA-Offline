@@ -1,0 +1,17 @@
+CATATAN INTEGRASI KE UNIVERSAL UMKM PRO
+
+Paket ini hanya paket data resep/sumber. Belum mengubah app.js, master.json, atau katalog yang diterbitkan di GitHub Pages.
+
+Saran pemetaan saat integrasi:
+- products[].name -> nama produk jual
+- ingredients[].name -> nama bahan pada Bahan & Belanja
+- ingredients[].quantity + ingredients[].unit -> kuantitas komposisi per satu batch resep
+- yield_note -> hasil produksi aktual; isi setelah uji batch
+- method[] -> panduan produk/langkah kerja
+- source_refs -> referensi pada resep_dan_sumber.md
+- validation_status -> tampilkan jelas agar pengguna tidak mengira sudah disahkan pemerintah
+
+PENTING UNTUK HPP:
+Jangan membagi biaya batch dengan jumlah hasil perkiraan. Setelah produksi uji, timbang hasil bersih dan tetapkan unit jual (pcs/pack/gram). Harga bahan harus diisi berdasarkan transaksi pembelian pengguna. Bahan dengan kuantitas 0 berarti belum ditetapkan dan tidak boleh dianggap sebagai komposisi final.
+
+Untuk produk frozen food yang dijual kembali (reseller), jangan buat komposisi resep. Catat sebagai produk dagangan dan stok saja.

@@ -1,0 +1,402 @@
+{
+  "schema_version": "1.0",
+  "package": "Frozen Food - Resep Acuan Bersumber",
+  "warning": "Paket data acuan untuk ditinjau dan diuji. Bukan sertifikasi atau validasi keamanan pangan.",
+  "business_type": "Frozen Food",
+  "products": [
+    {
+      "name": "Nugget Ayam Rumahan",
+      "category": "Frozen Food Buatan Sendiri",
+      "sell_unit": "Pcs",
+      "recipe_status": "acuan_sumber_perlu_uji",
+      "validation_status": "Belum tervalidasi melalui uji produksi/laboratorium",
+      "yield_note": "Tentukan hasil bersih setelah uji batch; jangan menetapkan HPP sebelum hasil aktual ditimbang.",
+      "ingredients": [
+        {
+          "name": "Daging ayam giling",
+          "quantity": 500,
+          "unit": "g",
+          "cost_input": "isi harga beli aktual"
+        },
+        {
+          "name": "Telur",
+          "quantity": 1,
+          "unit": "butir",
+          "cost_input": "isi harga beli aktual"
+        },
+        {
+          "name": "Tepung roti/panir",
+          "quantity": 100,
+          "unit": "g",
+          "cost_input": "isi harga beli aktual"
+        },
+        {
+          "name": "Tepung terigu",
+          "quantity": 50,
+          "unit": "g",
+          "cost_input": "isi harga beli aktual"
+        },
+        {
+          "name": "Bawang putih",
+          "quantity": 10,
+          "unit": "g",
+          "cost_input": "isi harga beli aktual"
+        },
+        {
+          "name": "Bawang bombai",
+          "quantity": 50,
+          "unit": "g",
+          "cost_input": "isi harga beli aktual"
+        },
+        {
+          "name": "Susu cair",
+          "quantity": 50,
+          "unit": "ml",
+          "cost_input": "isi harga beli aktual"
+        },
+        {
+          "name": "Margarin",
+          "quantity": 15,
+          "unit": "g",
+          "cost_input": "isi harga beli aktual"
+        },
+        {
+          "name": "Garam",
+          "quantity": 5,
+          "unit": "g",
+          "cost_input": "sesuaikan uji rasa"
+        },
+        {
+          "name": "Lada bubuk",
+          "quantity": 2,
+          "unit": "g",
+          "cost_input": "sesuaikan uji rasa"
+        },
+        {
+          "name": "Minyak goreng untuk menggoreng",
+          "quantity": 0,
+          "unit": "ml",
+          "cost_input": "catat pemakaian aktual; angka 0 berarti belum ditetapkan"
+        }
+      ],
+      "method": [
+        "Pastikan ayam dan bahan lain masih layak, bersih, dan tetap dingin selama persiapan.",
+        "Haluskan ayam bersama telur, bawang putih, bawang bombai, susu, margarin, garam, dan lada.",
+        "Campur tepung terigu hingga adonan merata. Catat perubahan formula jika dilakukan.",
+        "Ratakan adonan dalam wadah tahan panas, lalu kukus hingga matang menyeluruh. Waktu harus ditetapkan lewat uji batch sesuai ketebalan adonan dan alat.",
+        "Dinginkan secara higienis, potong, balur dengan tepung/pelapis dan tepung panir sesuai metode yang dipilih.",
+        "Bekukan dengan cepat dalam kemasan tertutup. Simpan pada suhu -18°C atau lebih dingin.",
+        "Sebelum dijual, uji hasil, tekstur, berat bersih, proses pemasakan, kemasan, dan masa simpan. Jangan menetapkan tanggal kedaluwarsa tanpa dasar uji."
+      ],
+      "source_refs": [
+        "S1",
+        "S2",
+        "S3"
+      ],
+      "notes": "Komposisi kuantitatif di atas adalah formula kerja awal yang disusun untuk uji produksi, bukan salinan formula resmi Kementan dan bukan resep yang telah dinyatakan tervalidasi oleh Kementan/BPOM."
+    },
+    {
+      "name": "Bakso Ayam Beku",
+      "category": "Frozen Food Buatan Sendiri",
+      "sell_unit": "Pcs",
+      "recipe_status": "formula_awal_perlu_uji",
+      "validation_status": "Belum tervalidasi; formula kerja awal",
+      "yield_note": "Timbang hasil bakso matang dan hasil setelah pendinginan sebelum menentukan HPP per pcs.",
+      "ingredients": [
+        {
+          "name": "Daging ayam giling",
+          "quantity": 500,
+          "unit": "g",
+          "cost_input": "isi harga beli aktual"
+        },
+        {
+          "name": "Tepung tapioka",
+          "quantity": 100,
+          "unit": "g",
+          "cost_input": "isi harga beli aktual"
+        },
+        {
+          "name": "Es batu/air es",
+          "quantity": 100,
+          "unit": "g",
+          "cost_input": "catat pemakaian aktual"
+        },
+        {
+          "name": "Bawang putih",
+          "quantity": 10,
+          "unit": "g",
+          "cost_input": "isi harga beli aktual"
+        },
+        {
+          "name": "Garam",
+          "quantity": 8,
+          "unit": "g",
+          "cost_input": "sesuaikan uji rasa"
+        },
+        {
+          "name": "Lada bubuk",
+          "quantity": 2,
+          "unit": "g",
+          "cost_input": "sesuaikan uji rasa"
+        },
+        {
+          "name": "Putih telur",
+          "quantity": 1,
+          "unit": "butir",
+          "cost_input": "opsional; catat jika dipakai"
+        }
+      ],
+      "method": [
+        "Dinginkan daging, alat, dan bahan; jaga kebersihan untuk mencegah kontaminasi silang.",
+        "Giling/campur daging, garam, bawang putih, lada, dan es bertahap sampai adonan lengket.",
+        "Masukkan tapioka dan putih telur bila digunakan; aduk hingga rata tanpa membiarkan adonan menghangat.",
+        "Bentuk bakso dan masak sampai matang menyeluruh; tetapkan waktu/suhu melalui uji proses.",
+        "Tiriskan dan dinginkan secara higienis, kemas, lalu bekukan dan simpan pada -18°C atau lebih dingin.",
+        "Lakukan uji batch dan masa simpan sebelum menentukan label jual."
+      ],
+      "source_refs": [
+        "S3",
+        "S4"
+      ],
+      "notes": "Formula awal untuk uji, bukan formula yang telah tervalidasi oleh instansi."
+    },
+    {
+      "name": "Cireng Beku",
+      "category": "Frozen Food Buatan Sendiri",
+      "sell_unit": "Pcs",
+      "recipe_status": "formula_awal_perlu_uji",
+      "validation_status": "Belum tervalidasi; formula kerja awal",
+      "yield_note": "Jumlah pcs tergantung ukuran; timbang hasil aktual.",
+      "ingredients": [
+        {
+          "name": "Tepung tapioka",
+          "quantity": 300,
+          "unit": "g",
+          "cost_input": "isi harga beli aktual"
+        },
+        {
+          "name": "Tepung terigu",
+          "quantity": 50,
+          "unit": "g",
+          "cost_input": "isi harga beli aktual"
+        },
+        {
+          "name": "Bawang putih",
+          "quantity": 10,
+          "unit": "g",
+          "cost_input": "isi harga beli aktual"
+        },
+        {
+          "name": "Daun bawang",
+          "quantity": 20,
+          "unit": "g",
+          "cost_input": "isi harga beli aktual"
+        },
+        {
+          "name": "Garam",
+          "quantity": 6,
+          "unit": "g",
+          "cost_input": "sesuaikan uji rasa"
+        },
+        {
+          "name": "Air",
+          "quantity": 200,
+          "unit": "ml",
+          "cost_input": "sesuaikan konsistensi; ukur aktual"
+        },
+        {
+          "name": "Minyak untuk menggoreng",
+          "quantity": 0,
+          "unit": "ml",
+          "cost_input": "catat pemakaian aktual jika digoreng dahulu"
+        }
+      ],
+      "method": [
+        "Campur tapioka, terigu, bawang putih, daun bawang, dan garam.",
+        "Tuang air panas bertahap sambil diaduk sampai adonan dapat dibentuk; catat jumlah air aktual.",
+        "Bentuk ukuran seragam. Tentukan apakah produk dibekukan mentah atau dipra-masak melalui uji tekstur dan keamanan.",
+        "Kemas rapat, beri kode batch dan tanggal produksi, lalu bekukan pada -18°C atau lebih dingin.",
+        "Uji cara memasak dari kondisi beku, tekstur setelah dimasak, dan masa simpan sebelum dijual."
+      ],
+      "source_refs": [
+        "S3",
+        "S4"
+      ],
+      "notes": "Formula awal untuk uji, bukan formula yang telah tervalidasi oleh instansi."
+    },
+    {
+      "name": "Pempek Ikan Beku",
+      "category": "Frozen Food Buatan Sendiri",
+      "sell_unit": "Pcs",
+      "recipe_status": "formula_awal_perlu_uji",
+      "validation_status": "Belum tervalidasi; formula kerja awal",
+      "yield_note": "Jenis ikan, kadar air, dan ukuran sangat memengaruhi hasil; timbang hasil aktual.",
+      "ingredients": [
+        {
+          "name": "Daging ikan giling dingin",
+          "quantity": 500,
+          "unit": "g",
+          "cost_input": "isi harga beli aktual"
+        },
+        {
+          "name": "Tepung tapioka",
+          "quantity": 350,
+          "unit": "g",
+          "cost_input": "formula awal; sesuaikan lewat uji"
+        },
+        {
+          "name": "Air es",
+          "quantity": 200,
+          "unit": "ml",
+          "cost_input": "sesuaikan konsistensi; ukur aktual"
+        },
+        {
+          "name": "Garam",
+          "quantity": 12,
+          "unit": "g",
+          "cost_input": "sesuaikan uji rasa"
+        },
+        {
+          "name": "Telur untuk adonan/isian",
+          "quantity": 0,
+          "unit": "butir",
+          "cost_input": "pilihan varian; isi bila digunakan"
+        }
+      ],
+      "method": [
+        "Jaga ikan tetap dingin dan gunakan alat bersih terpisah dari bahan matang.",
+        "Campur ikan, garam, dan air es bertahap sampai adonan homogen.",
+        "Masukkan tapioka sedikit demi sedikit; hindari menguleni berlebihan agar tekstur tidak keras.",
+        "Bentuk sesuai varian dan masak sampai matang menyeluruh.",
+        "Dinginkan secara higienis, kemas, lalu bekukan pada -18°C atau lebih dingin.",
+        "Uji formula berdasarkan jenis ikan, berat per pcs, hasil matang, dan cara penyajian dari beku."
+      ],
+      "source_refs": [
+        "S3",
+        "S4"
+      ],
+      "notes": "Formula awal untuk uji, bukan formula yang telah tervalidasi oleh instansi."
+    },
+    {
+      "name": "Risol Mayo Beku",
+      "category": "Frozen Food Buatan Sendiri",
+      "sell_unit": "Pcs",
+      "recipe_status": "formula_awal_perlu_uji",
+      "validation_status": "Belum tervalidasi; formula kerja awal",
+      "yield_note": "Jumlah kulit dan isi harus dihitung dari ukuran standar per pcs.",
+      "ingredients": [
+        {
+          "name": "Tepung terigu untuk kulit",
+          "quantity": 250,
+          "unit": "g",
+          "cost_input": "isi harga beli aktual"
+        },
+        {
+          "name": "Telur untuk kulit",
+          "quantity": 2,
+          "unit": "butir",
+          "cost_input": "isi harga beli aktual"
+        },
+        {
+          "name": "Susu cair/air untuk kulit",
+          "quantity": 500,
+          "unit": "ml",
+          "cost_input": "pilih satu formula dan catat aktual"
+        },
+        {
+          "name": "Mayones",
+          "quantity": 150,
+          "unit": "g",
+          "cost_input": "isi harga beli aktual"
+        },
+        {
+          "name": "Sosis matang",
+          "quantity": 200,
+          "unit": "g",
+          "cost_input": "isi harga beli aktual"
+        },
+        {
+          "name": "Telur rebus",
+          "quantity": 2,
+          "unit": "butir",
+          "cost_input": "isi harga beli aktual"
+        },
+        {
+          "name": "Tepung panir",
+          "quantity": 150,
+          "unit": "g",
+          "cost_input": "isi harga beli aktual"
+        },
+        {
+          "name": "Tepung pelapis",
+          "quantity": 50,
+          "unit": "g",
+          "cost_input": "isi harga beli aktual"
+        },
+        {
+          "name": "Minyak goreng",
+          "quantity": 0,
+          "unit": "ml",
+          "cost_input": "catat pemakaian aktual"
+        }
+      ],
+      "method": [
+        "Buat kulit tipis dengan adonan terigu, telur, dan susu/air; masak tipis di wajan bersih.",
+        "Siapkan isian sosis dan telur rebus yang telah dimasak dan didinginkan dengan aman.",
+        "Isi kulit dengan isian dan mayones, lipat rapat agar tidak bocor.",
+        "Balur dengan pelapis dan tepung panir; standarkan berat per pcs.",
+        "Bekukan dalam kemasan tertutup. Karena isian mengandung bahan mudah rusak, jaga rantai dingin dan hindari lama di suhu ruang.",
+        "Uji kebocoran, pemasakan dari beku, keamanan proses, serta masa simpan sebelum dijual."
+      ],
+      "source_refs": [
+        "S3",
+        "S4"
+      ],
+      "notes": "Formula awal untuk uji. Produk berisi mayones/telur/daging memerlukan perhatian khusus pada rantai dingin; jangan menganggap pembekuan menggantikan pemasakan aman."
+    }
+  ],
+  "sources": [
+    {
+      "id": "S1",
+      "organization": "Kementerian Pertanian Republik Indonesia - Pusat Perpustakaan dan Literasi Pertanian",
+      "title": "Membuat Nugget Ayam (infografis)",
+      "url": "https://repository.pertanian.go.id/items/4ad053e3-7540-4701-8310-4713742c85f3",
+      "use": "Acuan resmi untuk topik/pengolahan nugget ayam. Buka halaman sumber untuk melihat/mengunduh infografis asli."
+    },
+    {
+      "id": "S2",
+      "organization": "Kementerian Pertanian Republik Indonesia",
+      "title": "Membuat Nugget Ayam (info literasi)",
+      "url": "https://pustaka.bppsdmp.pertanian.go.id/info-literasi/membuat-nugget-ayam",
+      "use": "Acuan proses dan contoh bahan nugget ayam; jangan menyamakan formula aplikasi ini dengan formula resmi."
+    },
+    {
+      "id": "S3",
+      "organization": "Badan Pengawas Obat dan Makanan (BPOM)",
+      "title": "Tip Bijak Kelola Pangan Olahan Beku",
+      "url": "https://www.pom.go.id/katabpom/infografis/tips-bijak-kelola-pangan-olahan-beku",
+      "use": "Panduan penyimpanan -18°C atau lebih dingin, Cek KLIK, dan FIFO."
+    },
+    {
+      "id": "S4",
+      "organization": "Badan Pengawas Obat dan Makanan (BPOM)",
+      "title": "Pedoman Registrasi Pangan Olahan",
+      "url": "https://registrasipangan.pom.go.id/storage/medialain/Registrasi-Pangan-file1713848654.pdf",
+      "use": "Acuan klasifikasi produk beku seperti bakso, nugget, pempek dan kentang goreng beku; penyimpanan beku pada suhu tidak lebih dari -18°C."
+    },
+    {
+      "id": "S5",
+      "organization": "Badan Pengawas Obat dan Makanan (BPOM)",
+      "title": "Jual Olahan Frozen Food Harus BPOM atau Cukup SPP-IRT",
+      "url": "https://www.pom.go.id/katabpom/infografis/jual-olahan-frozen-food-harus-bpom-atau-cukup-spp-irt",
+      "use": "Acuan awal untuk memeriksa jalur perizinan yang berlaku; cek ketentuan terkini untuk jenis produk dan skala usaha."
+    },
+    {
+      "id": "S6",
+      "organization": "Badan Pengawas Obat dan Makanan (BPOM)",
+      "title": "Pedoman Cara Pengolahan dan Penanganan Pangan Olahan Beku Yang Baik",
+      "url": "https://perpustakaan.pom.go.id/slims/index.php?id=27063&p=show_detail",
+      "use": "Rujukan pedoman pembinaan UMKM untuk pengolahan dan penanganan pangan olahan beku yang baik."
+    }
+  ]
+}

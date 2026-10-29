@@ -1,0 +1,40 @@
+﻿produk,status_resep,bahan,jumlah,satuan,catatan_harga,status_validasi
+Nugget Ayam Rumahan,acuan_sumber_perlu_uji,Daging ayam giling,500,g,isi harga beli aktual,Belum tervalidasi melalui uji produksi/laboratorium
+Nugget Ayam Rumahan,acuan_sumber_perlu_uji,Telur,1,butir,isi harga beli aktual,Belum tervalidasi melalui uji produksi/laboratorium
+Nugget Ayam Rumahan,acuan_sumber_perlu_uji,Tepung roti/panir,100,g,isi harga beli aktual,Belum tervalidasi melalui uji produksi/laboratorium
+Nugget Ayam Rumahan,acuan_sumber_perlu_uji,Tepung terigu,50,g,isi harga beli aktual,Belum tervalidasi melalui uji produksi/laboratorium
+Nugget Ayam Rumahan,acuan_sumber_perlu_uji,Bawang putih,10,g,isi harga beli aktual,Belum tervalidasi melalui uji produksi/laboratorium
+Nugget Ayam Rumahan,acuan_sumber_perlu_uji,Bawang bombai,50,g,isi harga beli aktual,Belum tervalidasi melalui uji produksi/laboratorium
+Nugget Ayam Rumahan,acuan_sumber_perlu_uji,Susu cair,50,ml,isi harga beli aktual,Belum tervalidasi melalui uji produksi/laboratorium
+Nugget Ayam Rumahan,acuan_sumber_perlu_uji,Margarin,15,g,isi harga beli aktual,Belum tervalidasi melalui uji produksi/laboratorium
+Nugget Ayam Rumahan,acuan_sumber_perlu_uji,Garam,5,g,sesuaikan uji rasa,Belum tervalidasi melalui uji produksi/laboratorium
+Nugget Ayam Rumahan,acuan_sumber_perlu_uji,Lada bubuk,2,g,sesuaikan uji rasa,Belum tervalidasi melalui uji produksi/laboratorium
+Nugget Ayam Rumahan,acuan_sumber_perlu_uji,Minyak goreng untuk menggoreng,0,ml,catat pemakaian aktual; angka 0 berarti belum ditetapkan,Belum tervalidasi melalui uji produksi/laboratorium
+Bakso Ayam Beku,formula_awal_perlu_uji,Daging ayam giling,500,g,isi harga beli aktual,Belum tervalidasi; formula kerja awal
+Bakso Ayam Beku,formula_awal_perlu_uji,Tepung tapioka,100,g,isi harga beli aktual,Belum tervalidasi; formula kerja awal
+Bakso Ayam Beku,formula_awal_perlu_uji,Es batu/air es,100,g,catat pemakaian aktual,Belum tervalidasi; formula kerja awal
+Bakso Ayam Beku,formula_awal_perlu_uji,Bawang putih,10,g,isi harga beli aktual,Belum tervalidasi; formula kerja awal
+Bakso Ayam Beku,formula_awal_perlu_uji,Garam,8,g,sesuaikan uji rasa,Belum tervalidasi; formula kerja awal
+Bakso Ayam Beku,formula_awal_perlu_uji,Lada bubuk,2,g,sesuaikan uji rasa,Belum tervalidasi; formula kerja awal
+Bakso Ayam Beku,formula_awal_perlu_uji,Putih telur,1,butir,opsional; catat jika dipakai,Belum tervalidasi; formula kerja awal
+Cireng Beku,formula_awal_perlu_uji,Tepung tapioka,300,g,isi harga beli aktual,Belum tervalidasi; formula kerja awal
+Cireng Beku,formula_awal_perlu_uji,Tepung terigu,50,g,isi harga beli aktual,Belum tervalidasi; formula kerja awal
+Cireng Beku,formula_awal_perlu_uji,Bawang putih,10,g,isi harga beli aktual,Belum tervalidasi; formula kerja awal
+Cireng Beku,formula_awal_perlu_uji,Daun bawang,20,g,isi harga beli aktual,Belum tervalidasi; formula kerja awal
+Cireng Beku,formula_awal_perlu_uji,Garam,6,g,sesuaikan uji rasa,Belum tervalidasi; formula kerja awal
+Cireng Beku,formula_awal_perlu_uji,Air,200,ml,sesuaikan konsistensi; ukur aktual,Belum tervalidasi; formula kerja awal
+Cireng Beku,formula_awal_perlu_uji,Minyak untuk menggoreng,0,ml,catat pemakaian aktual jika digoreng dahulu,Belum tervalidasi; formula kerja awal
+Pempek Ikan Beku,formula_awal_perlu_uji,Daging ikan giling dingin,500,g,isi harga beli aktual,Belum tervalidasi; formula kerja awal
+Pempek Ikan Beku,formula_awal_perlu_uji,Tepung tapioka,350,g,formula awal; sesuaikan lewat uji,Belum tervalidasi; formula kerja awal
+Pempek Ikan Beku,formula_awal_perlu_uji,Air es,200,ml,sesuaikan konsistensi; ukur aktual,Belum tervalidasi; formula kerja awal
+Pempek Ikan Beku,formula_awal_perlu_uji,Garam,12,g,sesuaikan uji rasa,Belum tervalidasi; formula kerja awal
+Pempek Ikan Beku,formula_awal_perlu_uji,Telur untuk adonan/isian,0,butir,pilihan varian; isi bila digunakan,Belum tervalidasi; formula kerja awal
+Risol Mayo Beku,formula_awal_perlu_uji,Tepung terigu untuk kulit,250,g,isi harga beli aktual,Belum tervalidasi; formula kerja awal
+Risol Mayo Beku,formula_awal_perlu_uji,Telur untuk kulit,2,butir,isi harga beli aktual,Belum tervalidasi; formula kerja awal
+Risol Mayo Beku,formula_awal_perlu_uji,Susu cair/air untuk kulit,500,ml,pilih satu formula dan catat aktual,Belum tervalidasi; formula kerja awal
+Risol Mayo Beku,formula_awal_perlu_uji,Mayones,150,g,isi harga beli aktual,Belum tervalidasi; formula kerja awal
+Risol Mayo Beku,formula_awal_perlu_uji,Sosis matang,200,g,isi harga beli aktual,Belum tervalidasi; formula kerja awal
+Risol Mayo Beku,formula_awal_perlu_uji,Telur rebus,2,butir,isi harga beli aktual,Belum tervalidasi; formula kerja awal
+Risol Mayo Beku,formula_awal_perlu_uji,Tepung panir,150,g,isi harga beli aktual,Belum tervalidasi; formula kerja awal
+Risol Mayo Beku,formula_awal_perlu_uji,Tepung pelapis,50,g,isi harga beli aktual,Belum tervalidasi; formula kerja awal
+Risol Mayo Beku,formula_awal_perlu_uji,Minyak goreng,0,ml,catat pemakaian aktual,Belum tervalidasi; formula kerja awal
