@@ -1,5 +1,5 @@
 'use strict';
-window.APP_BUILD_VERSION='3.3.103';document.documentElement.dataset.appVersion='3.3.103';
+window.APP_BUILD_VERSION='3.3.104';document.documentElement.dataset.appVersion='3.3.104';
 const DB_NAME='UniversalUMKMProOffline', DB_VERSION=4;
 let db, master, cart=[], lastReceipt=null, selectedPackageId=null, currentProfile=null, recipeDraft=[], businesses=[], activeBusinessId=null, licenseSlots=1, purchaseSearchSeq=0;
 let activeProductWorkspaceId = null;
