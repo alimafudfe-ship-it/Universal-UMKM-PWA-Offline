@@ -1,12 +1,11 @@
-Universal UMKM Pro v3.3.100 — Bahan terdaftar muncul di pilihan Komposisi
+Universal UMKM Pro v3.3.101 — Bahan & Belanja mengikuti produk terpilih
 
-Patch lanjutan dari v3.3.99. Ganti app.js, index.html, dan sw.js.
+Patch lanjutan dari v3.3.100. Ganti app.js dan sw.js.
 
 Perbaikan:
-- Daftar pilihan Nama Bahan pada Komposisi Produk & HPP sekarang menggabungkan bahan aktif yang sudah didaftarkan untuk usaha aktif dengan bahan dari resep yang tersimpan.
-- Bahan baru seperti Sasa dapat dipilih pada kolom Nama Bahan saat mengedit komposisi produk.
-- Menambahkan bahan ke komposisi tetap memerlukan pengguna mengisi takaran dan harga/satuan yang sesuai; pendaftaran bahan tidak otomatis menambahkan bahan ke resep.
-- Penyaringan Bahan & Belanja tetap hanya menampilkan bahan yang dipakai pada resep produk yang dipilih; bahan tambahan yang belum dimasukkan ke resep tidak otomatis dianggap dibutuhkan oleh produk tersebut.
-- Cache service worker diberi versi baru agar file aplikasi terbaru dapat diambil.
+- Dari ruang kerja produk, tombol Bahan & Belanja otomatis memilih produk yang sedang dibuka.
+- Daftar Bahan & Belanja langsung menampilkan bahan dari komposisi produk tersebut, tanpa meminta pengguna memilih produk sekali lagi.
+- Komposisi Produk & HPP, Tambah Produk, dan Koreksi Stok tidak diubah.
+- Toko retail tetap mengikuti alur barang dagangan yang sudah ada.
 
-Catatan: periksa dan cadangkan data lokal sebelum menerapkan patch. Sintaks JavaScript diperiksa dengan node --check; belum diuji langsung di browser.
+Catatan: patch ini tidak mengubah catatan stok atau transaksi. Uji langsung pada salinan data/backup terlebih dahulu. Pemeriksaan sintaks dan integritas ZIP dilakukan; pengujian browser langsung belum dilakukan.

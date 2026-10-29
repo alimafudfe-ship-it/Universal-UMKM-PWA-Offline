@@ -838,7 +838,7 @@ async function renderProductWorkspace(){
  $('workspaceEditProduct').onclick=()=>openProduct(Number(product.id));
  $('workspaceAddProductStock').onclick=()=>addProductStockFromWorkspace(Number(product.id));
  $('workspaceAdjustProductStock').onclick=()=>adjustStock('product',Number(product.id));
- $('workspaceMaterials').onclick=async()=>{showPage('materials');const filter=$('materialProductFilter');if(filter)filter.value='';await renderMaterials();};
+ $('workspaceMaterials').onclick=async()=>{const productId=Number(product.id);showPage('materials');const filter=$('materialProductFilter');if(filter)filter.value=String(productId);await renderMaterials();};
  $('workspaceRecipe').onclick=async()=>{if(!compositionIsEnabled()){toast('Komposisi Produk sedang disembunyikan. Aktifkan melalui Profil & Backup jika diperlukan.');return}showPage('recipes');await renderRecipePage();$('recipeProductSelect').value=product.name;$('recipeProduct').value=product.name;await renderRecipeForm();};
 }
 async function addProductStockFromWorkspace(id){
