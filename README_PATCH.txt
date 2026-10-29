@@ -1,11 +1,12 @@
-Universal UMKM Pro v3.3.101 — Bahan & Belanja mengikuti produk terpilih
+Universal UMKM Pro v3.3.102 — Perbaikan filter Bahan & Belanja dari Produk
 
-Patch lanjutan dari v3.3.100. Ganti app.js dan sw.js.
+Patch lanjutan untuk memperbaiki urutan pemilihan produk. Sebelumnya, nilai filter diatur sebelum opsi produk selesai dirender sehingga pilihan bisa kosong dan bahan tidak tampil.
 
-Perbaikan:
-- Dari ruang kerja produk, tombol Bahan & Belanja otomatis memilih produk yang sedang dibuka.
-- Daftar Bahan & Belanja langsung menampilkan bahan dari komposisi produk tersebut, tanpa meminta pengguna memilih produk sekali lagi.
+Perubahan:
+- Dari ruang kerja produk, buka Bahan & Belanja.
+- Tunggu daftar pilihan produk dirender terlebih dahulu, lalu set filter ke produk yang sedang dipilih dan render ulang daftar bahan.
 - Komposisi Produk & HPP, Tambah Produk, dan Koreksi Stok tidak diubah.
-- Toko retail tetap mengikuti alur barang dagangan yang sudah ada.
+- Tidak mengubah stok, pembelian, atau data resep.
 
-Catatan: patch ini tidak mengubah catatan stok atau transaksi. Uji langsung pada salinan data/backup terlebih dahulu. Pemeriksaan sintaks dan integritas ZIP dilakukan; pengujian browser langsung belum dilakukan.
+File patch: app.js dan sw.js.
+Uji: node --check app.js dan integritas ZIP. Pengujian browser langsung belum dilakukan. Cadangkan data sebelum memasang.
