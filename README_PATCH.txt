@@ -1,17 +1,12 @@
-Universal UMKM Pro v3.3.99 — Tambah Bahan Mandiri
+Universal UMKM Pro v3.3.100 — Bahan terdaftar muncul di pilihan Komposisi
 
-Patch lanjutan dari v3.3.98. Ganti app.js, index.html, dan sw.js pada aplikasi yang sudah ada.
+Patch lanjutan dari v3.3.99. Ganti app.js, index.html, dan sw.js.
 
-Perubahan:
-- Pada paket usaha yang memakai komposisi, Bahan & Belanja tetap menunggu produk dipilih sebelum menampilkan bahan resep.
-- Setelah produk dengan resep dipilih, tersedia bagian “Tambah bahan yang belum tersedia”.
-- Pengguna dapat mendaftarkan bahan tambahan tanpa harus melakukan pembelian pada saat itu.
-- Bahan baru dimulai dengan stok 0 dan harga Rp0; pembelian berikutnya dicatat lewat formulir Pembelian Bahan & Barang Dagangan.
-- Mencegah pembuatan bahan aktif duplikat dengan nama yang sama agar catatan stok tidak terpecah.
-- Toko retail tanpa resep tetap menampilkan barang dagangan seperti sebelumnya.
+Perbaikan:
+- Daftar pilihan Nama Bahan pada Komposisi Produk & HPP sekarang menggabungkan bahan aktif yang sudah didaftarkan untuk usaha aktif dengan bahan dari resep yang tersimpan.
+- Bahan baru seperti Sasa dapat dipilih pada kolom Nama Bahan saat mengedit komposisi produk.
+- Menambahkan bahan ke komposisi tetap memerlukan pengguna mengisi takaran dan harga/satuan yang sesuai; pendaftaran bahan tidak otomatis menambahkan bahan ke resep.
+- Penyaringan Bahan & Belanja tetap hanya menampilkan bahan yang dipakai pada resep produk yang dipilih; bahan tambahan yang belum dimasukkan ke resep tidak otomatis dianggap dibutuhkan oleh produk tersebut.
+- Cache service worker diberi versi baru agar file aplikasi terbaru dapat diambil.
 
-Penting:
-- Backup data usaha terlebih dahulu.
-- Jangan hapus data situs/IndexedDB.
-- ZIP ini adalah patch, bukan paket aplikasi lengkap.
-- Pemeriksaan integritas ZIP dan sintaks JavaScript dilakukan. Belum diuji langsung di browser.
+Catatan: periksa dan cadangkan data lokal sebelum menerapkan patch. Sintaks JavaScript diperiksa dengan node --check; belum diuji langsung di browser.

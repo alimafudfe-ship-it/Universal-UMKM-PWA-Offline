@@ -1197,7 +1197,8 @@ async function renderRecipePage(){
  const currentName=$('recipeProduct').value.trim();
  $('recipeProductOptions').innerHTML=products.map(p=>`<option value="${esc(p.name)}"></option>`).join('');
  $('recipeProductSelect').innerHTML='<option value="">— Pilih produk / paket —</option>'+products.map(p=>`<option value="${esc(p.name)}">${esc(p.name)}</option>`).join('');
- $('recipeMaterialOptions').innerHTML=[...new Set(allRecipes.flatMap(r=>(r.lines||[]).map(line=>line.name).filter(Boolean)))].map(n=>`<option value="${esc(n)}"></option>`).join('');
+ const registeredMaterials=(await getAll('materials')).filter(m=>m.active!==false&&String(m.businessId??'legacy')===String(activeBusinessId??'legacy')).map(m=>m.name).filter(Boolean);
+ $('recipeMaterialOptions').innerHTML=[...new Set([...registeredMaterials,...allRecipes.flatMap(r=>(r.lines||[]).map(line=>line.name).filter(Boolean))])].map(n=>`<option value="${esc(n)}"></option>`).join('');
  if(!currentName&&products.length)$('recipeProduct').value=products[0].name;
  const activeName=$('recipeProduct').value.trim();
  const exact=products.find(p=>String(p.name).trim().toLocaleLowerCase('id')===activeName.toLocaleLowerCase('id'));
@@ -1214,7 +1215,8 @@ async function renderRecipeForm(){
  const recipe=product?(await getAll('recipes')).find(r=>Number(r.productId)===Number(product.id)):null;
  const instructionBody=$('recipeInstructionsBody'),instructionToggle=$('toggleRecipeInstructions');if(instructionBody)instructionBody.hidden=true;if(instructionToggle){instructionToggle.setAttribute('aria-expanded','false');const sub=instructionToggle.querySelector('.recipe-process-toggle-copy small');if(sub)sub.textContent='Klik untuk melihat cara pembuatan langkah demi langkah'}const instructionField=$('recipeInstructions');if(instructionField)instructionField.value=recipe?.instructions||starterInstructionsForProduct(name,currentProfile?.business||currentProfile?.businessType||currentProfile?.type||'');renderRecipeInstructionPreview();
  if($('recipeSizeMode'))$('recipeSizeMode').value=recipe?.variants?.length?'multiple':'single';if($('recipeBasisMode'))$('recipeBasisMode').value=recipe?.recipeBasis==='finished_kg'?'finished_kg':'unit';if($('recipeExpectedYield'))$('recipeExpectedYield').value=recipe?.recipeBasis==='finished_kg'?(Number(recipe.expectedYieldUnits)||premiumYieldForProduct(product)||50):1;if($('recipeTargetFinishedGrams'))$('recipeTargetFinishedGrams').value=recipe?.recipeBasis==='finished_kg'?(Number(recipe.targetFinishedGrams)||1000):1000;renderRecipeBasisHelp();renderRecipeVariantEditor(recipe?.variants||null);
- const allRecipeNames=[...new Set((await getAll('recipes')).flatMap(r=>(r.lines||[]).map(line=>line.name).filter(Boolean)))];
+ const [recipeRecords,registeredMaterials]=await Promise.all([getAll('recipes'),getAll('materials')]);
+ const allRecipeNames=[...new Set([...registeredMaterials.filter(m=>m.active!==false&&String(m.businessId??'legacy')===String(activeBusinessId??'legacy')).map(m=>m.name).filter(Boolean),...recipeRecords.flatMap(r=>(r.lines||[]).map(line=>line.name).filter(Boolean))])];
  $('recipeMaterialOptions').innerHTML=allRecipeNames.map(n=>`<option value="${esc(n)}"></option>`).join('');
  $('recipeLines').innerHTML='';
  if(recipe?.lines?.length){
