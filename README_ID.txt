@@ -48,3 +48,13 @@ PEMBARUAN v3.3.108
 
 
 Versi 3.3.108 menambahkan menu Produksi. Produksi mengurangi stok bahan berdasarkan komposisi yang tersimpan dan menambah stok produk jadi. Penjualan hanya mengurangi stok produk jadi. Produk dengan beberapa varian ukuran belum didukung pada menu Produksi versi ini.
+
+
+PEMBARUAN v3.3.109 — RUANG KERJA PRODUK/JASA
+- Menu Komposisi dan Produksi di navigasi utama dihilangkan. Komposisi hanya dibuka dari ruang kerja produk yang dipilih.
+- Aksi Produksi / Tambah Stok Produk Jadi berada di dalam Produk/Jasa.
+- Produksi untuk produk berkomposisi mengurangi stok bahan sesuai konversi satuan, lalu menambah stok produk jadi.
+- Produk tanpa komposisi dapat ditambah stoknya sebagai barang jadi yang diterima/dibuat tanpa mengurangi bahan.
+- Koreksi Stok tetap tindakan terpisah untuk memasukkan jumlah fisik sebenarnya.
+- Bahan & Belanja dan Komposisi Produk & HPP tetap tersedia dari ruang kerja produk.
+- Produksi memiliki tombol kembali ke ruang kerja Produk/Jasa.
