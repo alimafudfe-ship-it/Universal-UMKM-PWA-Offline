@@ -104,3 +104,11 @@ VERSI 3.3.116 — KATALOG 300 JENIS USAHA
 - Komposisi turunan hanya contoh referensi dan belum diverifikasi untuk usaha spesifik.
 - Nomor paket 25 sengaja tidak dipakai karena dicadangkan oleh migrasi internal aplikasi.
 - Batas lisensi usaha aktif tetap maksimum 25 sesuai skema lisensi; 300 adalah pilihan katalog.
+
+
+PEMBARUAN v3.3.117 — KATALOG PEDAGANG KELILING
+- 25 profil Pedagang Keliling kini memiliki daftar produk dan bahan yang disesuaikan dengan jenis dagangannya.
+- Tukang Sayur Keliling diperlakukan sebagai barang dagangan untuk dijual kembali; tidak diberi resep produksi.
+- Produk makanan/minuman dan bahan baku dipisahkan. Resep/HPP tidak dipasang otomatis jika takaran spesifik belum tersedia, untuk menghindari HPP keliru akibat memakai resep usaha lain.
+- Pilihan usaha tetap ditampilkan satu per satu; data usaha pengguna tetap terpisah.
+- Profil usaha di luar kelompok Pedagang Keliling masih memakai pewarisan template induk dan akan memerlukan kurasi spesifik berikutnya.
