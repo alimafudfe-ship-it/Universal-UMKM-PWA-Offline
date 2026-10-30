@@ -1,119 +1,38 @@
-CATATAN KATALOG v3.3.118
-- Katalog master memuat 300 pilihan jenis usaha.
-- Pengguna dapat mencari dan memilih jenis usaha dari katalog tersebut.
-- Pilihan 1–25 pada paket adalah jumlah usaha yang diaktifkan dalam lisensi, bukan jumlah jenis usaha yang tersedia di katalog.
+Universal UMKM Pro PWA Offline — v3.3.120
+Basis perbaikan: ZIP v3.3.119 Es Teh Manis Sesuai Judul.
 
-Universal UMKM Pro PWA Offline — v3.3.118
+RINGKASAN AUDIT KATALOG
+- 300 pilihan jenis usaha dipertahankan.
+- 6.510 item katalog dipertahankan.
+- 783 komposisi/resep acuan dipertahankan.
+- Semua 300 paket kini memiliki tahapan alur kerja. Tahapan tambahan untuk paket yang sebelumnya kosong disesuaikan dengan kelompok usaha (perdagangan, jasa, produksi, kuliner/minuman, serta budidaya/pertanian). Status alur dapat disesuaikan oleh pemilik usaha dan bukan SOP teknis yang tervalidasi.
 
-PERBAIKAN PENTING
-Versi v3.3.103 sebelumnya menggabungkan app.js baru dengan index.html lama. Akibatnya sejumlah elemen antarmuka yang diperlukan JavaScript tidak tersedia dan inisialisasi bisa berhenti pada layar “Memuat katalog usaha…”. Versi ini menggunakan index.html yang sesuai dengan aplikasi v3.3.102+ dan style.css yang lebih lengkap.
+PERBAIKAN STRUKTURAL
+1. Memperbaiki tiga ID item yang bertabrakan antara paket Es Teh Manis Gerobak Mangkal (paket 41) dan Usaha Bakwan Sayur (paket 42). ID tiga produk paket 42 dibuat unik dan referensi resepnya diperbarui.
+2. Pencarian produk dan bahan dari template resep pada proses migrasi dibatasi berdasarkan paket_id. Ini mencegah produk/bahan dari paket lain tertukar ketika ID template sama atau data lama bermasalah.
+3. Cache service worker diperbarui agar perangkat mengambil file versi 3.3.120.
+4. Semua ID item, paket, resep, dan alur kerja diperiksa ulang agar unik.
+5. Seluruh 783 resep diperiksa: produk dan semua bahan harus berasal dari paket yang sama. Tidak ditemukan lagi referensi silang atau ID yang tidak ditemukan.
 
-Isi paket:
-- index.html, style.css, app.js, sw.js
-- master.json berisi 24 paket usaha, 788 item, 82 komposisi acuan, dan 5 sumber resmi
-- ikon dan manifest PWA
+ATURAN PENGELOLAAN
+- Produk/Jasa adalah barang atau jasa yang benar-benar dijual.
+- Bahan & Belanja adalah bahan baku/barang pendukung atau stok dagangan sesuai karakter usaha.
+- Produk jadi yang dibuat sendiri dan memiliki komposisi tidak boleh diduplikasi sebagai bahan baku.
+- Barang dagangan siap jual kembali tidak dipaksa memiliki resep.
+- HPP komposisi mengikuti takaran dan satuan bahan; harga dan stok aktual tetap harus diisi sesuai kondisi usaha.
 
-Perbaikan katalog:
-- Menampilkan bahan/stok secara default di Bahan & Belanja.
-- Filter produk untuk menampilkan bahan komposisi produk terpilih.
-- Produk jadi yang memiliki komposisi tidak diduplikasi sebagai bahan belanja.
-- Panel sumber resmi disertakan untuk konteks resep dan keamanan pangan.
+CATATAN VALIDASI
+Komposisi bawaan yang berstatus belum terverifikasi tetap merupakan referensi awal yang dapat diedit, bukan resep resmi atau formula tervalidasi. Pemilik usaha perlu menguji hasil, hasil jadi, dan biaya aktual sebelum memakai HPP sebagai dasar harga jual. Alur kerja tambahan adalah tahapan status operasional yang dapat diedit, bukan instruksi teknis produksi.
 
-Catatan resep:
-Komposisi adalah perkiraan awal yang dapat diedit, bukan formula resmi tervalidasi. Sumber resmi menjelaskan panduan keamanan, penanganan, pelabelan, dan masa simpan sesuai cakupannya; bukan berarti mengesahkan semua takaran resep di katalog.
+MENJAGA DATA
+Perubahan master katalog tidak menghapus data toko, produk, stok, transaksi, pembelian, komposisi buatan pengguna, atau riwayat yang sudah tersimpan. Sebelum deploy, tetap ekspor cadangan dari aplikasi yang sedang digunakan.
 
-PENTING SEBELUM PEMAKAIAN
-1. Jika sudah punya data usaha, ekspor cadangan terlebih dahulu dari aplikasi yang lama.
-2. Jangan hapus data browser/IndexedDB untuk mencoba versi ini.
-3. Untuk penggunaan web, salin file di ZIP ke root repository GitHub Pages dan izinkan seluruh file selesai terunggah.
-4. Setelah deploy, buka dengan HTTPS dan lakukan hard refresh. Jika PWA terpasang masih memakai versi lama, tutup aplikasi dan buka kembali setelah online agar service worker baru terpasang.
+PEMERIKSAAN TEKNIS
+- node --check app.js: lulus.
+- JSON master: valid.
+- ID global: unik untuk 6.510 item, 300 paket, 783 resep, dan 1.456 tahapan alur.
+- Referensi resep: 0 referensi produk/bahan lintas paket atau tidak ditemukan.
+- Paket tanpa alur kerja: 0.
+- Integritas ZIP: diperiksa setelah pengemasan.
 
-Pemeriksaan pada paket: sintaks JavaScript, kelengkapan ID HTML yang dipakai fungsi init, JSON master, referensi resep/sumber, dan integritas ZIP. Pengujian transaksi interaktif di perangkat pengguna belum dilakukan.
-
-
-Versi 3.3.105 — Data Sumber: status validasi komposisi dibuat transparan. Lihat VALIDASI_DATA_SUMBER.txt dan validasi_data_sumber.json.
-
-
-VERSI 3.3.108 — SIMPAN KOMPOSISI PER BAHAN + SISTEM SATUAN STOK UTAMA
-- Setiap bahan dan barang memiliki field satuan stok utama (stockUnit); field unit lama tetap disinkronkan untuk kompatibilitas.
-- Data lama dimigrasikan tanpa mengubah jumlah stok atau nilai biaya; satuan lama dijadikan satuan stok utama.
-- Konversi baku: massa (mg/g/ons/kg), volume (ml/cc/cl/dl/l), panjang (mm/cm/m), jumlah (pcs/butir/buah, lusin, kodi, gross), serta takaran volume standar sdm/sdt.
-- Konversi lintas kelompok (misalnya ml ke gram) diblokir. Kemasan seperti pack/dus/renteng/karung/rim tidak otomatis dikonversi ke pcs/gram; isi harus ditetapkan melalui input isi kemasan.
-- Komposisi menampilkan hasil konversi pembelian ke satuan resep; konversi tidak dikenal akan memberi peringatan dan tidak dihitung otomatis.
-- Tetap lakukan backup sebelum mengganti versi aplikasi.
-
-
-PEMBARUAN v3.3.108
-- Setiap baris bahan pada Komposisi memiliki tombol Simpan bahan sendiri.
-- Menyimpan satu bahan hanya memperbarui bahan tersebut pada komposisi produk yang dipilih.
-- Perubahan bahan lain tidak ikut tersimpan sampai tombol Simpan bahan pada barisnya ditekan.
-- Tombol bawah kini menyimpan pengaturan resep (panduan proses, basis resep, dan ukuran), bukan menyimpan semua baris bahan sekaligus.
-- Baris bahan yang sudah tersimpan ditandai Tersimpan; ketika diedit kembali status berubah menjadi Belum disimpan.
-- HPP dihitung ulang setelah bahan berhasil disimpan.
-
-
-Versi 3.3.108 menambahkan menu Produksi. Produksi mengurangi stok bahan berdasarkan komposisi yang tersimpan dan menambah stok produk jadi. Penjualan hanya mengurangi stok produk jadi. Produk dengan beberapa varian ukuran belum didukung pada menu Produksi versi ini.
-
-
-PEMBARUAN v3.3.110 — RUANG KERJA PRODUK/JASA
-- Menu Komposisi dan Produksi di navigasi utama dihilangkan. Komposisi hanya dibuka dari ruang kerja produk yang dipilih.
-- Aksi Produksi / Tambah Stok Produk Jadi berada di dalam Produk/Jasa.
-- Produksi untuk produk berkomposisi mengurangi stok bahan sesuai konversi satuan, lalu menambah stok produk jadi.
-- Produk tanpa komposisi dapat ditambah stoknya sebagai barang jadi yang diterima/dibuat tanpa mengurangi bahan.
-- Koreksi Stok tetap tindakan terpisah untuk memasukkan jumlah fisik sebenarnya.
-- Bahan & Belanja dan Komposisi Produk & HPP tetap tersedia dari ruang kerja produk.
-- Produksi memiliki tombol kembali ke ruang kerja Produk/Jasa.
-
-
-PEMBARUAN v3.3.110 — SATU IDENTITAS BAHAN UNTUK KOMPOSISI DAN PEMBELIAN
-- Simpan bahan dari Komposisi membuat/menggunakan satu catatan pada Bahan & Belanja dan menyimpan materialId pada baris resep.
-- Daftarkan bahan dari filter produk di Bahan & Belanja menghubungkan bahan ke baris komposisi produk yang dipilih.
-- Pembelian memperbarui stok dan modal rata-rata pada catatan bahan yang sama; HPP resep tertaut mengikuti modal bahan aktual.
-- Produksi mencari bahan berdasarkan materialId terlebih dahulu, lalu nama sebagai kompatibilitas data lama.
-- Jika satuan resep dan stok utama tidak dapat dikonversi, penyimpanan/penghubungan ditolak dengan pesan yang jelas.
-- Stok bahan tetap hanya berkurang saat Produksi dikonfirmasi, bukan saat komposisi disimpan atau saat produk dijual.
-
-
-VERSI 3.3.115 — ALUR BAHAN MENJADI ACUAN
-- Pendaftaran bahan di Bahan & Belanja tidak lagi mensyaratkan baris komposisi lebih dahulu.
-- Setelah disimpan, bahan langsung masuk ke daftar bahan dengan stok awal 0.
-- Saat nama bahan yang sama disimpan dalam Komposisi Produk & HPP, sistem memakai catatan stok bahan yang sudah ada.
-- Hindari membuat nama ganda; bahan dengan nama yang sama akan diarahkan memakai catatan yang sudah terdaftar.
-
-
-VERSI 3.3.115 — PERBAIKAN FILTER BAHAN BERDASARKAN KOMPOSISI
-- Filter Bahan & Belanja berdasarkan produk kini membaca nama bahan dari beberapa format data komposisi lama (name/materialName/bahan/ingredientName).
-- Pencocokan bahan menggunakan normalisasi nama yang sama dengan proses sinkronisasi, bukan perbandingan teks mentah.
-- Baris komposisi ditautkan ke satu catatan stok bahan yang cocok; bahan yang sudah ada di stok keseluruhan seharusnya ikut tampil saat produk dipilih.
-- Tidak mengubah jumlah stok atau riwayat pembelian.
-
-VERSI 3.3.115 — PERBAIKAN TAUGE PADA TAHU ISI
-- Menambahkan Tauge sebagai bahan baku pada paket Gorengan & Cemilan.
-- Menambahkan takaran acuan awal 0,015 kg (15 gram) per buah Tahu Isi; takaran belum diverifikasi dan dapat disesuaikan dengan resep usaha.
-- Saat aplikasi dibuka, migrasi aman menambahkan bahan Tauge dengan stok awal nol jika belum ada, lalu menautkannya ke komposisi Tahu Isi yang sudah tersimpan.
-- Baris komposisi lama, stok, pembelian, dan riwayat pembelian tidak dihapus atau diubah.
-
-
-KATALOG USAHA v3.3.116
-- Master berisi 300 pilihan usaha (24 paket lama dipertahankan + 276 pilihan baru).
-- Pilihan dikelompokkan menurut 12 kelompok operasional dan menggunakan template induk.
-- Produk, bahan, satuan, alur kerja, dan komposisi awal diturunkan dari template kelompok yang paling sesuai.
-- Komposisi turunan adalah referensi awal belum terverifikasi, wajib disesuaikan sebelum digunakan sebagai HPP.
-- Batas lisensi jumlah usaha tetap mengikuti paket pembelian (maksimum 25); angka 300 adalah jumlah pilihan jenis usaha, bukan jumlah usaha aktif sekaligus.
-
-
-VERSI 3.3.116 — KATALOG 300 JENIS USAHA
-- Mempertahankan 24 paket usaha dan fitur versi 3.3.115.
-- Menambahkan 276 pilihan usaha menjadi total 300 paket katalog.
-- Katalog dibagi ke kelompok operasional; setiap paket memakai template induk yang relevan.
-- Komposisi turunan hanya contoh referensi dan belum diverifikasi untuk usaha spesifik.
-- Nomor paket 25 sengaja tidak dipakai karena dicadangkan oleh migrasi internal aplikasi.
-- Batas lisensi usaha aktif tetap maksimum 25 sesuai skema lisensi; 300 adalah pilihan katalog.
-
-
-PEMBARUAN v3.3.117 — KATALOG PEDAGANG KELILING
-- 25 profil Pedagang Keliling kini memiliki daftar produk dan bahan yang disesuaikan dengan jenis dagangannya.
-- Tukang Sayur Keliling diperlakukan sebagai barang dagangan untuk dijual kembali; tidak diberi resep produksi.
-- Produk makanan/minuman dan bahan baku dipisahkan. Resep/HPP tidak dipasang otomatis jika takaran spesifik belum tersedia, untuk menghindari HPP keliru akibat memakai resep usaha lain.
-- Pilihan usaha tetap ditampilkan satu per satu; data usaha pengguna tetap terpisah.
-- Profil usaha di luar kelompok Pedagang Keliling masih memakai pewarisan template induk dan akan memerlukan kurasi spesifik berikutnya.
+Pengujian browser/perangkat nyata dan validasi resep oleh praktisi pangan belum dilakukan. Jangan menganggap pemeriksaan statis ini sebagai pengujian lapangan.

@@ -1,0 +1,20 @@
+AUDIT PAKET v3.3.120
+
+CAKUPAN
+300 paket; 6.510 item; 783 resep/komposisi; 1.456 tahapan alur kerja.
+
+TEMUAN DAN TINDAKAN
+- Ditemukan 3 ID item ganda pada item 1097, 1098, 1099 antara paket 41 dan 42. Item paket 42 dipindahkan ke ID unik 6859, 6860, 6861; referensi resep paket 42 diperbarui.
+- Ditemukan 3 resep paket 42 yang sebelumnya menunjuk ID yang bentrok sehingga dapat terbaca sebagai perlengkapan paket 41. Setelah perbaikan, semua resep produk dan bahan terhubung ke item dalam paket yang sama.
+- Ditemukan 142 paket belum memiliki workflow. Ditambahkan 5 tahapan status sesuai klasifikasi usaha; seluruh tahapan merupakan alur operasional yang dapat diedit, bukan SOP teknis.
+- Kode migrasi diperketat agar pencarian template resep/bahan/produk memakai paket_id selain ID item.
+
+HASIL VALIDASI STATIS
+- ID unik: item 6510/6510; paket 300/300; resep 783/783; workflow 1456/1456.
+- Referensi resep rusak/lintas paket: 0.
+- Paket tanpa workflow: 0.
+- Syntax app.js: lulus.
+- master.json: valid.
+
+BATASAN
+Pemeriksaan struktur tidak dapat membuktikan bahwa takaran setiap resep sudah benar secara kuliner atau bahwa harga bahan sesuai harga pasar setempat. Seluruh resep bawaan berstatus referensi awal yang belum terverifikasi tetap perlu uji praktik dan penyesuaian oleh pengguna. Kategori dagangan dan bahan pada tiap paket perlu diuji kembali di layar aplikasi; data awal tidak boleh dianggap sebagai keputusan stok final.
