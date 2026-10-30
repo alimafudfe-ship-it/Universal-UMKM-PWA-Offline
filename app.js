@@ -1,8 +1,10 @@
 'use strict';
-window.APP_BUILD_VERSION='3.3.113';document.documentElement.dataset.appVersion='3.3.113';
+window.APP_BUILD_VERSION='3.3.114';document.documentElement.dataset.appVersion='3.3.114';
 const DB_NAME='UniversalUMKMProOffline', DB_VERSION=5;
 let db, master, cart=[], lastReceipt=null, selectedPackageId=null, currentProfile=null, recipeDraft=[], businesses=[], activeBusinessId=null, licenseSlots=1, purchaseSearchSeq=0;
 let activeProductWorkspaceId = null;
+// Keep product filter selection deterministic when navigating from Product Workspace.
+let materialsRenderSeq = 0, requestedMaterialProductFilter = null;
 const $=id=>document.getElementById(id);
 const money=n=>'Rp'+Number(n||0).toLocaleString('id-ID',{maximumFractionDigits:2});
 // Clean floating-point residue for editable display values; calculations retain full precision.
@@ -855,7 +857,7 @@ async function renderProductWorkspace(){
  $('workspaceEditProduct').onclick=()=>openProduct(Number(product.id));
  $('workspaceAddProductStock').onclick=()=>openProductionForProduct(Number(product.id));
  $('workspaceAdjustProductStock').onclick=()=>adjustStock('product',Number(product.id));
- $('workspaceMaterials').onclick=async()=>{const productId=Number(product.id);showPage('materials');await renderMaterials();const filter=$('materialProductFilter');if(filter)filter.value=String(productId);await renderMaterials();};
+ $('workspaceMaterials').onclick=()=>{requestedMaterialProductFilter=String(Number(product.id));showPage('materials');};
  $('workspaceRecipe').onclick=async()=>{if(!compositionIsEnabled()){toast('Komposisi Produk sedang disembunyikan. Aktifkan melalui Profil & Backup jika diperlukan.');return}showPage('recipes');await renderRecipePage();$('recipeProductSelect').value=product.name;$('recipeProduct').value=product.name;await renderRecipeForm();};
 }
 async function openProductionForProduct(id){
@@ -987,10 +989,10 @@ async function saveExtraMaterial(){
   let material=materials.find(m=>m.active!==false&&normItemName(m.name)===key);
   if(material){
    toast(`Bahan “${material.name}” sudah terdaftar. Gunakan catatan yang sama agar stok tidak terpisah.`);
-   $('extraMaterialName').value='';$('materialProductFilter').value='';await renderMaterials();return;
+   $('extraMaterialName').value='';await renderMaterials();return;
   }
   const id=await add('materials',{name,category,unit,stockUnit:unit,unitSystemVersion:1,cost:0,stock:0,stockEnabled:true,active:true,source:'user',userAdded:true,referenceCost:false,createdAt:dateNow(),updatedAt:dateNow()});
-  $('extraMaterialName').value='';$('materialProductFilter').value='';
+  $('extraMaterialName').value='';
   await renderMaterials();await renderRecipePage();
   toast(`Bahan “${name}” berhasil disimpan di Bahan/Belanja. Stok masih 0; catat pembelian saat bahan benar-benar dibeli. Saat membuat komposisi, gunakan nama bahan yang sama agar otomatis terhubung.`);
  }catch(err){console.error(err);toast('Bahan gagal disimpan: '+(err.message||'kesalahan database'))}
@@ -1018,17 +1020,20 @@ async function ensureRecipeMaterialLinks(recipe, materials){
  return materials;
 }
 async function renderMaterials(){
+ const renderSeq=++materialsRenderSeq;
  let [materials,products,recipes]=await Promise.all([getAll('materials'),getAll('products'),getAll('recipes')]);
+ if(renderSeq!==materialsRenderSeq)return;
  const recipeProductIds=productIdsWithRecipes(recipes);
  const term=($('materialSearch').value||'').trim().toLowerCase();
  const retailOnly=isRetailStockBusiness();
  const filter=$('materialProductFilter');
  const previousProductFilter=filter?.value||'';
  const filterProducts=products.filter(p=>p.active!==false&&!p.legacyMaterial&&p.forSale!==false).sort((a,b)=>String(a.name).localeCompare(String(b.name),'id'));
- if(filter){filter.innerHTML='<option value="">Semua bahan dan barang</option>'+filterProducts.map(p=>`<option value="${Number(p.id)}">${esc(p.name)}</option>`).join('');if(previousProductFilter&&filterProducts.some(p=>String(p.id)===previousProductFilter))filter.value=previousProductFilter;}
+ if(filter){filter.innerHTML='<option value="">Semua bahan dan barang</option>'+filterProducts.map(p=>`<option value="${Number(p.id)}">${esc(p.name)}</option>`).join('');const requested=requestedMaterialProductFilter;const target=requested!==null?requested:previousProductFilter;if(target&&filterProducts.some(p=>String(p.id)===String(target)))filter.value=String(target);else filter.value='';if(requested!==null)requestedMaterialProductFilter=null;}
  const selectedProductId=Number(filter?.value||0);
  const selectedRecipe=selectedProductId?recipes.find(r=>Number(r.productId)===selectedProductId&&Array.isArray(r.lines)&&r.lines.length):null;
  if(selectedRecipe){materials=await ensureRecipeMaterialLinks(selectedRecipe,materials);}
+ if(renderSeq!==materialsRenderSeq)return;
  // Resep v3.3.85+ berdiri sendiri dan menyimpan nama/takaran/harga bahan, bukan materialId.
  // Karena itu filter produk perlu menampilkan baris resep meskipun belum ada record stok Bahan/Belanja.
  const materialRows=(retailOnly?[]:visibleMaterialsForJuice(materials,products)).map(m=>({...m,_kind:'material'}));
