@@ -1,4 +1,9 @@
-Universal UMKM Pro PWA Offline — v3.3.104
+CATATAN KATALOG v3.3.118
+- Katalog master memuat 300 pilihan jenis usaha.
+- Pengguna dapat mencari dan memilih jenis usaha dari katalog tersebut.
+- Pilihan 1–25 pada paket adalah jumlah usaha yang diaktifkan dalam lisensi, bukan jumlah jenis usaha yang tersedia di katalog.
+
+Universal UMKM Pro PWA Offline — v3.3.118
 
 PERBAIKAN PENTING
 Versi v3.3.103 sebelumnya menggabungkan app.js baru dengan index.html lama. Akibatnya sejumlah elemen antarmuka yang diperlukan JavaScript tidak tersedia dan inisialisasi bisa berhenti pada layar “Memuat katalog usaha…”. Versi ini menggunakan index.html yang sesuai dengan aplikasi v3.3.102+ dan style.css yang lebih lengkap.
