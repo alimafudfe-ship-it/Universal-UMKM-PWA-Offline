@@ -143,14 +143,15 @@ nav button{font-size:12px}
 
 /* v3.0.6 — komposisi dapat diketik, kolom nyaman dibaca */
 .recipe-table-wrap{width:100%;overflow-x:auto;margin-top:12px;border:1px solid var(--line);border-radius:12px;background:#fff}
-.recipe-table-head,.recipe-line{display:grid;grid-template-columns:minmax(170px,1.5fr) minmax(145px,1fr) minmax(130px,.9fr) 38px;gap:8px;align-items:center;padding:9px;border-bottom:1px solid var(--line)}
+.recipe-table-head,.recipe-line{display:grid;grid-template-columns:minmax(145px,1.1fr) minmax(210px,1.5fr) minmax(145px,1fr) minmax(150px,1fr) minmax(115px,.75fr);gap:8px;align-items:center;padding:9px;border-bottom:1px solid var(--line);min-width:820px}
 .recipe-table-head{background:#f0f6f7;font-size:12px;font-weight:800;color:#25485a}
 .recipe-line:last-child{border-bottom:0}
 .recipe-line input{min-width:0;width:100%;margin:0;min-height:42px;padding:9px 10px;font-size:14px}
 .recipe-qty-cell{display:grid;grid-template-columns:minmax(60px,.85fr) minmax(75px,1fr);gap:6px;min-width:0}
 .recipe-line .recipe-remove{min-width:34px;min-height:38px;padding:4px;color:#a12b27;font-size:20px}
+.recipe-row-actions{display:flex;align-items:center;gap:5px;flex-wrap:wrap}.recipe-save-status{font-size:11px;color:var(--muted,#64748b);width:100%}.recipe-save-line{font-size:12px;padding:8px 9px;min-height:36px;white-space:nowrap}.recipe-save-line:disabled{opacity:.65;cursor:default}
 #addRecipeLine{margin-top:2px}
-@media(max-width:600px){.recipe-table-head,.recipe-line{grid-template-columns:minmax(145px,1.2fr) minmax(132px,1fr) minmax(112px,.8fr) 34px;gap:5px;padding:7px}.recipe-table-head{font-size:11px}.recipe-line input{font-size:12px;padding:8px 7px;min-height:40px}.recipe-qty-cell{grid-template-columns:minmax(52px,.8fr) minmax(70px,1fr);gap:4px}.recipe-line .recipe-remove{min-width:30px;padding:2px}}
+@media(max-width:600px){.recipe-table-head,.recipe-line{grid-template-columns:minmax(135px,1.1fr) minmax(195px,1.5fr) minmax(135px,1fr) minmax(140px,1fr) minmax(110px,.75fr);gap:5px;padding:7px;min-width:760px}.recipe-table-head{font-size:11px}.recipe-line input{font-size:12px;padding:8px 7px;min-height:40px}.recipe-qty-cell{grid-template-columns:minmax(52px,.8fr) minmax(70px,1fr);gap:4px}.recipe-line .recipe-remove{min-width:30px;padding:2px}}
 
 /* v3.1.2 — panduan khusus per jenis usaha, 8 langkah */
 .wizard-hero{margin-bottom:14px}
