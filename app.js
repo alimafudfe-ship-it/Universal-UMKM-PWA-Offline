@@ -1,5 +1,5 @@
 'use strict';
-window.APP_BUILD_VERSION='3.3.109';document.documentElement.dataset.appVersion='3.3.109';
+window.APP_BUILD_VERSION='3.3.110';document.documentElement.dataset.appVersion='3.3.110';
 const DB_NAME='UniversalUMKMProOffline', DB_VERSION=5;
 let db, master, cart=[], lastReceipt=null, selectedPackageId=null, currentProfile=null, recipeDraft=[], businesses=[], activeBusinessId=null, licenseSlots=1, purchaseSearchSeq=0;
 let activeProductWorkspaceId = null;
@@ -883,7 +883,7 @@ async function addProductStockFromWorkspace(id){
   await renderProducts();await renderCashItems();await renderProductWorkspace();if(Number($('editId')?.value||0)===Number(id))$('editStock').value=Number((await get('products',id))?.stock||0);toast(`Barang masuk tersimpan: ${product.name} +${qty} ${product.unit||'Pcs'}.`);
  }catch(err){console.error(err);toast('Stok produk gagal ditambahkan: '+(err.message||'kesalahan database'));}
 }
-async function recalculateRecipeCosts(){const [products,recipes,materials]=await Promise.all([getAll('products'),getAll('recipes'),getAll('materials')]);const byId=new Map(materials.map(m=>[Number(m.id),m]));for(const r of recipes){const prod=products.find(p=>Number(p.id)===Number(r.productId));if(!prod||prod.costMode==='manual')continue;let total=0,valid=true;for(const line of r.lines||[]){if(line.unitPrice!==undefined&&line.unitPrice!==null&&Number.isFinite(Number(line.unitPrice))){total+=Number(line.qty||0)*Number(line.unitPrice||0);continue}const m=byId.get(Number(line.materialId));if(!m){valid=false;continue}const qty=convertQty(line.qty,line.unit||m.unit,m.unit);if(qty===null){valid=false;continue}total+=qty*Number(m.cost||0)}if(valid){const unitCost=r.recipeBasis==='finished_kg'?total/Math.max(1,Number(r.expectedYieldUnits)||1):total;prod.cost=Math.round(unitCost*100)/100;prod.costMode='auto';prod.costUpdatedAt=dateNow();await put('products',prod)}}}
+async function recalculateRecipeCosts(){const [products,recipes,materials]=await Promise.all([getAll('products'),getAll('recipes'),getAll('materials')]);const byId=new Map(materials.map(m=>[Number(m.id),m]));for(const r of recipes){const prod=products.find(p=>Number(p.id)===Number(r.productId));if(!prod||prod.costMode==='manual')continue;let total=0,valid=true;for(const line of r.lines||[]){const m=byId.get(Number(line.materialId));if(m&&Number(m.cost)>0){const qty=convertQty(line.qty,line.unit||m.unit,m.unit);if(qty===null){valid=false;continue}total+=qty*Number(m.cost);continue}if(line.unitPrice!==undefined&&line.unitPrice!==null&&Number.isFinite(Number(line.unitPrice))){total+=Number(line.qty||0)*Number(line.unitPrice||0);continue}if(!m){valid=false;continue}const qty=convertQty(line.qty,line.unit||m.unit,m.unit);if(qty===null){valid=false;continue}total+=qty*Number(m.cost||0)}if(valid){const unitCost=r.recipeBasis==='finished_kg'?total/Math.max(1,Number(r.expectedYieldUnits)||1):total;prod.cost=Math.round(unitCost*100)/100;prod.costMode='auto';prod.costUpdatedAt=dateNow();await put('products',prod)}}}
 function businessMaterialOptions(){
  const name=String(currentProfile?.business||'').toLowerCase();
  if(name.includes('percetakan')||name.includes('fotokopi'))return {categories:['Kertas','Tinta dan toner','Bahan cetak','Bahan finishing','Jilid dan laminasi','ATK','Perlengkapan','Lainnya'],units:['Rim','Lembar','Pack','Pcs','Roll','Botol','Cartridge','Box','Meter','Kg','Liter','Set']};
@@ -954,8 +954,8 @@ async function editMaterialCost(id){
  const stock=Number(item.stock||0);
  if(!confirm('Ubah modal '+item.name+' dari '+money(oldCost)+' menjadi '+money(newCost)+' per '+(item.unit||'satuan')+'?\n\nStok tidak berubah. Nilai stok dan modal rata-rata akan mengikuti harga baru. Riwayat pembelian lama tetap tersimpan.'))return;
  item.cost=newCost;item.updatedAt=dateNow();await put('materials',item);
- // Harga master Bahan & Belanja tidak menimpa biaya yang sudah tersimpan pada Komposisi.
- await renderMaterials();await renderProducts();await renderCashItems();await renderRecipePage();await renderReports();toast('Harga modal bahan diperbarui. Stok dan riwayat pembelian tidak diubah.');
+ // HPP produk yang terhubung mengikuti modal bahan utama yang sama.
+ await recalculateRecipeCosts();await renderMaterials();await renderProducts();await renderCashItems();await renderRecipePage();await renderReports();toast('Harga modal bahan diperbarui. Stok dan riwayat pembelian tidak diubah.');
 }
 async function deleteMaterial(id){
  const item=await get('materials',Number(id));if(!item)return;
@@ -977,14 +977,32 @@ async function editMaterialUnit(id){
  item.stock=stock*factor;item.cost=cost*reverse;item.unit=newUnit;item.stockUnit=newUnit;item.unitSystemVersion=1;item.updatedAt=dateNow();await put('materials',item);for(const recipe of await getAll('recipes')){let changed=false;for(const line of recipe.lines||[]){if(Number(line.materialId)!==Number(item.id))continue;const perRecipeUnit=convertQty(1,line.unit||newUnit,newUnit);if(perRecipeUnit!==null){line.unitPrice=perRecipeUnit*Number(item.cost||0);changed=true}}if(changed){recipe.updatedAt=dateNow();await put('recipes',recipe)}}await recalculateRecipeCosts();await renderMaterials();await renderProducts();await renderRecipePage();toast('Satuan diubah. Stok dan modal per satuan telah dikonversi tanpa mengubah nilai stok.');
 }
 async function saveExtraMaterial(){
+ const button=$('saveExtraMaterial');if(button?.disabled)return;
  const name=String($('extraMaterialName')?.value||'').trim();
  if(!name){toast('Masukkan nama bahan terlebih dahulu.');$('extraMaterialName')?.focus();return}
- const materials=await getAll('materials'),key=normItemName(name);
- const existing=materials.find(m=>m.active!==false&&normItemName(m.name)===key);
- if(existing){toast('Bahan dengan nama tersebut sudah terdaftar. Gunakan bahan yang ada agar stok tidak terpisah.');$('extraMaterialName').value='';await renderMaterials();return}
- const category=$('extraMaterialCategory').value||'Bahan tambahan',unit=$('extraMaterialUnit').value||'Pcs';
- await add('materials',{name,category,unit,stockUnit:unit,unitSystemVersion:1,cost:0,stock:0,stockEnabled:true,active:true,source:'user',userAdded:true,createdAt:dateNow(),updatedAt:dateNow()});
- $('extraMaterialName').value='';await renderMaterials();toast(`Bahan “${name}” berhasil didaftarkan. Stok dan harga masih 0; catat pembelian saat bahan benar-benar dibeli.`);
+ const productId=Number($('materialProductFilter')?.value||0),category=$('extraMaterialCategory').value||'Bahan tambahan',unit=$('extraMaterialUnit').value||'Pcs';
+ if(!productId){toast('Pilih produk terlebih dahulu agar bahan baru dapat dihubungkan ke komposisi produk tersebut.');return}
+ button.disabled=true;
+ try{
+  const [materials,recipes]=await Promise.all([getAll('materials'),getAll('recipes')]),key=normItemName(name);
+  const recipe=recipes.find(r=>Number(r.productId)===productId&&Array.isArray(r.lines));
+  if(!recipe){toast('Komposisi produk belum tersedia. Tambahkan dan simpan baris bahan di Komposisi Produk & HPP terlebih dahulu.');return}
+  const line=recipe.lines.find(x=>normItemName(x.name||'')===key||Number(x.materialId)>0&&materials.some(m=>Number(m.id)===Number(x.materialId)&&normItemName(m.name)===key));
+  if(!line){toast(`Bahan “${name}” belum ada sebagai baris komposisi. Tambahkan dahulu di Komposisi Produk & HPP agar dapat dihubungkan.`);return}
+  let material=materials.find(m=>m.active!==false&&normItemName(m.name)===key);
+  if(material){
+   const from=String(line.unit||unit),to=primaryStockUnit(material);
+   if(convertQty(1,from,to)===null){toast(`Satuan resep ${from} tidak cocok dengan satuan stok utama ${to} untuk bahan ${material.name}. Perbaiki konversinya sebelum menghubungkan.`);return}
+  }else{
+   const from=String(line.unit||unit);if(convertQty(1,from,unit)===null){toast(`Satuan stok ${unit} tidak dapat dikonversi dari satuan komposisi ${from}. Pilih satuan yang sekelompok.`);return}
+   const id=await add('materials',{name,category,unit,stockUnit:unit,unitSystemVersion:1,cost:0,stock:0,stockEnabled:true,active:true,source:'user',userAdded:true,referenceCost:false,createdAt:dateNow(),updatedAt:dateNow()});
+   material={id:Number(id),businessId:activeBusinessId,name,category,unit,stockUnit:unit,cost:0,stock:0,stockEnabled:true,active:true};
+  }
+  line.materialId=Number(material.id);line.name=material.name;line.updatedAt=dateNow();recipe.updatedAt=dateNow();await put('recipes',recipe);
+  $('extraMaterialName').value='';await recalculateRecipeCosts();await renderMaterials();await renderRecipePage();await renderProducts();await renderCashItems();
+  toast(`Bahan “${material.name}” tersimpan dan terhubung ke komposisi. Pembelian berikutnya gunakan catatan bahan yang sama di Bahan & Belanja.`);
+ }catch(err){console.error(err);toast('Bahan gagal disimpan: '+(err.message||'kesalahan database'))}
+ finally{if(button)button.disabled=false}
 }
 async function renderMaterials(){
  const [materials,products,recipes]=await Promise.all([getAll('materials'),getAll('products'),getAll('recipes')]);
@@ -1015,7 +1033,7 @@ async function renderMaterials(){
  const rows=availableRows.filter(m=>`${m.name||''} ${m.category||''}`.toLowerCase().includes(term)).sort((a,b)=>String(a.name).localeCompare(String(b.name),'id'));
  const addCard=$('addMaterialFromRecipeCard');if(addCard){addCard.hidden=!(selectedProductId&&!!selectedRecipe&&!retailOnly);if(!addCard.hidden){const opts=businessMaterialOptions();$('extraMaterialCategory').innerHTML=opts.categories.map((x,i)=>`<option value="${esc(x)}" ${i===0?'selected':''}>${esc(x)}</option>`).join('');$('extraMaterialUnit').innerHTML=opts.units.map((x,i)=>`<option value="${esc(x)}" ${i===0?'selected':''}>${esc(x)}</option>`).join('');}}
  const filterHelp=$('materialProductFilterHelp');
- if(filterHelp){const selected=filterProducts.find(p=>Number(p.id)===selectedProductId);const recipeOnlyCount=rows.filter(m=>m._kind==='recipe').length;if(!selectedProductId&&!retailOnly&&compositionIsEnabled()){filterHelp.innerHTML='<strong>Daftar bahan baku dan barang stok tampil di sini. Pilih produk jika ingin melihat bahan komposisinya.</strong>';}else if(!selectedProductId){filterHelp.textContent='Barang dagangan dan bahan yang dikelola stok ditampilkan tanpa menggandakan produk jadi yang memiliki komposisi. Pembelian dan catatan stok tetap terpusat.';}else if(selectedRecipe){filterHelp.textContent=`Bahan komposisi untuk ${selected?.name||'produk ini'}. ${recipeOnlyCount?recipeOnlyCount+' bahan belum terdaftar sebagai stok Bahan/Belanja. ':''}Komposisi hanya panduan HPP; bila ingin mencatat persediaan bahan, daftarkan melalui pembelian di Bahan & Belanja. Tidak ada stok yang diubah oleh filter ini.`;}else{filterHelp.textContent=`${selected?.name||'Produk ini'} belum memiliki komposisi tersimpan. Atur bahan terlebih dahulu di menu Komposisi Produk & HPP.`;}}
+ if(filterHelp){const selected=filterProducts.find(p=>Number(p.id)===selectedProductId);const recipeOnlyCount=rows.filter(m=>m._kind==='recipe').length;if(!selectedProductId&&!retailOnly&&compositionIsEnabled()){filterHelp.innerHTML='<strong>Daftar bahan baku dan barang stok tampil di sini. Pilih produk jika ingin melihat bahan komposisinya.</strong>';}else if(!selectedProductId){filterHelp.textContent='Barang dagangan dan bahan yang dikelola stok ditampilkan tanpa menggandakan produk jadi yang memiliki komposisi. Pembelian dan catatan stok tetap terpusat.';}else if(selectedRecipe){filterHelp.textContent=`Bahan komposisi untuk ${selected?.name||'produk ini'}. ${recipeOnlyCount?recipeOnlyCount+' bahan belum terdaftar sebagai stok Bahan/Belanja. ':''}Bahan pada komposisi harus terhubung ke satu catatan stok yang sama. Daftarkan bahan di sini untuk menghubungkannya; pembelian dilakukan melalui Bahan & Belanja. Filter ini tidak mengubah stok.`;}else{filterHelp.textContent=`${selected?.name||'Produk ini'} belum memiliki komposisi tersimpan. Atur bahan terlebih dahulu di menu Komposisi Produk & HPP.`;}}
  const fmtQty=n=>Number(n||0).toLocaleString('id-ID',{maximumFractionDigits:4});
  $('materialsList').innerHTML=rows.length?`<div class="materials-table-wrap"><table class="materials-table"><thead><tr><th>Bahan / barang</th><th>Jenis</th><th>Satuan</th><th>Stok</th><th>Harga modal rata-rata</th><th>Nilai stok</th><th>Status</th><th>Aksi</th></tr></thead><tbody>${rows.map(m=>{const isRecipe=m._kind==='recipe',stock=Number(m.stock||0),cost=Number(m.cost||0),status=isRecipe?'Belum dicatat sebagai stok':m.stockEnabled===false?'Stok nonaktif':stock<=0?'Habis':'Tersedia';return `<tr><td data-label="Bahan / barang"><strong>${esc(m.name)}</strong><small>${isRecipe?'Takaran resep: '+fmtQty(m._recipeQty)+' '+esc(m._recipeUnit):esc(m.category||'Bahan baku')}</small></td><td data-label="Jenis">${isRecipe?'Bahan resep (mandiri)':m._kind==='product'?'Barang jual':'Bahan'}</td><td data-label="Satuan">${esc(m.unit||'Pcs')}</td><td data-label="Stok" class="num">${isRecipe?'Belum dikelola':fmtQty(stock)+' '+esc(m.unit||'')}</td><td data-label="Harga modal rata-rata" class="num">${money(cost)}<small>/ ${esc(m.unit||'satuan')}</small></td><td data-label="Nilai stok" class="num">${isRecipe?'—':money(stock*cost)}</td><td data-label="Status"><span class="stock-status ${isRecipe?'disabled-stock':stock<=0&&m.stockEnabled!==false?'empty-stock':m.stockEnabled===false?'disabled-stock':'in-stock'}">${status}</span></td><td data-label="Aksi">${isRecipe?'<span class="muted">Daftarkan bahan bila ingin mengelola stok</span>':`<div class="material-actions"><button type="button" data-meditdata="${m._kind}:${m.id}">Edit Nama</button>${m._kind==='material'?`<button type="button" data-mcost="${m.id}">Edit Harga</button>`:''}<button type="button" data-medit="${m._kind}:${m.id}" ${m._kind!=='material'?'disabled title="Ubah satuan barang jual dari menu Produk"':''}>Edit Satuan</button><button type="button" data-mbuy="${m._kind}:${m.id}">Barang Masuk</button><button type="button" data-adjust="${m._kind}:${m.id}">Koreksi Stok</button><button type="button" data-mdelete="${m._kind}:${m.id}">Hapus</button></div>`}</td></tr>`}).join('')}</tbody></table></div>`:'<div class="empty">Belum ada bahan atau barang stok yang cocok.</div>';
  const previousSelection=$('purchaseMaterial').value;
@@ -1100,7 +1118,7 @@ async function savePurchase(){
    }
   }else{
    const store=tx.objectStore(kind==='product'?'products':'materials'),req=store.get(itemId);req.onsuccess=()=>{const item=req.result;if(!item||String(item.businessId??'legacy')!==String(activeBusinessId??'legacy')){requestFailed=true;try{tx.abort()}catch{}return}const oldQty=Math.max(0,Number(item.stock||0)),oldCost=Math.max(0,Number(item.cost||0)),newStock=oldQty+qty;item.cost=newStock>0?((oldQty*oldCost)+(qty*unitCost))/newStock:unitCost;item.stock=newStock;item.stockEnabled=true;item.active=true;item.updatedAt=stamp;store.put(item);
-    // Pembelian memperbarui stok dan modal rata-rata di Bahan & Belanja saja; biaya Komposisi tetap tersimpan.
+    // Pembelian memperbarui stok dan modal rata-rata bahan; HPP resep tertaut dihitung ulang dari modal bahan yang sama.
     savePurchaseRow(itemId,kind,item.name,item.unit||'Pcs')};req.onerror=()=>{requestFailed=true};
   }
   tx.oncomplete=async()=>{try{await recalculateRecipeCosts();await renderMaterials();await renderProducts();await renderCashItems();await renderRecipePage();$('purchaseQty').value='';$('purchaseUnitPrice').value='';$('purchaseTotal').value='';$('purchaseMaterialSearch').value='';$('purchaseMaterial').value='';$('purchaseMaterialSuggestions').hidden=true;$('newMaterialFields').hidden=true;$('purchasePackageMode').checked=false;$('purchasePackageUnit').value='Pack';$('purchasePackageContentQty').value='1';togglePurchasePackageMode();$('purchaseHistoryDate').value=date;await renderPurchaseHistory();const noun=(isNew?newKind:kind)==='product'?'produk':'bahan';toast(`Pembelian tersimpan. Stok ${noun} bertambah ${qty.toLocaleString('id-ID',{maximumFractionDigits:4})} ${newUnit||'unit'} satu kali.`)}catch(err){console.error(err);toast('Pembelian tersimpan, tetapi tampilan gagal diperbarui. Muat ulang aplikasi untuk memeriksa stok.')}finally{btn.disabled=false}};
@@ -1267,7 +1285,7 @@ async function renderRecipeForm(){
  $('recipeMaterialOptions').innerHTML=allRecipeNames.map(n=>`<option value="${esc(n)}"></option>`).join('');
  $('recipeLines').innerHTML='';
  if(recipe?.lines?.length){
-  for(const line of recipe.lines){const name=line.name;if(!name)continue;const displayLine=normalizeRecipeLineForDisplay(line,{name,unit:line.unit,cost:0});appendRecipeLine({name,qty:displayLine.qty,unit:displayLine.unit,price:displayLine.price});}
+  for(const line of recipe.lines){const name=line.name;if(!name)continue;const material=registeredMaterials.find(m=>m.active!==false&&((Number(line.materialId)>0&&Number(m.id)===Number(line.materialId))||normItemName(m.name)===normItemName(name)));const effectiveLine=material&&Number(material.cost)>0?{...line,unitPrice:undefined}:line;const displayLine=normalizeRecipeLineForDisplay(effectiveLine,{name,unit:line.unit,cost:material?.cost||0});const stockToRecipe=material?convertQty(1,material.unit||material.stockUnit||displayLine.unit,displayLine.unit):null;const displayBuyPrice=material&&Number(material.cost)>0?Number(material.cost):(material&&stockToRecipe!==null?Number(displayLine.price||0)*stockToRecipe:displayLine.price);appendRecipeLine({name,qty:displayLine.qty,unit:displayLine.unit,price:displayLine.price,buyPrice:displayBuyPrice,buyQty:1,buyUnit:material?.unit||displayLine.unit,materialId:material?.id||line.materialId||0});}
  }else appendRecipeLine();
  $('recipeLines').dataset.basisMode=$('recipeBasisMode')?.value||'unit';renderRecipeBasisHelp();updateRecipeReferenceNote(name);renderRecipePreviewLive();
 }
@@ -1291,8 +1309,9 @@ function appendRecipeLine(data={}){
  if(data.name){const saveButton=row.querySelector('.recipe-save-line');if(saveButton)saveButton.disabled=true;}
  if(!$('recipeUnitOptions')){const dl=document.createElement('datalist');dl.id='recipeUnitOptions';dl.innerHTML=['Butir','Buah','Pcs','Porsi','Gram','Mg','Ons','Kg','Ml','Cc','Liter','Sendok makan','Sendok teh','Lembar','Batang','Ikat','Sachet','Bungkus','Potong','Botol','Kaleng','Galon','Pack','Pak','Renteng','Dus','Karton','Karung','Lusin','Kodi','Roll','Meter','Rim'].map(x=>`<option value="${x}"></option>`).join('');$('page-recipes').appendChild(dl)}
  // Existing recipe line cost is preserved as an equivalent purchase amount until user edits it.
- row.querySelector('.recipe-buy-price').value=price===''?'':cleanNumberString(price,0);
- row.querySelector('.recipe-buy-qty').value='1';row.querySelector('.recipe-buy-unit').value=unit;row.querySelector('.recipe-qty').value=qty===''?'':cleanNumberString(qty,4);
+ row.querySelector('.recipe-buy-price').value=data.buyPrice!==undefined?cleanNumberString(data.buyPrice,2):(price===''?'':cleanNumberString(price,0));
+ row.querySelector('.recipe-buy-qty').value=data.buyQty!==undefined?String(data.buyQty):'1';row.querySelector('.recipe-buy-unit').value=data.buyUnit||unit;row.querySelector('.recipe-qty').value=qty===''?'':cleanNumberString(qty,4);
+ if(data.materialId)row.dataset.materialId=String(data.materialId);
  const update=()=>{row.dataset.saved='false';const status=row.querySelector('.recipe-save-status');if(status)status.textContent='Belum disimpan';const save=row.querySelector('.recipe-save-line');if(save)save.disabled=false;recipeAutoCost(row);renderRecipePreviewLive()};
  row.querySelector('.recipe-material-name').addEventListener('input',update);
  row.querySelector('.recipe-material-name').addEventListener('change',e=>{
@@ -1350,29 +1369,32 @@ async function saveRecipeLine(row){
  if(!(qty>0)||!Number.isFinite(qty)){toast(`Takaran resep bahan ${name} harus lebih dari nol.`);row.querySelector('.recipe-qty').focus();return}
  if(!buyUnit||!(buyQty>0)||!Number.isFinite(buyQty)){toast(`Jumlah dan satuan pembelian bahan ${name} harus diperiksa.`);row.querySelector('.recipe-buy-qty').focus();return}
  if(!(buyPrice>0)||!Number.isFinite(buyPrice)){toast(`Harga pembelian bahan ${name} harus lebih dari nol.`);row.querySelector('.recipe-buy-price').focus();return}
- if(!Number.isFinite(price)||price<0){toast(`Biaya pemakaian bahan ${name} belum dapat dihitung. Periksa konversi satuannya.`);return}
- const converted=convertQty(buyQty,buyUnit,unit);
- if(converted===null||converted<=0){toast(`Satuan beli ${buyUnit} tidak dapat dikonversi ke satuan resep ${unit}. Periksa satuan atau isi kemasan.`);return}
- const unitPrice=buyPrice/converted;
- row.querySelector('.recipe-price').value=String(unitPrice);
+ const convertedRecipe=convertQty(buyQty,buyUnit,unit);
+ if(convertedRecipe===null||convertedRecipe<=0){toast(`Satuan beli ${buyUnit} tidak dapat dikonversi ke satuan resep ${unit}. Periksa satuan atau isi kemasan.`);return}
+ const product=await ensureRecipeProduct(productName),materials=await getAll('materials');
+ let material=materials.find(m=>m.active!==false&&normItemName(m.name)===normItemName(name));
+ let stockUnit=material?primaryStockUnit(material):buyUnit;
+ const convertedStock=convertQty(buyQty,buyUnit,stockUnit);
+ if(convertedStock===null||convertedStock<=0){toast(`Satuan pembelian ${buyUnit} tidak dapat dikonversi ke satuan stok utama ${stockUnit}. Samakan kelompok satuan atau periksa isi kemasan.`);return}
+ const costPerStock=buyPrice/convertedStock,unitPrice=buyPrice/convertedRecipe;
  const button=row.querySelector('.recipe-save-line');button.disabled=true;
  try{
-  const product=await ensureRecipeProduct(productName);
+  if(!material){const id=await add('materials',{name,category:'Bahan baku',unit:buyUnit,stockUnit:buyUnit,unitSystemVersion:1,cost:costPerStock,stock:0,stockEnabled:true,active:true,source:'user',userAdded:true,referenceCost:true,createdAt:dateNow(),updatedAt:dateNow()});material={id:Number(id),name,unit:buyUnit,stockUnit:buyUnit,cost:costPerStock,stock:0,active:true};}
+  else if(!(Number(material.cost)>0)){material.cost=costPerStock;material.referenceCost=true;material.updatedAt=dateNow();await put('materials',material)}
   const allRecipes=await getAll('recipes');let recipe=allRecipes.find(r=>Number(r.productId)===Number(product.id));
-  const savedLine={name,qty,unit,unitPrice};
+  const savedLine={materialId:Number(material.id),name:material.name,qty,unit,unitPrice};
   let lines=Array.isArray(recipe?.lines)?[...recipe.lines]:[];
-  const key=name.trim().toLocaleLowerCase('id'),oldName=String(row.dataset.savedName||'').trim().toLocaleLowerCase('id');
-  if(oldName&&oldName!==key)lines=lines.filter(x=>String(x.name||'').trim().toLocaleLowerCase('id')!==oldName);
-  const idx=lines.findIndex(x=>String(x.name||'').trim().toLocaleLowerCase('id')===key);
+  const key=normItemName(name),oldName=normItemName(row.dataset.savedName||'');
+  if(oldName&&oldName!==key)lines=lines.filter(x=>normItemName(x.name||'')!==oldName&&Number(x.materialId)!==Number(row.dataset.materialId||0));
+  const idx=lines.findIndex(x=>Number(x.materialId)===Number(material.id)||normItemName(x.name||'')===key);
   if(idx>=0)lines[idx]=savedLine;else lines.push(savedLine);
-  lines=collapseRecipeLines(lines);
-  const now=dateNow();
+  lines=collapseRecipeLines(lines);const now=dateNow();
   if(recipe){recipe={...recipe,lines,updatedAt:now};await put('recipes',recipe)}
   else await add('recipes',{productId:Number(product.id),lines,variants:[],mode:'auto',stockMode:'standalone',recipeBasis:$('recipeBasisMode')?.value||'unit',targetFinishedGrams:0,expectedYieldUnits:1,yieldUnit:product.unit||'Pcs',recipeStatus:'resep_usaha',instructions:'',instructionStatus:'belum_diisi',createdAt:now,updatedAt:now});
   product.costMode='auto';if(product.inventoryMode!=='made_to_order')product.inventoryMode='finished_stock';await put('products',product);
-  row.dataset.saved='true';row.dataset.savedName=name;const status=row.querySelector('.recipe-save-status');if(status)status.textContent='Tersimpan';button.disabled=true;
-  await recalculateRecipeCosts();await renderProducts();await renderCashItems();await renderRecipePreviewLive();
-  toast(`Bahan ${name} berhasil disimpan. Bahan lain tidak diubah.`);
+  row.dataset.saved='true';row.dataset.savedName=name;row.dataset.materialId=String(material.id);const status=row.querySelector('.recipe-save-status');if(status)status.textContent='Tersimpan · terhubung ke Bahan/Belanja';button.disabled=true;
+  await recalculateRecipeCosts();await renderProducts();await renderCashItems();await renderRecipePreviewLive();await renderMaterials();
+  toast(`Bahan ${name} tersimpan. Komposisi dan Bahan/Belanja memakai catatan stok yang sama.`);
  }catch(err){console.error(err);button.disabled=false;toast('Bahan gagal disimpan: '+(err.message||'kesalahan database'))}
 }
 
@@ -1424,7 +1446,7 @@ async function buildProductionPlan(){
  const materials=await getAll('materials'),used=new Map();
  const factor=recipe.recipeBasis==='finished_kg'?1/Math.max(1,Number(recipe.expectedYieldUnits)||1):1;
  for(const line of recipe.lines){
-  const material=materials.find(m=>m.active!==false&&String(m.name||'').trim().toLocaleLowerCase('id')===String(line.name||'').trim().toLocaleLowerCase('id'));
+  const material=materials.find(m=>m.active!==false&&Number(line.materialId)>0&&Number(m.id)===Number(line.materialId))||materials.find(m=>m.active!==false&&normItemName(m.name)===normItemName(line.name||''));
   if(!material)return {error:`Bahan “${line.name}” belum terdaftar di Bahan/Belanja. Daftarkan bahan yang sama terlebih dahulu.`};
   const stockUnit=primaryStockUnit(material),lineUnit=String(line.unit||stockUnit),baseQty=Number(line.qty||0)*qty*factor;
   const converted=convertQty(baseQty,lineUnit,stockUnit);
