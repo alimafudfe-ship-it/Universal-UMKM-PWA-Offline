@@ -1,5 +1,5 @@
 'use strict';
-window.APP_BUILD_VERSION='3.3.110';document.documentElement.dataset.appVersion='3.3.110';
+window.APP_BUILD_VERSION='3.3.112';document.documentElement.dataset.appVersion='3.3.112';
 const DB_NAME='UniversalUMKMProOffline', DB_VERSION=5;
 let db, master, cart=[], lastReceipt=null, selectedPackageId=null, currentProfile=null, recipeDraft=[], businesses=[], activeBusinessId=null, licenseSlots=1, purchaseSearchSeq=0;
 let activeProductWorkspaceId = null;
@@ -996,8 +996,26 @@ async function saveExtraMaterial(){
  }catch(err){console.error(err);toast('Bahan gagal disimpan: '+(err.message||'kesalahan database'))}
  finally{if(button)button.disabled=false}
 }
+async function ensureRecipeMaterialLinks(recipe, materials){
+ if(!recipe||!Array.isArray(recipe.lines)||!recipe.lines.length)return materials;
+ let changed=false;
+ for(const line of recipe.lines){
+  const name=String(line.name||line.materialName||'').trim();
+  let material=(name?materials.find(m=>m.active!==false&&normItemName(m.name)===normItemName(name)):null);
+  if(!material&&Number(line.materialId)>0)material=materials.find(m=>m.active!==false&&Number(m.id)===Number(line.materialId));
+  if(!material&&name){
+   const unit=String(line.unit||'Pcs').trim()||'Pcs';
+   const cost=Number(line.unitPrice||0);
+   const id=await add('materials',{name,category:'Bahan baku',unit,stockUnit:unit,unitSystemVersion:1,cost:Number.isFinite(cost)&&cost>0?cost:0,stock:0,stockEnabled:true,active:true,source:'recipe_sync',userAdded:true,referenceCost:cost>0,createdAt:dateNow(),updatedAt:dateNow()});
+   material={id:Number(id),name,category:'Bahan baku',unit,stockUnit:unit,cost:Number.isFinite(cost)&&cost>0?cost:0,stock:0,stockEnabled:true,active:true};materials.push(material);changed=true;
+  }
+  if(material&&Number(line.materialId)!==Number(material.id)){line.materialId=Number(material.id);line.name=material.name;changed=true;}
+ }
+ if(changed){recipe.updatedAt=dateNow();await put('recipes',recipe);}
+ return materials;
+}
 async function renderMaterials(){
- const [materials,products,recipes]=await Promise.all([getAll('materials'),getAll('products'),getAll('recipes')]);
+ let [materials,products,recipes]=await Promise.all([getAll('materials'),getAll('products'),getAll('recipes')]);
  const recipeProductIds=productIdsWithRecipes(recipes);
  const term=($('materialSearch').value||'').trim().toLowerCase();
  const retailOnly=isRetailStockBusiness();
@@ -1007,6 +1025,7 @@ async function renderMaterials(){
  if(filter){filter.innerHTML='<option value="">Semua bahan dan barang</option>'+filterProducts.map(p=>`<option value="${Number(p.id)}">${esc(p.name)}</option>`).join('');if(previousProductFilter&&filterProducts.some(p=>String(p.id)===previousProductFilter))filter.value=previousProductFilter;}
  const selectedProductId=Number(filter?.value||0);
  const selectedRecipe=selectedProductId?recipes.find(r=>Number(r.productId)===selectedProductId&&Array.isArray(r.lines)&&r.lines.length):null;
+ if(selectedRecipe){materials=await ensureRecipeMaterialLinks(selectedRecipe,materials);}
  // Resep v3.3.85+ berdiri sendiri dan menyimpan nama/takaran/harga bahan, bukan materialId.
  // Karena itu filter produk perlu menampilkan baris resep meskipun belum ada record stok Bahan/Belanja.
  const materialRows=(retailOnly?[]:visibleMaterialsForJuice(materials,products)).map(m=>({...m,_kind:'material'}));

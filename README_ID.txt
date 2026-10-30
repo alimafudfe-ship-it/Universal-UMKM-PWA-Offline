@@ -50,7 +50,7 @@ PEMBARUAN v3.3.108
 Versi 3.3.108 menambahkan menu Produksi. Produksi mengurangi stok bahan berdasarkan komposisi yang tersimpan dan menambah stok produk jadi. Penjualan hanya mengurangi stok produk jadi. Produk dengan beberapa varian ukuran belum didukung pada menu Produksi versi ini.
 
 
-PEMBARUAN v3.3.109 — RUANG KERJA PRODUK/JASA
+PEMBARUAN v3.3.110 — RUANG KERJA PRODUK/JASA
 - Menu Komposisi dan Produksi di navigasi utama dihilangkan. Komposisi hanya dibuka dari ruang kerja produk yang dipilih.
 - Aksi Produksi / Tambah Stok Produk Jadi berada di dalam Produk/Jasa.
 - Produksi untuk produk berkomposisi mengurangi stok bahan sesuai konversi satuan, lalu menambah stok produk jadi.
@@ -58,3 +58,19 @@ PEMBARUAN v3.3.109 — RUANG KERJA PRODUK/JASA
 - Koreksi Stok tetap tindakan terpisah untuk memasukkan jumlah fisik sebenarnya.
 - Bahan & Belanja dan Komposisi Produk & HPP tetap tersedia dari ruang kerja produk.
 - Produksi memiliki tombol kembali ke ruang kerja Produk/Jasa.
+
+
+PEMBARUAN v3.3.110 — SATU IDENTITAS BAHAN UNTUK KOMPOSISI DAN PEMBELIAN
+- Simpan bahan dari Komposisi membuat/menggunakan satu catatan pada Bahan & Belanja dan menyimpan materialId pada baris resep.
+- Daftarkan bahan dari filter produk di Bahan & Belanja menghubungkan bahan ke baris komposisi produk yang dipilih.
+- Pembelian memperbarui stok dan modal rata-rata pada catatan bahan yang sama; HPP resep tertaut mengikuti modal bahan aktual.
+- Produksi mencari bahan berdasarkan materialId terlebih dahulu, lalu nama sebagai kompatibilitas data lama.
+- Jika satuan resep dan stok utama tidak dapat dikonversi, penyimpanan/penghubungan ditolak dengan pesan yang jelas.
+- Stok bahan tetap hanya berkurang saat Produksi dikonfirmasi, bukan saat komposisi disimpan atau saat produk dijual.
+
+
+VERSI 3.3.112 — ALUR BAHAN MENJADI ACUAN
+- Pendaftaran bahan di Bahan & Belanja tidak lagi mensyaratkan baris komposisi lebih dahulu.
+- Setelah disimpan, bahan langsung masuk ke daftar bahan dengan stok awal 0.
+- Saat nama bahan yang sama disimpan dalam Komposisi Produk & HPP, sistem memakai catatan stok bahan yang sudah ada.
+- Hindari membuat nama ganda; bahan dengan nama yang sama akan diarahkan memakai catatan yang sudah terdaftar.
