@@ -69,8 +69,15 @@ PEMBARUAN v3.3.110 — SATU IDENTITAS BAHAN UNTUK KOMPOSISI DAN PEMBELIAN
 - Stok bahan tetap hanya berkurang saat Produksi dikonfirmasi, bukan saat komposisi disimpan atau saat produk dijual.
 
 
-VERSI 3.3.112 — ALUR BAHAN MENJADI ACUAN
+VERSI 3.3.113 — ALUR BAHAN MENJADI ACUAN
 - Pendaftaran bahan di Bahan & Belanja tidak lagi mensyaratkan baris komposisi lebih dahulu.
 - Setelah disimpan, bahan langsung masuk ke daftar bahan dengan stok awal 0.
 - Saat nama bahan yang sama disimpan dalam Komposisi Produk & HPP, sistem memakai catatan stok bahan yang sudah ada.
 - Hindari membuat nama ganda; bahan dengan nama yang sama akan diarahkan memakai catatan yang sudah terdaftar.
+
+
+VERSI 3.3.113 — PERBAIKAN FILTER BAHAN BERDASARKAN KOMPOSISI
+- Filter Bahan & Belanja berdasarkan produk kini membaca nama bahan dari beberapa format data komposisi lama (name/materialName/bahan/ingredientName).
+- Pencocokan bahan menggunakan normalisasi nama yang sama dengan proses sinkronisasi, bukan perbandingan teks mentah.
+- Baris komposisi ditautkan ke satu catatan stok bahan yang cocok; bahan yang sudah ada di stok keseluruhan seharusnya ikut tampil saat produk dipilih.
+- Tidak mengubah jumlah stok atau riwayat pembelian.

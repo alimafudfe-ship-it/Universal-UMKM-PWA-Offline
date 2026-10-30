@@ -1,5 +1,5 @@
 'use strict';
-window.APP_BUILD_VERSION='3.3.112';document.documentElement.dataset.appVersion='3.3.112';
+window.APP_BUILD_VERSION='3.3.113';document.documentElement.dataset.appVersion='3.3.113';
 const DB_NAME='UniversalUMKMProOffline', DB_VERSION=5;
 let db, master, cart=[], lastReceipt=null, selectedPackageId=null, currentProfile=null, recipeDraft=[], businesses=[], activeBusinessId=null, licenseSlots=1, purchaseSearchSeq=0;
 let activeProductWorkspaceId = null;
@@ -996,12 +996,15 @@ async function saveExtraMaterial(){
  }catch(err){console.error(err);toast('Bahan gagal disimpan: '+(err.message||'kesalahan database'))}
  finally{if(button)button.disabled=false}
 }
+function recipeIngredientName(line){return String(line?.name||line?.materialName||line?.bahan||line?.ingredientName||'').trim()}
 async function ensureRecipeMaterialLinks(recipe, materials){
  if(!recipe||!Array.isArray(recipe.lines)||!recipe.lines.length)return materials;
  let changed=false;
  for(const line of recipe.lines){
-  const name=String(line.name||line.materialName||'').trim();
-  let material=(name?materials.find(m=>m.active!==false&&normItemName(m.name)===normItemName(name)):null);
+  const name=recipeIngredientName(line);
+  // Nama yang sama adalah kunci utama; ID lama hanya menjadi cadangan.
+  // Ini mencegah satu bahan tampil di stok keseluruhan tetapi hilang dari filter produk.
+  let material=name?materials.find(m=>m.active!==false&&normItemName(m.name)===normItemName(name)):null;
   if(!material&&Number(line.materialId)>0)material=materials.find(m=>m.active!==false&&Number(m.id)===Number(line.materialId));
   if(!material&&name){
    const unit=String(line.unit||'Pcs').trim()||'Pcs';
@@ -1009,7 +1012,7 @@ async function ensureRecipeMaterialLinks(recipe, materials){
    const id=await add('materials',{name,category:'Bahan baku',unit,stockUnit:unit,unitSystemVersion:1,cost:Number.isFinite(cost)&&cost>0?cost:0,stock:0,stockEnabled:true,active:true,source:'recipe_sync',userAdded:true,referenceCost:cost>0,createdAt:dateNow(),updatedAt:dateNow()});
    material={id:Number(id),name,category:'Bahan baku',unit,stockUnit:unit,cost:Number.isFinite(cost)&&cost>0?cost:0,stock:0,stockEnabled:true,active:true};materials.push(material);changed=true;
   }
-  if(material&&Number(line.materialId)!==Number(material.id)){line.materialId=Number(material.id);line.name=material.name;changed=true;}
+  if(material&&(Number(line.materialId)!==Number(material.id)||line.name!==material.name)){line.materialId=Number(material.id);line.name=material.name;changed=true;}
  }
  if(changed){recipe.updatedAt=dateNow();await put('recipes',recipe);}
  return materials;
@@ -1034,10 +1037,11 @@ async function renderMaterials(){
  // Bahan baku harus tetap terlihat untuk pencatatan pembelian. Produk jadi yang memiliki resep dikecualikan di stockedProductRows agar tidak tercatat dua kali. Memilih produk hanya mengubah tampilan menjadi bahan komposisinya.
  if(selectedProductId){
    if(selectedRecipe){
-     availableRows=(selectedRecipe.lines||[]).filter(line=>String(line.name||'').trim()||Number(line.materialId)>0).map((line,index)=>{
-       const linked=materials.find(m=>m.active!==false&&((Number(line.materialId)>0&&Number(m.id)===Number(line.materialId))||String(m.name||'').trim().toLocaleLowerCase('id')===String(line.name||'').trim().toLocaleLowerCase('id')));
+     availableRows=(selectedRecipe.lines||[]).filter(line=>recipeIngredientName(line)||Number(line.materialId)>0).map((line,index)=>{
+       const lineName=recipeIngredientName(line);
+       const linked=(lineName?materials.find(m=>m.active!==false&&normItemName(m.name)===normItemName(lineName)):null)||materials.find(m=>m.active!==false&&Number(line.materialId)>0&&Number(m.id)===Number(line.materialId));
        if(linked)return {...linked,_kind:'material',_recipeQty:Number(line.qty||0),_recipeUnit:line.unit||linked.unit||'Pcs'};
-       return {id:`recipe-${selectedProductId}-${index}`,name:String(line.name||'Bahan resep'),category:'Komposisi resep',unit:String(line.unit||'Pcs'),stock:null,stockEnabled:false,cost:Math.max(0,Number(line.unitPrice)||0),_kind:'recipe',_recipeQty:Number(line.qty||0),_recipeUnit:String(line.unit||'Pcs')};
+       return {id:`recipe-${selectedProductId}-${index}`,name:lineName||'Bahan resep',category:'Komposisi resep',unit:String(line.unit||'Pcs'),stock:null,stockEnabled:false,cost:Math.max(0,Number(line.unitPrice)||0),_kind:'recipe',_recipeQty:Number(line.qty||0),_recipeUnit:String(line.unit||'Pcs')};
      });
    }else availableRows=[];
  }
