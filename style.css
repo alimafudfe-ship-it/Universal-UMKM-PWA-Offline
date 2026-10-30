@@ -232,3 +232,5 @@ nav button{font-size:12px}
 .recipe-official-sources li{margin:8px 0;font-size:12px}
 .recipe-official-sources a{font-weight:700;text-decoration:underline}
 .recipe-official-sources small{display:block;color:var(--muted);font-size:11px;line-height:1.45;margin-top:2px}
+
+.status-ok{color:#15803d;font-size:12px;font-weight:800;white-space:nowrap}.status-warning{color:#b45309;font-size:12px;font-weight:800;white-space:nowrap}
