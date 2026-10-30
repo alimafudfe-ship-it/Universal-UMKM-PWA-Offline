@@ -14607,6 +14607,24 @@
       "tipe_asli": "Dijual (Produk)",
       "deskripsi": "Formula uji yang diturunkan dari penelitian Polbangtan Gowa; bukan formula standar wajib. Hasil jadi perlu ditimbang setelah proses dan HPP perlu dihitung ulang berdasarkan hasil aktual.",
       "aktif": 1
+    },
+    {
+      "id": 795,
+      "paket_id": 17,
+      "urutan": 19,
+      "nama_item": "Tauge",
+      "kelompok": "Bahan Baku",
+      "satuan": "kg",
+      "bisa_dijual": 0,
+      "pakai_stok": 1,
+      "harga_jual": 0.0,
+      "harga_beli": 0.0,
+      "stok_awal": 0.0,
+      "stok_minimum": 0.0,
+      "kategori": "Bahan Baku",
+      "tipe_asli": "Bahan Baku",
+      "deskripsi": "Bahan isian Tahu Isi. Takaran resep acuan 15 gram per buah; sesuaikan dengan hasil produksi usaha.",
+      "aktif": 1
     }
   ],
   "workflows": [
@@ -17380,9 +17398,9 @@
       "expected_yield_units": 1,
       "yield_unit": "Pcs",
       "recipe_status": "referensi_awal_belum_terverifikasi",
-      "formula_version": 1,
+      "formula_version": 2,
       "source_refs": [],
-      "source_note": "Takaran ini adalah contoh awal untuk membantu pengisian aplikasi dan BELUM diverifikasi terhadap resep/formulasi dari sumber yang dapat diperiksa. Jangan dianggap resep resmi atau hasil validasi teknis. Uji hasil produksi, timbang hasil jadi, dan sesuaikan dengan usaha sendiri sebelum memakai HPP.",
+      "source_note": "Takaran ini adalah contoh awal untuk membantu pengisian aplikasi dan BELUM diverifikasi terhadap resep/formulasi dari sumber yang dapat diperiksa. Jangan dianggap resep resmi atau hasil validasi teknis. Uji hasil produksi, timbang hasil jadi, dan sesuaikan dengan usaha sendiri sebelum memakai HPP. Takaran tauge 15 gram per buah ditambahkan sebagai takaran awal dan belum diverifikasi; sesuaikan dengan resep aktual usaha.",
       "instructions": "",
       "lines": [
         {
@@ -17414,6 +17432,11 @@
           "material_template_id": 529,
           "qty": 0.02,
           "unit": "liter"
+        },
+        {
+          "material_template_id": 795,
+          "qty": 0.015,
+          "unit": "kg"
         }
       ]
     },
