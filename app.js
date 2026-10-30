@@ -980,27 +980,19 @@ async function saveExtraMaterial(){
  const button=$('saveExtraMaterial');if(button?.disabled)return;
  const name=String($('extraMaterialName')?.value||'').trim();
  if(!name){toast('Masukkan nama bahan terlebih dahulu.');$('extraMaterialName')?.focus();return}
- const productId=Number($('materialProductFilter')?.value||0),category=$('extraMaterialCategory').value||'Bahan tambahan',unit=$('extraMaterialUnit').value||'Pcs';
- if(!productId){toast('Pilih produk terlebih dahulu agar bahan baru dapat dihubungkan ke komposisi produk tersebut.');return}
+ const category=$('extraMaterialCategory').value||'Bahan tambahan',unit=$('extraMaterialUnit').value||'Pcs';
  button.disabled=true;
  try{
-  const [materials,recipes]=await Promise.all([getAll('materials'),getAll('recipes')]),key=normItemName(name);
-  const recipe=recipes.find(r=>Number(r.productId)===productId&&Array.isArray(r.lines));
-  if(!recipe){toast('Komposisi produk belum tersedia. Tambahkan dan simpan baris bahan di Komposisi Produk & HPP terlebih dahulu.');return}
-  const line=recipe.lines.find(x=>normItemName(x.name||'')===key||Number(x.materialId)>0&&materials.some(m=>Number(m.id)===Number(x.materialId)&&normItemName(m.name)===key));
-  if(!line){toast(`Bahan “${name}” belum ada sebagai baris komposisi. Tambahkan dahulu di Komposisi Produk & HPP agar dapat dihubungkan.`);return}
+  const materials=await getAll('materials'),key=normItemName(name);
   let material=materials.find(m=>m.active!==false&&normItemName(m.name)===key);
   if(material){
-   const from=String(line.unit||unit),to=primaryStockUnit(material);
-   if(convertQty(1,from,to)===null){toast(`Satuan resep ${from} tidak cocok dengan satuan stok utama ${to} untuk bahan ${material.name}. Perbaiki konversinya sebelum menghubungkan.`);return}
-  }else{
-   const from=String(line.unit||unit);if(convertQty(1,from,unit)===null){toast(`Satuan stok ${unit} tidak dapat dikonversi dari satuan komposisi ${from}. Pilih satuan yang sekelompok.`);return}
-   const id=await add('materials',{name,category,unit,stockUnit:unit,unitSystemVersion:1,cost:0,stock:0,stockEnabled:true,active:true,source:'user',userAdded:true,referenceCost:false,createdAt:dateNow(),updatedAt:dateNow()});
-   material={id:Number(id),businessId:activeBusinessId,name,category,unit,stockUnit:unit,cost:0,stock:0,stockEnabled:true,active:true};
+   toast(`Bahan “${material.name}” sudah terdaftar. Gunakan catatan yang sama agar stok tidak terpisah.`);
+   $('extraMaterialName').value='';$('materialProductFilter').value='';await renderMaterials();return;
   }
-  line.materialId=Number(material.id);line.name=material.name;line.updatedAt=dateNow();recipe.updatedAt=dateNow();await put('recipes',recipe);
-  $('extraMaterialName').value='';await recalculateRecipeCosts();await renderMaterials();await renderRecipePage();await renderProducts();await renderCashItems();
-  toast(`Bahan “${material.name}” tersimpan dan terhubung ke komposisi. Pembelian berikutnya gunakan catatan bahan yang sama di Bahan & Belanja.`);
+  const id=await add('materials',{name,category,unit,stockUnit:unit,unitSystemVersion:1,cost:0,stock:0,stockEnabled:true,active:true,source:'user',userAdded:true,referenceCost:false,createdAt:dateNow(),updatedAt:dateNow()});
+  $('extraMaterialName').value='';$('materialProductFilter').value='';
+  await renderMaterials();await renderRecipePage();
+  toast(`Bahan “${name}” berhasil disimpan di Bahan/Belanja. Stok masih 0; catat pembelian saat bahan benar-benar dibeli. Saat membuat komposisi, gunakan nama bahan yang sama agar otomatis terhubung.`);
  }catch(err){console.error(err);toast('Bahan gagal disimpan: '+(err.message||'kesalahan database'))}
  finally{if(button)button.disabled=false}
 }
