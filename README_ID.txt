@@ -87,3 +87,20 @@ VERSI 3.3.115 — PERBAIKAN TAUGE PADA TAHU ISI
 - Menambahkan takaran acuan awal 0,015 kg (15 gram) per buah Tahu Isi; takaran belum diverifikasi dan dapat disesuaikan dengan resep usaha.
 - Saat aplikasi dibuka, migrasi aman menambahkan bahan Tauge dengan stok awal nol jika belum ada, lalu menautkannya ke komposisi Tahu Isi yang sudah tersimpan.
 - Baris komposisi lama, stok, pembelian, dan riwayat pembelian tidak dihapus atau diubah.
+
+
+KATALOG USAHA v3.3.116
+- Master berisi 300 pilihan usaha (24 paket lama dipertahankan + 276 pilihan baru).
+- Pilihan dikelompokkan menurut 12 kelompok operasional dan menggunakan template induk.
+- Produk, bahan, satuan, alur kerja, dan komposisi awal diturunkan dari template kelompok yang paling sesuai.
+- Komposisi turunan adalah referensi awal belum terverifikasi, wajib disesuaikan sebelum digunakan sebagai HPP.
+- Batas lisensi jumlah usaha tetap mengikuti paket pembelian (maksimum 25); angka 300 adalah jumlah pilihan jenis usaha, bukan jumlah usaha aktif sekaligus.
+
+
+VERSI 3.3.116 — KATALOG 300 JENIS USAHA
+- Mempertahankan 24 paket usaha dan fitur versi 3.3.115.
+- Menambahkan 276 pilihan usaha menjadi total 300 paket katalog.
+- Katalog dibagi ke kelompok operasional; setiap paket memakai template induk yang relevan.
+- Komposisi turunan hanya contoh referensi dan belum diverifikasi untuk usaha spesifik.
+- Nomor paket 25 sengaja tidak dipakai karena dicadangkan oleh migrasi internal aplikasi.
+- Batas lisensi usaha aktif tetap maksimum 25 sesuai skema lisensi; 300 adalah pilihan katalog.
