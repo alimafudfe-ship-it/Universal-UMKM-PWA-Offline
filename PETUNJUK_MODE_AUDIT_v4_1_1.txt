@@ -1,0 +1,25 @@
+UNIVERSAL UMKM PRO v4.1.1 — MODE AUDIT KATALOG
+
+TUJUAN
+Mode Audit digunakan untuk memeriksa template katalog tanpa memakai slot lisensi usaha reguler.
+
+CARA MENGGUNAKAN
+1. Ekstrak ZIP ini dan unggah seluruh isi folder ke hosting PWA Anda (gantikan file versi lama).
+2. Buka aplikasi melalui alamat HTTPS.
+3. Muat ulang aplikasi. Jika masih menampilkan versi lama, tutup aplikasi/PWA lalu buka kembali agar cache service worker diperbarui.
+4. Pada halaman Pilih Jenis Usaha, tekan tombol "Aktifkan Mode Audit Katalog".
+5. Cari dan pilih jenis usaha yang akan diuji.
+6. Isi nama ruang uji, lalu tekan "Buat data usaha saya".
+7. Periksa Produk/Jasa, Bahan & Belanja, Komposisi/HPP, dan Panduan Usaha.
+8. Untuk memeriksa template lain, kembali ke halaman Jenis Usaha dan pilih template berikutnya. Mode Audit tetap aktif sampai tombol "Keluar dari Mode Audit" ditekan.
+
+PEMISAHAN DATA DAN LISENSI
+- Ruang uji diberi penanda auditMode dan memiliki businessId tersendiri.
+- Membuat ruang uji tidak mengurangi jumlah slot lisensi reguler.
+- Jika template yang sama sudah dibuat sebagai usaha reguler, Mode Audit membuat ruang uji salinan yang terpisah, bukan membuka data reguler.
+- Jika template sudah memiliki ruang audit, memilihnya kembali akan membuka ruang audit tersebut.
+- Keluar dari Mode Audit tidak menghapus ruang uji. Ruang uji tetap tersimpan di perangkat dan ditandai MODE AUDIT pada daftar usaha.
+- Mode Audit adalah fasilitas pemeriksaan lokal, bukan aktivasi lisensi atau verifikasi pembayaran.
+
+BATAS PENGUJIAN
+Pemeriksaan yang dilakukan pada paket ini: pemeriksaan sintaks JavaScript (node --check), pemeriksaan struktur ZIP (testzip), keberadaan file inti, dan pemeriksaan statis logika bypass lisensi serta penandaan data audit. Pengujian interaksi langsung di browser/perangkat tetap perlu dilakukan oleh pengguna.

@@ -39,7 +39,7 @@
     <div class="hero-note"><span>✓</span> Data awal lengkap • harga referensi bisa diedit • stok awal nol</div>
   </div>
   <div class="card pricing-card" id="pricingCard">
-    <div class="pricing-kicker">KATALOG 300 JENIS USAHA</div><h2>Pilih dari 300 jenis usaha</h2>
+    <div class="pricing-kicker">KATALOG JENIS USAHA</div><h2>Pilih jenis usaha</h2><button type="button" id="toggleCatalogAudit" aria-pressed="false">Aktifkan Mode Audit Katalog</button><p id="catalogAuditNote" class="audit-note" hidden><strong>MODE AUDIT AKTIF</strong> — Anda dapat membuat ruang uji untuk semua template tanpa memakai slot lisensi. Setiap ruang uji memiliki data terpisah; data usaha utama tidak diubah. Ruang uji tersimpan di perangkat ini.</p>
     <p>Tersedia 300 pilihan jenis usaha yang dapat dicari pada katalog. Pilih jumlah usaha yang ingin diaktifkan dalam paket Anda.</p>
     <label class="package-picker">Jumlah usaha yang diaktifkan (1–25)
       <select id="packageCount"><option value="1">1 jenis usaha</option><option value="2">2 jenis usaha</option><option value="3">3 jenis usaha</option><option value="4">4 jenis usaha</option><option value="5">5 jenis usaha</option><option value="6">6 jenis usaha</option><option value="7">7 jenis usaha</option><option value="8">8 jenis usaha</option><option value="9">9 jenis usaha</option><option value="10">10 jenis usaha</option><option value="11">11 jenis usaha</option><option value="12">12 jenis usaha</option><option value="13">13 jenis usaha</option><option value="14">14 jenis usaha</option><option value="15">15 jenis usaha</option><option value="16">16 jenis usaha</option><option value="17">17 jenis usaha</option><option value="18">18 jenis usaha</option><option value="19">19 jenis usaha</option><option value="20">20 jenis usaha</option><option value="21">21 jenis usaha</option><option value="22">22 jenis usaha</option><option value="23">23 jenis usaha</option><option value="24">24 jenis usaha</option><option value="25">25 jenis usaha</option></select>
@@ -48,7 +48,7 @@
     <p class="pricing-note">Versi aplikasi v4.0.1 • Harga ini adalah rancangan paket. Pembayaran dan verifikasi lisensi belum terhubung di versi offline ini.</p>
   </div>
   <div id="existingBusiness" class="existing-business card" hidden></div>
-  <div class="catalog-head"><div><h2>Pilih jenis usaha</h2><p>Cari dan pilih dari 300 jenis usaha. Pilihan yang tampil mengikuti kata pencarian Anda.</p></div><span id="businessCount" class="count-pill">16 paket</span></div>
+  <div class="catalog-head"><div><h2>Pilih jenis usaha</h2><p>Cari dan pilih jenis usaha dari katalog. Pilihan yang tampil mengikuti kata pencarian Anda.</p></div><span id="businessCount" class="count-pill">16 paket</span></div>
   <label class="catalog-search"><span aria-hidden="true">⌕</span><input id="businessSearch" placeholder="Cari jenis usaha…" autocomplete="off"></label>
   <div id="businessCatalog" class="business-grid"><div class="empty">Memuat katalog usaha…</div></div>
   <div id="setupCard" class="card setup-card" hidden>
@@ -56,7 +56,7 @@
     <label>Nama toko / usaha<input id="setupShop" placeholder="Contoh: Toko Berkah" maxlength="100"></label>
     <div class="buttonrow"><button id="cancelSetup" type="button">Kembali</button><button id="startSetup" class="primary" type="button">Buat data usaha saya</button></div>
   </div>
-  <div class="homefoot"><span>▦</span><div><strong>300 pilihan jenis usaha tersedia</strong><small>Cari dan pilih dari seluruh katalog. Batas 1–25 hanya untuk jumlah usaha yang diaktifkan dalam paket.</small></div></div>
+  <div class="homefoot"><span>▦</span><div><strong>Katalog jenis usaha tersedia</strong><small>Cari dan pilih dari seluruh katalog. Batas 1–25 hanya untuk jumlah usaha yang diaktifkan dalam paket.</small></div></div>
 </section>
 <section id="page-wizard" class="page">
   <div class="homehero wizard-hero"><div class="hero-kicker"><span class="hero-dot"></span> PANDUAN BERTAHAP</div><h2 id="wizardTitle">Mari siapkan usaha Anda</h2><p id="wizardIntro">Ikuti langkah sesuai jenis usaha. Progres tersimpan per toko dan dapat dilanjutkan kapan saja.</p><div class="hero-note"><span>✓</span> Tidak menghapus data • bisa dilanjutkan kapan saja</div></div>
@@ -161,5 +161,5 @@
 </form></dialog>
 <dialog id="stockShortageDialog" aria-labelledby="stockShortageTitle"><h2 id="stockShortageTitle">Stok bahan perlu ditambah</h2><p class="muted">Ubah jumlah stok yang ingin dibeli dan harga beli per satuan. Tambahan akan dicatat sebagai pembelian. Setelah stok diperbarui, aplikasi akan mencoba menyimpan transaksi kembali.</p><div id="stockShortageList"></div><div class="buttonrow"><button type="button" id="saveShortageStock" class="primary">Simpan tambahan stok & lanjutkan</button><button type="button" id="cancelShortageStock">Batal</button></div></dialog>
 <dialog id="receiptDialog"><label class="receipt-paper-control">Ukuran kertas nota<select id="receiptPaperWidth"><option value="58">Printer termal 58 mm</option><option value="80">Printer termal 80 mm</option><option value="a4">Kertas A4 / Simpan PDF</option></select></label><p class="muted receipt-paper-control">Pilih lebar yang sesuai dengan printer. Jika hasil terpotong, samakan ukuran kertas di pengaturan printer dengan pilihan ini.</p><div id="receiptContent" class="paper-58"></div><div class="buttonrow receipt-paper-control"><button id="printReceipt" class="primary">Cetak nota</button><button id="closeReceipt">Tutup</button></div></dialog>
-<script src="app.js?v=4.0.0"></script>
+<script src="app.js?v=4.1.1"></script>
 </body></html>
