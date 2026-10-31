@@ -1,0 +1,13 @@
+VALIDASI STATIS UNIVERSAL UMKM PRO v4.1.3
+
+- master.json valid JSON: LULUS
+- ID item unik: 16621
+- ID resep unik: 3833
+- ID workflow unik: 1601
+- Semua resep aktif merujuk produk aktif dalam paket sama: LULUS (873 resep aktif)
+- Semua baris resep aktif merujuk bahan aktif dalam paket sama: LULUS
+- Paket 302, 322, 327, 328: katalog bahan/resep/alur telah diperbarui
+- Takaran resep tetap 0; tidak ada HPP rekaan
+- Harga bahan dan stok awal tetap 0 kecuali harga jual yang sudah diberikan pada draft Warung Seblak
+- Uji browser end-to-end: BELUM DILAKUKAN
+- Paket selain empat paket tersebut belum dinyatakan lolos audit operasional menyeluruh

@@ -1,5 +1,5 @@
 'use strict';
-window.APP_BUILD_VERSION='4.1.1';document.documentElement.dataset.appVersion='4.1.1';
+window.APP_BUILD_VERSION='4.1.3';document.documentElement.dataset.appVersion='4.1.3';
 const DB_NAME='UniversalUMKMProOffline', DB_VERSION=5;
 let db, master, cart=[], lastReceipt=null, selectedPackageId=null, currentProfile=null, recipeDraft=[], businesses=[], activeBusinessId=null, licenseSlots=1, purchaseSearchSeq=0, catalogAuditMode=false;
 function licensedBusinessCount(){return businesses.filter(b=>!b.auditMode).length;}
@@ -1814,7 +1814,7 @@ async function importBackup(e){
   await renderHome();await renderProducts();await renderReports();await renderCashItems();await renderMaterials();await renderAssets();if(nameEl)nameEl.textContent='Pemulihan berhasil dari file: '+f.name;toast('Pemulihan selesai. Periksa kembali data usaha Anda.');
  }catch(err){console.error(err);if(nameEl)nameEl.textContent='File tidak berhasil dipulihkan: '+f.name;toast('Impor gagal: '+(err.message||'file tidak dapat dibaca'));}
  finally{if(input)input.value='';}
-}async function resetData(){if(!confirm('Yakin menghapus semua profil, produk, dan transaksi dari browser/perangkat ini? Tindakan ini tidak bisa dibatalkan. Ekspor cadangan dahulu.'))return;for(const s of ['settings','products','transactions','details','materials','materialPurchases','recipes','assets','expenses','productions'])await clearStore(s);cart=[];currentProfile=null;businesses=[];activeBusinessId=null;licenseSlots=1;selectedPackageId=null;$('setupCard').hidden=true;$('nav').hidden=true;$('shopTitle').textContent='Pilih Jenis Usaha';$('headerSubtitle').textContent='Satu aplikasi untuk berbagai kebutuhan UMKM';$('existingBusiness').hidden=true;toast('Data lokal dihapus.');showPage('home');renderBusinessCatalog()}
+}async function resetData(){if(!confirm('RESET DATA UJI COBA\n\nSemua data lokal pada perangkat ini akan dihapus: profil/daftar usaha, produk, bahan, stok, pembelian, komposisi, aset, pengeluaran, dan transaksi.\n\nFile katalog MASTER (master.json) tidak dihapus dan akan dimuat kembali saat aplikasi dibuka.\n\nAnda menyatakan belum memiliki transaksi penting. Lanjutkan reset?'))return;for(const s of ['settings','products','transactions','details','materials','materialPurchases','recipes','assets','expenses','productions'])await clearStore(s);cart=[];currentProfile=null;businesses=[];activeBusinessId=null;licenseSlots=1;selectedPackageId=null;$('setupCard').hidden=true;$('nav').hidden=true;$('shopTitle').textContent='Pilih Jenis Usaha';$('headerSubtitle').textContent='Satu aplikasi untuk berbagai kebutuhan UMKM';$('existingBusiness').hidden=true;toast('Data uji coba lokal dihapus. Katalog MASTER tetap tersedia.');showPage('home');renderBusinessCatalog()}
 function esc(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
 if('serviceWorker'in navigator&&location.protocol!=='file:')window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(e=>console.warn('Service worker belum terpasang',e)));
 init();boot();

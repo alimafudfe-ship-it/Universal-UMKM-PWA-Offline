@@ -1,0 +1,8 @@
+DRAF EDIT KATALOG v4.1.2
+
+Perubahan awal berdasarkan catatan pengguna:
+- Paket 302 diganti nama menjadi Mie Ayam dan Bakso; menu aktif diganti sesuai daftar yang diberikan.
+- Ditambahkan paket Nasi Goreng dan Warung Seblak.
+- Harga yang diberikan untuk jajanan/minuman Seblak dimasukkan sebagai harga jual awal, bukan harga beli atau HPP.
+- Tidak dibuat takaran resep, biaya bahan, atau HPP rekaan. Seluruh resep dan alur kerja perlu dilengkapi dan diuji sebelum dipakai.
+- Seblak prasmanan, daftar bahan, tingkat pedas 0-4, dan rincian komposisi paket dicatat dalam lembar audit berikutnya; belum dimasukkan sebagai stok/komposisi otomatis agar tidak mengarang takaran.
