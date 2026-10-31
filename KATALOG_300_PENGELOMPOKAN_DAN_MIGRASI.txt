@@ -1,31 +1,18 @@
-UNIVERSAL UMKM PRO — AUDIT KATALOG v4.0.0
-=========================================
+AUDIT MENDALAM KATALOG UNIVERSAL UMKM PRO v4.0.1
+==================================================
 
-Profil usaha: 300
-Kelompok utama: 11
-Item total: 7904; ID lama dipertahankan: 6510; item ID baru: 1394
-Resep total: 1164; ID resep lama dipertahankan: 783
-Alur kerja: 1456 (ID dipertahankan)
+Profil usaha diproses: 300
+Item lama dipertahankan nonaktif: 7904
+Item katalog baru aktif: 4767
+Resep lama dipertahankan nonaktif: 1164
+Resep draft baru aktif: 836
+Kelompok utama: 8
 
-Jumlah profil per kelompok utama:
-- Kuliner & Makanan: 66
-- Jajanan, Gorengan & Bakery: 58
-- Minuman & Es: 30
-- Perdagangan Bahan Pangan: 30
-- Pertanian, Peternakan & Perikanan: 25
-- Warung, Toko & Perdagangan: 24
-- Jasa & Perbaikan: 24
-- Kerajinan & Kreatif: 18
-- Kecantikan & Perawatan: 11
-- Produksi Makanan & Bumbu: 11
-- Kesehatan, Herbal & Hewan: 3
+Perbaikan konkret: klasifikasi usaha berdasarkan produk inti, bukan kata saluran penjualan (keliling/gerobak/mangkal). Es Doger Keliling kini berisi Es Doger Original/Spesial/Cup Besar/Cup Kecil, bahan santan, tape singkong, tape ketan, susu kental manis, sirup, es serut, cup, dan alat minuman. Tidak ada lilin pada katalog aktif Es Doger.
 
-Prinsip katalog:
-- Jus mangga, jus buah naga, jus jambu, dan jus lain menjadi profil di bawah kelompok Jus & Minuman Segar, bukan kelompok usaha utama terpisah.
-- Jamu tradisional berisi produk jamu dan bahan herbal; tidak dicampur kopi sachet sebagai katalog inti.
-- Bahan belanja dan komposisi merujuk ID bahan aktif yang sama pada paket yang sama.
-- Komposisi draft memakai kuantitas nol sampai pengguna mengukur takaran; HPP tidak dianggap valid dan produksi diblokir sampai resep diisi/disimpan.
-- ID paket/item/resep/alur kerja lama dipertahankan; item lama yang tidak relevan dinonaktifkan, bahan/produk tambahan memakai ID baru.
-- Data usaha lokal yang sudah ada tidak dihapus. Backup dan migrasi eksplisit diperlukan sebelum menerapkan katalog baru ke profil lama.
+Semua 300 profil diberi produk, bahan belanja, dan alat menurut template kategori. Item lama tidak dihapus; diarsipkan dengan aktif=0. ID lama tetap ada untuk histori. Item baru memakai ID baru. Komposisi memakai ID bahan yang sama dengan daftar bahan aktif pada paket yang sama.
 
-Pemeriksaan statis selesai; pengujian browser end-to-end belum dilakukan.
+Semua resep baru berstatus draft dan kuantitas 0, karena takaran tidak boleh dikarang. Produksi/HPP tidak boleh dianggap tervalidasi sebelum takaran, satuan, hasil jadi, susut, dan harga beli aktual diuji.
+
+Validasi statis: JSON valid; ID item unik; ID resep unik; seluruh resep aktif tertaut ke produk aktif dan bahan aktif dalam paket yang sama; uji Es Doger tanpa produk lilin lulus.
+Belum dilakukan pengujian browser end-to-end otomatis. Perubahan migrasi menyimpan histori dan mengarsipkan item master lama; uji backup dan transaksi tetap wajib sebelum produksi.

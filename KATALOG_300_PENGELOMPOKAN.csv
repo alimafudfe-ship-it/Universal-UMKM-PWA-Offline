@@ -1,301 +1,301 @@
-﻿id_paket_lama,jenis_usaha_lama,kelompok_utama,subkategori,keluarga_katalog,mode_operasional,produk_aktif,bahan_aktif,jasa_aktif,alat_aktif,jumlah_item_aktif,jumlah_item_nonaktif,jumlah_resep
-1,Café & Resto,Kuliner & Makanan,Kafe & Restoran,cafe,production,13,12,0,5,30,42,13
-2,Catering,Kuliner & Makanan,"Nasi, Lauk & Masakan Siap Saji",meal,production,10,10,0,5,25,24,10
-3,Depot Air Isi Ulang,"Warung, Toko & Perdagangan",Toko Eceran & Retail,retail,resale,6,0,0,4,10,10,0
-4,Frozen Food,"Warung, Toko & Perdagangan",Toko Eceran & Retail,retail,resale,10,0,0,3,13,7,0
-5,Konter HP,"Warung, Toko & Perdagangan",Toko Eceran & Retail,retail,resale,8,0,0,4,12,8,0
-6,Laundry & Cuci Sepatu,Jasa & Perbaikan,Laundry & Perawatan Sepatu,laundry,service,5,6,4,4,19,7,0
-7,Penjual Makanan Online,Kuliner & Makanan,Penjual Makanan Online,online_food,production,9,11,0,5,25,29,9
-8,Percetakan / Fotokopi Kecil,Jasa & Perbaikan,"Percetakan, Dokumen & Kreatif Digital",print,service,6,6,5,4,21,192,0
-9,Pet Shop,"Kesehatan, Herbal & Hewan",Toko Hewan & Kebutuhan Peliharaan,pet,resale,9,0,0,5,14,6,0
-10,Salon,Kecantikan & Perawatan,"Salon, Barber & Perawatan Personal",beauty,service,6,6,4,4,20,6,0
-11,Toko Kosmetik,"Warung, Toko & Perdagangan",Toko Eceran & Retail,retail,resale,10,0,0,4,14,6,0
-12,Toko Kue / Bakery,"Jajanan, Gorengan & Bakery",Toko Kue & Bakery,bakery,production,10,9,0,4,23,26,10
-13,Toko Pakaian,"Warung, Toko & Perdagangan",Toko Eceran & Retail,retail,resale,8,0,0,4,12,8,0
-14,Toko Retail,"Warung, Toko & Perdagangan",Toko Eceran & Retail,retail,resale,7,0,0,4,11,9,0
-15,Toko Sembako & Grosir,"Warung, Toko & Perdagangan",Toko Eceran & Retail,retail,resale,10,0,0,4,14,12,0
-16,Warung Makan,Kuliner & Makanan,"Nasi, Lauk & Masakan Siap Saji",meal,production,9,10,0,4,23,27,9
-17,Gorengan & Camilan,"Jajanan, Gorengan & Bakery",Gorengan & Camilan,fried_snack,production,6,13,0,4,23,0,6
-18,Warung Kopi & Minuman,Minuman & Es,Kopi & Kedai Minuman,coffee,production,6,7,0,4,17,0,5
-19,Nasi Uduk & Sarapan,Kuliner & Makanan,"Nasi, Lauk & Masakan Siap Saji",meal,production,6,10,0,4,20,0,6
-20,Warung Makan & Pecel Lele,Kuliner & Makanan,"Nasi, Lauk & Masakan Siap Saji",meal,production,6,10,0,4,20,0,6
-21,"Bakso, Mi Ayam & Soto",Kuliner & Makanan,"Nasi, Lauk & Masakan Siap Saji",meal,production,5,8,0,4,17,0,5
-22,Jajanan Jalanan,"Jajanan, Gorengan & Bakery",Gorengan & Camilan,fried_snack,production,6,4,0,4,14,4,6
-23,Martabak & Roti Bakar,"Jajanan, Gorengan & Bakery",Martabak & Roti Bakar,martabak,production,4,7,0,4,15,4,4
-24,Jus Buah & Es Campur,Minuman & Es,"Jus, Es Buah & Minuman Segar",juice,production,5,8,0,4,17,0,5
-26,Tukang Sayur Keliling,Perdagangan Bahan Pangan,Pedagang Sayur Keliling,vegetable_trade,resale,8,0,0,4,12,10,8
-27,Ayam Crispy Gerobak,Kuliner & Makanan,Ayam Crispy & Fried Chicken,fried_chicken,production,7,10,0,4,21,0,7
-28,Warung Ayam Goreng,Kuliner & Makanan,"Nasi, Lauk & Masakan Siap Saji",meal,production,6,10,0,4,20,0,6
-29,Es Teh Jumbo Mangkal,Minuman & Es,"Teh, Susu & Minuman Kekinian",tea,production,5,7,0,3,15,1,5
-30,Usaha Aneka Gorengan,"Jajanan, Gorengan & Bakery",Gorengan & Camilan,fried_snack,production,6,13,0,4,23,0,6
-31,Produksi Sambal Rumahan,Produksi Makanan & Bumbu,Sambal & Saus,sambal,production,10,10,0,5,25,24,10
-32,Warung Kelontong,"Warung, Toko & Perdagangan",Toko Eceran & Retail,retail,resale,10,0,0,4,14,12,0
-33,Pedagang Telur Ayam Mangkal,Perdagangan Bahan Pangan,Pedagang Bahan Pangan Segar & Kering,food_trade,resale,6,0,0,4,10,16,0
-34,Jasa Pangkas Rambut Pria,Kecantikan & Perawatan,"Salon, Barber & Perawatan Personal",beauty,service,6,6,4,4,20,6,0
-35,Usaha Ternak Ayam Petelur,"Pertanian, Peternakan & Perikanan",Peternakan & Pakan Ternak,farm,production,4,6,0,5,15,18,0
-36,Usaha Kerajinan Aksesoris,Kerajinan & Kreatif,"Kerajinan, Buket & Produk Kreatif",craft,production,6,6,0,4,16,10,6
-37,Usaha Jamu Tradisional Mangkal,Minuman & Es,Jamu & Minuman Herbal,herbal,production,6,7,0,4,17,0,6
-38,Siomay Keliling,"Jajanan, Gorengan & Bakery",Jajanan Kukus & Olahan Ikan,dumpling,production,6,9,0,4,19,0,6
-39,Fried Chicken Gerobak,Kuliner & Makanan,"Nasi, Lauk & Masakan Siap Saji",meal,production,6,8,0,4,18,0,6
-40,Warung Ayam Bakar,Kuliner & Makanan,"Nasi, Lauk & Masakan Siap Saji",meal,production,6,10,0,4,20,0,6
-41,Es Teh Manis Gerobak Mangkal,Minuman & Es,"Teh, Susu & Minuman Kekinian",tea,production,6,6,0,3,15,3,6
-42,Usaha Bakwan Sayur,"Jajanan, Gorengan & Bakery",Gorengan & Camilan,fried_snack,production,6,13,0,4,23,0,6
-43,Produksi Bumbu Dasar,Produksi Makanan & Bumbu,Bumbu & Rempah Olahan,seasoning,production,10,10,0,5,25,24,10
-44,Warung Madura,"Warung, Toko & Perdagangan",Toko Eceran & Retail,retail,resale,10,0,0,4,14,12,0
-45,Pedagang Telur Bebek,Perdagangan Bahan Pangan,Telur & Produk Unggas,eggs,resale,5,0,0,3,8,23,0
-46,Jasa Barbershop Rumahan,Kecantikan & Perawatan,"Salon, Barber & Perawatan Personal",beauty,service,6,6,4,4,20,6,0
-47,Usaha Ternak Ayam Pedaging,"Pertanian, Peternakan & Perikanan",Peternakan & Pakan Ternak,farm,production,4,6,0,5,15,18,0
-48,Usaha Buket Bunga,Kerajinan & Kreatif,"Kerajinan, Buket & Produk Kreatif",craft,production,6,6,0,4,16,10,6
-49,Usaha Minuman Herbal,Minuman & Es,Jamu & Minuman Herbal,herbal,production,6,7,0,4,17,0,6
-50,Batagor Keliling,"Jajanan, Gorengan & Bakery",Jajanan Kukus & Olahan Ikan,dumpling,production,3,10,0,4,17,0,3
-51,Ayam Geprek Gerobak,Kuliner & Makanan,"Nasi, Lauk & Masakan Siap Saji",meal,production,6,8,0,4,18,0,6
-52,Warung Ayam Geprek,Kuliner & Makanan,"Nasi, Lauk & Masakan Siap Saji",meal,production,6,10,0,4,20,0,6
-53,Es Jeruk Peras,Minuman & Es,Jus Jeruk & Minuman Segar,juice,production,5,6,0,3,14,4,5
-54,Usaha Tahu Isi,"Jajanan, Gorengan & Bakery",Gorengan & Camilan,fried_snack,production,6,13,0,4,23,0,6
-55,Produksi Bumbu Pecel,Produksi Makanan & Bumbu,Bumbu & Rempah Olahan,seasoning,production,10,10,0,5,25,24,10
-56,Warung Sembako Rumahan,"Warung, Toko & Perdagangan",Toko Eceran & Retail,retail,resale,10,0,0,4,14,12,0
-57,Pedagang Telur Puyuh,Perdagangan Bahan Pangan,Pedagang Bahan Pangan Segar & Kering,food_trade,resale,4,0,0,4,8,18,0
-58,Jasa Salon Rumahan,Kecantikan & Perawatan,"Salon, Barber & Perawatan Personal",beauty,service,6,6,4,4,20,6,0
-59,Usaha Ternak Ayam Kampung,"Pertanian, Peternakan & Perikanan",Peternakan & Pakan Ternak,farm,production,4,6,0,5,15,18,0
-60,Usaha Buket Snack,Kerajinan & Kreatif,"Kerajinan, Buket & Produk Kreatif",craft,production,6,6,0,4,16,10,6
-61,Usaha Pijat Refleksi Rumahan,Kecantikan & Perawatan,"Salon, Barber & Perawatan Personal",beauty,service,5,6,4,4,19,2,0
-62,Pempek Keliling,"Jajanan, Gorengan & Bakery",Jajanan Kukus & Olahan Ikan,dumpling,production,5,10,0,4,19,0,5
-63,Ayam Penyet Gerobak,Kuliner & Makanan,"Nasi, Lauk & Masakan Siap Saji",meal,production,6,8,0,4,18,0,6
-64,Warung Ayam Penyet,Kuliner & Makanan,"Nasi, Lauk & Masakan Siap Saji",meal,production,6,10,0,4,20,0,6
-65,Es Kopi Susu Gula Aren,Minuman & Es,Kopi & Kedai Minuman,coffee,production,5,8,0,4,17,0,5
-66,Usaha Tempe Mendoan,"Jajanan, Gorengan & Bakery",Gorengan & Camilan,fried_snack,production,6,13,0,4,23,0,6
-67,Produksi Bumbu Rendang,Produksi Makanan & Bumbu,Bumbu & Rempah Olahan,seasoning,production,10,10,0,5,25,24,10
-68,Warung Rokok,"Warung, Toko & Perdagangan",Toko Eceran & Retail,retail,resale,9,0,0,4,13,13,0
-69,Pedagang Ayam Potong Mangkal,Perdagangan Bahan Pangan,Pedagang Bahan Pangan Segar & Kering,food_trade,resale,6,0,0,4,10,16,0
-70,Jasa Rias Pengantin,Kecantikan & Perawatan,"Salon, Barber & Perawatan Personal",beauty,service,6,6,4,4,20,6,0
-71,Usaha Ternak Bebek,"Pertanian, Peternakan & Perikanan",Peternakan Bebek,livestock,production,4,6,0,4,14,18,0
-72,Usaha Hampers dan Parcel,Kerajinan & Kreatif,"Kerajinan, Buket & Produk Kreatif",craft,production,6,6,0,4,16,10,6
-73,Usaha Perawatan Kuku,Kecantikan & Perawatan,Perawatan Kuku & Nail Art,nail,service,6,6,5,4,21,1,0
-74,Bubur Ayam Keliling,Kuliner & Makanan,"Nasi, Lauk & Masakan Siap Saji",meal,production,4,11,0,4,19,0,4
-75,Ayam Bakar Gerobak,Kuliner & Makanan,"Nasi, Lauk & Masakan Siap Saji",meal,production,6,8,0,4,18,0,6
-76,Warung Bebek Goreng,Kuliner & Makanan,"Nasi, Lauk & Masakan Siap Saji",meal,production,6,10,0,4,20,0,6
-77,Kopi Susu Botolan,Minuman & Es,Kopi & Kedai Minuman,coffee,production,5,8,0,4,17,0,5
-78,Usaha Pisang Goreng,"Jajanan, Gorengan & Bakery",Gorengan & Camilan,fried_snack,production,6,13,0,4,23,0,6
-79,Produksi Bumbu Instan,Produksi Makanan & Bumbu,Bumbu & Rempah Olahan,seasoning,production,10,10,0,5,25,24,10
-80,Warung Jajanan Anak,"Jajanan, Gorengan & Bakery",Gorengan & Camilan,fried_snack,production,8,4,0,4,16,16,8
-81,Pedagang Daging Sapi,Perdagangan Bahan Pangan,Pedagang Bahan Pangan Segar & Kering,food_trade,resale,6,0,0,4,10,16,0
-82,Jasa Makeup Wisuda,Kecantikan & Perawatan,"Salon, Barber & Perawatan Personal",beauty,service,6,6,4,4,20,6,0
-83,Usaha Ternak Puyuh,"Pertanian, Peternakan & Perikanan",Peternakan & Pakan Ternak,farm,production,4,6,0,5,15,18,0
-84,Usaha Souvenir Pernikahan,Kerajinan & Kreatif,"Kerajinan, Buket & Produk Kreatif",craft,production,6,6,0,4,16,10,6
-85,Usaha Perawatan Wajah Rumahan,Kecantikan & Perawatan,Perawatan Wajah,skincare,service,6,6,4,4,20,1,0
-86,Nasi Uduk Keliling,Kuliner & Makanan,"Nasi, Lauk & Masakan Siap Saji",meal,production,5,11,0,4,20,2,5
-87,Pecel Lele Gerobak,Kuliner & Makanan,"Nasi, Lauk & Masakan Siap Saji",meal,production,6,8,0,4,18,0,6
-88,Warung Bebek Bakar,Kuliner & Makanan,"Nasi, Lauk & Masakan Siap Saji",meal,production,6,10,0,4,20,0,6
-89,Kopi Hitam Warkop,Minuman & Es,Kopi & Kedai Minuman,coffee,production,5,8,0,4,17,0,5
-90,Usaha Cireng,"Jajanan, Gorengan & Bakery",Gorengan & Camilan,fried_snack,production,6,13,0,4,23,0,6
-91,Produksi Abon Sapi,Produksi Makanan & Bumbu,Olahan Daging,meat,production,10,8,0,4,22,27,10
-92,Warung Kopi Kecil,Minuman & Es,Kopi & Kedai Minuman,coffee,production,8,6,0,4,18,14,8
-93,Pedagang Daging Kambing,Perdagangan Bahan Pangan,Pedagang Bahan Pangan Segar & Kering,food_trade,resale,5,0,0,4,9,17,0
-94,Jasa Nail Art,Kecantikan & Perawatan,"Salon, Barber & Perawatan Personal",beauty,service,6,6,4,4,20,6,0
-95,Usaha Ternak Kambing,"Pertanian, Peternakan & Perikanan",Peternakan & Pakan Ternak,farm,production,4,6,0,5,15,18,0
-96,Usaha Undangan Digital,Jasa & Perbaikan,"Percetakan, Dokumen & Kreatif Digital",print,service,5,5,4,4,18,8,0
-97,Usaha Spa Rumahan,Kecantikan & Perawatan,"Salon, Barber & Perawatan Personal",beauty,service,6,6,4,4,20,1,0
-98,Kue Ape Keliling,"Jajanan, Gorengan & Bakery",Jajanan Pasar & Kue Tradisional,traditional_snack,production,3,7,0,4,14,4,3
-99,Nasi Goreng Gerobak,Kuliner & Makanan,"Nasi, Lauk & Masakan Siap Saji",meal,production,6,8,0,4,18,0,6
-100,Warung Pecel Lele,Kuliner & Makanan,"Nasi, Lauk & Masakan Siap Saji",meal,production,6,10,0,4,20,0,6
-101,Warung Kopi Sachet,Minuman & Es,Kopi & Kedai Minuman,coffee,production,5,8,0,4,17,0,5
-102,Usaha Risoles,"Jajanan, Gorengan & Bakery",Gorengan & Camilan,fried_snack,production,6,13,0,4,23,0,6
-103,Produksi Abon Ayam,Produksi Makanan & Bumbu,Olahan Daging,meat,production,10,8,0,4,22,27,10
-104,Warung Makan Kecil,Kuliner & Makanan,"Nasi, Lauk & Masakan Siap Saji",meal,production,8,6,0,4,18,14,7
-105,Pedagang Ikan Segar Mangkal,Perdagangan Bahan Pangan,Pedagang Bahan Pangan Segar & Kering,food_trade,resale,6,0,0,4,10,16,0
-106,Jasa Cuci Motor,Jasa & Perbaikan,Jasa Profesional & Keterampilan,service,service,5,6,4,4,19,7,0
-107,Usaha Ternak Domba,"Pertanian, Peternakan & Perikanan",Peternakan & Pakan Ternak,farm,production,4,6,0,5,15,18,0
-108,Usaha Sablon Kaos,Jasa & Perbaikan,"Percetakan, Dokumen & Kreatif Digital",print,service,6,6,4,4,20,6,0
-109,Toko Alat Kesehatan Kecil,"Kesehatan, Herbal & Hewan",Toko Alat Kesehatan,medical_retail,resale,6,0,0,4,10,7,0
-110,Sate Madura Keliling,Kuliner & Makanan,"Nasi, Lauk & Masakan Siap Saji",meal,production,4,11,0,4,19,0,4
-111,Mie Goreng Gerobak,Kuliner & Makanan,Mi & Kwetiau,noodle,production,6,9,0,4,19,1,6
-112,Warung Nasi Goreng,Kuliner & Makanan,"Nasi, Lauk & Masakan Siap Saji",meal,production,6,10,0,4,20,0,6
-113,Es Cokelat,Minuman & Es,Minuman Cokelat,chocolate_drink,production,6,7,0,3,16,2,6
-114,Usaha Pastel,"Jajanan, Gorengan & Bakery",Gorengan & Camilan,fried_snack,production,6,13,0,4,23,0,6
-115,Produksi Dendeng,Produksi Makanan & Bumbu,Olahan Daging,meat,production,10,8,0,4,22,27,10
-116,Warung Sarapan,Kuliner & Makanan,Sarapan & Menu Pagi,breakfast,production,8,10,0,4,22,14,8
-117,Pedagang Ikan Asin,Perdagangan Bahan Pangan,Pedagang Bahan Pangan Segar & Kering,food_trade,resale,5,0,0,4,9,17,0
-118,Jasa Cuci Mobil,Jasa & Perbaikan,Jasa Profesional & Keterampilan,service,service,5,6,4,4,19,7,0
-119,Usaha Ternak Lele,"Pertanian, Peternakan & Perikanan",Budidaya Ikan & Perikanan,farm,production,4,6,0,4,14,18,0
-120,Usaha Bordir Rumahan,Jasa & Perbaikan,Jasa Profesional & Keterampilan,service,service,6,6,4,4,20,6,0
-121,Toko Herbal dan Rempah,"Kesehatan, Herbal & Hewan",Toko Herbal & Rempah,herbal_retail,resale,6,0,0,4,10,7,0
-122,Sate Padang Keliling,Kuliner & Makanan,"Nasi, Lauk & Masakan Siap Saji",meal,production,4,11,0,4,19,0,4
-123,Kwetiau Goreng Gerobak,Kuliner & Makanan,"Nasi, Lauk & Masakan Siap Saji",meal,production,6,8,0,4,18,0,6
-124,Warung Mie Goreng,Kuliner & Makanan,Mi & Kwetiau,noodle,production,6,9,0,4,19,1,6
-125,Susu Cokelat,Minuman & Es,"Teh, Susu & Minuman Kekinian",tea,production,5,7,0,3,15,1,5
-126,Usaha Lumpia,"Jajanan, Gorengan & Bakery",Gorengan & Camilan,fried_snack,production,6,13,0,4,23,0,6
-127,Produksi Emping,Produksi Makanan & Bumbu,Produksi Emping & Keripik Melinjo,emping,production,10,6,0,4,20,29,10
-128,Warung Sayur Mangkal,Perdagangan Bahan Pangan,Pedagang Bahan Pangan Segar & Kering,food_trade,resale,8,0,0,4,12,14,0
-129,Pedagang Seafood Segar,Perdagangan Bahan Pangan,Pedagang Bahan Pangan Segar & Kering,food_trade,resale,6,0,0,4,10,16,0
-130,Jasa Tambal Ban,Jasa & Perbaikan,Servis Elektronik & Otomotif,repair,service,5,5,4,4,18,8,0
-131,Usaha Budidaya Nila,"Pertanian, Peternakan & Perikanan",Budidaya Ikan & Perikanan,farm,production,4,6,0,4,14,18,0
-132,Usaha Konveksi Kecil,Jasa & Perbaikan,Jasa Profesional & Keterampilan,service,service,6,6,4,4,20,6,0
-133,Toko Perlengkapan Bayi dan Ibu,"Warung, Toko & Perdagangan",Toko Eceran & Retail,retail,resale,6,0,0,4,10,7,0
-134,Seblak Keliling,Kuliner & Makanan,"Nasi, Lauk & Masakan Siap Saji",meal,production,4,9,0,4,17,3,4
-135,Bihun Goreng Gerobak,Kuliner & Makanan,"Nasi, Lauk & Masakan Siap Saji",meal,production,6,8,0,4,18,0,6
-136,Warung Kwetiau,Kuliner & Makanan,"Nasi, Lauk & Masakan Siap Saji",meal,production,6,9,0,4,19,1,6
-137,Thai Tea,Minuman & Es,"Teh, Susu & Minuman Kekinian",tea,production,5,6,0,3,14,2,5
-138,Usaha Martabak Mini,"Jajanan, Gorengan & Bakery",Martabak & Roti Bakar,martabak,production,6,9,0,4,19,4,6
-139,Produksi Kerupuk,Produksi Makanan & Bumbu,Produksi Kerupuk,cracker,production,10,7,0,4,21,28,10
-140,Warung Buah Kecil,Perdagangan Bahan Pangan,Pedagang Bahan Pangan Segar & Kering,food_trade,resale,8,0,0,4,12,14,0
-141,Pedagang Udang,Perdagangan Bahan Pangan,Pedagang Bahan Pangan Segar & Kering,food_trade,resale,5,0,0,4,9,17,0
-142,Jasa Bengkel Motor Kecil,Jasa & Perbaikan,Servis Elektronik & Otomotif,repair,service,6,6,4,4,20,6,0
-143,Usaha Budidaya Gurame,"Pertanian, Peternakan & Perikanan",Budidaya Ikan & Perikanan,farm,production,4,6,0,4,14,18,0
-144,Usaha Tas Rajut,Kerajinan & Kreatif,"Kerajinan, Buket & Produk Kreatif",craft,production,6,6,0,4,16,10,6
-145,Bakso Keliling,Kuliner & Makanan,"Nasi, Lauk & Masakan Siap Saji",meal,production,4,9,0,4,17,3,4
-146,Bakmi Jawa Gerobak,Kuliner & Makanan,"Nasi, Lauk & Masakan Siap Saji",meal,production,6,8,0,4,18,0,6
-147,Warung Bakmi,Kuliner & Makanan,"Nasi, Lauk & Masakan Siap Saji",meal,production,6,9,0,4,19,1,6
-148,Green Tea Latte,Minuman & Es,"Teh, Susu & Minuman Kekinian",tea,production,5,6,0,3,14,2,5
-149,Usaha Martabak Telur,"Jajanan, Gorengan & Bakery",Martabak & Roti Bakar,martabak,production,6,8,0,4,18,5,6
-150,Produksi Keripik,Produksi Makanan & Bumbu,Produksi Keripik,chips,production,10,5,0,4,19,30,10
-151,Warung Telur Eceran,Perdagangan Bahan Pangan,Telur & Produk Unggas,eggs,resale,6,0,0,3,9,22,0
-152,Pedagang Cumi,Perdagangan Bahan Pangan,Pedagang Bahan Pangan Segar & Kering,food_trade,resale,5,0,0,4,9,17,0
-153,Jasa Servis HP,Jasa & Perbaikan,Servis Elektronik & Otomotif,repair,service,6,6,4,4,20,6,0
-154,Usaha Budidaya Ikan Mas,"Pertanian, Peternakan & Perikanan",Budidaya Ikan & Perikanan,farm,production,4,6,0,4,14,18,0
-155,Usaha Anyaman Bambu,Kerajinan & Kreatif,"Kerajinan, Buket & Produk Kreatif",craft,production,6,5,0,4,15,11,6
-156,Mie Ayam Keliling,Kuliner & Makanan,"Nasi, Lauk & Masakan Siap Saji",meal,production,4,11,0,4,19,0,4
-157,Nasi Kebuli Gerobak,Kuliner & Makanan,"Nasi, Lauk & Masakan Siap Saji",meal,production,6,8,0,4,18,0,6
-158,Warung Bakso,Kuliner & Makanan,"Nasi, Lauk & Masakan Siap Saji",meal,production,6,9,0,4,19,1,6
-159,Boba Milk Tea,Minuman & Es,"Teh, Susu & Minuman Kekinian",tea,production,5,6,0,3,14,2,5
-160,Usaha Martabak Manis,"Jajanan, Gorengan & Bakery",Martabak & Roti Bakar,martabak,production,6,9,0,4,19,4,6
-161,Produksi Kue Kering Lebaran,"Jajanan, Gorengan & Bakery",Kue Kering & Cookies,cookies,production,10,8,0,5,23,26,10
-162,Warung Gas LPG,"Warung, Toko & Perdagangan",Toko Eceran & Retail,retail,resale,8,0,0,3,11,14,0
-163,Pedagang Sayuran Mangkal,Perdagangan Bahan Pangan,Pedagang Bahan Pangan Segar & Kering,food_trade,resale,8,0,0,4,12,14,0
-164,Jasa Servis Elektronik,Jasa & Perbaikan,Servis Elektronik & Otomotif,repair,service,5,6,4,4,19,7,0
-165,Usaha Budidaya Ikan Hias,"Pertanian, Peternakan & Perikanan",Budidaya Ikan & Perikanan,farm,production,4,6,0,4,14,18,0
-166,Usaha Kerajinan Kayu,Kerajinan & Kreatif,"Kerajinan, Buket & Produk Kreatif",craft,production,6,6,0,4,16,10,6
-167,Cilok Keliling,"Jajanan, Gorengan & Bakery",Gorengan & Camilan,fried_snack,production,4,9,0,4,17,0,4
-168,Nasi Padang Gerobak,Kuliner & Makanan,"Nasi, Lauk & Masakan Siap Saji",meal,production,6,8,0,4,18,0,6
-169,Warung Mie Ayam,Kuliner & Makanan,"Nasi, Lauk & Masakan Siap Saji",meal,production,6,10,0,4,20,0,6
-170,Brown Sugar Boba,Minuman & Es,"Teh, Susu & Minuman Kekinian",tea,production,5,6,0,3,14,2,5
-171,Usaha Terang Bulan Mini,"Jajanan, Gorengan & Bakery",Martabak & Terang Bulan,martabak,production,6,9,0,4,19,4,6
-172,Produksi Nastar,"Jajanan, Gorengan & Bakery",Kue Kering & Cookies,cookies,production,10,8,0,5,23,26,10
-173,Warung Air Mineral,"Warung, Toko & Perdagangan",Toko Eceran & Retail,retail,resale,6,0,0,4,10,16,0
-174,Pedagang Buah Mangkal,Perdagangan Bahan Pangan,Pedagang Bahan Pangan Segar & Kering,food_trade,resale,8,0,0,4,12,14,0
-175,Jasa Laundry Kiloan,Jasa & Perbaikan,Laundry & Perawatan Sepatu,laundry,service,5,6,4,4,19,7,0
-176,Usaha Pembenihan Ikan,"Pertanian, Peternakan & Perikanan",Budidaya Ikan & Perikanan,farm,production,4,5,0,4,13,19,0
-177,Usaha Kerajinan Resin,Kerajinan & Kreatif,"Kerajinan, Buket & Produk Kreatif",craft,production,6,6,0,4,16,10,6
-178,Cilung Keliling,"Jajanan, Gorengan & Bakery",Gorengan & Camilan,fried_snack,production,3,11,0,4,18,0,3
-179,Nasi Campur Gerobak,Kuliner & Makanan,"Nasi, Lauk & Masakan Siap Saji",meal,production,6,8,0,4,18,0,6
-180,Warung Soto Ayam,Kuliner & Makanan,"Nasi, Lauk & Masakan Siap Saji",meal,production,6,10,0,4,20,0,6
-181,Cappuccino Cincau,Minuman & Es,"Teh, Susu & Minuman Kekinian",tea,production,5,6,0,3,14,2,5
-182,Usaha Roti Bakar,"Jajanan, Gorengan & Bakery",Martabak & Roti Bakar,martabak,production,6,7,0,4,17,6,6
-183,Produksi Kastengel,"Jajanan, Gorengan & Bakery",Kue Kering & Cookies,cookies,production,10,7,0,5,22,27,10
-184,Warung Plastik,"Warung, Toko & Perdagangan",Toko Eceran & Retail,retail,resale,10,0,0,3,13,12,0
-185,Pedagang Beras Eceran,Perdagangan Bahan Pangan,Pedagang Bahan Pangan Segar & Kering,food_trade,resale,6,0,0,4,10,16,0
-186,Jasa Laundry Sepatu,Jasa & Perbaikan,Laundry & Perawatan Sepatu,laundry,service,5,6,4,4,19,7,0
-187,Usaha Pakan Ikan,"Pertanian, Peternakan & Perikanan",Budidaya Ikan & Perikanan,farm,production,5,6,0,5,16,17,0
-188,Usaha Lilin Aromaterapi,Kerajinan & Kreatif,"Kerajinan, Buket & Produk Kreatif",craft,production,6,6,0,4,16,10,6
-189,Telur Gulung Keliling,"Jajanan, Gorengan & Bakery",Gorengan & Camilan,fried_snack,production,3,11,0,4,18,0,3
-190,Nasi Kuning Gerobak,Kuliner & Makanan,"Nasi, Lauk & Masakan Siap Saji",meal,production,6,8,0,4,18,0,6
-191,Warung Soto Betawi,Kuliner & Makanan,"Nasi, Lauk & Masakan Siap Saji",meal,production,6,10,0,4,20,0,6
-192,Alpukat Kocok,Minuman & Es,"Jus, Es Buah & Minuman Segar",juice,production,5,8,0,4,17,0,5
-193,Usaha Roti Kukus,"Jajanan, Gorengan & Bakery",Roti Kukus & Roti Manis,steamed_bread,production,6,9,0,4,19,4,6
-194,Produksi Putri Salju,"Jajanan, Gorengan & Bakery",Kue Kering & Cookies,cookies,production,10,7,0,5,22,27,10
-195,Warung Perlengkapan Dapur,"Warung, Toko & Perdagangan",Perlengkapan Dapur,kitchenware,resale,10,0,0,3,13,18,0
-196,Pedagang Gula dan Tepung,Perdagangan Bahan Pangan,Pedagang Bahan Pangan Segar & Kering,food_trade,resale,6,0,0,4,10,16,0
-197,Jasa Setrika Pakaian,Jasa & Perbaikan,Laundry & Perawatan Sepatu,laundry,service,5,6,4,4,19,7,0
-198,Usaha Pakan Ternak,"Pertanian, Peternakan & Perikanan",Peternakan & Pakan Ternak,farm,production,4,6,0,5,15,18,0
-199,Usaha Sabun Handmade,Kerajinan & Kreatif,Sabun Handmade & Produk Rumah Tangga,handmade_soap,production,6,8,0,4,18,10,6
-200,Martabak Telur Mini Keliling,"Jajanan, Gorengan & Bakery",Martabak & Roti Bakar,martabak,production,3,8,0,4,15,1,3
-201,Nasi Liwet Gerobak,Kuliner & Makanan,"Nasi, Lauk & Masakan Siap Saji",meal,production,6,8,0,4,18,0,6
-202,Warung Rawon,Kuliner & Makanan,"Nasi, Lauk & Masakan Siap Saji",meal,production,6,10,0,4,20,0,6
-203,Jus Alpukat,Minuman & Es,"Jus, Es Buah & Minuman Segar",juice,production,5,8,0,4,17,0,5
-204,Usaha Donat Kampung,"Jajanan, Gorengan & Bakery",Donat,donut,production,6,9,0,4,19,4,6
-205,Produksi Cookies,"Jajanan, Gorengan & Bakery",Kue Kering & Cookies,cookies,production,10,8,0,5,23,26,10
-206,Toko Alat Tulis Kecil,"Warung, Toko & Perdagangan",Toko Eceran & Retail,retail,resale,10,0,0,4,14,12,0
-207,Pedagang Minyak Goreng Curah,Perdagangan Bahan Pangan,Pedagang Bahan Pangan Segar & Kering,food_trade,resale,5,0,0,4,9,17,0
-208,Jasa Jahit Pakaian,Jasa & Perbaikan,Jasa Profesional & Keterampilan,service,service,6,6,4,4,20,6,0
-209,Usaha Sayur Hidroponik,"Pertanian, Peternakan & Perikanan",Budidaya Tanaman & Hasil Tani,plant,production,5,6,0,4,15,17,0
-210,Usaha Kerajinan Kulit,Kerajinan & Kreatif,"Kerajinan, Buket & Produk Kreatif",craft,production,6,6,0,4,16,10,6
-211,Martabak Manis Keliling,"Jajanan, Gorengan & Bakery",Martabak & Roti Bakar,martabak,production,4,9,0,4,17,2,4
-212,Nasi Bakar Gerobak,Kuliner & Makanan,"Nasi, Lauk & Masakan Siap Saji",meal,production,6,8,0,4,18,0,6
-213,Warung Sop Buntut,Kuliner & Makanan,"Nasi, Lauk & Masakan Siap Saji",meal,production,6,10,0,4,20,0,6
-214,Jus Mangga,Minuman & Es,"Jus, Es Buah & Minuman Segar",juice,production,5,8,0,4,17,0,5
-215,Usaha Donat Premium,"Jajanan, Gorengan & Bakery",Donat Premium,donut,production,6,9,0,5,20,4,6
-216,Produksi Brownies,"Jajanan, Gorengan & Bakery",Brownies,brownies,production,10,7,0,4,21,28,10
-217,Toko Mainan Anak,"Warung, Toko & Perdagangan",Toko Eceran & Retail,retail,resale,8,0,0,4,12,14,0
-218,Pedagang Bumbu Dapur,"Warung, Toko & Perdagangan",Toko Eceran & Retail,retail,resale,8,0,0,4,12,14,0
-219,Jasa Permak Jeans,Jasa & Perbaikan,Jasa Profesional & Keterampilan,service,service,6,6,4,4,20,6,0
-220,Usaha Tanaman Hias,"Pertanian, Peternakan & Perikanan",Budidaya Tanaman & Hasil Tani,plant,production,5,6,0,4,15,17,0
-221,Usaha Pot Tanaman,"Pertanian, Peternakan & Perikanan",Budidaya Tanaman & Hasil Tani,plant,production,5,5,0,4,14,12,0
-222,Tahu Bulat Keliling,"Jajanan, Gorengan & Bakery",Gorengan & Camilan,fried_snack,production,3,11,0,4,18,0,3
-223,Nasi Kotak Gerobak,Kuliner & Makanan,"Nasi, Lauk & Masakan Siap Saji",meal,production,6,8,0,4,18,0,6
-224,Warung Sop Iga,Kuliner & Makanan,"Nasi, Lauk & Masakan Siap Saji",meal,production,6,10,0,4,20,0,6
-225,Jus Jambu,Minuman & Es,"Jus, Es Buah & Minuman Segar",juice,production,5,8,0,4,17,0,5
-226,Usaha Pukis,"Jajanan, Gorengan & Bakery",Jajanan Pasar & Kue Tradisional,traditional_snack,production,6,8,0,4,18,5,6
-227,Produksi Bolu,"Jajanan, Gorengan & Bakery",Kue Basah & Cake,cake,production,10,8,0,4,22,27,10
-228,Toko Aksesoris HP,"Warung, Toko & Perdagangan",Toko Eceran & Retail,retail,resale,8,0,0,4,12,14,0
-229,Pedagang Cabai dan Bawang,Perdagangan Bahan Pangan,Pedagang Bahan Pangan Segar & Kering,food_trade,resale,6,0,0,4,10,16,0
-230,Jasa Obras dan Bordir,Jasa & Perbaikan,Jasa Profesional & Keterampilan,service,service,6,6,4,4,20,6,0
-231,Usaha Bibit Tanaman,"Pertanian, Peternakan & Perikanan",Budidaya Tanaman & Hasil Tani,plant,production,5,6,0,4,15,17,0
-232,Usaha Dekorasi Rumah,Kerajinan & Kreatif,"Kerajinan, Buket & Produk Kreatif",craft,production,6,5,0,4,15,11,6
-233,Cireng Keliling,"Jajanan, Gorengan & Bakery",Gorengan & Camilan,fried_snack,production,3,11,0,4,18,0,3
-234,Soto Ayam Gerobak,Kuliner & Makanan,"Nasi, Lauk & Masakan Siap Saji",meal,production,6,8,0,4,18,0,6
-235,Warung Empal Gentong,Kuliner & Makanan,"Nasi, Lauk & Masakan Siap Saji",meal,production,6,10,0,4,20,0,6
-236,Jus Melon,Minuman & Es,"Jus, Es Buah & Minuman Segar",juice,production,5,8,0,4,17,0,5
-237,Usaha Kue Cubit,"Jajanan, Gorengan & Bakery",Jajanan Pasar & Kue Tradisional,traditional_snack,production,6,8,0,4,18,5,6
-238,Produksi Cake Ulang Tahun,"Jajanan, Gorengan & Bakery",Kue Basah & Cake,cake,production,10,8,0,4,22,27,10
-239,Toko Pulsa dan Paket Data,"Warung, Toko & Perdagangan",Toko Eceran & Retail,retail,resale,7,0,0,3,10,15,0
-240,Pedagang Tahu Putih,Perdagangan Bahan Pangan,Pedagang Bahan Pangan Segar & Kering,food_trade,resale,6,0,0,4,10,16,0
-241,Jasa Pengetikan,Jasa & Perbaikan,"Percetakan, Dokumen & Kreatif Digital",print,service,6,6,4,4,20,6,0
-242,Usaha Jamur Tiram,"Pertanian, Peternakan & Perikanan",Budidaya Jamur Tiram,mushroom,production,4,5,0,4,13,19,7
-243,Usaha Bunga Artificial,Kerajinan & Kreatif,"Kerajinan, Buket & Produk Kreatif",craft,production,6,6,0,4,16,10,6
-244,Gorengan Keliling,"Jajanan, Gorengan & Bakery",Gorengan & Camilan,fried_snack,production,6,10,0,4,20,0,6
-245,Soto Betawi Gerobak,Kuliner & Makanan,"Nasi, Lauk & Masakan Siap Saji",meal,production,6,8,0,4,18,0,6
-246,Warung Tongseng Kambing,Kuliner & Makanan,"Nasi, Lauk & Masakan Siap Saji",meal,production,6,10,0,4,20,0,6
-247,Jus Semangka,Minuman & Es,"Jus, Es Buah & Minuman Segar",juice,production,5,8,0,4,17,0,5
-248,Usaha Kue Ape,"Jajanan, Gorengan & Bakery",Jajanan Pasar & Kue Tradisional,traditional_snack,production,6,7,0,4,17,6,6
-249,Produksi Roti Manis,"Jajanan, Gorengan & Bakery",Roti & Bakery,roti,production,10,9,0,4,23,26,10
-250,Toko Perlengkapan Bayi,"Warung, Toko & Perdagangan",Toko Eceran & Retail,retail,resale,10,0,0,4,14,12,0
-251,Pedagang Tempe,Perdagangan Bahan Pangan,Pedagang Bahan Pangan Segar & Kering,food_trade,resale,5,0,0,4,9,17,0
-252,Jasa Fotokopi Rumahan,Jasa & Perbaikan,"Percetakan, Dokumen & Kreatif Digital",print,service,6,6,4,4,20,6,0
-253,Usaha Microgreens,"Pertanian, Peternakan & Perikanan",Budidaya Tanaman & Hasil Tani,plant,production,4,5,0,4,13,19,0
-254,Usaha Mahar dan Hantaran,Kerajinan & Kreatif,"Kerajinan, Buket & Produk Kreatif",craft,production,6,6,0,4,16,10,6
-255,Roti Bakar Keliling,"Jajanan, Gorengan & Bakery",Martabak & Roti Bakar,martabak,production,4,7,0,4,15,1,4
-256,Rawon Gerobak,Kuliner & Makanan,"Nasi, Lauk & Masakan Siap Saji",meal,production,6,8,0,4,18,0,6
-257,Warung Gulai,Kuliner & Makanan,"Nasi, Lauk & Masakan Siap Saji",meal,production,6,10,0,4,20,0,6
-258,Jus Buah Naga,Minuman & Es,"Jus, Es Buah & Minuman Segar",juice,production,5,8,0,4,17,0,5
-259,Usaha Kue Pancong,"Jajanan, Gorengan & Bakery",Jajanan Pasar & Kue Tradisional,traditional_snack,production,6,7,0,3,16,6,6
-260,Produksi Roti Tawar,"Jajanan, Gorengan & Bakery",Roti & Bakery,roti,production,10,9,0,4,23,26,10
-261,Toko Perlengkapan Sekolah,"Warung, Toko & Perdagangan",Toko Eceran & Retail,retail,resale,10,0,0,4,14,12,0
-262,Pedagang Tahu dan Tempe Mangkal,Perdagangan Bahan Pangan,Pedagang Bahan Pangan Segar & Kering,food_trade,resale,6,0,0,4,10,16,0
-263,Jasa Print Dokumen,Jasa & Perbaikan,"Percetakan, Dokumen & Kreatif Digital",print,service,6,6,4,4,20,6,0
-264,Usaha Cabai Rumahan,"Pertanian, Peternakan & Perikanan",Budidaya Tanaman & Hasil Tani,plant,production,5,6,0,4,15,17,0
-265,Jagung Rebus dan Bakar Keliling,Kerajinan & Kreatif,"Kerajinan, Buket & Produk Kreatif",craft,production,4,6,0,4,14,2,4
-266,Sop Ayam Gerobak,Kuliner & Makanan,"Nasi, Lauk & Masakan Siap Saji",meal,production,6,8,0,4,18,0,6
-267,Warung Rendang,Kuliner & Makanan,"Nasi, Lauk & Masakan Siap Saji",meal,production,6,10,0,4,20,0,6
-268,Jus Sirsak,Minuman & Es,"Jus, Es Buah & Minuman Segar",juice,production,5,8,0,4,17,0,5
-269,Usaha Serabi,"Jajanan, Gorengan & Bakery",Jajanan Pasar & Kue Tradisional,traditional_snack,production,6,7,0,4,17,6,6
-270,Produksi Roti Isi,"Jajanan, Gorengan & Bakery",Roti & Bakery,roti,production,10,9,0,4,23,26,10
-271,Toko Bumbu Dapur,"Warung, Toko & Perdagangan",Toko Eceran & Retail,retail,resale,10,0,0,3,13,12,0
-272,Pedagang Kelapa Parut,Perdagangan Bahan Pangan,Pedagang Bahan Pangan Segar & Kering,food_trade,resale,4,0,0,4,8,18,0
-273,Jasa Laminasi dan Jilid,Jasa & Perbaikan,"Percetakan, Dokumen & Kreatif Digital",print,service,6,6,5,4,21,6,0
-274,Usaha Bawang Merah,"Pertanian, Peternakan & Perikanan",Budidaya Tanaman & Hasil Tani,plant,production,4,6,0,4,14,18,0
-275,Kacang Rebus Keliling,"Jajanan, Gorengan & Bakery",Camilan Rebus,boiled_snack,production,3,5,0,4,12,6,3
-276,Sop Iga Gerobak,Kuliner & Makanan,"Nasi, Lauk & Masakan Siap Saji",meal,production,6,8,0,4,18,0,6
-277,Warung Masakan Padang,Kuliner & Makanan,Masakan Padang,padang,production,8,11,0,4,23,1,8
-278,Jus Wortel,Minuman & Es,"Jus, Es Buah & Minuman Segar",juice,production,5,8,0,4,17,0,5
-279,Usaha Kue Putu,"Jajanan, Gorengan & Bakery",Jajanan Pasar & Kue Tradisional,traditional_snack,production,6,4,0,4,14,9,6
-280,Produksi Donat,"Jajanan, Gorengan & Bakery",Donat,donat,production,10,9,0,5,24,25,10
-281,Toko Beras Eceran,Perdagangan Bahan Pangan,Pedagang Bahan Pangan Segar & Kering,food_trade,resale,6,0,0,4,10,16,0
-282,Pedagang Santan Segar,Perdagangan Bahan Pangan,Pedagang Bahan Pangan Segar & Kering,food_trade,resale,4,0,0,4,8,18,0
-283,Jasa Desain Grafis,Jasa & Perbaikan,"Percetakan, Dokumen & Kreatif Digital",print,service,5,5,4,4,18,8,0
-284,Usaha Budidaya Jahe,"Pertanian, Peternakan & Perikanan",Budidaya Tanaman & Hasil Tani,plant,production,4,5,0,4,13,19,0
-285,Es Cendol dan Dawet Keliling,Kerajinan & Kreatif,"Kerajinan, Buket & Produk Kreatif",craft,production,3,6,0,4,13,5,3
-286,Tongseng Gerobak,Kuliner & Makanan,"Nasi, Lauk & Masakan Siap Saji",meal,production,6,8,0,4,18,0,6
-287,Warung Nasi Rames,Kuliner & Makanan,"Nasi, Lauk & Masakan Siap Saji",meal,production,6,10,0,4,20,0,6
-288,Jus Tomat,Minuman & Es,"Jus, Es Buah & Minuman Segar",juice,production,5,8,0,4,17,0,5
-289,Usaha Klepon,"Jajanan, Gorengan & Bakery",Jajanan Pasar & Kue Tradisional,traditional_snack,production,6,6,0,4,16,7,6
-290,Produksi Pastry,"Jajanan, Gorengan & Bakery",Pastry,pastry,production,10,8,0,5,23,26,10
-291,Toko Minyak Goreng,Perdagangan Bahan Pangan,Minyak Goreng & Bahan Dapur,oil_trade,resale,5,0,0,4,9,17,0
-292,Pedagang Rempah Kering,Perdagangan Bahan Pangan,Pedagang Bahan Pangan Segar & Kering,food_trade,resale,8,0,0,4,12,14,0
-293,Jasa Foto Produk,Jasa & Perbaikan,"Percetakan, Dokumen & Kreatif Digital",print,service,5,6,4,5,20,6,0
-294,Usaha Budidaya Kunyit,"Pertanian, Peternakan & Perikanan",Budidaya Tanaman & Hasil Tani,plant,production,4,5,0,4,13,19,0
-295,Es Doger Keliling,Kerajinan & Kreatif,"Kerajinan, Buket & Produk Kreatif",craft,production,3,6,0,4,13,4,3
-296,Gulai Ayam Gerobak,Kuliner & Makanan,"Nasi, Lauk & Masakan Siap Saji",meal,production,6,8,0,4,18,0,6
-297,Warung Nasi Campur,Kuliner & Makanan,"Nasi, Lauk & Masakan Siap Saji",meal,production,6,10,0,4,20,0,6
-298,Sop Buah,Minuman & Es,"Jus, Es Buah & Minuman Segar",juice,production,5,8,0,4,17,0,5
-299,Usaha Onde-onde,"Jajanan, Gorengan & Bakery",Jajanan Pasar & Kue Tradisional,traditional_snack,production,6,6,0,4,16,7,6
-300,Produksi Risoles Frozen,"Jajanan, Gorengan & Bakery",Risoles Frozen,risoles,production,10,13,0,4,27,22,10
-301,Toko Telur,Perdagangan Bahan Pangan,Pedagang Bahan Pangan Segar & Kering,food_trade,resale,6,0,0,4,10,16,0
+﻿paket_id,nama_usaha,kelompok_utama,subkategori,keluarga_katalog,produk_aktif,bahan_aktif,alat_aktif,resep_draft
+1,Café & Resto,Kuliner & Makanan,Masakan & Makanan Siap Saji,meal,7,14,6,7
+2,Catering,Kuliner & Makanan,Masakan & Makanan Siap Saji,meal,4,9,6,4
+3,Depot Air Isi Ulang,Perdagangan & Toko,Toko / Perdagangan Khusus,retail,4,5,4,0
+4,Frozen Food,Perdagangan & Toko,Toko / Perdagangan Khusus,retail,4,5,4,0
+5,Konter HP,Perdagangan & Toko,Toko / Perdagangan Khusus,retail,4,5,4,0
+6,Laundry & Cuci Sepatu,Jasa & Layanan,Jasa Profesional / Perawatan / Perbaikan,laundry,4,5,5,0
+7,Penjual Makanan Online,Kuliner & Makanan,Masakan & Makanan Siap Saji,meal,4,9,6,4
+8,Percetakan / Fotokopi Kecil,Minuman & Es,Kopi & Kedai Kopi,coffee,4,9,5,4
+9,Pet Shop,Perdagangan & Toko,Toko / Perdagangan Khusus,pet,4,4,3,0
+10,Salon,Kecantikan & Perawatan,Layanan Kecantikan,beauty,4,5,4,0
+11,Toko Kosmetik,Perdagangan & Toko,Toko / Perdagangan Khusus,retail,4,5,4,0
+12,Toko Kue / Bakery,Perdagangan & Toko,Toko / Perdagangan Khusus,retail,4,5,4,0
+13,Toko Pakaian,Perdagangan & Toko,Toko / Perdagangan Khusus,retail,4,5,4,0
+14,Toko Retail,Perdagangan & Toko,Toko / Perdagangan Khusus,retail,8,9,4,0
+15,Toko Sembako & Grosir,Perdagangan & Toko,Toko / Perdagangan Khusus,food_trade,8,9,4,0
+16,Warung Makan,Kuliner & Makanan,Masakan & Makanan Siap Saji,meal,4,9,6,4
+17,Gorengan & Camilan,"Jajanan, Bakery & Produksi Pangan",Jajanan & Gorengan,fried_snack,4,7,5,4
+18,Warung Kopi & Minuman,Minuman & Es,Kopi & Kedai Kopi,coffee,4,9,5,4
+19,Nasi Uduk & Sarapan,Kuliner & Makanan,Masakan & Makanan Siap Saji,meal,4,9,6,4
+20,Warung Makan & Pecel Lele,Kuliner & Makanan,Masakan & Makanan Siap Saji,meal,4,9,6,4
+21,"Bakso, Mi Ayam & Soto",Kuliner & Makanan,Masakan & Makanan Siap Saji,meal,4,9,6,4
+22,Jajanan Jalanan,"Jajanan, Bakery & Produksi Pangan",Jajanan & Gorengan,fried_snack,4,7,5,4
+23,Martabak & Roti Bakar,"Jajanan, Bakery & Produksi Pangan",Produksi Pangan & Bumbu,martabak,4,9,5,4
+24,Jus Buah & Es Campur,Minuman & Es,"Jus, Es & Minuman Buah",juice,4,9,6,4
+26,Tukang Sayur Keliling,Perdagangan & Toko,Toko / Perdagangan Khusus,retail,5,6,4,0
+27,Ayam Crispy Gerobak,Kuliner & Makanan,Ayam Siap Saji,fried_chicken,4,9,5,4
+28,Warung Ayam Goreng,Kuliner & Makanan,Ayam Siap Saji,fried_chicken,4,9,5,4
+29,Es Teh Jumbo Mangkal,Minuman & Es,"Teh, Susu & Minuman Kekinian",tea,4,8,5,4
+30,Usaha Aneka Gorengan,"Jajanan, Bakery & Produksi Pangan",Jajanan & Gorengan,fried_snack,4,7,5,4
+31,Produksi Sambal Rumahan,"Jajanan, Bakery & Produksi Pangan",Produksi Pangan & Bumbu,seasoning,4,7,5,4
+32,Warung Kelontong,Perdagangan & Toko,Toko / Perdagangan Khusus,retail,8,9,4,0
+33,Pedagang Telur Ayam Mangkal,Perdagangan & Toko,Toko / Perdagangan Khusus,food_trade,4,4,4,0
+34,Jasa Pangkas Rambut Pria,Kecantikan & Perawatan,Layanan Kecantikan,beauty,4,5,4,0
+35,Usaha Ternak Ayam Petelur,"Pertanian, Peternakan & Perikanan",Budidaya & Hasil Tani,livestock,4,6,5,4
+36,Usaha Kerajinan Aksesoris,Kerajinan & Produk Kreatif,Kerajinan & Produksi Kreatif,craft,4,6,5,4
+37,Usaha Jamu Tradisional Mangkal,Minuman & Es,Jamu & Minuman Herbal,herbal,4,9,5,4
+38,Siomay Keliling,"Jajanan, Bakery & Produksi Pangan",Jajanan & Gorengan,dumpling,4,6,5,4
+39,Fried Chicken Gerobak,Kuliner & Makanan,Ayam Siap Saji,fried_chicken,4,9,5,4
+40,Warung Ayam Bakar,Kuliner & Makanan,Ayam Siap Saji,fried_chicken,4,10,5,4
+41,Es Teh Manis Gerobak Mangkal,Minuman & Es,"Teh, Susu & Minuman Kekinian",tea,4,8,5,4
+42,Usaha Bakwan Sayur,"Jajanan, Bakery & Produksi Pangan",Jajanan & Gorengan,fried_snack,5,6,4,5
+43,Produksi Bumbu Dasar,"Jajanan, Bakery & Produksi Pangan",Produksi Pangan & Bumbu,seasoning,4,7,5,4
+44,Warung Madura,Perdagangan & Toko,Toko / Perdagangan Khusus,retail,8,9,4,0
+45,Pedagang Telur Bebek,Perdagangan & Toko,Toko / Perdagangan Khusus,food_trade,4,4,4,0
+46,Jasa Barbershop Rumahan,Kecantikan & Perawatan,Layanan Kecantikan,beauty,4,5,4,0
+47,Usaha Ternak Ayam Pedaging,"Pertanian, Peternakan & Perikanan",Budidaya & Hasil Tani,livestock,4,6,5,4
+48,Usaha Buket Bunga,Kerajinan & Produk Kreatif,Kerajinan & Produksi Kreatif,craft,4,6,5,4
+49,Usaha Minuman Herbal,Minuman & Es,Jamu & Minuman Herbal,herbal,4,7,5,4
+50,Batagor Keliling,"Jajanan, Bakery & Produksi Pangan",Jajanan & Gorengan,dumpling,4,6,5,4
+51,Ayam Geprek Gerobak,Kuliner & Makanan,Ayam Siap Saji,fried_chicken,4,9,5,4
+52,Warung Ayam Geprek,Kuliner & Makanan,Ayam Siap Saji,fried_chicken,4,9,5,4
+53,Es Jeruk Peras,Minuman & Es,"Jus, Es & Minuman Buah",juice,4,9,6,4
+54,Usaha Tahu Isi,"Jajanan, Bakery & Produksi Pangan",Jajanan & Gorengan,fried_snack,4,4,4,4
+55,Produksi Bumbu Pecel,"Jajanan, Bakery & Produksi Pangan",Produksi Pangan & Bumbu,seasoning,4,7,5,4
+56,Warung Sembako Rumahan,Perdagangan & Toko,Toko / Perdagangan Khusus,food_trade,4,4,4,0
+57,Pedagang Telur Puyuh,Perdagangan & Toko,Toko / Perdagangan Khusus,food_trade,4,4,4,0
+58,Jasa Salon Rumahan,Kecantikan & Perawatan,Layanan Kecantikan,beauty,4,5,4,0
+59,Usaha Ternak Ayam Kampung,"Pertanian, Peternakan & Perikanan",Budidaya & Hasil Tani,livestock,4,6,5,4
+60,Usaha Buket Snack,Kerajinan & Produk Kreatif,Kerajinan & Produksi Kreatif,craft,4,6,5,4
+61,Usaha Pijat Refleksi Rumahan,Kecantikan & Perawatan,Layanan Kecantikan,beauty,4,5,4,0
+62,Pempek Keliling,"Jajanan, Bakery & Produksi Pangan",Jajanan & Gorengan,dumpling,4,6,5,4
+63,Ayam Penyet Gerobak,Kuliner & Makanan,Ayam Siap Saji,fried_chicken,4,9,5,4
+64,Warung Ayam Penyet,Kuliner & Makanan,Ayam Siap Saji,fried_chicken,4,9,5,4
+65,Es Kopi Susu Gula Aren,Minuman & Es,Kopi & Kedai Kopi,coffee,4,8,5,4
+66,Usaha Tempe Mendoan,"Jajanan, Bakery & Produksi Pangan",Jajanan & Gorengan,fried_snack,4,4,4,4
+67,Produksi Bumbu Rendang,"Jajanan, Bakery & Produksi Pangan",Produksi Pangan & Bumbu,seasoning,4,7,5,4
+68,Warung Rokok,Perdagangan & Toko,Toko / Perdagangan Khusus,retail,4,5,4,0
+69,Pedagang Ayam Potong Mangkal,Perdagangan & Toko,Toko / Perdagangan Khusus,food_trade,4,4,4,0
+70,Jasa Rias Pengantin,Kecantikan & Perawatan,Layanan Kecantikan,beauty,4,5,4,0
+71,Usaha Ternak Bebek,"Pertanian, Peternakan & Perikanan",Budidaya & Hasil Tani,livestock,4,6,5,4
+72,Usaha Hampers dan Parcel,Kerajinan & Produk Kreatif,Kerajinan & Produksi Kreatif,craft,4,6,5,4
+73,Usaha Perawatan Kuku,Kecantikan & Perawatan,Layanan Kecantikan,beauty,4,5,4,0
+74,Bubur Ayam Keliling,Kuliner & Makanan,Masakan & Makanan Siap Saji,meal,4,9,6,4
+75,Ayam Bakar Gerobak,Kuliner & Makanan,Ayam Siap Saji,fried_chicken,4,10,5,4
+76,Warung Bebek Goreng,Kuliner & Makanan,Masakan & Makanan Siap Saji,meal,4,9,6,4
+77,Kopi Susu Botolan,Minuman & Es,Kopi & Kedai Kopi,coffee,4,8,5,4
+78,Usaha Pisang Goreng,"Jajanan, Bakery & Produksi Pangan",Jajanan & Gorengan,fried_snack,4,7,5,4
+79,Produksi Bumbu Instan,"Jajanan, Bakery & Produksi Pangan",Produksi Pangan & Bumbu,seasoning,4,7,5,4
+80,Warung Jajanan Anak,"Jajanan, Bakery & Produksi Pangan",Jajanan & Gorengan,fried_snack,4,7,5,4
+81,Pedagang Daging Sapi,Perdagangan & Toko,Toko / Perdagangan Khusus,food_trade,4,4,4,0
+82,Jasa Makeup Wisuda,Kecantikan & Perawatan,Layanan Kecantikan,beauty,4,5,4,0
+83,Usaha Ternak Puyuh,"Pertanian, Peternakan & Perikanan",Budidaya & Hasil Tani,livestock,4,6,5,4
+84,Usaha Souvenir Pernikahan,Kerajinan & Produk Kreatif,Kerajinan & Produksi Kreatif,craft,4,6,5,4
+85,Usaha Perawatan Wajah Rumahan,Kecantikan & Perawatan,Layanan Kecantikan,beauty,4,5,4,0
+86,Nasi Uduk Keliling,Kuliner & Makanan,Masakan & Makanan Siap Saji,meal,4,9,6,4
+87,Pecel Lele Gerobak,Kuliner & Makanan,Masakan & Makanan Siap Saji,meal,4,9,6,4
+88,Warung Bebek Bakar,Kuliner & Makanan,Masakan & Makanan Siap Saji,meal,4,9,6,4
+89,Kopi Hitam Warkop,Minuman & Es,Kopi & Kedai Kopi,coffee,4,7,5,4
+90,Usaha Cireng,"Jajanan, Bakery & Produksi Pangan",Jajanan & Gorengan,fried_snack,4,7,5,4
+91,Produksi Abon Sapi,"Jajanan, Bakery & Produksi Pangan",Produksi Pangan & Bumbu,seasoning,4,7,5,4
+92,Warung Kopi Kecil,Minuman & Es,Kopi & Kedai Kopi,coffee,4,9,5,4
+93,Pedagang Daging Kambing,Perdagangan & Toko,Toko / Perdagangan Khusus,food_trade,4,4,4,0
+94,Jasa Nail Art,Kecantikan & Perawatan,Layanan Kecantikan,beauty,4,5,4,0
+95,Usaha Ternak Kambing,"Pertanian, Peternakan & Perikanan",Budidaya & Hasil Tani,livestock,4,6,5,4
+96,Usaha Undangan Digital,Jasa & Layanan,Jasa Profesional / Perawatan / Perbaikan,print,4,5,4,0
+97,Usaha Spa Rumahan,Kecantikan & Perawatan,Layanan Kecantikan,beauty,4,5,4,0
+98,Kue Ape Keliling,"Jajanan, Bakery & Produksi Pangan",Jajanan & Gorengan,traditional_snack,4,7,5,4
+99,Nasi Goreng Gerobak,Kuliner & Makanan,Masakan & Makanan Siap Saji,meal,4,10,6,4
+100,Warung Pecel Lele,Kuliner & Makanan,Masakan & Makanan Siap Saji,meal,4,9,6,4
+101,Warung Kopi Sachet,Minuman & Es,Kopi & Kedai Kopi,coffee,4,9,5,4
+102,Usaha Risoles,"Jajanan, Bakery & Produksi Pangan",Jajanan & Gorengan,fried_snack,4,7,5,4
+103,Produksi Abon Ayam,"Jajanan, Bakery & Produksi Pangan",Produksi Pangan & Bumbu,seasoning,4,7,5,4
+104,Warung Makan Kecil,Kuliner & Makanan,Masakan & Makanan Siap Saji,meal,4,9,6,4
+105,Pedagang Ikan Segar Mangkal,Perdagangan & Toko,Toko / Perdagangan Khusus,food_trade,4,4,4,0
+106,Jasa Cuci Motor,Jasa & Layanan,Jasa Profesional / Perawatan / Perbaikan,repair,4,5,5,0
+107,Usaha Ternak Domba,"Pertanian, Peternakan & Perikanan",Budidaya & Hasil Tani,livestock,4,6,5,4
+108,Usaha Sablon Kaos,Jasa & Layanan,Jasa Profesional / Perawatan / Perbaikan,print,4,5,4,0
+109,Toko Alat Kesehatan Kecil,Perdagangan & Toko,Toko / Perdagangan Khusus,medical_retail,4,5,4,0
+110,Sate Madura Keliling,Kuliner & Makanan,Masakan & Makanan Siap Saji,meal,4,9,6,4
+111,Mie Goreng Gerobak,Perdagangan & Toko,Toko / Perdagangan Khusus,retail,4,5,4,0
+112,Warung Nasi Goreng,Kuliner & Makanan,Masakan & Makanan Siap Saji,meal,4,10,6,4
+113,Es Cokelat,Minuman & Es,"Teh, Susu & Minuman Kekinian",tea,4,8,5,4
+114,Usaha Pastel,"Jajanan, Bakery & Produksi Pangan",Jajanan & Gorengan,fried_snack,4,7,5,4
+115,Produksi Dendeng,"Jajanan, Bakery & Produksi Pangan",Produksi Pangan & Bumbu,seasoning,4,7,5,4
+116,Warung Sarapan,Kuliner & Makanan,Masakan & Makanan Siap Saji,meal,4,9,6,4
+117,Pedagang Ikan Asin,Perdagangan & Toko,Toko / Perdagangan Khusus,food_trade,4,4,4,0
+118,Jasa Cuci Mobil,Jasa & Layanan,Jasa Profesional / Perawatan / Perbaikan,repair,4,5,5,0
+119,Usaha Ternak Lele,"Pertanian, Peternakan & Perikanan",Budidaya & Hasil Tani,livestock,4,6,5,4
+120,Usaha Bordir Rumahan,Jasa & Layanan,Jasa Profesional / Perawatan / Perbaikan,service,4,5,4,0
+121,Toko Herbal dan Rempah,Minuman & Es,Jamu & Minuman Herbal,herbal,5,4,4,5
+122,Sate Padang Keliling,Kuliner & Makanan,Masakan & Makanan Siap Saji,meal,4,9,6,4
+123,Kwetiau Goreng Gerobak,Kuliner & Makanan,Masakan & Makanan Siap Saji,meal,4,9,6,4
+124,Warung Mie Goreng,Perdagangan & Toko,Toko / Perdagangan Khusus,retail,4,5,4,0
+125,Susu Cokelat,Minuman & Es,"Teh, Susu & Minuman Kekinian",tea,4,8,5,4
+126,Usaha Lumpia,"Jajanan, Bakery & Produksi Pangan",Jajanan & Gorengan,fried_snack,4,7,5,4
+127,Produksi Emping,"Jajanan, Bakery & Produksi Pangan",Produksi Pangan & Bumbu,seasoning,4,7,5,4
+128,Warung Sayur Mangkal,Perdagangan & Toko,Toko / Perdagangan Khusus,retail,5,6,4,0
+129,Pedagang Seafood Segar,Perdagangan & Toko,Toko / Perdagangan Khusus,food_trade,4,4,4,0
+130,Jasa Tambal Ban,Jasa & Layanan,Jasa Profesional / Perawatan / Perbaikan,repair,4,5,5,0
+131,Usaha Budidaya Nila,"Pertanian, Peternakan & Perikanan",Budidaya & Hasil Tani,plant,4,6,5,4
+132,Usaha Konveksi Kecil,Jasa & Layanan,Jasa Profesional / Perawatan / Perbaikan,service,4,5,4,0
+133,Toko Perlengkapan Bayi dan Ibu,Perdagangan & Toko,Toko / Perdagangan Khusus,retail,4,5,4,0
+134,Seblak Keliling,Kuliner & Makanan,Masakan & Makanan Siap Saji,meal,4,9,6,4
+135,Bihun Goreng Gerobak,Kuliner & Makanan,Masakan & Makanan Siap Saji,meal,4,9,6,4
+136,Warung Kwetiau,Kuliner & Makanan,Masakan & Makanan Siap Saji,meal,4,9,6,4
+137,Thai Tea,Minuman & Es,"Teh, Susu & Minuman Kekinian",tea,4,9,5,4
+138,Usaha Martabak Mini,"Jajanan, Bakery & Produksi Pangan",Produksi Pangan & Bumbu,martabak,4,9,5,4
+139,Produksi Kerupuk,"Jajanan, Bakery & Produksi Pangan",Produksi Pangan & Bumbu,seasoning,4,7,5,4
+140,Warung Buah Kecil,Perdagangan & Toko,Toko / Perdagangan Khusus,retail,5,4,4,0
+141,Pedagang Udang,Perdagangan & Toko,Toko / Perdagangan Khusus,food_trade,4,4,4,0
+142,Jasa Bengkel Motor Kecil,Jasa & Layanan,Jasa Profesional / Perawatan / Perbaikan,repair,4,5,5,0
+143,Usaha Budidaya Gurame,"Pertanian, Peternakan & Perikanan",Budidaya & Hasil Tani,plant,4,6,5,4
+144,Usaha Tas Rajut,Kerajinan & Produk Kreatif,Kerajinan & Produksi Kreatif,craft,4,6,5,4
+145,Bakso Keliling,Kuliner & Makanan,Masakan & Makanan Siap Saji,meal,4,9,6,4
+146,Bakmi Jawa Gerobak,Kuliner & Makanan,Masakan & Makanan Siap Saji,meal,4,9,6,4
+147,Warung Bakmi,Kuliner & Makanan,Masakan & Makanan Siap Saji,meal,4,9,6,4
+148,Green Tea Latte,Minuman & Es,"Teh, Susu & Minuman Kekinian",tea,4,9,5,4
+149,Usaha Martabak Telur,"Jajanan, Bakery & Produksi Pangan",Produksi Pangan & Bumbu,martabak,4,9,5,4
+150,Produksi Keripik,"Jajanan, Bakery & Produksi Pangan",Produksi Pangan & Bumbu,seasoning,4,7,5,4
+151,Warung Telur Eceran,Perdagangan & Toko,Toko / Perdagangan Khusus,retail,4,5,4,0
+152,Pedagang Cumi,Perdagangan & Toko,Toko / Perdagangan Khusus,food_trade,4,4,4,0
+153,Jasa Servis HP,Jasa & Layanan,Jasa Profesional / Perawatan / Perbaikan,repair,4,5,5,0
+154,Usaha Budidaya Ikan Mas,"Pertanian, Peternakan & Perikanan",Budidaya & Hasil Tani,plant,4,6,5,4
+155,Usaha Anyaman Bambu,Kerajinan & Produk Kreatif,Kerajinan & Produksi Kreatif,craft,4,6,5,4
+156,Mie Ayam Keliling,Kuliner & Makanan,Masakan & Makanan Siap Saji,meal,4,9,6,4
+157,Nasi Kebuli Gerobak,Kuliner & Makanan,Masakan & Makanan Siap Saji,meal,4,9,6,4
+158,Warung Bakso,Kuliner & Makanan,Masakan & Makanan Siap Saji,meal,4,9,6,4
+159,Boba Milk Tea,Minuman & Es,"Teh, Susu & Minuman Kekinian",tea,4,9,5,4
+160,Usaha Martabak Manis,"Jajanan, Bakery & Produksi Pangan",Produksi Pangan & Bumbu,martabak,4,9,5,4
+161,Produksi Kue Kering Lebaran,"Jajanan, Bakery & Produksi Pangan",Bakery & Kue,bakery,4,8,5,4
+162,Warung Gas LPG,Perdagangan & Toko,Toko / Perdagangan Khusus,retail,4,5,4,0
+163,Pedagang Sayuran Mangkal,Perdagangan & Toko,Toko / Perdagangan Khusus,food_trade,5,6,4,0
+164,Jasa Servis Elektronik,Jasa & Layanan,Jasa Profesional / Perawatan / Perbaikan,repair,4,5,5,0
+165,Usaha Budidaya Ikan Hias,"Pertanian, Peternakan & Perikanan",Budidaya & Hasil Tani,plant,4,6,5,4
+166,Usaha Kerajinan Kayu,Kerajinan & Produk Kreatif,Kerajinan & Produksi Kreatif,craft,4,6,5,4
+167,Cilok Keliling,"Jajanan, Bakery & Produksi Pangan",Jajanan & Gorengan,fried_snack,4,7,5,4
+168,Nasi Padang Gerobak,Kuliner & Makanan,Masakan & Makanan Siap Saji,meal,4,9,6,4
+169,Warung Mie Ayam,Kuliner & Makanan,Masakan & Makanan Siap Saji,meal,4,9,6,4
+170,Brown Sugar Boba,Minuman & Es,"Teh, Susu & Minuman Kekinian",tea,4,9,5,4
+171,Usaha Terang Bulan Mini,"Jajanan, Bakery & Produksi Pangan",Produksi Pangan & Bumbu,martabak,4,9,5,4
+172,Produksi Nastar,"Jajanan, Bakery & Produksi Pangan",Bakery & Kue,bakery,4,8,5,4
+173,Warung Air Mineral,Perdagangan & Toko,Toko / Perdagangan Khusus,food_trade,4,4,4,0
+174,Pedagang Buah Mangkal,Perdagangan & Toko,Toko / Perdagangan Khusus,food_trade,5,4,4,0
+175,Jasa Laundry Kiloan,Jasa & Layanan,Jasa Profesional / Perawatan / Perbaikan,laundry,4,5,5,0
+176,Usaha Pembenihan Ikan,"Pertanian, Peternakan & Perikanan",Budidaya & Hasil Tani,livestock,4,6,5,4
+177,Usaha Kerajinan Resin,Kerajinan & Produk Kreatif,Kerajinan & Produksi Kreatif,craft,4,6,5,4
+178,Cilung Keliling,"Jajanan, Bakery & Produksi Pangan",Jajanan & Gorengan,fried_snack,4,7,5,4
+179,Nasi Campur Gerobak,Kuliner & Makanan,Masakan & Makanan Siap Saji,meal,4,9,6,4
+180,Warung Soto Ayam,Kuliner & Makanan,Masakan & Makanan Siap Saji,meal,4,9,6,4
+181,Cappuccino Cincau,Minuman & Es,"Teh, Susu & Minuman Kekinian",tea,4,9,5,4
+182,Usaha Roti Bakar,"Jajanan, Bakery & Produksi Pangan",Produksi Pangan & Bumbu,martabak,4,9,5,4
+183,Produksi Kastengel,"Jajanan, Bakery & Produksi Pangan",Bakery & Kue,bakery,4,8,5,4
+184,Warung Plastik,Perdagangan & Toko,Toko / Perdagangan Khusus,retail,4,5,4,0
+185,Pedagang Beras Eceran,Perdagangan & Toko,Toko / Perdagangan Khusus,food_trade,4,5,4,0
+186,Jasa Laundry Sepatu,Jasa & Layanan,Jasa Profesional / Perawatan / Perbaikan,laundry,4,5,5,0
+187,Usaha Pakan Ikan,"Pertanian, Peternakan & Perikanan",Budidaya & Hasil Tani,livestock,4,6,5,4
+188,Usaha Lilin Aromaterapi,Kerajinan & Produk Kreatif,Kerajinan & Produksi Kreatif,craft,4,6,5,4
+189,Telur Gulung Keliling,"Jajanan, Bakery & Produksi Pangan",Jajanan & Gorengan,fried_snack,4,7,5,4
+190,Nasi Kuning Gerobak,Kuliner & Makanan,Masakan & Makanan Siap Saji,meal,4,9,6,4
+191,Warung Soto Betawi,Kuliner & Makanan,Masakan & Makanan Siap Saji,meal,4,9,6,4
+192,Alpukat Kocok,Minuman & Es,"Jus, Es & Minuman Buah",juice,4,9,6,4
+193,Usaha Roti Kukus,"Jajanan, Bakery & Produksi Pangan",Bakery & Kue,bakery,4,8,5,4
+194,Produksi Putri Salju,"Jajanan, Bakery & Produksi Pangan",Bakery & Kue,bakery,4,8,5,4
+195,Warung Perlengkapan Dapur,Perdagangan & Toko,Toko / Perdagangan Khusus,retail,4,5,4,0
+196,Pedagang Gula dan Tepung,Perdagangan & Toko,Toko / Perdagangan Khusus,food_trade,4,4,4,0
+197,Jasa Setrika Pakaian,Jasa & Layanan,Jasa Profesional / Perawatan / Perbaikan,laundry,4,5,5,0
+198,Usaha Pakan Ternak,"Pertanian, Peternakan & Perikanan",Budidaya & Hasil Tani,livestock,4,6,5,4
+199,Usaha Sabun Handmade,Kerajinan & Produk Kreatif,Kerajinan & Produksi Kreatif,craft,4,6,5,4
+200,Martabak Telur Mini Keliling,"Jajanan, Bakery & Produksi Pangan",Produksi Pangan & Bumbu,martabak,4,9,5,4
+201,Nasi Liwet Gerobak,Kuliner & Makanan,Masakan & Makanan Siap Saji,meal,4,9,6,4
+202,Warung Rawon,Kuliner & Makanan,Masakan & Makanan Siap Saji,meal,4,9,6,4
+203,Jus Alpukat,Minuman & Es,"Jus, Es & Minuman Buah",juice,4,9,6,4
+204,Usaha Donat Kampung,"Jajanan, Bakery & Produksi Pangan",Bakery & Kue,bakery,4,8,5,4
+205,Produksi Cookies,"Jajanan, Bakery & Produksi Pangan",Bakery & Kue,bakery,4,8,5,4
+206,Toko Alat Tulis Kecil,Perdagangan & Toko,Toko / Perdagangan Khusus,retail,4,5,4,0
+207,Pedagang Minyak Goreng Curah,Perdagangan & Toko,Toko / Perdagangan Khusus,food_trade,4,4,4,0
+208,Jasa Jahit Pakaian,Jasa & Layanan,Jasa Profesional / Perawatan / Perbaikan,service,4,5,4,0
+209,Usaha Sayur Hidroponik,"Pertanian, Peternakan & Perikanan",Budidaya & Hasil Tani,plant,5,6,4,5
+210,Usaha Kerajinan Kulit,Kerajinan & Produk Kreatif,Kerajinan & Produksi Kreatif,craft,4,6,5,4
+211,Martabak Manis Keliling,"Jajanan, Bakery & Produksi Pangan",Produksi Pangan & Bumbu,martabak,4,9,5,4
+212,Nasi Bakar Gerobak,Kuliner & Makanan,Masakan & Makanan Siap Saji,meal,4,9,6,4
+213,Warung Sop Buntut,Kuliner & Makanan,Masakan & Makanan Siap Saji,meal,4,9,6,4
+214,Jus Mangga,Minuman & Es,"Jus, Es & Minuman Buah",juice,4,9,6,4
+215,Usaha Donat Premium,"Jajanan, Bakery & Produksi Pangan",Bakery & Kue,bakery,4,8,5,4
+216,Produksi Brownies,"Jajanan, Bakery & Produksi Pangan",Bakery & Kue,bakery,4,8,5,4
+217,Toko Mainan Anak,Perdagangan & Toko,Toko / Perdagangan Khusus,retail,4,5,4,0
+218,Pedagang Bumbu Dapur,"Jajanan, Bakery & Produksi Pangan",Produksi Pangan & Bumbu,seasoning,5,4,4,5
+219,Jasa Permak Jeans,Jasa & Layanan,Jasa Profesional / Perawatan / Perbaikan,service,4,5,4,0
+220,Usaha Tanaman Hias,"Pertanian, Peternakan & Perikanan",Budidaya & Hasil Tani,plant,4,6,5,4
+221,Usaha Pot Tanaman,"Pertanian, Peternakan & Perikanan",Budidaya & Hasil Tani,plant,4,6,5,4
+222,Tahu Bulat Keliling,"Jajanan, Bakery & Produksi Pangan",Jajanan & Gorengan,fried_snack,4,4,4,4
+223,Nasi Kotak Gerobak,Kuliner & Makanan,Masakan & Makanan Siap Saji,meal,4,9,6,4
+224,Warung Sop Iga,Kuliner & Makanan,Masakan & Makanan Siap Saji,meal,4,9,6,4
+225,Jus Jambu,Minuman & Es,"Jus, Es & Minuman Buah",juice,4,9,6,4
+226,Usaha Pukis,"Jajanan, Bakery & Produksi Pangan",Jajanan & Gorengan,traditional_snack,4,7,5,4
+227,Produksi Bolu,"Jajanan, Bakery & Produksi Pangan",Bakery & Kue,bakery,4,8,5,4
+228,Toko Aksesoris HP,Perdagangan & Toko,Toko / Perdagangan Khusus,retail,4,5,4,0
+229,Pedagang Cabai dan Bawang,Perdagangan & Toko,Toko / Perdagangan Khusus,food_trade,4,4,4,0
+230,Jasa Obras dan Bordir,Jasa & Layanan,Jasa Profesional / Perawatan / Perbaikan,service,4,5,4,0
+231,Usaha Bibit Tanaman,"Pertanian, Peternakan & Perikanan",Budidaya & Hasil Tani,plant,4,6,5,4
+232,Usaha Dekorasi Rumah,Kerajinan & Produk Kreatif,Kerajinan & Produksi Kreatif,craft,4,6,5,4
+233,Cireng Keliling,"Jajanan, Bakery & Produksi Pangan",Jajanan & Gorengan,fried_snack,4,7,5,4
+234,Soto Ayam Gerobak,Kuliner & Makanan,Masakan & Makanan Siap Saji,meal,4,9,6,4
+235,Warung Empal Gentong,Perdagangan & Toko,Toko / Perdagangan Khusus,retail,4,5,4,0
+236,Jus Melon,Minuman & Es,"Jus, Es & Minuman Buah",juice,4,9,6,4
+237,Usaha Kue Cubit,"Jajanan, Bakery & Produksi Pangan",Jajanan & Gorengan,traditional_snack,4,7,5,4
+238,Produksi Cake Ulang Tahun,"Jajanan, Bakery & Produksi Pangan",Bakery & Kue,bakery,4,4,4,4
+239,Toko Pulsa dan Paket Data,Perdagangan & Toko,Toko / Perdagangan Khusus,retail,4,5,4,0
+240,Pedagang Tahu Putih,Perdagangan & Toko,Toko / Perdagangan Khusus,food_trade,4,4,4,0
+241,Jasa Pengetikan,Jasa & Layanan,Jasa Profesional / Perawatan / Perbaikan,print,4,5,4,0
+242,Usaha Jamur Tiram,Minuman & Es,Jamu & Minuman Herbal,herbal,4,9,5,4
+243,Usaha Bunga Artificial,Kerajinan & Produk Kreatif,Kerajinan & Produksi Kreatif,craft,4,6,5,4
+244,Gorengan Keliling,"Jajanan, Bakery & Produksi Pangan",Jajanan & Gorengan,fried_snack,4,7,5,4
+245,Soto Betawi Gerobak,Kuliner & Makanan,Masakan & Makanan Siap Saji,meal,4,9,6,4
+246,Warung Tongseng Kambing,Perdagangan & Toko,Toko / Perdagangan Khusus,retail,4,5,4,0
+247,Jus Semangka,Minuman & Es,"Jus, Es & Minuman Buah",juice,4,9,6,4
+248,Usaha Kue Ape,"Jajanan, Bakery & Produksi Pangan",Jajanan & Gorengan,traditional_snack,4,7,5,4
+249,Produksi Roti Manis,"Jajanan, Bakery & Produksi Pangan",Bakery & Kue,bakery,4,8,5,4
+250,Toko Perlengkapan Bayi,Perdagangan & Toko,Toko / Perdagangan Khusus,retail,4,5,4,0
+251,Pedagang Tempe,Perdagangan & Toko,Toko / Perdagangan Khusus,food_trade,4,4,4,0
+252,Jasa Fotokopi Rumahan,Minuman & Es,Kopi & Kedai Kopi,coffee,4,9,5,4
+253,Usaha Microgreens,"Pertanian, Peternakan & Perikanan",Budidaya & Hasil Tani,plant,4,6,5,4
+254,Usaha Mahar dan Hantaran,Kerajinan & Produk Kreatif,Kerajinan & Produksi Kreatif,craft,4,6,5,4
+255,Roti Bakar Keliling,"Jajanan, Bakery & Produksi Pangan",Produksi Pangan & Bumbu,martabak,4,9,5,4
+256,Rawon Gerobak,Kuliner & Makanan,Masakan & Makanan Siap Saji,meal,4,9,6,4
+257,Warung Gulai,Kuliner & Makanan,Masakan & Makanan Siap Saji,meal,4,9,6,4
+258,Jus Buah Naga,Minuman & Es,"Jus, Es & Minuman Buah",juice,4,9,6,4
+259,Usaha Kue Pancong,"Jajanan, Bakery & Produksi Pangan",Jajanan & Gorengan,traditional_snack,4,7,5,4
+260,Produksi Roti Tawar,"Jajanan, Bakery & Produksi Pangan",Bakery & Kue,bakery,4,8,5,4
+261,Toko Perlengkapan Sekolah,Perdagangan & Toko,Toko / Perdagangan Khusus,retail,4,5,4,0
+262,Pedagang Tahu dan Tempe Mangkal,Perdagangan & Toko,Toko / Perdagangan Khusus,food_trade,4,4,4,0
+263,Jasa Print Dokumen,Jasa & Layanan,Jasa Profesional / Perawatan / Perbaikan,print,4,5,4,0
+264,Usaha Cabai Rumahan,"Pertanian, Peternakan & Perikanan",Budidaya & Hasil Tani,plant,4,6,5,4
+265,Jagung Rebus dan Bakar Keliling,"Jajanan, Bakery & Produksi Pangan",Jajanan & Gorengan,traditional_snack,4,7,5,4
+266,Sop Ayam Gerobak,Kuliner & Makanan,Masakan & Makanan Siap Saji,meal,4,9,6,4
+267,Warung Rendang,Kuliner & Makanan,Masakan & Makanan Siap Saji,meal,4,9,6,4
+268,Jus Sirsak,Minuman & Es,"Jus, Es & Minuman Buah",juice,4,9,6,4
+269,Usaha Serabi,"Jajanan, Bakery & Produksi Pangan",Jajanan & Gorengan,traditional_snack,4,7,5,4
+270,Produksi Roti Isi,"Jajanan, Bakery & Produksi Pangan",Bakery & Kue,bakery,4,8,5,4
+271,Toko Bumbu Dapur,"Jajanan, Bakery & Produksi Pangan",Produksi Pangan & Bumbu,seasoning,5,4,4,5
+272,Pedagang Kelapa Parut,Perdagangan & Toko,Toko / Perdagangan Khusus,food_trade,4,4,4,0
+273,Jasa Laminasi dan Jilid,Jasa & Layanan,Jasa Profesional / Perawatan / Perbaikan,print,4,5,4,0
+274,Usaha Bawang Merah,"Pertanian, Peternakan & Perikanan",Budidaya & Hasil Tani,plant,4,6,5,4
+275,Kacang Rebus Keliling,"Jajanan, Bakery & Produksi Pangan",Jajanan & Gorengan,traditional_snack,4,7,5,4
+276,Sop Iga Gerobak,Kuliner & Makanan,Masakan & Makanan Siap Saji,meal,4,9,6,4
+277,Warung Masakan Padang,Kuliner & Makanan,Masakan & Makanan Siap Saji,meal,4,9,6,4
+278,Jus Wortel,Minuman & Es,"Jus, Es & Minuman Buah",juice,4,8,6,4
+279,Usaha Kue Putu,"Jajanan, Bakery & Produksi Pangan",Jajanan & Gorengan,traditional_snack,4,7,5,4
+280,Produksi Donat,"Jajanan, Bakery & Produksi Pangan",Bakery & Kue,bakery,4,8,5,4
+281,Toko Beras Eceran,Perdagangan & Toko,Toko / Perdagangan Khusus,food_trade,4,5,4,0
+282,Pedagang Santan Segar,Perdagangan & Toko,Toko / Perdagangan Khusus,food_trade,4,4,4,0
+283,Jasa Desain Grafis,Jasa & Layanan,Jasa Profesional / Perawatan / Perbaikan,print,4,4,4,0
+284,Usaha Budidaya Jahe,"Pertanian, Peternakan & Perikanan",Budidaya & Hasil Tani,plant,4,6,5,4
+285,Es Cendol dan Dawet Keliling,Minuman & Es,"Jus, Es & Minuman Buah",juice,4,8,6,4
+286,Tongseng Gerobak,Perdagangan & Toko,Toko / Perdagangan Khusus,retail,4,5,4,0
+287,Warung Nasi Rames,Kuliner & Makanan,Masakan & Makanan Siap Saji,meal,4,9,6,4
+288,Jus Tomat,Minuman & Es,"Jus, Es & Minuman Buah",juice,4,9,6,4
+289,Usaha Klepon,"Jajanan, Bakery & Produksi Pangan",Jajanan & Gorengan,traditional_snack,4,7,5,4
+290,Produksi Pastry,"Jajanan, Bakery & Produksi Pangan",Bakery & Kue,bakery,4,8,5,4
+291,Toko Minyak Goreng,Perdagangan & Toko,Toko / Perdagangan Khusus,food_trade,4,4,4,0
+292,Pedagang Rempah Kering,Perdagangan & Toko,Toko / Perdagangan Khusus,food_trade,5,4,4,0
+293,Jasa Foto Produk,Jasa & Layanan,Jasa Profesional / Perawatan / Perbaikan,print,4,4,5,0
+294,Usaha Budidaya Kunyit,"Pertanian, Peternakan & Perikanan",Budidaya & Hasil Tani,plant,4,5,5,4
+295,Es Doger Keliling,Minuman & Es,"Jus, Es & Minuman Buah",juice,4,11,5,4
+296,Gulai Ayam Gerobak,Kuliner & Makanan,Masakan & Makanan Siap Saji,meal,4,9,6,4
+297,Warung Nasi Campur,Kuliner & Makanan,Masakan & Makanan Siap Saji,meal,4,9,6,4
+298,Sop Buah,Minuman & Es,"Jus, Es & Minuman Buah",juice,4,9,6,4
+299,Usaha Onde-onde,"Jajanan, Bakery & Produksi Pangan",Jajanan & Gorengan,traditional_snack,4,7,5,4
+300,Produksi Risoles Frozen,"Jajanan, Bakery & Produksi Pangan",Jajanan & Gorengan,fried_snack,4,7,5,4
+301,Toko Telur,Perdagangan & Toko,Toko / Perdagangan Khusus,food_trade,4,4,4,0

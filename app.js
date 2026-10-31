@@ -80,7 +80,7 @@ async function migrateMasterV3(){
  if(!master||!Array.isArray(businesses)||!businesses.length)return;
  const originalId=activeBusinessId,originalProfile=currentProfile;let changed=false;
  for(const business of businesses){
-  if(Number(business.masterDataVersion||0)>=5)continue;
+  if(Number(business.masterDataVersion||0)>=6)continue;
   activeBusinessId=business.id;currentProfile=business;
   const pid=Number(business.packageId||0);if(!pid)continue;
   const templateItems=master.items.filter(i=>Number(i.paket_id)===pid&&i.aktif!==0);
@@ -109,14 +109,18 @@ async function migrateMasterV3(){
    if(Number(prod.cost||0)<=0&&Number(item.harga_beli||0)>0){prod.cost=Number(item.harga_beli);prod.referenceCost=true;prod.costMode=(master.recipes||[]).some(r=>Number(r.paket_id)===pid&&Number(r.product_template_id)===Number(item.id)&&!isSimpleDrinkProductName(item.nama_item))?'auto':'manual';await put('products',prod);changed=true}else if(Number(prod.cost||0)>0&&!prod.costMode){prod.costMode='manual';await put('products',prod);changed=true}
    productMap.set(Number(item.id),Number(prod.id));
   }
+  // v4.0.1: archive obsolete master-seeded catalog rows without deleting IDs/history.
+  const activeTemplateIds=new Set(templateItems.map(i=>Number(i.id)));
+  for(const row of products){if(row.source==='master'&&row.templateItemId&& !activeTemplateIds.has(Number(row.templateItemId)) && row.active!==false){row.active=false;row.forSale=false;row.legacyCatalogArchived=true;row.legacyCatalogArchivedAt=dateNow();await put('products',row);changed=true}}
+  for(const row of materials){if(row.source==='master'&&row.templateItemId&& !activeTemplateIds.has(Number(row.templateItemId)) && row.active!==false){row.active=false;row.legacyCatalogArchived=true;row.legacyCatalogArchivedAt=dateNow();await put('materials',row);changed=true}}
   // Add only missing recipe templates. Existing user recipes are left untouched.
   for(const r of (master.recipes||[]).filter(x=>Number(x.paket_id)===pid)){
    const productId=productMap.get(Number(r.product_template_id));if(!productId)continue;
    if(recipes.some(x=>Number(x.productId)===productId))continue;
-   const lines=(r.lines||[]).map(l=>{const materialId=materialMap.get(Number(l.material_template_id))||Number(byTemplate(materials,l.material_template_id)?.id);const material=materials.find(m=>Number(m.id)===Number(materialId));return {materialId,qty:Number(l.qty||0),unit:material?.unit||l.unit||''}}).filter(l=>l.materialId&&l.qty>0);
+   const lines=(r.lines||[]).map(l=>{const materialId=materialMap.get(Number(l.material_template_id))||Number(byTemplate(materials,l.material_template_id)?.id);const material=materials.find(m=>Number(m.id)===Number(materialId));return {materialId,qty:Number(l.qty||0),unit:material?.unit||l.unit||''}}).filter(l=>l.materialId&&Number.isFinite(l.qty)&&l.qty>=0);
    if(lines.length){await add('recipes',{productId,lines,mode:'auto',templateRecipeId:`v3-${r.product_template_id}`,recipeBasis:r.recipe_basis||'unit',targetFinishedGrams:Number(r.target_finished_grams)||0,expectedYieldUnits:Number(r.expected_yield_units)||1,yieldUnit:r.yield_unit||'Pcs',recipeStatus:r.recipe_status||'referensi_awal',formulaVersion:Number(r.formula_version)||1,sourceRefs:Array.isArray(r.source_refs)?r.source_refs:[],sourceNote:r.source_note||'',instructions:r.instructions||'',instructionStatus:r.instructions?'panduan_referensi':'panduan_awal',createdAt:dateNow(),updatedAt:dateNow()});recipes.push({productId,lines});const prod=products.find(x=>Number(x.id)===productId);if(prod&&Number(prod.cost||0)<=0){prod.costMode='auto';await put('products',prod)}changed=true}
   }
-  business.masterDataVersion=5;business.packageVersion='3.0';business.masterUpdatedAt=dateNow();changed=true;
+  business.masterDataVersion=6;business.packageVersion='4.0.1';business.masterUpdatedAt=dateNow();changed=true;
  }
  activeBusinessId=originalId;businesses=businesses.map(b=>({...b}));currentProfile=businesses.find(b=>String(b.id)===String(originalId))||originalProfile;
  if(changed)await saveBusinessList();
@@ -763,7 +767,7 @@ async function setupBusiness(){
  const templateItems=master.items.filter(i=>Number(i.paket_id)===pid&&i.aktif!==0);
  if(!templateItems.length){toast('Template ini belum memiliki item awal. Data usaha tidak dibuat agar tidak kosong tanpa sengaja.');return}
  const id='biz-'+Date.now().toString(36)+'-'+Math.random().toString(36).slice(2,7);
- const profile={id,key:'profile-'+id,name,business:pack.nama_usaha,packageId:pid,packageVersion:master.catalog_version||'4.0.0',masterDataVersion:4,compositionMode:'auto',transactionPrefix:makeTransactionPrefix(name),nextTransactionNumber:1,address:'',phone:'',footer:'Terima kasih atas kunjungan Anda.',createdAt:dateNow()};
+ const profile={id,key:'profile-'+id,name,business:pack.nama_usaha,packageId:pid,packageVersion:master.catalog_version||'4.0.0',masterDataVersion:6,compositionMode:'auto',transactionPrefix:makeTransactionPrefix(name),nextTransactionNumber:1,address:'',phone:'',footer:'Terima kasih atas kunjungan Anda.',createdAt:dateNow()};
  const tx=db.transaction(['settings','products','materials','assets','recipes'],'readwrite');
  const settings=tx.objectStore('settings'),next=[...businesses,profile];
  settings.put({key:'businesses',value:next});settings.put({key:'activeBusinessId',value:id});settings.put({key:'licenseSlots',value:licenseSlots});
