@@ -1,0 +1,31 @@
+VALIDASI STATIS UNIVERSAL UMKM PRO v4.0.0
+=========================================
+
+Jumlah profil: 300
+Kelompok utama: 11
+Jumlah item: 7904
+ID item lama dipertahankan: 6510
+ID item baru: 1394
+Jumlah resep: 1164
+Resep draft aktif: 1149
+Resep dinonaktifkan: 15
+Alur kerja: 1456
+
+Hasil pemeriksaan:
+- JSON valid: LULUS
+- Sintaks app.js dan sw.js (node --check): LULUS
+- Semua ID paket lama tetap ada: LULUS
+- Semua ID item lama tetap ada: LULUS
+- Perubahan role pada ID item lama: 0
+- Semua ID resep lama tetap ada: LULUS
+- Semua ID alur kerja lama tetap ada: LULUS
+- Referensi resep aktif ke produk dan bahan aktif dalam paket yang sama: LULUS
+- Duplikasi resep aktif untuk produk yang sama dalam paket: 0
+- Nama item duplikat dalam peran yang sama: 0
+- Paket tanpa item aktif/yang dapat dijual: 0
+
+Batasan validasi:
+- Pemeriksaan ini statis, bukan pengujian browser end-to-end.
+- Semua resep aktif masih draft dan kuantitasnya 0; HPP produksi belum valid sampai takaran aktual, hasil jadi, dan susut diisi lalu disimpan.
+- Alur jasa dan pertanian/peternakan/perikanan tidak otomatis memakai resep produksi; biaya layanan dan hasil panen perlu diuji sesuai fitur yang tersedia.
+- Sebelum menerapkan ke profil lokal yang sudah digunakan, ekspor backup dan tinjau KATALOG_MIGRASI_MAP.csv.

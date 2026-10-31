@@ -1,5 +1,5 @@
 'use strict';
-window.APP_BUILD_VERSION='3.3.121';document.documentElement.dataset.appVersion='3.3.121';
+window.APP_BUILD_VERSION='4.0.0';document.documentElement.dataset.appVersion='4.0.0';
 const DB_NAME='UniversalUMKMProOffline', DB_VERSION=5;
 let db, master, cart=[], lastReceipt=null, selectedPackageId=null, currentProfile=null, recipeDraft=[], businesses=[], activeBusinessId=null, licenseSlots=1, purchaseSearchSeq=0;
 let activeProductWorkspaceId = null;
@@ -83,7 +83,7 @@ async function migrateMasterV3(){
   if(Number(business.masterDataVersion||0)>=5)continue;
   activeBusinessId=business.id;currentProfile=business;
   const pid=Number(business.packageId||0);if(!pid)continue;
-  const templateItems=master.items.filter(i=>Number(i.paket_id)===pid);
+  const templateItems=master.items.filter(i=>Number(i.paket_id)===pid&&i.aktif!==0);
   let products=await getAll('products'),materials=await getAll('materials'),assets=await getAll('assets'),recipes=await getAll('recipes');
   const byTemplate=(rows,templateId)=>rows.find(x=>Number(x.templateItemId)===Number(templateId));
   const productMap=new Map(),materialMap=new Map();
@@ -110,7 +110,7 @@ async function migrateMasterV3(){
    productMap.set(Number(item.id),Number(prod.id));
   }
   // Add only missing recipe templates. Existing user recipes are left untouched.
-  for(const r of (master.recipes||[]).filter(x=>Number(x.paket_id)===pid&&!isSimpleDrinkProductName(master.items.find(i=>Number(i.id)===Number(x.product_template_id)&&Number(i.paket_id)===pid)?.nama_item))){
+  for(const r of (master.recipes||[]).filter(x=>Number(x.paket_id)===pid)){
    const productId=productMap.get(Number(r.product_template_id));if(!productId)continue;
    if(recipes.some(x=>Number(x.productId)===productId))continue;
    const lines=(r.lines||[]).map(l=>{const materialId=materialMap.get(Number(l.material_template_id))||Number(byTemplate(materials,l.material_template_id)?.id);const material=materials.find(m=>Number(m.id)===Number(materialId));return {materialId,qty:Number(l.qty||0),unit:material?.unit||l.unit||''}}).filter(l=>l.materialId&&l.qty>0);
@@ -241,7 +241,7 @@ async function migrateMasterRecipeCompleteness(){
  for(const profile of businesses){
   const pid=Number(profile.packageId||0);if(!pid)continue;
   activeBusinessId=profile.id;currentProfile=profile;
-  const templateRecipes=(master.recipes||[]).filter(r=>Number(r.paket_id)===pid&&!isSimpleDrinkProductName(master.items.find(i=>Number(i.id)===Number(r.product_template_id)&&Number(i.paket_id)===pid)?.nama_item));
+  const templateRecipes=(master.recipes||[]).filter(r=>Number(r.paket_id)===pid);
   if(!templateRecipes.length)continue;
   let materials=await getAll('materials'),products=await getAll('products'),recipes=await getAll('recipes');
   const materialMap=new Map();
@@ -369,7 +369,7 @@ async function migrateRetailCatalog(){
  for(const business of businesses){
   if(Number(business.packageId)!==14||Number(business.retailCatalogVersion||0)>=3)continue;
   activeBusinessId=business.id;currentProfile=business;
-  const rows=master.items.filter(i=>Number(i.paket_id)===14&&i.kelompok!=='Operasional'&&i.bisa_dijual);
+  const rows=master.items.filter(i=>Number(i.paket_id)===14&&i.aktif!==0&&i.kelompok!=='Operasional'&&i.bisa_dijual);
   let products=await getAll('products');
   for(const item of rows){
    let product=products.find(x=>Number(x.templateItemId)===Number(item.id));
@@ -399,7 +399,7 @@ async function migrateBakeryCatalog(){
  for(const profile of businesses){
   if(Number(profile.packageId)!==12||Number(profile.bakeryCatalogVersion||0)>=1)continue;
   activeBusinessId=profile.id;currentProfile=profile;
-  const templateItems=(master.items||[]).filter(i=>Number(i.paket_id)===12);
+  const templateItems=(master.items||[]).filter(i=>Number(i.paket_id)===12&&i.aktif!==0);
   let products=await getAll('products'),materials=await getAll('materials'),assets=await getAll('assets');
   const productMap=new Map(),materialMap=new Map();
   // First map/add ingredients so all recipes can resolve to the same material record.
@@ -440,7 +440,7 @@ async function migrateBakeryCompositionSync(){
  for(const profile of businesses){
   if(Number(profile.packageId)!==12||Number(profile.bakeryCompositionSyncVersion||0)>=4)continue;
   activeBusinessId=profile.id;currentProfile=profile;
-  const templateItems=(master.items||[]).filter(i=>Number(i.paket_id)===12);
+  const templateItems=(master.items||[]).filter(i=>Number(i.paket_id)===12&&i.aktif!==0);
   let products=await getAll('products'),materials=await getAll('materials'),recipes=await getAll('recipes');
   const productMap=new Map(),materialMap=new Map();
   // First, make sure every recipe ingredient has a single corresponding Bahan/Belanja record.
@@ -527,7 +527,7 @@ async function migrateBakeryCompositionSync(){
 async function migrateWarungMakanPecelLeleCatalog(){
  if(!master||!Array.isArray(businesses))return;
  const originalId=activeBusinessId,originalProfile=currentProfile;
- const pid=20,templateItems=(master.items||[]).filter(i=>Number(i.paket_id)===pid);
+ const pid=20,templateItems=(master.items||[]).filter(i=>Number(i.paket_id)===pid&&i.aktif!==0);
  for(const profile of businesses){
   if(Number(profile.packageId)!==pid||Number(profile.warungMakanPecelLeleCatalogVersion||0)>=1)continue;
   activeBusinessId=profile.id;currentProfile=profile;
@@ -568,7 +568,7 @@ async function migrateWarungMakanPecelLeleCatalog(){
 async function migrateWarungKopiCatalog(){
  if(!master||!Array.isArray(businesses))return;
  const originalId=activeBusinessId,originalProfile=currentProfile;
- const pkgItems=master.items.filter(i=>Number(i.paket_id)===18);
+ const pkgItems=master.items.filter(i=>Number(i.paket_id)===18&&i.aktif!==0);
  for(const profile of businesses){
   if(Number(profile.packageId)!==18||Number(profile.warungKopiCatalogVersion||0)>=2)continue;
   activeBusinessId=profile.id;currentProfile=profile;
@@ -750,7 +750,7 @@ async function migrateRecipesToStandalone(){
 }
 async function boot(){try{db=await openDB();master=await loadMaster();await migrateMultiBusiness();await migrateMasterV3();await migrateTahuIsiTauge();await migrateBakeryCatalog();await migrateBakeryCompositionSync();await migrateWarungKopiCatalog();await migrateWarungMakanPecelLeleCatalog();await migrateRetailCatalog();await migrateDuplicateSaleInventory();await migrateUnrecordedTemplateProductStock();await migratePremiumBatchRecipes();await migrateMasterRecipeCompleteness();await migrateResaleProductRecipes();await migrateCateringEquipmentToAssets();await migrateDuplicateMaterialsAndRecipeLines();await migrateRecipesToStandalone();await migratePrimaryStockUnits();await ensureTransactionNumbering();renderBusinessCatalog();$('nav').hidden=!currentProfile;if(currentProfile){$('shopTitle').textContent=currentProfile.name;$('headerSubtitle').textContent=currentProfile.business+' • data lokal';showPage(currentProfile.setupWizard&&currentProfile.setupWizard.finishedAt?'home':'wizard')}else{$('shopTitle').textContent='Pilih Jenis Usaha';$('headerSubtitle').textContent='Satu aplikasi untuk beberapa usaha';showPage('home')}}catch(e){console.error(e);alert('Aplikasi belum siap. Buka melalui alamat HTTPS dan muat ulang saat online. Detail: '+e.message)}}
 function businessIcon(name){const n=(name||'').toLowerCase();if(n.includes('gorengan')||n.includes('camilan'))return ['🍘','amber'];if(n.includes('kopi')||n.includes('minuman'))return ['☕','amber'];if(n.includes('nasi uduk')||n.includes('sarapan'))return ['🍳','orange'];if(n.includes('pecel lele')||n.includes('warung makan'))return ['🍛','orange'];if(n.includes('bakso')||n.includes('mi ayam')||n.includes('soto'))return ['🍜','orange'];if(n.includes('jajanan jalanan'))return ['🍢','rose'];if(n.includes('martabak')||n.includes('roti bakar'))return ['🥞','amber'];if(n.includes('jus buah')||n.includes('es campur'))return ['🧃','green'];if(n.includes('café')||n.includes('cafe')||n.includes('resto'))return ['☕','amber'];if(n.includes('catering'))return ['🍱','orange'];if(n.includes('depot air'))return ['💧','blue'];if(n.includes('frozen'))return ['❄️','cyan'];if(n.includes('konter hp'))return ['📱','violet'];if(n.includes('laundry'))return ['🧺','blue'];if(n.includes('makanan online'))return ['🍜','orange'];if(n.includes('percetakan')||n.includes('fotokopi'))return ['🖨️','slate'];if(n.includes('pet shop'))return ['🐾','green'];if(n.includes('salon'))return ['✂️','rose'];if(n.includes('kosmetik'))return ['💄','rose'];if(n.includes('kue')||n.includes('bakery'))return ['🧁','amber'];if(n.includes('pakaian'))return ['👕','violet'];if(n.includes('retail'))return ['🛍️','green'];if(n.includes('sembako')||n.includes('grosir'))return ['🛒','green'];if(n.includes('warung makan'))return ['🍛','orange'];return ['🏪','slate']}
-function renderBusinessCatalog(){if(!master)return;const term=($('businessSearch')?.value||'').trim().toLowerCase();const packs=master.packages.filter(p=>p.nama_usaha.toLowerCase().includes(term)||p.deskripsi.toLowerCase().includes(term));$('businessCount').textContent=`${packs.length} pilihan usaha dari 300`;const root=$('businessCatalog');root.innerHTML=packs.length?packs.map(p=>{const [ico,tone]=businessIcon(p.nama_usaha);const active=businesses.find(b=>Number(b.packageId)===Number(p.id));const locked=!active&&businesses.length>=licenseSlots;return `<button type="button" class="business-card ${active?'current-package':''}" data-package="${p.id}"><span class="business-icon ${tone}">${ico}</span><span class="business-copy"><strong>${esc(p.nama_usaha)}</strong><small>${esc(shortBusinessDescription(p.nama_usaha))}${active?' • sudah dibuat':locked?' • 🔒 batas paket tercapai':''}</small></span><span class="business-arrow">${active?'✓':locked?'🔒':'›'}</span></button>`}).join(''):'<div class="empty">Jenis usaha tidak ditemukan. Coba kata kunci lain.</div>';root.querySelectorAll('[data-package]').forEach(b=>b.onclick=()=>selectBusinessPackage(Number(b.dataset.package)));renderExistingBusiness(currentProfile)}
+function renderBusinessCatalog(){if(!master)return;const term=($('businessSearch')?.value||'').trim().toLocaleLowerCase('id');const packs=master.packages.filter(p=>[p.nama_usaha,p.deskripsi,p.kelompok_utama,p.subkategori].some(v=>String(v||'').toLocaleLowerCase('id').includes(term)));$('businessCount').textContent=`${packs.length} pilihan usaha dari ${master.packages.length} profil`;const root=$('businessCatalog');if(!packs.length){root.innerHTML='<div class="empty">Jenis usaha tidak ditemukan. Coba kata kunci kelompok, subkategori, atau nama usaha.</div>';renderExistingBusiness(currentProfile);return}const groups=new Map();for(const p of packs){const key=p.kelompok_utama||'Usaha Lainnya';if(!groups.has(key))groups.set(key,[]);groups.get(key).push(p)}root.innerHTML=[...groups.entries()].map(([group,rows])=>`<section class="business-group"><div class="business-group-heading"><strong>${esc(group)}</strong><small>${rows.length} profil</small></div><div class="business-group-grid">${rows.map(p=>{const [ico,tone]=businessIcon(p.nama_usaha);const active=businesses.find(b=>Number(b.packageId)===Number(p.id));const locked=!active&&businesses.length>=licenseSlots;return `<button type="button" class="business-card ${active?'current-package':''}" data-package="${p.id}"><span class="business-icon ${tone}">${ico}</span><span class="business-copy"><strong>${esc(p.nama_usaha)}</strong><small>${esc(p.subkategori||shortBusinessDescription(p.nama_usaha))}${active?' • sudah dibuat':locked?' • 🔒 batas paket tercapai':''}</small></span><span class="business-arrow">${active?'✓':locked?'🔒':'›'}</span></button>`}).join('')}</div></section>`).join('');root.querySelectorAll('[data-package]').forEach(b=>b.onclick=()=>selectBusinessPackage(Number(b.dataset.package)));renderExistingBusiness(currentProfile)}
 function renderExistingBusiness(p){const root=$('existingBusiness');if(!businesses.length){root.hidden=true;return}root.hidden=false;root.innerHTML=`<div class="business-manager"><div class="business-manager-head"><div><small>USAHA TERSIMPAN</small><strong>${businesses.length} dari ${licenseSlots} usaha digunakan</strong></div><label class="license-select">Paket lisensi<select id="licenseSlotsSelect">${Array.from({length:25},(_,i)=>i+1).map(n=>`<option value="${n}" ${licenseSlots===n?'selected':''}>${n} usaha • Rp${priceForBusinessCount(n).toLocaleString('id-ID')}</option>`).join('')}</select></label></div><div class="business-switcher">${businesses.map(b=>`<div class="business-switch-row"><button type="button" class="business-switch ${String(b.id)===String(activeBusinessId)?'active':''}" data-switch-business="${esc(b.id)}"><strong>${esc(b.name)}</strong><small>${esc(b.business)}</small></button><span>${String(b.id)===String(activeBusinessId)?'Aktif':'Tersimpan'}</span></div>`).join('')}</div><button type="button" class="primary" id="enterExisting">Masuk ke usaha aktif</button><p class="muted">Data usaha tersimpan terpisah. Usaha yang dikunci tidak dihapus.</p></div>`;$('enterExisting').onclick=()=>enterBusiness();root.querySelectorAll('[data-switch-business]').forEach(b=>b.onclick=async()=>{activeBusinessId=b.dataset.switchBusiness;currentProfile=await getCurrentProfile();cart=[];renderCart();await saveBusinessList();renderBusinessCatalog();$('shopTitle').textContent=currentProfile.name;$('headerSubtitle').textContent=currentProfile.business+' • data lokal';toast('Usaha aktif diganti.');showPage(currentProfile&&!(currentProfile.setupWizard&&currentProfile.setupWizard.finishedAt)?'wizard':'products')});$('licenseSlotsSelect').onchange=async e=>{const n=Number(e.target.value);if(n<businesses.length){toast(`Paket tidak bisa diturunkan: masih ada ${businesses.length} usaha tersimpan. Kunci atau ekspor usaha terlebih dahulu.`);e.target.value=String(licenseSlots);return}licenseSlots=n;if($('packageCount'))$('packageCount').value=String(n);updatePackagePrice();await saveBusinessList();renderBusinessCatalog();toast('Batas paket diperbarui di perangkat ini. Pembayaran belum diverifikasi.')}}
 function selectBusinessPackage(pid){selectedPackageId=pid;const pack=master.packages.find(p=>Number(p.id)===pid);if(!pack)return;const existing=businesses.find(b=>Number(b.packageId)===pid);if(existing){activeBusinessId=existing.id;getCurrentProfile().then(p=>{currentProfile=p;saveBusinessList();renderBusinessCatalog();enterBusiness()});return}if(businesses.length>=licenseSlots){toast(`Paket lisensi Anda mengizinkan ${licenseSlots} usaha. Usaha tambahan terkunci; tingkatkan paket untuk membuka lebih banyak.`);return}document.querySelectorAll('.business-card').forEach(c=>c.classList.toggle('selected',Number(c.dataset.package)===pid));$('setupCard').hidden=false;$('setupTitle').textContent='Siapkan '+pack.nama_usaha;$('setupDescription').textContent=`Aplikasi menyiapkan daftar dagangan dan bahan awal untuk ${pack.nama_usaha}. Anda tinggal mengisi harga dan stok sesuai usaha Anda. Daftar dapat ditambah atau diubah kapan saja.`;$('setupShop').value='';$('setupCard').scrollIntoView({behavior:'smooth',block:'start'});$('setupShop').focus()}
 async function setupBusiness(){
@@ -760,19 +760,19 @@ async function setupBusiness(){
  const pack=master.packages.find(p=>Number(p.id)===pid);
  if(!pack){toast('Template usaha tidak ditemukan di Master.');return}
  if(businesses.some(b=>Number(b.packageId)===pid)){toast('Template usaha ini sudah dibuat. Pilih usaha tersimpan untuk membukanya.');return}
- const templateItems=master.items.filter(i=>Number(i.paket_id)===pid);
+ const templateItems=master.items.filter(i=>Number(i.paket_id)===pid&&i.aktif!==0);
  if(!templateItems.length){toast('Template ini belum memiliki item awal. Data usaha tidak dibuat agar tidak kosong tanpa sengaja.');return}
  const id='biz-'+Date.now().toString(36)+'-'+Math.random().toString(36).slice(2,7);
- const profile={id,key:'profile-'+id,name,business:pack.nama_usaha,packageId:pid,packageVersion:'3.1.3',masterDataVersion:3,compositionMode:'auto',transactionPrefix:makeTransactionPrefix(name),nextTransactionNumber:1,address:'',phone:'',footer:'Terima kasih atas kunjungan Anda.',createdAt:dateNow()};
+ const profile={id,key:'profile-'+id,name,business:pack.nama_usaha,packageId:pid,packageVersion:master.catalog_version||'4.0.0',masterDataVersion:4,compositionMode:'auto',transactionPrefix:makeTransactionPrefix(name),nextTransactionNumber:1,address:'',phone:'',footer:'Terima kasih atas kunjungan Anda.',createdAt:dateNow()};
  const tx=db.transaction(['settings','products','materials','assets','recipes'],'readwrite');
  const settings=tx.objectStore('settings'),next=[...businesses,profile];
  settings.put({key:'businesses',value:next});settings.put({key:'activeBusinessId',value:id});settings.put({key:'licenseSlots',value:licenseSlots});
  const productStore=tx.objectStore('products'),materialStore=tx.objectStore('materials'),assetStore=tx.objectStore('assets'),recipeStore=tx.objectStore('recipes');
  const productIds=new Map(),materialIds=new Map();let pending=templateItems.length,failed=false;
  const finishItem=()=>{pending--;if(pending!==0||failed)return;try{
-   (master.recipes||[]).filter(r=>Number(r.paket_id)===pid&&!isSimpleDrinkProductName(master.items.find(i=>Number(i.id)===Number(r.product_template_id)&&Number(i.paket_id)===pid)?.nama_item)).forEach(r=>{
+   (master.recipes||[]).filter(r=>Number(r.paket_id)===pid).forEach(r=>{
      const productId=productIds.get(Number(r.product_template_id));if(!productId)return;
-     const lines=(r.lines||[]).map(line=>({materialId:materialIds.get(Number(line.material_template_id)),qty:Number(line.qty||0),unit:line.unit||''})).filter(line=>line.materialId&&line.qty>0);
+     const lines=(r.lines||[]).map(line=>({materialId:materialIds.get(Number(line.material_template_id)),qty:Number(line.qty||0),unit:line.unit||''})).filter(line=>line.materialId&&Number.isFinite(line.qty)&&line.qty>=0);
      if(lines.length)recipeStore.add({businessId:id,productId,lines,mode:'auto',templateRecipeId:`v${master.schema_version||3}-${r.product_template_id}`,recipeBasis:r.recipe_basis||'unit',targetFinishedGrams:Number(r.target_finished_grams)||0,expectedYieldUnits:Number(r.expected_yield_units)||1,yieldUnit:r.yield_unit||'Pcs',recipeStatus:r.recipe_status||'referensi_awal',formulaVersion:Number(r.formula_version)||1,sourceRefs:Array.isArray(r.source_refs)?r.source_refs:[],sourceNote:r.source_note||'',instructions:r.instructions||'',instructionStatus:r.instructions?'panduan_referensi':'panduan_awal',createdAt:dateNow(),updatedAt:dateNow()});
    });
  }catch(e){failed=true;console.error(e);tx.abort()}};
@@ -786,13 +786,13 @@ async function setupBusiness(){
      req.onsuccess=()=>{materialIds.set(Number(i.id),Number(req.result));finishItem()};
      req.onerror=()=>{failed=true;};return;
    }else{
-     const hasRecipeTemplate=(master.recipes||[]).some(r=>Number(r.paket_id)===pid&&Number(r.product_template_id)===Number(i.id)&&!isSimpleDrinkProductName(i.nama_item));req=productStore.add({...base,price:Math.max(0,Number(i.harga_jual)||0),cost:Math.max(0,Number(i.harga_beli)||0),costMode:hasRecipeTemplate?'auto':'manual',stock:0,stockEnabled:!!i.pakai_stok,forSale:true,referenceCost:true});
+     const hasRecipeTemplate=(master.recipes||[]).some(r=>Number(r.paket_id)===pid&&Number(r.product_template_id)===Number(i.id));req=productStore.add({...base,price:Math.max(0,Number(i.harga_jual)||0),cost:Math.max(0,Number(i.harga_beli)||0),costMode:hasRecipeTemplate?'auto':'manual',stock:0,stockEnabled:!!i.pakai_stok,forSale:true,referenceCost:true});
      req.onsuccess=()=>{productIds.set(Number(i.id),Number(req.result));finishItem()};
      req.onerror=()=>{failed=true;};return;
    }
    req.onsuccess=()=>finishItem();req.onerror=()=>{failed=true;};
  });
- tx.oncomplete=async()=>{businesses=next;activeBusinessId=id;currentProfile=profile;$('setupCard').hidden=true;$('nav').hidden=false;$('shopTitle').textContent=profile.name;$('headerSubtitle').textContent=profile.business+' • data lokal';renderExistingBusiness(profile);renderBusinessCatalog();await recalculateRecipeCosts();await renderMaterials();await renderProducts();toast('Usaha dibuat dari master v3. Harga referensi terisi, stok tetap nol, dan data usaha mandiri.');showPage('wizard')};
+ tx.oncomplete=async()=>{businesses=next;activeBusinessId=id;currentProfile=profile;$('setupCard').hidden=true;$('nav').hidden=false;$('shopTitle').textContent=profile.name;$('headerSubtitle').textContent=profile.business+' • data lokal';renderExistingBusiness(profile);renderBusinessCatalog();await recalculateRecipeCosts();await renderMaterials();await renderProducts();toast('Usaha dibuat dari katalog terkelompok. Harga referensi terisi, stok tetap nol, dan data usaha mandiri.');showPage('wizard')};
  tx.onerror=()=>toast('Gagal membuat data: '+(tx.error?.message||'kesalahan database'));tx.onabort=()=>toast('Pemasangan paket dibatalkan agar data tidak dibuat setengah.');
 }
 async function enterBusiness(){const p=await getCurrentProfile();if(!p){toast('Pilih atau buat jenis usaha terlebih dahulu.');return}currentProfile=p;$('nav').hidden=false;$('shopTitle').textContent=p.name||'Usaha Anda';$('headerSubtitle').textContent=p.business||'Data usaha lokal';updateCompositionVisibility();showPage(p.setupWizard&&p.setupWizard.finishedAt?'products':'wizard')}
@@ -916,7 +916,7 @@ async function addProductStockFromWorkspace(id){
   await renderProducts();await renderCashItems();await renderProductWorkspace();if(Number($('editId')?.value||0)===Number(id))$('editStock').value=Number((await get('products',id))?.stock||0);toast(`Barang masuk tersimpan: ${product.name} +${qty} ${product.unit||'Pcs'}.`);
  }catch(err){console.error(err);toast('Stok produk gagal ditambahkan: '+(err.message||'kesalahan database'));}
 }
-async function recalculateRecipeCosts(){const [products,recipes,materials]=await Promise.all([getAll('products'),getAll('recipes'),getAll('materials')]);const byId=new Map(materials.map(m=>[Number(m.id),m]));for(const r of recipes){const prod=products.find(p=>Number(p.id)===Number(r.productId));if(!prod||prod.costMode==='manual')continue;let total=0,valid=true;for(const line of r.lines||[]){const m=byId.get(Number(line.materialId));if(m&&Number(m.cost)>0){const qty=convertQty(line.qty,line.unit||m.unit,m.unit);if(qty===null){valid=false;continue}total+=qty*Number(m.cost);continue}if(line.unitPrice!==undefined&&line.unitPrice!==null&&Number.isFinite(Number(line.unitPrice))){total+=Number(line.qty||0)*Number(line.unitPrice||0);continue}if(!m){valid=false;continue}const qty=convertQty(line.qty,line.unit||m.unit,m.unit);if(qty===null){valid=false;continue}total+=qty*Number(m.cost||0)}if(valid){const unitCost=r.recipeBasis==='finished_kg'?total/Math.max(1,Number(r.expectedYieldUnits)||1):total;prod.cost=Math.round(unitCost*100)/100;prod.costMode='auto';prod.costUpdatedAt=dateNow();await put('products',prod)}}}
+async function recalculateRecipeCosts(){const [products,recipes,materials]=await Promise.all([getAll('products'),getAll('recipes'),getAll('materials')]);const byId=new Map(materials.map(m=>[Number(m.id),m]));for(const r of recipes){const prod=products.find(p=>Number(p.id)===Number(r.productId));const status=String(r.recipeStatus||'').toLowerCase();if(!prod||prod.costMode==='manual'||status.includes('draft_belum_terverifikasi')||status.includes('nonaktif_perlu_kurasi'))continue;let total=0,valid=true;for(const line of r.lines||[]){const m=byId.get(Number(line.materialId));if(m&&Number(m.cost)>0){const qty=convertQty(line.qty,line.unit||m.unit,m.unit);if(qty===null){valid=false;continue}total+=qty*Number(m.cost);continue}if(line.unitPrice!==undefined&&line.unitPrice!==null&&Number.isFinite(Number(line.unitPrice))){total+=Number(line.qty||0)*Number(line.unitPrice||0);continue}if(!m){valid=false;continue}const qty=convertQty(line.qty,line.unit||m.unit,m.unit);if(qty===null){valid=false;continue}total+=qty*Number(m.cost||0)}if(valid){const unitCost=r.recipeBasis==='finished_kg'?total/Math.max(1,Number(r.expectedYieldUnits)||1):total;prod.cost=Math.round(unitCost*100)/100;prod.costMode='auto';prod.costUpdatedAt=dateNow();await put('products',prod)}}}
 function businessMaterialOptions(){
  const name=String(currentProfile?.business||'').toLowerCase();
  if(name.includes('percetakan')||name.includes('fotokopi'))return {categories:['Kertas','Tinta dan toner','Bahan cetak','Bahan finishing','Jilid dan laminasi','ATK','Perlengkapan','Lainnya'],units:['Rim','Lembar','Pack','Pcs','Roll','Botol','Cartridge','Box','Meter','Kg','Liter','Set']};
@@ -1503,6 +1503,7 @@ async function buildProductionPlan(){
  const product=await get('products',productId);const recipe=(await getAll('recipes')).find(r=>Number(r.productId)===productId&&Array.isArray(r.lines)&&r.lines.length);
  if(!product)return {error:'Produk tidak ditemukan.'};
  if(!recipe)return {product,qty,recipe:null,materials:[]};
+ if(String(recipe.recipeStatus||'').toLowerCase().includes('draft_belum_terverifikasi')||(recipe.lines||[]).some(line=>!(Number(line.qty)>0)))return {error:'Komposisi produk masih draft atau ada takaran kosong/nol. Lengkapi dan simpan takaran bahan aktual sebelum produksi agar stok bahan tidak terlewat.'};
  if(recipe.variants?.length)return {error:'Produk dengan beberapa ukuran perlu diproduksi per ukuran. Pilih satu ukuran pada komposisi sebelum mencatat produksi.'};
  const materials=await getAll('materials'),used=new Map();
  const factor=recipe.recipeBasis==='finished_kg'?1/Math.max(1,Number(recipe.expectedYieldUnits)||1):1;

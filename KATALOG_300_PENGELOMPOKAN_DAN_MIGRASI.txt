@@ -1,0 +1,31 @@
+UNIVERSAL UMKM PRO — AUDIT KATALOG v4.0.0
+=========================================
+
+Profil usaha: 300
+Kelompok utama: 11
+Item total: 7904; ID lama dipertahankan: 6510; item ID baru: 1394
+Resep total: 1164; ID resep lama dipertahankan: 783
+Alur kerja: 1456 (ID dipertahankan)
+
+Jumlah profil per kelompok utama:
+- Kuliner & Makanan: 66
+- Jajanan, Gorengan & Bakery: 58
+- Minuman & Es: 30
+- Perdagangan Bahan Pangan: 30
+- Pertanian, Peternakan & Perikanan: 25
+- Warung, Toko & Perdagangan: 24
+- Jasa & Perbaikan: 24
+- Kerajinan & Kreatif: 18
+- Kecantikan & Perawatan: 11
+- Produksi Makanan & Bumbu: 11
+- Kesehatan, Herbal & Hewan: 3
+
+Prinsip katalog:
+- Jus mangga, jus buah naga, jus jambu, dan jus lain menjadi profil di bawah kelompok Jus & Minuman Segar, bukan kelompok usaha utama terpisah.
+- Jamu tradisional berisi produk jamu dan bahan herbal; tidak dicampur kopi sachet sebagai katalog inti.
+- Bahan belanja dan komposisi merujuk ID bahan aktif yang sama pada paket yang sama.
+- Komposisi draft memakai kuantitas nol sampai pengguna mengukur takaran; HPP tidak dianggap valid dan produksi diblokir sampai resep diisi/disimpan.
+- ID paket/item/resep/alur kerja lama dipertahankan; item lama yang tidak relevan dinonaktifkan, bahan/produk tambahan memakai ID baru.
+- Data usaha lokal yang sudah ada tidak dihapus. Backup dan migrasi eksplisit diperlukan sebelum menerapkan katalog baru ke profil lama.
+
+Pemeriksaan statis selesai; pengujian browser end-to-end belum dilakukan.
