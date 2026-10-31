@@ -1,0 +1,28 @@
+UNIVERSAL UMKM PRO v4.1.0 — AUDIT KONSOLIDASI KATALOG
+
+HASIL KONSOLIDASI
+- Nama usaha sumber: 300
+- Jenis usaha inti aktif: 25
+- Variasi nama usaha lama dipetakan: 300
+- Paket lama diarsipkan: 300
+- Item lama dipertahankan nonaktif: 15332
+- Item katalog aktif baru: 1163
+- Resep aktif tertaut: 867
+- Alur kerja aktif: 125
+
+ATURAN
+- Pengelompokan mengikuti kegiatan/produk inti, bukan kata saluran seperti keliling, gerobak, atau mangkal.
+- Variasi rasa/jenis/menu dijadikan produk dalam paket inti yang sesuai.
+- Bahan komposisi ditautkan ulang ke ID bahan dalam paket yang sama.
+- Paket, item, resep, dan workflow lama dipertahankan dengan ID lama serta status arsip.
+- Harga dan stok awal template dibuat nol agar tidak menyajikan harga/HPP palsu.
+- Takaran resep bawaan tetap berstatus referensi awal belum terverifikasi.
+
+VALIDASI STATIS
+- ID paket/item/resep unik: LULUS
+- Referensi resep ke produk dan bahan aktif pada paket yang sama: LULUS
+- Semua paket aktif memiliki produk dan bahan: LULUS
+- Paket lama dan ID lama dipertahankan: LULUS
+
+BATASAN
+Ini validasi struktur dan konsistensi referensi, bukan uji browser end-to-end atau pembuktian resep produksi. Resep dan alur layanan nonproduksi tetap perlu pemeriksaan operasional sebelum dipakai.

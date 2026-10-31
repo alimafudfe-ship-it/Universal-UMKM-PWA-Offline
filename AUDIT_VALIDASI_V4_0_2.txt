@@ -1,0 +1,15 @@
+UNIVERSAL UMKM PRO v4.0.2 — HASIL VALIDASI STATIS
+
+Pemeriksaan otomatis: LULUS
+- Jenis usaha: 300/300
+- Paket: 300/300
+- Katalog lama: 12671 item dipertahankan nonaktif
+- Katalog aktif baru: 2661 item; tiap paket punya produk dan bahan
+- Resep draft baru: 900; setiap produk resep memiliki baris yang merujuk ID bahan dalam paket yang sama
+- ID produk dan ID bahan: valid, tidak mengarah ke paket lain
+- Takaran resep: sengaja 0 dan status draft; belum dianggap formula produksi/HPP teruji
+- Harga/stok: 0 sebagai nilai awal yang harus diisi pengguna, bukan harga pasar aktual
+- Klasifikasi usaha: perbaikan aturan identitas untuk fotokopi/percetakan, tongseng/empal gentong, jamur tiram, dan beberapa usaha terkait
+
+BATASAN PENTING
+Audit ini adalah validasi statis atas struktur katalog, pemetaan paket, status aktif/nonaktif, dan integritas referensi ID. Ini bukan uji runtime/browser penuh, bukan verifikasi harga pemasok real-time, dan bukan validasi resep produksi empiris. Nama bahan bertanda sesuai usaha/produk harus ditinjau pengguna; takaran resep harus diukur sebelum HPP atau produksi digunakan.

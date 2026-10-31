@@ -1,0 +1,301 @@
+﻿business_id,nama_usaha,kelompok_utama,subkategori,keluarga_katalog,produk_aktif,bahan_aktif,resep_draft,semua_id_bahan_valid,catatan
+1,Café & Resto,Kuliner & Makanan,Masakan & Makanan Siap Saji,meal,3,8,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+2,Catering,Kuliner & Makanan,Masakan & Makanan Siap Saji,meal,3,8,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+3,Depot Air Isi Ulang,Perdagangan & Toko,Toko / Perdagangan Khusus,retail,3,4,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+4,Frozen Food,Perdagangan & Toko,Toko / Perdagangan Khusus,retail,3,4,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+5,Konter HP,Perdagangan & Toko,Toko / Perdagangan Khusus,retail,3,4,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+6,Laundry & Cuci Sepatu,Jasa & Layanan,Jasa Profesional / Perawatan / Perbaikan,laundry,3,5,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+7,Penjual Makanan Online,Kuliner & Makanan,Masakan & Makanan Siap Saji,meal,3,8,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+8,Percetakan / Fotokopi Kecil,Jasa & Layanan,"Percetakan, Fotokopi & Dokumen",print,3,6,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+9,Pet Shop,Perdagangan & Toko,Toko / Perdagangan Khusus,pet,3,3,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+10,Salon,Kecantikan & Perawatan,Layanan Kecantikan,beauty,3,3,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+11,Toko Kosmetik,Perdagangan & Toko,Toko / Perdagangan Khusus,retail,3,4,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+12,Toko Kue / Bakery,Perdagangan & Toko,Toko / Perdagangan Khusus,retail,3,4,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+13,Toko Pakaian,Perdagangan & Toko,Toko / Perdagangan Khusus,retail,3,4,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+14,Toko Retail,Perdagangan & Toko,Toko / Perdagangan Khusus,retail,3,4,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+15,Toko Sembako & Grosir,Perdagangan & Toko,Toko / Perdagangan Khusus,food_trade,3,4,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+16,Warung Makan,Kuliner & Makanan,Masakan & Makanan Siap Saji,meal,3,8,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+17,Gorengan & Camilan,"Jajanan, Bakery & Produksi Pangan",Jajanan & Gorengan,fried_snack,3,7,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+18,Warung Kopi & Minuman,Minuman & Es,Kopi & Kedai Kopi,coffee,3,8,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+19,Nasi Uduk & Sarapan,Kuliner & Makanan,Masakan & Makanan Siap Saji,meal,3,8,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+20,Warung Makan & Pecel Lele,Kuliner & Makanan,Masakan & Makanan Siap Saji,meal,3,8,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+21,"Bakso, Mi Ayam & Soto",Kuliner & Makanan,Masakan & Makanan Siap Saji,meal,3,8,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+22,Jajanan Jalanan,"Jajanan, Bakery & Produksi Pangan",Jajanan & Gorengan,fried_snack,3,7,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+23,Martabak & Roti Bakar,"Jajanan, Bakery & Produksi Pangan",Produksi Pangan & Bumbu,martabak,3,7,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+24,Jus Buah & Es Campur,Minuman & Es,"Jus, Es & Minuman Buah",juice,3,6,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+26,Tukang Sayur Keliling,Perdagangan & Toko,Toko / Perdagangan Khusus,retail,3,4,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+27,Ayam Crispy Gerobak,Kuliner & Makanan,Ayam Siap Saji,fried_chicken,3,3,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+28,Warung Ayam Goreng,Kuliner & Makanan,Ayam Siap Saji,fried_chicken,3,8,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+29,Es Teh Jumbo Mangkal,Minuman & Es,"Teh, Susu & Minuman Kekinian",tea,3,7,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+30,Usaha Aneka Gorengan,"Jajanan, Bakery & Produksi Pangan",Jajanan & Gorengan,fried_snack,3,7,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+31,Produksi Sambal Rumahan,"Jajanan, Bakery & Produksi Pangan",Produksi Pangan & Bumbu,seasoning,3,6,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+32,Warung Kelontong,Perdagangan & Toko,Toko / Perdagangan Khusus,retail,3,8,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+33,Pedagang Telur Ayam Mangkal,Perdagangan & Toko,Toko / Perdagangan Khusus,food_trade,3,4,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+34,Jasa Pangkas Rambut Pria,Kecantikan & Perawatan,Layanan Kecantikan,beauty,3,3,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+35,Usaha Ternak Ayam Petelur,"Pertanian, Peternakan & Perikanan",Budidaya & Hasil Tani,livestock,3,5,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+36,Usaha Kerajinan Aksesoris,Kerajinan & Produk Kreatif,Kerajinan & Produksi Kreatif,craft,3,4,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+37,Usaha Jamu Tradisional Mangkal,Minuman & Es,Jamu & Minuman Herbal,herbal,3,5,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+38,Siomay Keliling,"Jajanan, Bakery & Produksi Pangan",Jajanan & Gorengan,dumpling,3,3,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+39,Fried Chicken Gerobak,Kuliner & Makanan,Ayam Siap Saji,fried_chicken,3,3,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+40,Warung Ayam Bakar,Kuliner & Makanan,Ayam Siap Saji,fried_chicken,3,8,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+41,Es Teh Manis Gerobak Mangkal,Minuman & Es,"Teh, Susu & Minuman Kekinian",tea,3,7,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+42,Usaha Bakwan Sayur,"Jajanan, Bakery & Produksi Pangan",Jajanan & Gorengan,fried_snack,3,7,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+43,Produksi Bumbu Dasar,"Jajanan, Bakery & Produksi Pangan",Produksi Pangan & Bumbu,seasoning,3,6,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+44,Warung Madura,Perdagangan & Toko,Toko / Perdagangan Khusus,retail,3,8,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+45,Pedagang Telur Bebek,Perdagangan & Toko,Toko / Perdagangan Khusus,food_trade,3,4,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+46,Jasa Barbershop Rumahan,Kecantikan & Perawatan,Layanan Kecantikan,beauty,3,3,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+47,Usaha Ternak Ayam Pedaging,"Pertanian, Peternakan & Perikanan",Budidaya & Hasil Tani,livestock,3,5,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+48,Usaha Buket Bunga,Kerajinan & Produk Kreatif,Kerajinan & Produksi Kreatif,craft,3,4,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+49,Usaha Minuman Herbal,Minuman & Es,Jamu & Minuman Herbal,herbal,3,5,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+50,Batagor Keliling,"Jajanan, Bakery & Produksi Pangan",Jajanan & Gorengan,dumpling,3,3,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+51,Ayam Geprek Gerobak,Kuliner & Makanan,Ayam Siap Saji,fried_chicken,3,3,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+52,Warung Ayam Geprek,Kuliner & Makanan,Ayam Siap Saji,fried_chicken,3,8,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+53,Es Jeruk Peras,Minuman & Es,"Jus, Es & Minuman Buah",juice,3,7,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+54,Usaha Tahu Isi,"Jajanan, Bakery & Produksi Pangan",Jajanan & Gorengan,fried_snack,3,7,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+55,Produksi Bumbu Pecel,"Jajanan, Bakery & Produksi Pangan",Produksi Pangan & Bumbu,seasoning,3,6,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+56,Warung Sembako Rumahan,Perdagangan & Toko,Toko / Perdagangan Khusus,food_trade,3,8,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+57,Pedagang Telur Puyuh,Perdagangan & Toko,Toko / Perdagangan Khusus,food_trade,3,4,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+58,Jasa Salon Rumahan,Kecantikan & Perawatan,Layanan Kecantikan,beauty,3,3,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+59,Usaha Ternak Ayam Kampung,"Pertanian, Peternakan & Perikanan",Budidaya & Hasil Tani,livestock,3,5,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+60,Usaha Buket Snack,Kerajinan & Produk Kreatif,Kerajinan & Produksi Kreatif,craft,3,4,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+61,Usaha Pijat Refleksi Rumahan,Kecantikan & Perawatan,Layanan Kecantikan,beauty,3,3,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+62,Pempek Keliling,"Jajanan, Bakery & Produksi Pangan",Jajanan & Gorengan,dumpling,3,3,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+63,Ayam Penyet Gerobak,Kuliner & Makanan,Ayam Siap Saji,fried_chicken,3,3,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+64,Warung Ayam Penyet,Kuliner & Makanan,Ayam Siap Saji,fried_chicken,3,8,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+65,Es Kopi Susu Gula Aren,Minuman & Es,Kopi & Kedai Kopi,coffee,3,7,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+66,Usaha Tempe Mendoan,"Jajanan, Bakery & Produksi Pangan",Jajanan & Gorengan,fried_snack,3,7,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+67,Produksi Bumbu Rendang,"Jajanan, Bakery & Produksi Pangan",Produksi Pangan & Bumbu,seasoning,3,6,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+68,Warung Rokok,Perdagangan & Toko,Toko / Perdagangan Khusus,retail,3,8,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+69,Pedagang Ayam Potong Mangkal,Perdagangan & Toko,Toko / Perdagangan Khusus,food_trade,3,4,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+70,Jasa Rias Pengantin,Kecantikan & Perawatan,Layanan Kecantikan,beauty,3,3,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+71,Usaha Ternak Bebek,"Pertanian, Peternakan & Perikanan",Budidaya & Hasil Tani,livestock,3,5,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+72,Usaha Hampers dan Parcel,Kerajinan & Produk Kreatif,Kerajinan & Produksi Kreatif,craft,3,4,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+73,Usaha Perawatan Kuku,Kecantikan & Perawatan,Layanan Kecantikan,beauty,3,3,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+74,Bubur Ayam Keliling,Kuliner & Makanan,Masakan & Makanan Siap Saji,meal,3,8,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+75,Ayam Bakar Gerobak,Kuliner & Makanan,Ayam Siap Saji,fried_chicken,3,3,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+76,Warung Bebek Goreng,Kuliner & Makanan,Masakan & Makanan Siap Saji,meal,3,8,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+77,Kopi Susu Botolan,Minuman & Es,Kopi & Kedai Kopi,coffee,3,6,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+78,Usaha Pisang Goreng,"Jajanan, Bakery & Produksi Pangan",Jajanan & Gorengan,fried_snack,3,7,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+79,Produksi Bumbu Instan,"Jajanan, Bakery & Produksi Pangan",Produksi Pangan & Bumbu,seasoning,3,6,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+80,Warung Jajanan Anak,"Jajanan, Bakery & Produksi Pangan",Jajanan & Gorengan,fried_snack,3,8,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+81,Pedagang Daging Sapi,Perdagangan & Toko,Toko / Perdagangan Khusus,food_trade,3,4,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+82,Jasa Makeup Wisuda,Kecantikan & Perawatan,Layanan Kecantikan,beauty,3,3,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+83,Usaha Ternak Puyuh,"Pertanian, Peternakan & Perikanan",Budidaya & Hasil Tani,livestock,3,5,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+84,Usaha Souvenir Pernikahan,Kerajinan & Produk Kreatif,Kerajinan & Produksi Kreatif,craft,3,4,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+85,Usaha Perawatan Wajah Rumahan,Kecantikan & Perawatan,Layanan Kecantikan,beauty,3,3,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+86,Nasi Uduk Keliling,Kuliner & Makanan,Masakan & Makanan Siap Saji,meal,3,8,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+87,Pecel Lele Gerobak,Kuliner & Makanan,Masakan & Makanan Siap Saji,meal,3,8,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+88,Warung Bebek Bakar,Kuliner & Makanan,Masakan & Makanan Siap Saji,meal,3,8,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+89,Kopi Hitam Warkop,Minuman & Es,Kopi & Kedai Kopi,coffee,3,6,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+90,Usaha Cireng,"Jajanan, Bakery & Produksi Pangan",Jajanan & Gorengan,fried_snack,3,7,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+91,Produksi Abon Sapi,"Jajanan, Bakery & Produksi Pangan",Produksi Pangan & Bumbu,seasoning,3,6,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+92,Warung Kopi Kecil,Minuman & Es,Kopi & Kedai Kopi,coffee,3,8,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+93,Pedagang Daging Kambing,Perdagangan & Toko,Toko / Perdagangan Khusus,food_trade,3,4,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+94,Jasa Nail Art,Kecantikan & Perawatan,Layanan Kecantikan,beauty,3,3,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+95,Usaha Ternak Kambing,"Pertanian, Peternakan & Perikanan",Budidaya & Hasil Tani,livestock,3,5,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+96,Usaha Undangan Digital,Jasa & Layanan,Jasa Profesional / Perawatan / Perbaikan,print,3,6,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+97,Usaha Spa Rumahan,Kecantikan & Perawatan,Layanan Kecantikan,beauty,3,3,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+98,Kue Ape Keliling,"Jajanan, Bakery & Produksi Pangan",Jajanan & Gorengan,traditional_snack,3,7,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+99,Nasi Goreng Gerobak,Kuliner & Makanan,Masakan & Makanan Siap Saji,meal,3,8,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+100,Warung Pecel Lele,Kuliner & Makanan,Masakan & Makanan Siap Saji,meal,3,8,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+101,Warung Kopi Sachet,Minuman & Es,Kopi & Kedai Kopi,coffee,3,8,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+102,Usaha Risoles,"Jajanan, Bakery & Produksi Pangan",Jajanan & Gorengan,fried_snack,3,7,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+103,Produksi Abon Ayam,"Jajanan, Bakery & Produksi Pangan",Produksi Pangan & Bumbu,seasoning,3,6,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+104,Warung Makan Kecil,Kuliner & Makanan,Masakan & Makanan Siap Saji,meal,3,8,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+105,Pedagang Ikan Segar Mangkal,Perdagangan & Toko,Toko / Perdagangan Khusus,food_trade,3,4,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+106,Jasa Cuci Motor,Jasa & Layanan,Jasa Profesional / Perawatan / Perbaikan,repair,3,3,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+107,Usaha Ternak Domba,"Pertanian, Peternakan & Perikanan",Budidaya & Hasil Tani,livestock,3,5,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+108,Usaha Sablon Kaos,Jasa & Layanan,Jasa Profesional / Perawatan / Perbaikan,print,3,6,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+109,Toko Alat Kesehatan Kecil,Perdagangan & Toko,Toko / Perdagangan Khusus,medical_retail,3,4,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+110,Sate Madura Keliling,Kuliner & Makanan,Masakan & Makanan Siap Saji,meal,3,8,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+111,Mie Goreng Gerobak,Perdagangan & Toko,Toko / Perdagangan Khusus,retail,3,4,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+112,Warung Nasi Goreng,Kuliner & Makanan,Masakan & Makanan Siap Saji,meal,3,8,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+113,Es Cokelat,Minuman & Es,"Teh, Susu & Minuman Kekinian",tea,3,7,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+114,Usaha Pastel,"Jajanan, Bakery & Produksi Pangan",Jajanan & Gorengan,fried_snack,3,7,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+115,Produksi Dendeng,"Jajanan, Bakery & Produksi Pangan",Produksi Pangan & Bumbu,seasoning,3,6,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+116,Warung Sarapan,Kuliner & Makanan,Masakan & Makanan Siap Saji,meal,3,8,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+117,Pedagang Ikan Asin,Perdagangan & Toko,Toko / Perdagangan Khusus,food_trade,3,4,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+118,Jasa Cuci Mobil,Jasa & Layanan,Jasa Profesional / Perawatan / Perbaikan,repair,3,3,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+119,Usaha Ternak Lele,"Pertanian, Peternakan & Perikanan",Budidaya & Hasil Tani,livestock,3,5,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+120,Usaha Bordir Rumahan,Jasa & Layanan,Jasa Profesional / Perawatan / Perbaikan,service,3,3,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+121,Toko Herbal dan Rempah,Minuman & Es,Jamu & Minuman Herbal,herbal,3,4,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+122,Sate Padang Keliling,Kuliner & Makanan,Masakan & Makanan Siap Saji,meal,3,8,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+123,Kwetiau Goreng Gerobak,Kuliner & Makanan,Masakan & Makanan Siap Saji,meal,3,8,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+124,Warung Mie Goreng,Perdagangan & Toko,Toko / Perdagangan Khusus,retail,3,8,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+125,Susu Cokelat,Minuman & Es,"Teh, Susu & Minuman Kekinian",tea,3,3,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+126,Usaha Lumpia,"Jajanan, Bakery & Produksi Pangan",Jajanan & Gorengan,fried_snack,3,7,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+127,Produksi Emping,"Jajanan, Bakery & Produksi Pangan",Produksi Pangan & Bumbu,seasoning,3,6,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+128,Warung Sayur Mangkal,Perdagangan & Toko,Toko / Perdagangan Khusus,retail,3,8,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+129,Pedagang Seafood Segar,Perdagangan & Toko,Toko / Perdagangan Khusus,food_trade,3,4,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+130,Jasa Tambal Ban,Jasa & Layanan,Jasa Profesional / Perawatan / Perbaikan,repair,3,3,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+131,Usaha Budidaya Nila,"Pertanian, Peternakan & Perikanan",Budidaya & Hasil Tani,plant,3,5,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+132,Usaha Konveksi Kecil,Jasa & Layanan,Jasa Profesional / Perawatan / Perbaikan,service,3,3,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+133,Toko Perlengkapan Bayi dan Ibu,Perdagangan & Toko,Toko / Perdagangan Khusus,retail,3,4,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+134,Seblak Keliling,Kuliner & Makanan,Masakan & Makanan Siap Saji,meal,3,8,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+135,Bihun Goreng Gerobak,Kuliner & Makanan,Masakan & Makanan Siap Saji,meal,3,8,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+136,Warung Kwetiau,Kuliner & Makanan,Masakan & Makanan Siap Saji,meal,3,8,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+137,Thai Tea,Minuman & Es,"Teh, Susu & Minuman Kekinian",tea,3,3,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+138,Usaha Martabak Mini,"Jajanan, Bakery & Produksi Pangan",Produksi Pangan & Bumbu,martabak,3,7,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+139,Produksi Kerupuk,"Jajanan, Bakery & Produksi Pangan",Produksi Pangan & Bumbu,seasoning,3,6,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+140,Warung Buah Kecil,Perdagangan & Toko,Toko / Perdagangan Khusus,retail,3,8,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+141,Pedagang Udang,Perdagangan & Toko,Toko / Perdagangan Khusus,food_trade,3,4,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+142,Jasa Bengkel Motor Kecil,Jasa & Layanan,Jasa Profesional / Perawatan / Perbaikan,repair,3,3,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+143,Usaha Budidaya Gurame,"Pertanian, Peternakan & Perikanan",Budidaya & Hasil Tani,plant,3,5,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+144,Usaha Tas Rajut,Kerajinan & Produk Kreatif,Kerajinan & Produksi Kreatif,craft,3,4,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+145,Bakso Keliling,Kuliner & Makanan,Masakan & Makanan Siap Saji,meal,3,8,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+146,Bakmi Jawa Gerobak,Kuliner & Makanan,Masakan & Makanan Siap Saji,meal,3,8,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+147,Warung Bakmi,Kuliner & Makanan,Masakan & Makanan Siap Saji,meal,3,8,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+148,Green Tea Latte,Minuman & Es,"Teh, Susu & Minuman Kekinian",tea,3,3,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+149,Usaha Martabak Telur,"Jajanan, Bakery & Produksi Pangan",Produksi Pangan & Bumbu,martabak,3,7,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+150,Produksi Keripik,"Jajanan, Bakery & Produksi Pangan",Produksi Pangan & Bumbu,seasoning,3,6,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+151,Warung Telur Eceran,Perdagangan & Toko,Toko / Perdagangan Khusus,retail,3,8,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+152,Pedagang Cumi,Perdagangan & Toko,Toko / Perdagangan Khusus,food_trade,3,4,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+153,Jasa Servis HP,Jasa & Layanan,Jasa Profesional / Perawatan / Perbaikan,repair,3,3,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+154,Usaha Budidaya Ikan Mas,"Pertanian, Peternakan & Perikanan",Budidaya & Hasil Tani,plant,3,5,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+155,Usaha Anyaman Bambu,Kerajinan & Produk Kreatif,Kerajinan & Produksi Kreatif,craft,3,4,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+156,Mie Ayam Keliling,Kuliner & Makanan,Masakan & Makanan Siap Saji,meal,3,8,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+157,Nasi Kebuli Gerobak,Kuliner & Makanan,Masakan & Makanan Siap Saji,meal,3,8,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+158,Warung Bakso,Kuliner & Makanan,Masakan & Makanan Siap Saji,meal,3,8,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+159,Boba Milk Tea,Minuman & Es,"Teh, Susu & Minuman Kekinian",tea,3,3,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+160,Usaha Martabak Manis,"Jajanan, Bakery & Produksi Pangan",Produksi Pangan & Bumbu,martabak,3,7,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+161,Produksi Kue Kering Lebaran,"Jajanan, Bakery & Produksi Pangan",Bakery & Kue,bakery,3,8,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+162,Warung Gas LPG,Perdagangan & Toko,Toko / Perdagangan Khusus,retail,3,8,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+163,Pedagang Sayuran Mangkal,Perdagangan & Toko,Toko / Perdagangan Khusus,food_trade,3,4,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+164,Jasa Servis Elektronik,Jasa & Layanan,Jasa Profesional / Perawatan / Perbaikan,repair,3,3,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+165,Usaha Budidaya Ikan Hias,"Pertanian, Peternakan & Perikanan",Budidaya & Hasil Tani,plant,3,5,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+166,Usaha Kerajinan Kayu,Kerajinan & Produk Kreatif,Kerajinan & Produksi Kreatif,craft,3,4,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+167,Cilok Keliling,"Jajanan, Bakery & Produksi Pangan",Jajanan & Gorengan,fried_snack,3,7,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+168,Nasi Padang Gerobak,Kuliner & Makanan,Masakan & Makanan Siap Saji,meal,3,8,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+169,Warung Mie Ayam,Kuliner & Makanan,Masakan & Makanan Siap Saji,meal,3,8,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+170,Brown Sugar Boba,Minuman & Es,"Teh, Susu & Minuman Kekinian",tea,3,3,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+171,Usaha Terang Bulan Mini,"Jajanan, Bakery & Produksi Pangan",Produksi Pangan & Bumbu,martabak,3,7,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+172,Produksi Nastar,"Jajanan, Bakery & Produksi Pangan",Bakery & Kue,bakery,3,8,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+173,Warung Air Mineral,Perdagangan & Toko,Toko / Perdagangan Khusus,food_trade,3,8,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+174,Pedagang Buah Mangkal,Perdagangan & Toko,Toko / Perdagangan Khusus,food_trade,3,4,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+175,Jasa Laundry Kiloan,Jasa & Layanan,Jasa Profesional / Perawatan / Perbaikan,laundry,3,5,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+176,Usaha Pembenihan Ikan,"Pertanian, Peternakan & Perikanan",Budidaya & Hasil Tani,livestock,3,5,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+177,Usaha Kerajinan Resin,Kerajinan & Produk Kreatif,Kerajinan & Produksi Kreatif,craft,3,4,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+178,Cilung Keliling,"Jajanan, Bakery & Produksi Pangan",Jajanan & Gorengan,fried_snack,3,7,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+179,Nasi Campur Gerobak,Kuliner & Makanan,Masakan & Makanan Siap Saji,meal,3,8,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+180,Warung Soto Ayam,Kuliner & Makanan,Masakan & Makanan Siap Saji,meal,3,8,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+181,Cappuccino Cincau,Minuman & Es,"Teh, Susu & Minuman Kekinian",tea,3,3,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+182,Usaha Roti Bakar,"Jajanan, Bakery & Produksi Pangan",Produksi Pangan & Bumbu,martabak,3,7,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+183,Produksi Kastengel,"Jajanan, Bakery & Produksi Pangan",Bakery & Kue,bakery,3,8,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+184,Warung Plastik,Perdagangan & Toko,Toko / Perdagangan Khusus,retail,3,8,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+185,Pedagang Beras Eceran,Perdagangan & Toko,Toko / Perdagangan Khusus,food_trade,3,4,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+186,Jasa Laundry Sepatu,Jasa & Layanan,Jasa Profesional / Perawatan / Perbaikan,laundry,3,5,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+187,Usaha Pakan Ikan,"Pertanian, Peternakan & Perikanan",Budidaya & Hasil Tani,livestock,3,5,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+188,Usaha Lilin Aromaterapi,Kerajinan & Produk Kreatif,Kerajinan & Produksi Kreatif,craft,3,4,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+189,Telur Gulung Keliling,"Jajanan, Bakery & Produksi Pangan",Jajanan & Gorengan,fried_snack,3,7,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+190,Nasi Kuning Gerobak,Kuliner & Makanan,Masakan & Makanan Siap Saji,meal,3,8,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+191,Warung Soto Betawi,Kuliner & Makanan,Masakan & Makanan Siap Saji,meal,3,8,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+192,Alpukat Kocok,Minuman & Es,"Jus, Es & Minuman Buah",juice,3,6,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+193,Usaha Roti Kukus,"Jajanan, Bakery & Produksi Pangan",Bakery & Kue,bakery,3,8,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+194,Produksi Putri Salju,"Jajanan, Bakery & Produksi Pangan",Bakery & Kue,bakery,3,8,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+195,Warung Perlengkapan Dapur,Perdagangan & Toko,Toko / Perdagangan Khusus,retail,3,8,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+196,Pedagang Gula dan Tepung,Perdagangan & Toko,Toko / Perdagangan Khusus,food_trade,3,4,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+197,Jasa Setrika Pakaian,Jasa & Layanan,Jasa Profesional / Perawatan / Perbaikan,laundry,3,5,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+198,Usaha Pakan Ternak,"Pertanian, Peternakan & Perikanan",Budidaya & Hasil Tani,livestock,3,5,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+199,Usaha Sabun Handmade,Kerajinan & Produk Kreatif,Kerajinan & Produksi Kreatif,craft,3,4,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+200,Martabak Telur Mini Keliling,"Jajanan, Bakery & Produksi Pangan",Produksi Pangan & Bumbu,martabak,3,7,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+201,Nasi Liwet Gerobak,Kuliner & Makanan,Masakan & Makanan Siap Saji,meal,3,8,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+202,Warung Rawon,Kuliner & Makanan,Masakan & Makanan Siap Saji,meal,3,8,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+203,Jus Alpukat,Minuman & Es,"Jus, Es & Minuman Buah",juice,3,6,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+204,Usaha Donat Kampung,"Jajanan, Bakery & Produksi Pangan",Bakery & Kue,bakery,3,8,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+205,Produksi Cookies,"Jajanan, Bakery & Produksi Pangan",Bakery & Kue,bakery,3,8,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+206,Toko Alat Tulis Kecil,Perdagangan & Toko,Toko / Perdagangan Khusus,retail,3,4,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+207,Pedagang Minyak Goreng Curah,Perdagangan & Toko,Toko / Perdagangan Khusus,food_trade,3,4,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+208,Jasa Jahit Pakaian,Jasa & Layanan,Jasa Profesional / Perawatan / Perbaikan,service,3,3,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+209,Usaha Sayur Hidroponik,"Pertanian, Peternakan & Perikanan",Budidaya & Hasil Tani,plant,3,5,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+210,Usaha Kerajinan Kulit,Kerajinan & Produk Kreatif,Kerajinan & Produksi Kreatif,craft,3,4,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+211,Martabak Manis Keliling,"Jajanan, Bakery & Produksi Pangan",Produksi Pangan & Bumbu,martabak,3,7,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+212,Nasi Bakar Gerobak,Kuliner & Makanan,Masakan & Makanan Siap Saji,meal,3,8,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+213,Warung Sop Buntut,Kuliner & Makanan,Masakan & Makanan Siap Saji,meal,3,8,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+214,Jus Mangga,Minuman & Es,"Jus, Es & Minuman Buah",juice,3,6,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+215,Usaha Donat Premium,"Jajanan, Bakery & Produksi Pangan",Bakery & Kue,bakery,3,8,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+216,Produksi Brownies,"Jajanan, Bakery & Produksi Pangan",Bakery & Kue,bakery,3,8,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+217,Toko Mainan Anak,Perdagangan & Toko,Toko / Perdagangan Khusus,retail,3,4,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+218,Pedagang Bumbu Dapur,Perdagangan & Toko,Bahan Pangan & Bumbu,food_trade,3,4,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+219,Jasa Permak Jeans,Jasa & Layanan,Jasa Profesional / Perawatan / Perbaikan,service,3,3,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+220,Usaha Tanaman Hias,"Pertanian, Peternakan & Perikanan",Budidaya & Hasil Tani,plant,3,5,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+221,Usaha Pot Tanaman,"Pertanian, Peternakan & Perikanan",Budidaya & Hasil Tani,plant,3,5,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+222,Tahu Bulat Keliling,"Jajanan, Bakery & Produksi Pangan",Jajanan & Gorengan,fried_snack,3,7,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+223,Nasi Kotak Gerobak,Kuliner & Makanan,Masakan & Makanan Siap Saji,meal,3,8,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+224,Warung Sop Iga,Kuliner & Makanan,Masakan & Makanan Siap Saji,meal,3,8,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+225,Jus Jambu,Minuman & Es,"Jus, Es & Minuman Buah",juice,3,6,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+226,Usaha Pukis,"Jajanan, Bakery & Produksi Pangan",Jajanan & Gorengan,traditional_snack,3,7,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+227,Produksi Bolu,"Jajanan, Bakery & Produksi Pangan",Bakery & Kue,bakery,3,8,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+228,Toko Aksesoris HP,Perdagangan & Toko,Toko / Perdagangan Khusus,retail,3,4,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+229,Pedagang Cabai dan Bawang,Perdagangan & Toko,Toko / Perdagangan Khusus,food_trade,3,4,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+230,Jasa Obras dan Bordir,Jasa & Layanan,Jasa Profesional / Perawatan / Perbaikan,service,3,3,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+231,Usaha Bibit Tanaman,"Pertanian, Peternakan & Perikanan",Budidaya & Hasil Tani,plant,3,5,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+232,Usaha Dekorasi Rumah,Kerajinan & Produk Kreatif,Kerajinan & Produksi Kreatif,craft,3,4,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+233,Cireng Keliling,"Jajanan, Bakery & Produksi Pangan",Jajanan & Gorengan,fried_snack,3,7,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+234,Soto Ayam Gerobak,Kuliner & Makanan,Masakan & Makanan Siap Saji,meal,3,8,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+235,Warung Empal Gentong,Kuliner & Makanan,Masakan & Makanan Siap Saji,meal,3,8,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+236,Jus Melon,Minuman & Es,"Jus, Es & Minuman Buah",juice,3,6,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+237,Usaha Kue Cubit,"Jajanan, Bakery & Produksi Pangan",Jajanan & Gorengan,traditional_snack,3,7,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+238,Produksi Cake Ulang Tahun,"Jajanan, Bakery & Produksi Pangan",Bakery & Kue,bakery,3,8,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+239,Toko Pulsa dan Paket Data,Perdagangan & Toko,Toko / Perdagangan Khusus,retail,3,4,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+240,Pedagang Tahu Putih,Perdagangan & Toko,Toko / Perdagangan Khusus,food_trade,3,4,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+241,Jasa Pengetikan,Jasa & Layanan,"Percetakan, Fotokopi & Dokumen",print,3,6,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+242,Usaha Jamur Tiram,"Pertanian, Peternakan & Perikanan",Budidaya & Hasil Tani,plant,3,4,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+243,Usaha Bunga Artificial,Kerajinan & Produk Kreatif,Kerajinan & Produksi Kreatif,craft,3,4,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+244,Gorengan Keliling,"Jajanan, Bakery & Produksi Pangan",Jajanan & Gorengan,fried_snack,3,7,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+245,Soto Betawi Gerobak,Kuliner & Makanan,Masakan & Makanan Siap Saji,meal,3,8,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+246,Warung Tongseng Kambing,Kuliner & Makanan,Masakan & Makanan Siap Saji,meal,3,10,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+247,Jus Semangka,Minuman & Es,"Jus, Es & Minuman Buah",juice,3,6,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+248,Usaha Kue Ape,"Jajanan, Bakery & Produksi Pangan",Jajanan & Gorengan,traditional_snack,3,7,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+249,Produksi Roti Manis,"Jajanan, Bakery & Produksi Pangan",Bakery & Kue,bakery,3,8,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+250,Toko Perlengkapan Bayi,Perdagangan & Toko,Toko / Perdagangan Khusus,retail,3,4,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+251,Pedagang Tempe,Perdagangan & Toko,Toko / Perdagangan Khusus,food_trade,3,4,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+252,Jasa Fotokopi Rumahan,Jasa & Layanan,"Percetakan, Fotokopi & Dokumen",print,3,6,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+253,Usaha Microgreens,"Pertanian, Peternakan & Perikanan",Budidaya & Hasil Tani,plant,3,5,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+254,Usaha Mahar dan Hantaran,Kerajinan & Produk Kreatif,Kerajinan & Produksi Kreatif,craft,3,4,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+255,Roti Bakar Keliling,"Jajanan, Bakery & Produksi Pangan",Produksi Pangan & Bumbu,martabak,3,7,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+256,Rawon Gerobak,Kuliner & Makanan,Masakan & Makanan Siap Saji,meal,3,8,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+257,Warung Gulai,Kuliner & Makanan,Masakan & Makanan Siap Saji,meal,3,8,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+258,Jus Buah Naga,Minuman & Es,"Jus, Es & Minuman Buah",juice,3,6,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+259,Usaha Kue Pancong,"Jajanan, Bakery & Produksi Pangan",Jajanan & Gorengan,traditional_snack,3,7,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+260,Produksi Roti Tawar,"Jajanan, Bakery & Produksi Pangan",Bakery & Kue,bakery,3,8,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+261,Toko Perlengkapan Sekolah,Perdagangan & Toko,Toko / Perdagangan Khusus,retail,3,4,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+262,Pedagang Tahu dan Tempe Mangkal,Perdagangan & Toko,Toko / Perdagangan Khusus,food_trade,3,4,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+263,Jasa Print Dokumen,Jasa & Layanan,"Percetakan, Fotokopi & Dokumen",print,3,6,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+264,Usaha Cabai Rumahan,"Pertanian, Peternakan & Perikanan",Budidaya & Hasil Tani,plant,3,5,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+265,Jagung Rebus dan Bakar Keliling,"Jajanan, Bakery & Produksi Pangan",Jajanan & Gorengan,traditional_snack,3,7,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+266,Sop Ayam Gerobak,Kuliner & Makanan,Masakan & Makanan Siap Saji,meal,3,8,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+267,Warung Rendang,Kuliner & Makanan,Masakan & Makanan Siap Saji,meal,3,8,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+268,Jus Sirsak,Minuman & Es,"Jus, Es & Minuman Buah",juice,3,6,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+269,Usaha Serabi,"Jajanan, Bakery & Produksi Pangan",Jajanan & Gorengan,traditional_snack,3,7,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+270,Produksi Roti Isi,"Jajanan, Bakery & Produksi Pangan",Bakery & Kue,bakery,3,8,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+271,Toko Bumbu Dapur,Perdagangan & Toko,Bahan Pangan & Bumbu,food_trade,3,4,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+272,Pedagang Kelapa Parut,Perdagangan & Toko,Toko / Perdagangan Khusus,food_trade,3,4,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+273,Jasa Laminasi dan Jilid,Jasa & Layanan,"Percetakan, Fotokopi & Dokumen",print,3,6,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+274,Usaha Bawang Merah,"Pertanian, Peternakan & Perikanan",Budidaya & Hasil Tani,plant,3,5,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+275,Kacang Rebus Keliling,"Jajanan, Bakery & Produksi Pangan",Jajanan & Gorengan,traditional_snack,3,7,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+276,Sop Iga Gerobak,Kuliner & Makanan,Masakan & Makanan Siap Saji,meal,3,8,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+277,Warung Masakan Padang,Kuliner & Makanan,Masakan & Makanan Siap Saji,meal,3,8,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+278,Jus Wortel,Minuman & Es,"Jus, Es & Minuman Buah",juice,3,6,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+279,Usaha Kue Putu,"Jajanan, Bakery & Produksi Pangan",Jajanan Tradisional,traditional_snack,3,7,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+280,Produksi Donat,"Jajanan, Bakery & Produksi Pangan",Bakery & Kue,bakery,3,8,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+281,Toko Beras Eceran,Perdagangan & Toko,Toko / Perdagangan Khusus,food_trade,3,4,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+282,Pedagang Santan Segar,Perdagangan & Toko,Toko / Perdagangan Khusus,food_trade,3,4,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+283,Jasa Desain Grafis,Jasa & Layanan,Kreatif & Desain,design,3,4,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+284,Usaha Budidaya Jahe,"Pertanian, Peternakan & Perikanan",Budidaya & Hasil Tani,plant,3,5,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+285,Es Cendol dan Dawet Keliling,Minuman & Es,"Jus, Es & Minuman Buah",juice,3,7,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+286,Tongseng Gerobak,Kuliner & Makanan,Masakan & Makanan Siap Saji,meal,3,10,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+287,Warung Nasi Rames,Kuliner & Makanan,Masakan & Makanan Siap Saji,meal,3,8,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+288,Jus Tomat,Minuman & Es,"Jus, Es & Minuman Buah",juice,3,6,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+289,Usaha Klepon,"Jajanan, Bakery & Produksi Pangan",Jajanan & Gorengan,traditional_snack,3,7,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+290,Produksi Pastry,"Jajanan, Bakery & Produksi Pangan",Bakery & Kue,bakery,3,8,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+291,Toko Minyak Goreng,Perdagangan & Toko,Toko / Perdagangan Khusus,food_trade,3,4,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+292,Pedagang Rempah Kering,Perdagangan & Toko,Toko / Perdagangan Khusus,food_trade,3,4,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+293,Jasa Foto Produk,Jasa & Layanan,Fotografi & Konten,photo,3,4,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+294,Usaha Budidaya Kunyit,"Pertanian, Peternakan & Perikanan",Budidaya & Hasil Tani,plant,3,5,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+295,Es Doger Keliling,Minuman & Es,Es Tradisional & Minuman,traditional_drink,3,8,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+296,Gulai Ayam Gerobak,Kuliner & Makanan,Masakan & Makanan Siap Saji,meal,3,8,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+297,Warung Nasi Campur,Kuliner & Makanan,Masakan & Makanan Siap Saji,meal,3,8,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+298,Sop Buah,Minuman & Es,"Jus, Es & Minuman Buah",juice,3,6,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+299,Usaha Onde-onde,"Jajanan, Bakery & Produksi Pangan",Jajanan & Gorengan,traditional_snack,3,7,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+300,Produksi Risoles Frozen,"Jajanan, Bakery & Produksi Pangan",Jajanan & Gorengan,fried_snack,3,7,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid
+301,Toko Telur,Perdagangan & Toko,Toko / Perdagangan Khusus,food_trade,3,4,3,YA,Takaran resep nol/draft; perlu pengukuran usaha nyata sebelum HPP dianggap valid

@@ -1,0 +1,301 @@
+﻿id_lama,nama_lama,id_baru,jenis_usaha_baru
+21,"Bakso, Mi Ayam & Soto",302,"Bakso, Mi, Soto & Hidangan Berkuah"
+111,Mie Goreng Gerobak,302,"Bakso, Mi, Soto & Hidangan Berkuah"
+123,Kwetiau Goreng Gerobak,302,"Bakso, Mi, Soto & Hidangan Berkuah"
+124,Warung Mie Goreng,302,"Bakso, Mi, Soto & Hidangan Berkuah"
+134,Seblak Keliling,302,"Bakso, Mi, Soto & Hidangan Berkuah"
+135,Bihun Goreng Gerobak,302,"Bakso, Mi, Soto & Hidangan Berkuah"
+136,Warung Kwetiau,302,"Bakso, Mi, Soto & Hidangan Berkuah"
+145,Bakso Keliling,302,"Bakso, Mi, Soto & Hidangan Berkuah"
+146,Bakmi Jawa Gerobak,302,"Bakso, Mi, Soto & Hidangan Berkuah"
+147,Warung Bakmi,302,"Bakso, Mi, Soto & Hidangan Berkuah"
+156,Mie Ayam Keliling,302,"Bakso, Mi, Soto & Hidangan Berkuah"
+158,Warung Bakso,302,"Bakso, Mi, Soto & Hidangan Berkuah"
+169,Warung Mie Ayam,302,"Bakso, Mi, Soto & Hidangan Berkuah"
+106,Jasa Cuci Motor,303,Bengkel & Perawatan Kendaraan
+118,Jasa Cuci Mobil,303,Bengkel & Perawatan Kendaraan
+130,Jasa Tambal Ban,303,Bengkel & Perawatan Kendaraan
+142,Jasa Bengkel Motor Kecil,303,Bengkel & Perawatan Kendaraan
+31,Produksi Sambal Rumahan,304,"Bumbu, Sambal & Olahan Kering"
+43,Produksi Bumbu Dasar,304,"Bumbu, Sambal & Olahan Kering"
+55,Produksi Bumbu Pecel,304,"Bumbu, Sambal & Olahan Kering"
+79,Produksi Bumbu Instan,304,"Bumbu, Sambal & Olahan Kering"
+91,Produksi Abon Sapi,304,"Bumbu, Sambal & Olahan Kering"
+103,Produksi Abon Ayam,304,"Bumbu, Sambal & Olahan Kering"
+115,Produksi Dendeng,304,"Bumbu, Sambal & Olahan Kering"
+127,Produksi Emping,304,"Bumbu, Sambal & Olahan Kering"
+139,Produksi Kerupuk,304,"Bumbu, Sambal & Olahan Kering"
+150,Produksi Keripik,304,"Bumbu, Sambal & Olahan Kering"
+285,Es Cendol dan Dawet Keliling,305,Es Tradisional & Minuman Dingin
+295,Es Doger Keliling,305,Es Tradisional & Minuman Dingin
+17,Gorengan & Camilan,306,"Gorengan, Jajanan & Martabak"
+22,Jajanan Jalanan,306,"Gorengan, Jajanan & Martabak"
+23,Martabak & Roti Bakar,306,"Gorengan, Jajanan & Martabak"
+30,Usaha Aneka Gorengan,306,"Gorengan, Jajanan & Martabak"
+38,Siomay Keliling,306,"Gorengan, Jajanan & Martabak"
+42,Usaha Bakwan Sayur,306,"Gorengan, Jajanan & Martabak"
+50,Batagor Keliling,306,"Gorengan, Jajanan & Martabak"
+54,Usaha Tahu Isi,306,"Gorengan, Jajanan & Martabak"
+62,Pempek Keliling,306,"Gorengan, Jajanan & Martabak"
+66,Usaha Tempe Mendoan,306,"Gorengan, Jajanan & Martabak"
+78,Usaha Pisang Goreng,306,"Gorengan, Jajanan & Martabak"
+80,Warung Jajanan Anak,306,"Gorengan, Jajanan & Martabak"
+90,Usaha Cireng,306,"Gorengan, Jajanan & Martabak"
+98,Kue Ape Keliling,306,"Gorengan, Jajanan & Martabak"
+102,Usaha Risoles,306,"Gorengan, Jajanan & Martabak"
+114,Usaha Pastel,306,"Gorengan, Jajanan & Martabak"
+126,Usaha Lumpia,306,"Gorengan, Jajanan & Martabak"
+138,Usaha Martabak Mini,306,"Gorengan, Jajanan & Martabak"
+149,Usaha Martabak Telur,306,"Gorengan, Jajanan & Martabak"
+160,Usaha Martabak Manis,306,"Gorengan, Jajanan & Martabak"
+167,Cilok Keliling,306,"Gorengan, Jajanan & Martabak"
+171,Usaha Terang Bulan Mini,306,"Gorengan, Jajanan & Martabak"
+178,Cilung Keliling,306,"Gorengan, Jajanan & Martabak"
+182,Usaha Roti Bakar,306,"Gorengan, Jajanan & Martabak"
+189,Telur Gulung Keliling,306,"Gorengan, Jajanan & Martabak"
+200,Martabak Telur Mini Keliling,306,"Gorengan, Jajanan & Martabak"
+211,Martabak Manis Keliling,306,"Gorengan, Jajanan & Martabak"
+222,Tahu Bulat Keliling,306,"Gorengan, Jajanan & Martabak"
+226,Usaha Pukis,306,"Gorengan, Jajanan & Martabak"
+233,Cireng Keliling,306,"Gorengan, Jajanan & Martabak"
+237,Usaha Kue Cubit,306,"Gorengan, Jajanan & Martabak"
+244,Gorengan Keliling,306,"Gorengan, Jajanan & Martabak"
+248,Usaha Kue Ape,306,"Gorengan, Jajanan & Martabak"
+255,Roti Bakar Keliling,306,"Gorengan, Jajanan & Martabak"
+259,Usaha Kue Pancong,306,"Gorengan, Jajanan & Martabak"
+265,Jagung Rebus dan Bakar Keliling,306,"Gorengan, Jajanan & Martabak"
+269,Usaha Serabi,306,"Gorengan, Jajanan & Martabak"
+275,Kacang Rebus Keliling,306,"Gorengan, Jajanan & Martabak"
+279,Usaha Kue Putu,306,"Gorengan, Jajanan & Martabak"
+289,Usaha Klepon,306,"Gorengan, Jajanan & Martabak"
+299,Usaha Onde-onde,306,"Gorengan, Jajanan & Martabak"
+300,Produksi Risoles Frozen,306,"Gorengan, Jajanan & Martabak"
+37,Usaha Jamu Tradisional Mangkal,307,Jamu & Minuman Herbal
+49,Usaha Minuman Herbal,307,Jamu & Minuman Herbal
+208,Jasa Jahit Pakaian,308,Jasa Jahit & Permak
+219,Jasa Permak Jeans,308,Jasa Jahit & Permak
+230,Jasa Obras dan Bordir,308,Jasa Jahit & Permak
+24,Jus Buah & Es Campur,309,Jus & Minuman Buah
+53,Es Jeruk Peras,309,Jus & Minuman Buah
+192,Alpukat Kocok,309,Jus & Minuman Buah
+203,Jus Alpukat,309,Jus & Minuman Buah
+214,Jus Mangga,309,Jus & Minuman Buah
+225,Jus Jambu,309,Jus & Minuman Buah
+236,Jus Melon,309,Jus & Minuman Buah
+247,Jus Semangka,309,Jus & Minuman Buah
+258,Jus Buah Naga,309,Jus & Minuman Buah
+268,Jus Sirsak,309,Jus & Minuman Buah
+278,Jus Wortel,309,Jus & Minuman Buah
+288,Jus Tomat,309,Jus & Minuman Buah
+298,Sop Buah,309,Jus & Minuman Buah
+36,Usaha Kerajinan Aksesoris,310,"Kerajinan, Hadiah & Konveksi"
+48,Usaha Buket Bunga,310,"Kerajinan, Hadiah & Konveksi"
+60,Usaha Buket Snack,310,"Kerajinan, Hadiah & Konveksi"
+72,Usaha Hampers dan Parcel,310,"Kerajinan, Hadiah & Konveksi"
+84,Usaha Souvenir Pernikahan,310,"Kerajinan, Hadiah & Konveksi"
+96,Usaha Undangan Digital,310,"Kerajinan, Hadiah & Konveksi"
+108,Usaha Sablon Kaos,310,"Kerajinan, Hadiah & Konveksi"
+120,Usaha Bordir Rumahan,310,"Kerajinan, Hadiah & Konveksi"
+132,Usaha Konveksi Kecil,310,"Kerajinan, Hadiah & Konveksi"
+144,Usaha Tas Rajut,310,"Kerajinan, Hadiah & Konveksi"
+155,Usaha Anyaman Bambu,310,"Kerajinan, Hadiah & Konveksi"
+166,Usaha Kerajinan Kayu,310,"Kerajinan, Hadiah & Konveksi"
+177,Usaha Kerajinan Resin,310,"Kerajinan, Hadiah & Konveksi"
+210,Usaha Kerajinan Kulit,310,"Kerajinan, Hadiah & Konveksi"
+232,Usaha Dekorasi Rumah,310,"Kerajinan, Hadiah & Konveksi"
+243,Usaha Bunga Artificial,310,"Kerajinan, Hadiah & Konveksi"
+254,Usaha Mahar dan Hantaran,310,"Kerajinan, Hadiah & Konveksi"
+5,Konter HP,311,Konter & Servis Elektronik
+153,Jasa Servis HP,311,Konter & Servis Elektronik
+164,Jasa Servis Elektronik,311,Konter & Servis Elektronik
+239,Toko Pulsa dan Paket Data,311,Konter & Servis Elektronik
+18,Warung Kopi & Minuman,312,Kopi & Minuman Kopi
+65,Es Kopi Susu Gula Aren,312,Kopi & Minuman Kopi
+77,Kopi Susu Botolan,312,Kopi & Minuman Kopi
+89,Kopi Hitam Warkop,312,Kopi & Minuman Kopi
+92,Warung Kopi Kecil,312,Kopi & Minuman Kopi
+101,Warung Kopi Sachet,312,Kopi & Minuman Kopi
+12,Toko Kue / Bakery,313,"Kue, Roti & Bakery"
+161,Produksi Kue Kering Lebaran,313,"Kue, Roti & Bakery"
+172,Produksi Nastar,313,"Kue, Roti & Bakery"
+183,Produksi Kastengel,313,"Kue, Roti & Bakery"
+193,Usaha Roti Kukus,313,"Kue, Roti & Bakery"
+194,Produksi Putri Salju,313,"Kue, Roti & Bakery"
+204,Usaha Donat Kampung,313,"Kue, Roti & Bakery"
+205,Produksi Cookies,313,"Kue, Roti & Bakery"
+215,Usaha Donat Premium,313,"Kue, Roti & Bakery"
+216,Produksi Brownies,313,"Kue, Roti & Bakery"
+227,Produksi Bolu,313,"Kue, Roti & Bakery"
+238,Produksi Cake Ulang Tahun,313,"Kue, Roti & Bakery"
+249,Produksi Roti Manis,313,"Kue, Roti & Bakery"
+260,Produksi Roti Tawar,313,"Kue, Roti & Bakery"
+270,Produksi Roti Isi,313,"Kue, Roti & Bakery"
+280,Produksi Donat,313,"Kue, Roti & Bakery"
+290,Produksi Pastry,313,"Kue, Roti & Bakery"
+6,Laundry & Cuci Sepatu,314,Laundry & Perawatan Pakaian
+175,Jasa Laundry Kiloan,314,Laundry & Perawatan Pakaian
+186,Jasa Laundry Sepatu,314,Laundry & Perawatan Pakaian
+197,Jasa Setrika Pakaian,314,Laundry & Perawatan Pakaian
+8,Percetakan / Fotokopi Kecil,315,"Percetakan, Dokumen & Desain"
+241,Jasa Pengetikan,315,"Percetakan, Dokumen & Desain"
+252,Jasa Fotokopi Rumahan,315,"Percetakan, Dokumen & Desain"
+263,Jasa Print Dokumen,315,"Percetakan, Dokumen & Desain"
+273,Jasa Laminasi dan Jilid,315,"Percetakan, Dokumen & Desain"
+283,Jasa Desain Grafis,315,"Percetakan, Dokumen & Desain"
+293,Jasa Foto Produk,315,"Percetakan, Dokumen & Desain"
+33,Pedagang Telur Ayam Mangkal,316,Perdagangan Bahan Pangan Segar
+45,Pedagang Telur Bebek,316,Perdagangan Bahan Pangan Segar
+57,Pedagang Telur Puyuh,316,Perdagangan Bahan Pangan Segar
+69,Pedagang Ayam Potong Mangkal,316,Perdagangan Bahan Pangan Segar
+81,Pedagang Daging Sapi,316,Perdagangan Bahan Pangan Segar
+93,Pedagang Daging Kambing,316,Perdagangan Bahan Pangan Segar
+128,Warung Sayur Mangkal,316,Perdagangan Bahan Pangan Segar
+151,Warung Telur Eceran,316,Perdagangan Bahan Pangan Segar
+173,Warung Air Mineral,316,Perdagangan Bahan Pangan Segar
+185,Pedagang Beras Eceran,316,Perdagangan Bahan Pangan Segar
+196,Pedagang Gula dan Tepung,316,Perdagangan Bahan Pangan Segar
+207,Pedagang Minyak Goreng Curah,316,Perdagangan Bahan Pangan Segar
+240,Pedagang Tahu Putih,316,Perdagangan Bahan Pangan Segar
+251,Pedagang Tempe,316,Perdagangan Bahan Pangan Segar
+262,Pedagang Tahu dan Tempe Mangkal,316,Perdagangan Bahan Pangan Segar
+301,Toko Telur,316,Perdagangan Bahan Pangan Segar
+105,Pedagang Ikan Segar Mangkal,317,Perikanan & Hasil Laut
+117,Pedagang Ikan Asin,317,Perikanan & Hasil Laut
+119,Usaha Ternak Lele,317,Perikanan & Hasil Laut
+129,Pedagang Seafood Segar,317,Perikanan & Hasil Laut
+131,Usaha Budidaya Nila,317,Perikanan & Hasil Laut
+141,Pedagang Udang,317,Perikanan & Hasil Laut
+143,Usaha Budidaya Gurame,317,Perikanan & Hasil Laut
+152,Pedagang Cumi,317,Perikanan & Hasil Laut
+154,Usaha Budidaya Ikan Mas,317,Perikanan & Hasil Laut
+165,Usaha Budidaya Ikan Hias,317,Perikanan & Hasil Laut
+176,Usaha Pembenihan Ikan,317,Perikanan & Hasil Laut
+187,Usaha Pakan Ikan,317,Perikanan & Hasil Laut
+26,Tukang Sayur Keliling,318,"Pertanian, Sayur, Buah & Rempah"
+140,Warung Buah Kecil,318,"Pertanian, Sayur, Buah & Rempah"
+163,Pedagang Sayuran Mangkal,318,"Pertanian, Sayur, Buah & Rempah"
+174,Pedagang Buah Mangkal,318,"Pertanian, Sayur, Buah & Rempah"
+209,Usaha Sayur Hidroponik,318,"Pertanian, Sayur, Buah & Rempah"
+218,Pedagang Bumbu Dapur,318,"Pertanian, Sayur, Buah & Rempah"
+220,Usaha Tanaman Hias,318,"Pertanian, Sayur, Buah & Rempah"
+221,Usaha Pot Tanaman,318,"Pertanian, Sayur, Buah & Rempah"
+229,Pedagang Cabai dan Bawang,318,"Pertanian, Sayur, Buah & Rempah"
+231,Usaha Bibit Tanaman,318,"Pertanian, Sayur, Buah & Rempah"
+242,Usaha Jamur Tiram,318,"Pertanian, Sayur, Buah & Rempah"
+253,Usaha Microgreens,318,"Pertanian, Sayur, Buah & Rempah"
+264,Usaha Cabai Rumahan,318,"Pertanian, Sayur, Buah & Rempah"
+272,Pedagang Kelapa Parut,318,"Pertanian, Sayur, Buah & Rempah"
+274,Usaha Bawang Merah,318,"Pertanian, Sayur, Buah & Rempah"
+282,Pedagang Santan Segar,318,"Pertanian, Sayur, Buah & Rempah"
+284,Usaha Budidaya Jahe,318,"Pertanian, Sayur, Buah & Rempah"
+292,Pedagang Rempah Kering,318,"Pertanian, Sayur, Buah & Rempah"
+294,Usaha Budidaya Kunyit,318,"Pertanian, Sayur, Buah & Rempah"
+35,Usaha Ternak Ayam Petelur,319,Peternakan & Pakan Ternak
+47,Usaha Ternak Ayam Pedaging,319,Peternakan & Pakan Ternak
+59,Usaha Ternak Ayam Kampung,319,Peternakan & Pakan Ternak
+71,Usaha Ternak Bebek,319,Peternakan & Pakan Ternak
+83,Usaha Ternak Puyuh,319,Peternakan & Pakan Ternak
+95,Usaha Ternak Kambing,319,Peternakan & Pakan Ternak
+107,Usaha Ternak Domba,319,Peternakan & Pakan Ternak
+198,Usaha Pakan Ternak,319,Peternakan & Pakan Ternak
+188,Usaha Lilin Aromaterapi,320,Produk Handmade & Rumah Tangga
+199,Usaha Sabun Handmade,320,Produk Handmade & Rumah Tangga
+10,Salon,321,"Salon, Kecantikan & Kebugaran"
+34,Jasa Pangkas Rambut Pria,321,"Salon, Kecantikan & Kebugaran"
+46,Jasa Barbershop Rumahan,321,"Salon, Kecantikan & Kebugaran"
+58,Jasa Salon Rumahan,321,"Salon, Kecantikan & Kebugaran"
+61,Usaha Pijat Refleksi Rumahan,321,"Salon, Kecantikan & Kebugaran"
+70,Jasa Rias Pengantin,321,"Salon, Kecantikan & Kebugaran"
+73,Usaha Perawatan Kuku,321,"Salon, Kecantikan & Kebugaran"
+82,Jasa Makeup Wisuda,321,"Salon, Kecantikan & Kebugaran"
+85,Usaha Perawatan Wajah Rumahan,321,"Salon, Kecantikan & Kebugaran"
+94,Jasa Nail Art,321,"Salon, Kecantikan & Kebugaran"
+97,Usaha Spa Rumahan,321,"Salon, Kecantikan & Kebugaran"
+29,Es Teh Jumbo Mangkal,322,"Teh, Susu & Minuman Kekinian"
+41,Es Teh Manis Gerobak Mangkal,322,"Teh, Susu & Minuman Kekinian"
+113,Es Cokelat,322,"Teh, Susu & Minuman Kekinian"
+125,Susu Cokelat,322,"Teh, Susu & Minuman Kekinian"
+137,Thai Tea,322,"Teh, Susu & Minuman Kekinian"
+148,Green Tea Latte,322,"Teh, Susu & Minuman Kekinian"
+159,Boba Milk Tea,322,"Teh, Susu & Minuman Kekinian"
+170,Brown Sugar Boba,322,"Teh, Susu & Minuman Kekinian"
+181,Cappuccino Cincau,322,"Teh, Susu & Minuman Kekinian"
+3,Depot Air Isi Ulang,323,"Toko Kelontong, Sembako & Kebutuhan Harian"
+14,Toko Retail,323,"Toko Kelontong, Sembako & Kebutuhan Harian"
+15,Toko Sembako & Grosir,323,"Toko Kelontong, Sembako & Kebutuhan Harian"
+32,Warung Kelontong,323,"Toko Kelontong, Sembako & Kebutuhan Harian"
+44,Warung Madura,323,"Toko Kelontong, Sembako & Kebutuhan Harian"
+56,Warung Sembako Rumahan,323,"Toko Kelontong, Sembako & Kebutuhan Harian"
+68,Warung Rokok,323,"Toko Kelontong, Sembako & Kebutuhan Harian"
+121,Toko Herbal dan Rempah,323,"Toko Kelontong, Sembako & Kebutuhan Harian"
+162,Warung Gas LPG,323,"Toko Kelontong, Sembako & Kebutuhan Harian"
+195,Warung Perlengkapan Dapur,323,"Toko Kelontong, Sembako & Kebutuhan Harian"
+271,Toko Bumbu Dapur,323,"Toko Kelontong, Sembako & Kebutuhan Harian"
+281,Toko Beras Eceran,323,"Toko Kelontong, Sembako & Kebutuhan Harian"
+291,Toko Minyak Goreng,323,"Toko Kelontong, Sembako & Kebutuhan Harian"
+4,Frozen Food,324,Toko Khusus & Retail
+9,Pet Shop,324,Toko Khusus & Retail
+11,Toko Kosmetik,324,Toko Khusus & Retail
+13,Toko Pakaian,324,Toko Khusus & Retail
+109,Toko Alat Kesehatan Kecil,324,Toko Khusus & Retail
+133,Toko Perlengkapan Bayi dan Ibu,324,Toko Khusus & Retail
+184,Warung Plastik,324,Toko Khusus & Retail
+206,Toko Alat Tulis Kecil,324,Toko Khusus & Retail
+217,Toko Mainan Anak,324,Toko Khusus & Retail
+228,Toko Aksesoris HP,324,Toko Khusus & Retail
+250,Toko Perlengkapan Bayi,324,Toko Khusus & Retail
+261,Toko Perlengkapan Sekolah,324,Toko Khusus & Retail
+20,Warung Makan & Pecel Lele,325,"Warung Lauk, Ayam & Masakan"
+27,Ayam Crispy Gerobak,325,"Warung Lauk, Ayam & Masakan"
+28,Warung Ayam Goreng,325,"Warung Lauk, Ayam & Masakan"
+39,Fried Chicken Gerobak,325,"Warung Lauk, Ayam & Masakan"
+40,Warung Ayam Bakar,325,"Warung Lauk, Ayam & Masakan"
+51,Ayam Geprek Gerobak,325,"Warung Lauk, Ayam & Masakan"
+52,Warung Ayam Geprek,325,"Warung Lauk, Ayam & Masakan"
+63,Ayam Penyet Gerobak,325,"Warung Lauk, Ayam & Masakan"
+64,Warung Ayam Penyet,325,"Warung Lauk, Ayam & Masakan"
+67,Produksi Bumbu Rendang,325,"Warung Lauk, Ayam & Masakan"
+75,Ayam Bakar Gerobak,325,"Warung Lauk, Ayam & Masakan"
+76,Warung Bebek Goreng,325,"Warung Lauk, Ayam & Masakan"
+87,Pecel Lele Gerobak,325,"Warung Lauk, Ayam & Masakan"
+88,Warung Bebek Bakar,325,"Warung Lauk, Ayam & Masakan"
+100,Warung Pecel Lele,325,"Warung Lauk, Ayam & Masakan"
+110,Sate Madura Keliling,325,"Warung Lauk, Ayam & Masakan"
+122,Sate Padang Keliling,325,"Warung Lauk, Ayam & Masakan"
+180,Warung Soto Ayam,325,"Warung Lauk, Ayam & Masakan"
+191,Warung Soto Betawi,325,"Warung Lauk, Ayam & Masakan"
+202,Warung Rawon,325,"Warung Lauk, Ayam & Masakan"
+213,Warung Sop Buntut,325,"Warung Lauk, Ayam & Masakan"
+224,Warung Sop Iga,325,"Warung Lauk, Ayam & Masakan"
+234,Soto Ayam Gerobak,325,"Warung Lauk, Ayam & Masakan"
+235,Warung Empal Gentong,325,"Warung Lauk, Ayam & Masakan"
+245,Soto Betawi Gerobak,325,"Warung Lauk, Ayam & Masakan"
+246,Warung Tongseng Kambing,325,"Warung Lauk, Ayam & Masakan"
+256,Rawon Gerobak,325,"Warung Lauk, Ayam & Masakan"
+257,Warung Gulai,325,"Warung Lauk, Ayam & Masakan"
+266,Sop Ayam Gerobak,325,"Warung Lauk, Ayam & Masakan"
+267,Warung Rendang,325,"Warung Lauk, Ayam & Masakan"
+276,Sop Iga Gerobak,325,"Warung Lauk, Ayam & Masakan"
+277,Warung Masakan Padang,325,"Warung Lauk, Ayam & Masakan"
+286,Tongseng Gerobak,325,"Warung Lauk, Ayam & Masakan"
+296,Gulai Ayam Gerobak,325,"Warung Lauk, Ayam & Masakan"
+1,Café & Resto,326,"Warung Makan, Nasi & Catering"
+2,Catering,326,"Warung Makan, Nasi & Catering"
+7,Penjual Makanan Online,326,"Warung Makan, Nasi & Catering"
+16,Warung Makan,326,"Warung Makan, Nasi & Catering"
+19,Nasi Uduk & Sarapan,326,"Warung Makan, Nasi & Catering"
+74,Bubur Ayam Keliling,326,"Warung Makan, Nasi & Catering"
+86,Nasi Uduk Keliling,326,"Warung Makan, Nasi & Catering"
+99,Nasi Goreng Gerobak,326,"Warung Makan, Nasi & Catering"
+104,Warung Makan Kecil,326,"Warung Makan, Nasi & Catering"
+112,Warung Nasi Goreng,326,"Warung Makan, Nasi & Catering"
+116,Warung Sarapan,326,"Warung Makan, Nasi & Catering"
+157,Nasi Kebuli Gerobak,326,"Warung Makan, Nasi & Catering"
+168,Nasi Padang Gerobak,326,"Warung Makan, Nasi & Catering"
+179,Nasi Campur Gerobak,326,"Warung Makan, Nasi & Catering"
+190,Nasi Kuning Gerobak,326,"Warung Makan, Nasi & Catering"
+201,Nasi Liwet Gerobak,326,"Warung Makan, Nasi & Catering"
+212,Nasi Bakar Gerobak,326,"Warung Makan, Nasi & Catering"
+223,Nasi Kotak Gerobak,326,"Warung Makan, Nasi & Catering"
+287,Warung Nasi Rames,326,"Warung Makan, Nasi & Catering"
+297,Warung Nasi Campur,326,"Warung Makan, Nasi & Catering"
