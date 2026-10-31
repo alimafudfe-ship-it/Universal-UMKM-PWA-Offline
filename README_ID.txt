@@ -1,4 +1,4 @@
-Universal UMKM Pro PWA Offline — v3.3.120
+Universal UMKM Pro PWA Offline — v3.3.121
 Basis perbaikan: ZIP v3.3.119 Es Teh Manis Sesuai Judul.
 
 RINGKASAN AUDIT KATALOG
@@ -10,7 +10,7 @@ RINGKASAN AUDIT KATALOG
 PERBAIKAN STRUKTURAL
 1. Memperbaiki tiga ID item yang bertabrakan antara paket Es Teh Manis Gerobak Mangkal (paket 41) dan Usaha Bakwan Sayur (paket 42). ID tiga produk paket 42 dibuat unik dan referensi resepnya diperbarui.
 2. Pencarian produk dan bahan dari template resep pada proses migrasi dibatasi berdasarkan paket_id. Ini mencegah produk/bahan dari paket lain tertukar ketika ID template sama atau data lama bermasalah.
-3. Cache service worker diperbarui agar perangkat mengambil file versi 3.3.120.
+3. Cache service worker diperbarui agar perangkat mengambil file versi 3.3.121.
 4. Semua ID item, paket, resep, dan alur kerja diperiksa ulang agar unik.
 5. Seluruh 783 resep diperiksa: produk dan semua bahan harus berasal dari paket yang sama. Tidak ditemukan lagi referensi silang atau ID yang tidak ditemukan.
 
@@ -36,3 +36,6 @@ PEMERIKSAAN TEKNIS
 - Integritas ZIP: diperiksa setelah pengemasan.
 
 Pengujian browser/perangkat nyata dan validasi resep oleh praktisi pangan belum dilakukan. Jangan menganggap pemeriksaan statis ini sebagai pengujian lapangan.
+
+
+Perubahan v3.3.121: audit alur kasir–stok–HPP–laporan laba; bahan yang dipakai komposisi tetap tersedia di Belanja pada usaha retail; pilihan pembelian dicek terhadap nama yang diketik; laporan memiliki fallback HPP dari detail transaksi; buku kas mencatat pembelian stok tanpa mengurangi laba dua kali. Lihat AUDIT_ALUR_KASIR_STOK_HPP_LABA.txt.

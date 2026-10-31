@@ -1,0 +1,44 @@
+AUDIT MENDALAM ALUR KASIR → STOK → HPP → LAPORAN LABA
+Paket dasar: Universal UMKM Pro v3.3.120
+Tanggal audit: 31 Oktober 2026
+
+RINGKASAN
+Audit ini adalah pemeriksaan kode statis dan validasi sintaks, bukan uji browser otomatis. Perubahan berikut diterapkan pada app.js.
+
+PERBAIKAN YANG DITERAPKAN
+1. Sinkronisasi pilihan Belanja dengan komposisi:
+   - Bahan yang dipakai dalam resep/komposisi tetap muncul sebagai pilihan pembelian meskipun jenis usaha termasuk retail/frozen food.
+   - Pilihan pembelian menggunakan catatan bahan yang sama dengan komposisi (materialId), sehingga pembelian memperbarui stok dan biaya rata-rata bahan yang dipakai untuk HPP.
+   - Saran nama yang sama mengutamakan catatan bahan yang terhubung ke komposisi.
+2. Pencegahan pembelian ke item yang salah:
+   - Jika teks nama bahan berubah setelah pilihan sebelumnya dibuat, pilihan lama tidak lagi digunakan secara diam-diam. Aplikasi mencari kecocokan nama yang tepat atau membuat catatan baru.
+3. Laporan HPP:
+   - Jika transaksi lama tidak mempunyai nilai cost di header, HPP dihitung dari detail transaksi (qty × cost per unit) sebagai fallback.
+   - Penjualan untuk laporan laba tetap mengecualikan pajak dan memasukkan subtotal barang serta biaya tambahan yang ditagihkan.
+4. Buku kas:
+   - Riwayat pembelian stok/bahan kini dicatat sebagai arus kas keluar bersama pengeluaran operasional.
+   - Pembelian stok tidak otomatis dikurangkan lagi dari laba bersih sebagai biaya operasional; HPP tetap diakui pada saat barang terjual. Ini mencegah pembelian persediaan dihitung dua kali dalam laporan laba.
+
+ALUR DATA YANG DIHARAPKAN
+A. Usaha produksi makanan/minuman/jasa berbahan:
+   Bahan & Belanja → materials.stock bertambah dan materials.cost diperbarui dengan rata-rata tertimbang → recipes.lines memakai materialId yang sama → recalculateRecipeCosts memperbarui products.cost → Produksi mengurangi stok bahan dan menambah stok produk jadi → Kasir mengurangi stok produk jadi saat dijual → transaksi menyimpan cost per unit → laporan menghitung omzet, HPP, laba kotor, dan biaya operasional.
+
+B. Usaha retail:
+   Belanja barang dagangan → products.stock bertambah dan products.cost diperbarui → Kasir mengurangi stok barang saat terjual → transaksi menyimpan cost → laporan menghitung omzet dan HPP. Jika ada komposisi yang memang menggunakan bahan baku, bahan tertaut tetap tersedia di daftar Belanja.
+
+CATATAN / BATASAN YANG MASIH PERLU UJI MANUAL
+1. Mode made-to-order perlu keputusan operasional yang tegas: apakah bahan dikurangi saat transaksi kasir atau melalui pencatatan Produksi. Kode saat ini terutama mengurangi bahan pada Produksi; jangan menganggap stok bahan otomatis berkurang saat kasir menjual produk made-to-order.
+2. Produk dengan varian resep belum didukung untuk pencatatan Produksi per ukuran; fungsi produksi menolak produk yang memiliki beberapa varian.
+3. Konversi satuan hanya bisa dilakukan pada satuan yang dikenali. Untuk kemasan seperti 1 dus berisi 24 botol, masukkan isi kemasan eksplisit pada form Belanja.
+4. Biaya operasional harus dicatat pada menu Pengeluaran. Pembelian bahan/barang dicatat sebagai persediaan/arus kas, bukan dimasukkan lagi sebagai biaya operasional jika ingin menghindari penghitungan ganda.
+5. Laba bersih yang ditampilkan masih merupakan estimasi operasional: laba kotor dikurangi catatan pengeluaran. Belum tentu mencakup penyusutan aset, utang, retur, biaya pembayaran, atau penyesuaian persediaan jika fitur tersebut belum dicatat.
+6. Tidak dilakukan simulasi browser, pengujian transaksi dengan IndexedDB nyata, atau uji pemulihan backup dalam audit ini.
+
+SKENARIO UJI PENERIMAAN YANG DISARANKAN
+1. Buat usaha produksi; daftarkan bahan tepung 1 kg seharga Rp14.000; tautkan ke resep 200 gram per produk. Pastikan modal bahan Rp14/gram dan biaya tepung per produk Rp2.800 (sebelum bahan lain).
+2. Belanja tambahan 1 kg tepung seharga Rp16.000 saat stok lama 1 kg dengan modal Rp14.000/kg. Pastikan stok menjadi 2 kg dan modal rata-rata menjadi Rp15.000/kg; HPP resep dihitung ulang menjadi Rp3.000 untuk 200 gram.
+3. Produksi 3 unit; pastikan stok bahan berkurang sesuai resep dan stok produk jadi bertambah 3 unit.
+4. Jual 2 unit; pastikan stok produk jadi turun 2 dan transaksi menyimpan HPP sesuai cost per unit saat transaksi.
+5. Cocokkan laporan: omzet = subtotal barang + biaya tambahan (tidak termasuk pajak); HPP = jumlah cost transaksi; laba kotor = omzet - HPP; laba bersih = laba kotor - pengeluaran operasional.
+6. Pastikan buku kas memperlihatkan uang penjualan, belanja stok, dan pengeluaran operasional tanpa mengurangkan pembelian stok dua kali pada laporan laba.
+7. Ulangi dengan jenis usaha retail dan pastikan barang dagangan dibeli sebagai produk, sedangkan bahan yang terhubung dengan komposisi tetap dipilih sebagai bahan.
