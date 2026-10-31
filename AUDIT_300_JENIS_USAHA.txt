@@ -1,0 +1,367 @@
+AUDIT TAKSONOMI 300 JENIS USAHA — UNIVERSAL UMKM PRO
+Versi sumber: v3.3.121
+Tanggal audit: 31 Oktober 2026
+
+TUJUAN
+Mengelompokkan usaha yang sejawat, menempatkan varian menu sebagai produk, dan memeriksa kecocokan katalog produk, bahan belanja, resep, dan alur kerja.
+
+KESIMPULAN UTAMA
+- Jenis usaha/paket yang diperiksa: 300
+- Total item katalog: 6510
+- Total resep/komposisi: 783
+- Paket yang terindikasi memakai katalog identik: 258
+- Paket dengan temuan awal yang perlu diperiksa (duplikasi/kosong/tidak relevan): 259
+- Pengelompokan ini adalah usulan taksonomi; tidak menghapus ID lama dan tidak otomatis memindahkan transaksi pengguna.
+- Pemeriksaan ini bersifat statis berdasarkan nama dan isi katalog. Nama kelompok tidak membuktikan bahwa seluruh produk/bahan sudah tervalidasi.
+
+KELOMPOK USAHA USULAN
+- Bahan Pangan Segar & Bumbu: 32 jenis usaha
+- Jajanan & Gorengan: 29 jenis usaha
+- Bakso, Mi & Soto: 28 jenis usaha
+- Bakery, Kue & Pastry: 27 jenis usaha
+- Makanan Berat & Warung Nasi: 16 jenis usaha
+- Peternakan, Perikanan & Pakan: 15 jenis usaha
+- Kerajinan, Hadiah & Dekorasi: 15 jenis usaha
+- Retail Khusus & Toko: 13 jenis usaha
+- Jus & Minuman Buah: 12 jenis usaha
+- Ayam, Bebek & Unggas Siap Saji: 12 jenis usaha
+- Minuman Dingin & Es Tradisional: 12 jenis usaha
+- Produksi Bahan Pangan & Bumbu: 12 jenis usaha
+- Perlu klasifikasi manual: 10 jenis usaha
+- Pertanian & Tanaman: 10 jenis usaha
+- Salon, Kecantikan & Wellness: 9 jenis usaha
+- Sembako & Toko Kelontong: 9 jenis usaha
+- Kopi & Kedai Minuman: 7 jenis usaha
+- Jasa Percetakan & Dokumen: 7 jenis usaha
+- Konveksi, Jahit & Kerajinan Tekstil: 6 jenis usaha
+- Retail & Perdagangan Umum: 5 jenis usaha
+- Jasa Reparasi & Otomotif: 5 jenis usaha
+- Jasa Laundry & Kebersihan: 4 jenis usaha
+- Jamu & Minuman Herbal: 3 jenis usaha
+- Catering & Makanan Pesanan: 2 jenis usaha
+
+CONTOH PENGGABUNGAN YANG DIREKOMENDASIKAN
+- Jus Mangga, Jus Jambu, Jus Melon, Jus Semangka, Jus Buah Naga, Jus Sirsak, Jus Wortel, Jus Tomat, Jus Alpukat, Sop Buah, Alpukat Kocok → satu kelompok “Jus & Minuman Buah”; setiap rasa/menu menjadi produk.
+- Es Teh Jumbo, Es Teh Manis, Es Jeruk, Es Cendol/Dawet, Es Doger, Es Cokelat, Boba, Thai Tea → kelompok “Minuman Dingin & Es Tradisional” atau subkelompok minuman modern/tradisional.
+- Kopi Hitam Warkop, Es Kopi Susu Gula Aren, Kopi Susu Botolan → “Kopi & Kedai Minuman”; kopi hitam/susu adalah produk. Jamu tradisional tetap kelompok jamu/herbal tersendiri, bukan otomatis digabung dengan kopi.
+- Ayam Geprek Gerobak dan Warung Ayam Geprek → kelompok “Ayam & Unggas Siap Saji”; cara jual gerobak/warung menjadi atribut model penjualan, bukan jenis produk yang terpisah.
+- Produk bakery seperti donat, nastar, brownies, bolu, pastry, roti isi/tawar → “Bakery, Kue & Pastry” dengan subkategori produksi/menu; pertahankan paket khusus hanya jika alur produksi atau kebutuhan bahan memang berbeda.
+- Percetakan, fotokopi, print, scan, laminasi, jilid → “Jasa Percetakan & Dokumen”; masing-masing menjadi layanan.
+
+ATURAN SINKRONISASI DATA YANG DISARANKAN
+1. Gunakan ID bahan baku yang stabil sebagai kunci tunggal untuk belanja, stok bahan, dan komposisi resep; jangan mencocokkan hanya dari nama.
+2. Setiap produk resep harus menunjuk bahan yang berasal dari katalog bahan paket yang sama atau katalog bahan bersama yang eksplisit.
+3. Produk jual langsung (retail) tidak membutuhkan resep; stok barang dijual berkurang saat transaksi, HPP dari biaya persediaan barang.
+4. Produk olahan harus mempunyai komposisi; bahan berkurang ketika produksi dicatat, hasil produksi masuk sebagai stok produk jadi. Saat kasir menjual produk jadi, kurangi stok produk jadi, bukan bahan sekali lagi.
+5. Usaha jasa menggunakan daftar layanan dan bahan habis pakai/perlengkapan; jangan memaksakan resep makanan atau produk dagangan yang tidak relevan.
+6. Harga beli terbaru dan metode biaya (misalnya rata-rata tertimbang) harus konsisten dengan HPP transaksi; simpan HPP pada saat transaksi agar laporan historis tidak berubah saat harga bahan berubah.
+7. Pembelian alat/perlengkapan tahan lama jangan dimasukkan sebagai bahan baku yang otomatis habis atau sebagai HPP per porsi.
+8. Penggabungan kelompok tidak boleh menghapus histori, paket_id, product IDs, resep, atau transaksi pengguna; buat alias/migrasi dan uji sebelum mengganti ID.
+
+DAFTAR AUDIT PER JENIS USAHA (300 BARIS)
+001. Café & Resto → Kopi & Kedai Minuman | produk 25; bahan 47; resep 13 | Perlu validasi operasional; hasil nama/katalog awal tidak otomatis membuktikan kesesuaian
+002. Catering → Catering & Makanan Pesanan | produk 10; bahan 37; resep 10 | Perlu validasi operasional; hasil nama/katalog awal tidak otomatis membuktikan kesesuaian
+003. Depot Air Isi Ulang → Retail Khusus & Toko | produk 10; bahan 10; resep 0 | Perlu validasi operasional; hasil nama/katalog awal tidak otomatis membuktikan kesesuaian
+004. Frozen Food → Retail Khusus & Toko | produk 10; bahan 10; resep 0 | Perlu validasi operasional; hasil nama/katalog awal tidak otomatis membuktikan kesesuaian
+005. Konter HP → Retail Khusus & Toko | produk 10; bahan 10; resep 0 | Perlu validasi operasional; hasil nama/katalog awal tidak otomatis membuktikan kesesuaian
+006. Laundry & Cuci Sepatu → Jasa Laundry & Kebersihan | produk 10; bahan 10; resep 0 | Katalog identik dengan 44 paket lain (paket: 34,36,46,48,58,60,70,72…)
+007. Penjual Makanan Online → Catering & Makanan Pesanan | produk 10; bahan 44; resep 9 | Perlu validasi operasional; hasil nama/katalog awal tidak otomatis membuktikan kesesuaian
+008. Percetakan / Fotokopi Kecil → Jasa Percetakan & Dokumen | produk 202; bahan 0; resep 0 | Usaha produksi/minuman/makanan tetapi daftar bahan kosong
+009. Pet Shop → Retail Khusus & Toko | produk 10; bahan 10; resep 0 | Perlu validasi operasional; hasil nama/katalog awal tidak otomatis membuktikan kesesuaian
+010. Salon → Salon, Kecantikan & Wellness | produk 10; bahan 10; resep 0 | Perlu validasi operasional; hasil nama/katalog awal tidak otomatis membuktikan kesesuaian
+011. Toko Kosmetik → Retail Khusus & Toko | produk 10; bahan 10; resep 0 | Perlu validasi operasional; hasil nama/katalog awal tidak otomatis membuktikan kesesuaian
+012. Toko Kue / Bakery → Bakery, Kue & Pastry | produk 10; bahan 39; resep 10 | Katalog identik dengan 25 paket lain (paket: 31,43,55,67,79,91,103,115…)
+013. Toko Pakaian → Konveksi, Jahit & Kerajinan Tekstil | produk 10; bahan 10; resep 0 | Perlu validasi operasional; hasil nama/katalog awal tidak otomatis membuktikan kesesuaian
+014. Toko Retail → Sembako & Toko Kelontong | produk 10; bahan 10; resep 0 | Perlu validasi operasional; hasil nama/katalog awal tidak otomatis membuktikan kesesuaian
+015. Toko Sembako & Grosir → Sembako & Toko Kelontong | produk 22; bahan 0; resep 0 | Katalog identik dengan 73 paket lain (paket: 32,33,35,44,45,47,56,57…)
+016. Warung Makan → Makanan Berat & Warung Nasi | produk 11; bahan 39; resep 9 | Perlu validasi operasional; hasil nama/katalog awal tidak otomatis membuktikan kesesuaian
+017. Gorengan & Camilan → Jajanan & Gorengan | produk 6; bahan 13; resep 6 | Katalog identik dengan 25 paket lain (paket: 30,42,54,66,78,90,102,114…)
+018. Warung Kopi & Minuman → Kopi & Kedai Minuman | produk 6; bahan 7; resep 0 | Katalog identik dengan 9 paket lain (paket: 37,49,61,73,85,97,109,121…)
+019. Nasi Uduk & Sarapan → Makanan Berat & Warung Nasi | produk 6; bahan 10; resep 5 | Perlu validasi operasional; hasil nama/katalog awal tidak otomatis membuktikan kesesuaian
+020. Warung Makan & Pecel Lele → Makanan Berat & Warung Nasi | produk 6; bahan 10; resep 6 | Katalog identik dengan 25 paket lain (paket: 28,40,52,64,76,88,100,112…)
+021. Bakso, Mi Ayam & Soto → Bakso, Mi & Soto | produk 5; bahan 8; resep 5 | Perlu validasi operasional; hasil nama/katalog awal tidak otomatis membuktikan kesesuaian
+022. Jajanan Jalanan → Jajanan & Gorengan | produk 6; bahan 8; resep 6 | Katalog identik dengan 25 paket lain (paket: 27,39,51,63,75,87,99,111…)
+023. Martabak & Roti Bakar → Bakery, Kue & Pastry | produk 4; bahan 11; resep 4 | Perlu validasi operasional; hasil nama/katalog awal tidak otomatis membuktikan kesesuaian
+024. Jus Buah & Es Campur → Jus & Minuman Buah | produk 5; bahan 8; resep 0 | Katalog identik dengan 24 paket lain (paket: 29,53,65,77,89,101,113,125…)
+026. Tukang Sayur Keliling → Bahan Pangan Segar & Bumbu | produk 12; bahan 0; resep 0 | Perlu validasi operasional; hasil nama/katalog awal tidak otomatis membuktikan kesesuaian
+027. Ayam Crispy Gerobak → Ayam, Bebek & Unggas Siap Saji | produk 6; bahan 8; resep 6 | Katalog identik dengan 25 paket lain (paket: 22,39,51,63,75,87,99,111…)
+028. Warung Ayam Goreng → Ayam, Bebek & Unggas Siap Saji | produk 6; bahan 10; resep 6 | Katalog identik dengan 25 paket lain (paket: 20,40,52,64,76,88,100,112…)
+029. Es Teh Jumbo Mangkal → Minuman Dingin & Es Tradisional | produk 5; bahan 8; resep 0 | Katalog identik dengan 24 paket lain (paket: 24,53,65,77,89,101,113,125…)
+030. Usaha Aneka Gorengan → Jajanan & Gorengan | produk 6; bahan 13; resep 6 | Katalog identik dengan 25 paket lain (paket: 17,42,54,66,78,90,102,114…)
+031. Produksi Sambal Rumahan → Produksi Bahan Pangan & Bumbu | produk 10; bahan 39; resep 10 | Katalog identik dengan 25 paket lain (paket: 12,43,55,67,79,91,103,115…)
+032. Warung Kelontong → Sembako & Toko Kelontong | produk 22; bahan 0; resep 0 | Katalog identik dengan 73 paket lain (paket: 15,33,35,44,45,47,56,57…)
+033. Pedagang Telur Ayam Mangkal → Bahan Pangan Segar & Bumbu | produk 22; bahan 0; resep 0 | Katalog identik dengan 73 paket lain (paket: 15,32,35,44,45,47,56,57…) | Usaha produksi/minuman/makanan tetapi daftar bahan kosong
+034. Jasa Pangkas Rambut Pria → Salon, Kecantikan & Wellness | produk 10; bahan 10; resep 0 | Katalog identik dengan 44 paket lain (paket: 6,36,46,48,58,60,70,72…)
+035. Usaha Ternak Ayam Petelur → Peternakan, Perikanan & Pakan | produk 22; bahan 0; resep 0 | Katalog identik dengan 73 paket lain (paket: 15,32,33,44,45,47,56,57…) | Usaha produksi/minuman/makanan tetapi daftar bahan kosong
+036. Usaha Kerajinan Aksesoris → Kerajinan, Hadiah & Dekorasi | produk 10; bahan 10; resep 0 | Katalog identik dengan 44 paket lain (paket: 6,34,46,48,58,60,70,72…)
+037. Usaha Jamu Tradisional Mangkal → Jamu & Minuman Herbal | produk 6; bahan 7; resep 0 | Katalog identik dengan 9 paket lain (paket: 18,49,61,73,85,97,109,121…) | Katalog bercampur dengan menu yang tidak relevan untuk jamu/herbal
+038. Siomay Keliling → Jajanan & Gorengan | produk 6; bahan 9; resep 0 | Perlu validasi operasional; hasil nama/katalog awal tidak otomatis membuktikan kesesuaian
+039. Fried Chicken Gerobak → Ayam, Bebek & Unggas Siap Saji | produk 6; bahan 8; resep 6 | Katalog identik dengan 25 paket lain (paket: 22,27,51,63,75,87,99,111…)
+040. Warung Ayam Bakar → Ayam, Bebek & Unggas Siap Saji | produk 6; bahan 10; resep 6 | Katalog identik dengan 25 paket lain (paket: 20,28,52,64,76,88,100,112…)
+041. Es Teh Manis Gerobak Mangkal → Minuman Dingin & Es Tradisional | produk 6; bahan 9; resep 0 | Perlu validasi operasional; hasil nama/katalog awal tidak otomatis membuktikan kesesuaian
+042. Usaha Bakwan Sayur → Jajanan & Gorengan | produk 6; bahan 13; resep 6 | Katalog identik dengan 25 paket lain (paket: 17,30,54,66,78,90,102,114…)
+043. Produksi Bumbu Dasar → Produksi Bahan Pangan & Bumbu | produk 10; bahan 39; resep 10 | Katalog identik dengan 25 paket lain (paket: 12,31,55,67,79,91,103,115…)
+044. Warung Madura → Sembako & Toko Kelontong | produk 22; bahan 0; resep 0 | Katalog identik dengan 73 paket lain (paket: 15,32,33,35,45,47,56,57…)
+045. Pedagang Telur Bebek → Bahan Pangan Segar & Bumbu | produk 22; bahan 0; resep 0 | Katalog identik dengan 73 paket lain (paket: 15,32,33,35,44,47,56,57…)
+046. Jasa Barbershop Rumahan → Salon, Kecantikan & Wellness | produk 10; bahan 10; resep 0 | Katalog identik dengan 44 paket lain (paket: 6,34,36,48,58,60,70,72…)
+047. Usaha Ternak Ayam Pedaging → Peternakan, Perikanan & Pakan | produk 22; bahan 0; resep 0 | Katalog identik dengan 73 paket lain (paket: 15,32,33,35,44,45,56,57…) | Usaha produksi/minuman/makanan tetapi daftar bahan kosong
+048. Usaha Buket Bunga → Kerajinan, Hadiah & Dekorasi | produk 10; bahan 10; resep 0 | Katalog identik dengan 44 paket lain (paket: 6,34,36,46,58,60,70,72…)
+049. Usaha Minuman Herbal → Jamu & Minuman Herbal | produk 6; bahan 7; resep 0 | Katalog identik dengan 9 paket lain (paket: 18,37,61,73,85,97,109,121…) | Katalog bercampur dengan menu yang tidak relevan untuk jamu/herbal
+050. Batagor Keliling → Jajanan & Gorengan | produk 3; bahan 10; resep 0 | Perlu validasi operasional; hasil nama/katalog awal tidak otomatis membuktikan kesesuaian
+051. Ayam Geprek Gerobak → Ayam, Bebek & Unggas Siap Saji | produk 6; bahan 8; resep 6 | Katalog identik dengan 25 paket lain (paket: 22,27,39,63,75,87,99,111…)
+052. Warung Ayam Geprek → Ayam, Bebek & Unggas Siap Saji | produk 6; bahan 10; resep 6 | Katalog identik dengan 25 paket lain (paket: 20,28,40,64,76,88,100,112…)
+053. Es Jeruk Peras → Minuman Dingin & Es Tradisional | produk 5; bahan 8; resep 0 | Katalog identik dengan 24 paket lain (paket: 24,29,65,77,89,101,113,125…)
+054. Usaha Tahu Isi → Jajanan & Gorengan | produk 6; bahan 13; resep 6 | Katalog identik dengan 25 paket lain (paket: 17,30,42,66,78,90,102,114…)
+055. Produksi Bumbu Pecel → Produksi Bahan Pangan & Bumbu | produk 10; bahan 39; resep 10 | Katalog identik dengan 25 paket lain (paket: 12,31,43,67,79,91,103,115…)
+056. Warung Sembako Rumahan → Sembako & Toko Kelontong | produk 22; bahan 0; resep 0 | Katalog identik dengan 73 paket lain (paket: 15,32,33,35,44,45,47,57…)
+057. Pedagang Telur Puyuh → Bahan Pangan Segar & Bumbu | produk 22; bahan 0; resep 0 | Katalog identik dengan 73 paket lain (paket: 15,32,33,35,44,45,47,56…)
+058. Jasa Salon Rumahan → Salon, Kecantikan & Wellness | produk 10; bahan 10; resep 0 | Katalog identik dengan 44 paket lain (paket: 6,34,36,46,48,60,70,72…)
+059. Usaha Ternak Ayam Kampung → Peternakan, Perikanan & Pakan | produk 22; bahan 0; resep 0 | Katalog identik dengan 73 paket lain (paket: 15,32,33,35,44,45,47,56…) | Usaha produksi/minuman/makanan tetapi daftar bahan kosong
+060. Usaha Buket Snack → Kerajinan, Hadiah & Dekorasi | produk 10; bahan 10; resep 0 | Katalog identik dengan 44 paket lain (paket: 6,34,36,46,48,58,70,72…)
+061. Usaha Pijat Refleksi Rumahan → Salon, Kecantikan & Wellness | produk 6; bahan 7; resep 0 | Katalog identik dengan 9 paket lain (paket: 18,37,49,73,85,97,109,121…)
+062. Pempek Keliling → Jajanan & Gorengan | produk 5; bahan 10; resep 0 | Perlu validasi operasional; hasil nama/katalog awal tidak otomatis membuktikan kesesuaian
+063. Ayam Penyet Gerobak → Ayam, Bebek & Unggas Siap Saji | produk 6; bahan 8; resep 6 | Katalog identik dengan 25 paket lain (paket: 22,27,39,51,75,87,99,111…)
+064. Warung Ayam Penyet → Ayam, Bebek & Unggas Siap Saji | produk 6; bahan 10; resep 6 | Katalog identik dengan 25 paket lain (paket: 20,28,40,52,76,88,100,112…)
+065. Es Kopi Susu Gula Aren → Kopi & Kedai Minuman | produk 5; bahan 8; resep 0 | Katalog identik dengan 24 paket lain (paket: 24,29,53,77,89,101,113,125…)
+066. Usaha Tempe Mendoan → Jajanan & Gorengan | produk 6; bahan 13; resep 6 | Katalog identik dengan 25 paket lain (paket: 17,30,42,54,78,90,102,114…)
+067. Produksi Bumbu Rendang → Produksi Bahan Pangan & Bumbu | produk 10; bahan 39; resep 10 | Katalog identik dengan 25 paket lain (paket: 12,31,43,55,79,91,103,115…)
+068. Warung Rokok → Sembako & Toko Kelontong | produk 22; bahan 0; resep 0 | Katalog identik dengan 73 paket lain (paket: 15,32,33,35,44,45,47,56…)
+069. Pedagang Ayam Potong Mangkal → Bahan Pangan Segar & Bumbu | produk 22; bahan 0; resep 0 | Katalog identik dengan 73 paket lain (paket: 15,32,33,35,44,45,47,56…) | Usaha produksi/minuman/makanan tetapi daftar bahan kosong
+070. Jasa Rias Pengantin → Salon, Kecantikan & Wellness | produk 10; bahan 10; resep 0 | Katalog identik dengan 44 paket lain (paket: 6,34,36,46,48,58,60,72…)
+071. Usaha Ternak Bebek → Peternakan, Perikanan & Pakan | produk 22; bahan 0; resep 0 | Katalog identik dengan 73 paket lain (paket: 15,32,33,35,44,45,47,56…)
+072. Usaha Hampers dan Parcel → Kerajinan, Hadiah & Dekorasi | produk 10; bahan 10; resep 0 | Katalog identik dengan 44 paket lain (paket: 6,34,36,46,48,58,60,70…)
+073. Usaha Perawatan Kuku → Salon, Kecantikan & Wellness | produk 6; bahan 7; resep 0 | Katalog identik dengan 9 paket lain (paket: 18,37,49,61,85,97,109,121…)
+074. Bubur Ayam Keliling → Perlu klasifikasi manual | produk 4; bahan 11; resep 0 | Perlu validasi operasional; hasil nama/katalog awal tidak otomatis membuktikan kesesuaian
+075. Ayam Bakar Gerobak → Ayam, Bebek & Unggas Siap Saji | produk 6; bahan 8; resep 6 | Katalog identik dengan 25 paket lain (paket: 22,27,39,51,63,87,99,111…)
+076. Warung Bebek Goreng → Ayam, Bebek & Unggas Siap Saji | produk 6; bahan 10; resep 6 | Katalog identik dengan 25 paket lain (paket: 20,28,40,52,64,88,100,112…)
+077. Kopi Susu Botolan → Kopi & Kedai Minuman | produk 5; bahan 8; resep 0 | Katalog identik dengan 24 paket lain (paket: 24,29,53,65,89,101,113,125…)
+078. Usaha Pisang Goreng → Jajanan & Gorengan | produk 6; bahan 13; resep 6 | Katalog identik dengan 25 paket lain (paket: 17,30,42,54,66,90,102,114…)
+079. Produksi Bumbu Instan → Produksi Bahan Pangan & Bumbu | produk 10; bahan 39; resep 10 | Katalog identik dengan 25 paket lain (paket: 12,31,43,55,67,91,103,115…)
+080. Warung Jajanan Anak → Jajanan & Gorengan | produk 22; bahan 0; resep 0 | Katalog identik dengan 73 paket lain (paket: 15,32,33,35,44,45,47,56…) | Usaha produksi/minuman/makanan tetapi daftar bahan kosong
+081. Pedagang Daging Sapi → Bahan Pangan Segar & Bumbu | produk 22; bahan 0; resep 0 | Katalog identik dengan 73 paket lain (paket: 15,32,33,35,44,45,47,56…)
+082. Jasa Makeup Wisuda → Salon, Kecantikan & Wellness | produk 10; bahan 10; resep 0 | Katalog identik dengan 44 paket lain (paket: 6,34,36,46,48,58,60,70…)
+083. Usaha Ternak Puyuh → Peternakan, Perikanan & Pakan | produk 22; bahan 0; resep 0 | Katalog identik dengan 73 paket lain (paket: 15,32,33,35,44,45,47,56…)
+084. Usaha Souvenir Pernikahan → Kerajinan, Hadiah & Dekorasi | produk 10; bahan 10; resep 0 | Katalog identik dengan 44 paket lain (paket: 6,34,36,46,48,58,60,70…)
+085. Usaha Perawatan Wajah Rumahan → Salon, Kecantikan & Wellness | produk 6; bahan 7; resep 0 | Katalog identik dengan 9 paket lain (paket: 18,37,49,61,73,97,109,121…)
+086. Nasi Uduk Keliling → Makanan Berat & Warung Nasi | produk 5; bahan 13; resep 0 | Perlu validasi operasional; hasil nama/katalog awal tidak otomatis membuktikan kesesuaian
+087. Pecel Lele Gerobak → Perlu klasifikasi manual | produk 6; bahan 8; resep 6 | Katalog identik dengan 25 paket lain (paket: 22,27,39,51,63,75,99,111…)
+088. Warung Bebek Bakar → Ayam, Bebek & Unggas Siap Saji | produk 6; bahan 10; resep 6 | Katalog identik dengan 25 paket lain (paket: 20,28,40,52,64,76,100,112…)
+089. Kopi Hitam Warkop → Kopi & Kedai Minuman | produk 5; bahan 8; resep 0 | Katalog identik dengan 24 paket lain (paket: 24,29,53,65,77,101,113,125…)
+090. Usaha Cireng → Jajanan & Gorengan | produk 6; bahan 13; resep 6 | Katalog identik dengan 25 paket lain (paket: 17,30,42,54,66,78,102,114…)
+091. Produksi Abon Sapi → Produksi Bahan Pangan & Bumbu | produk 10; bahan 39; resep 10 | Katalog identik dengan 25 paket lain (paket: 12,31,43,55,67,79,103,115…)
+092. Warung Kopi Kecil → Kopi & Kedai Minuman | produk 22; bahan 0; resep 0 | Katalog identik dengan 73 paket lain (paket: 15,32,33,35,44,45,47,56…) | Usaha produksi/minuman/makanan tetapi daftar bahan kosong
+093. Pedagang Daging Kambing → Bahan Pangan Segar & Bumbu | produk 22; bahan 0; resep 0 | Katalog identik dengan 73 paket lain (paket: 15,32,33,35,44,45,47,56…)
+094. Jasa Nail Art → Perlu klasifikasi manual | produk 10; bahan 10; resep 0 | Katalog identik dengan 44 paket lain (paket: 6,34,36,46,48,58,60,70…)
+095. Usaha Ternak Kambing → Peternakan, Perikanan & Pakan | produk 22; bahan 0; resep 0 | Katalog identik dengan 73 paket lain (paket: 15,32,33,35,44,45,47,56…)
+096. Usaha Undangan Digital → Perlu klasifikasi manual | produk 10; bahan 10; resep 0 | Katalog identik dengan 44 paket lain (paket: 6,34,36,46,48,58,60,70…)
+097. Usaha Spa Rumahan → Perlu klasifikasi manual | produk 6; bahan 7; resep 0 | Katalog identik dengan 9 paket lain (paket: 18,37,49,61,73,85,109,121…)
+098. Kue Ape Keliling → Bakery, Kue & Pastry | produk 3; bahan 11; resep 0 | Perlu validasi operasional; hasil nama/katalog awal tidak otomatis membuktikan kesesuaian
+099. Nasi Goreng Gerobak → Makanan Berat & Warung Nasi | produk 6; bahan 8; resep 6 | Katalog identik dengan 25 paket lain (paket: 22,27,39,51,63,75,87,111…)
+100. Warung Pecel Lele → Retail & Perdagangan Umum | produk 6; bahan 10; resep 6 | Katalog identik dengan 25 paket lain (paket: 20,28,40,52,64,76,88,112…)
+101. Warung Kopi Sachet → Kopi & Kedai Minuman | produk 5; bahan 8; resep 0 | Katalog identik dengan 24 paket lain (paket: 24,29,53,65,77,89,113,125…)
+102. Usaha Risoles → Jajanan & Gorengan | produk 6; bahan 13; resep 6 | Katalog identik dengan 25 paket lain (paket: 17,30,42,54,66,78,90,114…)
+103. Produksi Abon Ayam → Produksi Bahan Pangan & Bumbu | produk 10; bahan 39; resep 10 | Katalog identik dengan 25 paket lain (paket: 12,31,43,55,67,79,91,115…)
+104. Warung Makan Kecil → Makanan Berat & Warung Nasi | produk 22; bahan 0; resep 0 | Katalog identik dengan 73 paket lain (paket: 15,32,33,35,44,45,47,56…)
+105. Pedagang Ikan Segar Mangkal → Bahan Pangan Segar & Bumbu | produk 22; bahan 0; resep 0 | Katalog identik dengan 73 paket lain (paket: 15,32,33,35,44,45,47,56…)
+106. Jasa Cuci Motor → Perlu klasifikasi manual | produk 10; bahan 10; resep 0 | Katalog identik dengan 44 paket lain (paket: 6,34,36,46,48,58,60,70…)
+107. Usaha Ternak Domba → Peternakan, Perikanan & Pakan | produk 22; bahan 0; resep 0 | Katalog identik dengan 73 paket lain (paket: 15,32,33,35,44,45,47,56…)
+108. Usaha Sablon Kaos → Perlu klasifikasi manual | produk 10; bahan 10; resep 0 | Katalog identik dengan 44 paket lain (paket: 6,34,36,46,48,58,60,70…)
+109. Toko Alat Kesehatan Kecil → Retail Khusus & Toko | produk 6; bahan 7; resep 0 | Katalog identik dengan 9 paket lain (paket: 18,37,49,61,73,85,97,121…)
+110. Sate Madura Keliling → Bakso, Mi & Soto | produk 4; bahan 11; resep 0 | Perlu validasi operasional; hasil nama/katalog awal tidak otomatis membuktikan kesesuaian
+111. Mie Goreng Gerobak → Bakso, Mi & Soto | produk 6; bahan 8; resep 6 | Katalog identik dengan 25 paket lain (paket: 22,27,39,51,63,75,87,99…)
+112. Warung Nasi Goreng → Makanan Berat & Warung Nasi | produk 6; bahan 10; resep 6 | Katalog identik dengan 25 paket lain (paket: 20,28,40,52,64,76,88,100…)
+113. Es Cokelat → Minuman Dingin & Es Tradisional | produk 5; bahan 8; resep 0 | Katalog identik dengan 24 paket lain (paket: 24,29,53,65,77,89,101,125…)
+114. Usaha Pastel → Jajanan & Gorengan | produk 6; bahan 13; resep 6 | Katalog identik dengan 25 paket lain (paket: 17,30,42,54,66,78,90,102…)
+115. Produksi Dendeng → Produksi Bahan Pangan & Bumbu | produk 10; bahan 39; resep 10 | Katalog identik dengan 25 paket lain (paket: 12,31,43,55,67,79,91,103…)
+116. Warung Sarapan → Retail & Perdagangan Umum | produk 22; bahan 0; resep 0 | Katalog identik dengan 73 paket lain (paket: 15,32,33,35,44,45,47,56…)
+117. Pedagang Ikan Asin → Bahan Pangan Segar & Bumbu | produk 22; bahan 0; resep 0 | Katalog identik dengan 73 paket lain (paket: 15,32,33,35,44,45,47,56…)
+118. Jasa Cuci Mobil → Jasa Reparasi & Otomotif | produk 10; bahan 10; resep 0 | Katalog identik dengan 44 paket lain (paket: 6,34,36,46,48,58,60,70…)
+119. Usaha Ternak Lele → Peternakan, Perikanan & Pakan | produk 22; bahan 0; resep 0 | Katalog identik dengan 73 paket lain (paket: 15,32,33,35,44,45,47,56…)
+120. Usaha Bordir Rumahan → Konveksi, Jahit & Kerajinan Tekstil | produk 10; bahan 10; resep 0 | Katalog identik dengan 44 paket lain (paket: 6,34,36,46,48,58,60,70…)
+121. Toko Herbal dan Rempah → Jamu & Minuman Herbal | produk 6; bahan 7; resep 0 | Katalog identik dengan 9 paket lain (paket: 18,37,49,61,73,85,97,109…) | Katalog bercampur dengan menu yang tidak relevan untuk jamu/herbal
+122. Sate Padang Keliling → Bakso, Mi & Soto | produk 4; bahan 11; resep 0 | Perlu validasi operasional; hasil nama/katalog awal tidak otomatis membuktikan kesesuaian
+123. Kwetiau Goreng Gerobak → Bakso, Mi & Soto | produk 6; bahan 8; resep 6 | Katalog identik dengan 25 paket lain (paket: 22,27,39,51,63,75,87,99…)
+124. Warung Mie Goreng → Bakso, Mi & Soto | produk 6; bahan 10; resep 6 | Katalog identik dengan 25 paket lain (paket: 20,28,40,52,64,76,88,100…)
+125. Susu Cokelat → Minuman Dingin & Es Tradisional | produk 5; bahan 8; resep 0 | Katalog identik dengan 24 paket lain (paket: 24,29,53,65,77,89,101,113…)
+126. Usaha Lumpia → Jajanan & Gorengan | produk 6; bahan 13; resep 6 | Katalog identik dengan 25 paket lain (paket: 17,30,42,54,66,78,90,102…)
+127. Produksi Emping → Produksi Bahan Pangan & Bumbu | produk 10; bahan 39; resep 10 | Katalog identik dengan 25 paket lain (paket: 12,31,43,55,67,79,91,103…)
+128. Warung Sayur Mangkal → Bahan Pangan Segar & Bumbu | produk 22; bahan 0; resep 0 | Katalog identik dengan 73 paket lain (paket: 15,32,33,35,44,45,47,56…)
+129. Pedagang Seafood Segar → Bahan Pangan Segar & Bumbu | produk 22; bahan 0; resep 0 | Katalog identik dengan 73 paket lain (paket: 15,32,33,35,44,45,47,56…)
+130. Jasa Tambal Ban → Jasa Reparasi & Otomotif | produk 10; bahan 10; resep 0 | Katalog identik dengan 44 paket lain (paket: 6,34,36,46,48,58,60,70…)
+131. Usaha Budidaya Nila → Peternakan, Perikanan & Pakan | produk 22; bahan 0; resep 0 | Katalog identik dengan 73 paket lain (paket: 15,32,33,35,44,45,47,56…)
+132. Usaha Konveksi Kecil → Konveksi, Jahit & Kerajinan Tekstil | produk 10; bahan 10; resep 0 | Katalog identik dengan 44 paket lain (paket: 6,34,36,46,48,58,60,70…)
+133. Toko Perlengkapan Bayi dan Ibu → Retail Khusus & Toko | produk 6; bahan 7; resep 0 | Katalog identik dengan 9 paket lain (paket: 18,37,49,61,73,85,97,109…)
+134. Seblak Keliling → Perlu klasifikasi manual | produk 4; bahan 12; resep 0 | Perlu validasi operasional; hasil nama/katalog awal tidak otomatis membuktikan kesesuaian
+135. Bihun Goreng Gerobak → Bakso, Mi & Soto | produk 6; bahan 8; resep 6 | Katalog identik dengan 25 paket lain (paket: 22,27,39,51,63,75,87,99…)
+136. Warung Kwetiau → Bakso, Mi & Soto | produk 6; bahan 10; resep 6 | Katalog identik dengan 25 paket lain (paket: 20,28,40,52,64,76,88,100…)
+137. Thai Tea → Minuman Dingin & Es Tradisional | produk 5; bahan 8; resep 0 | Katalog identik dengan 24 paket lain (paket: 24,29,53,65,77,89,101,113…)
+138. Usaha Martabak Mini → Jajanan & Gorengan | produk 6; bahan 13; resep 6 | Katalog identik dengan 25 paket lain (paket: 17,30,42,54,66,78,90,102…)
+139. Produksi Kerupuk → Produksi Bahan Pangan & Bumbu | produk 10; bahan 39; resep 10 | Katalog identik dengan 25 paket lain (paket: 12,31,43,55,67,79,91,103…)
+140. Warung Buah Kecil → Bahan Pangan Segar & Bumbu | produk 22; bahan 0; resep 0 | Katalog identik dengan 73 paket lain (paket: 15,32,33,35,44,45,47,56…)
+141. Pedagang Udang → Bahan Pangan Segar & Bumbu | produk 22; bahan 0; resep 0 | Katalog identik dengan 73 paket lain (paket: 15,32,33,35,44,45,47,56…)
+142. Jasa Bengkel Motor Kecil → Jasa Reparasi & Otomotif | produk 10; bahan 10; resep 0 | Katalog identik dengan 44 paket lain (paket: 6,34,36,46,48,58,60,70…)
+143. Usaha Budidaya Gurame → Peternakan, Perikanan & Pakan | produk 22; bahan 0; resep 0 | Katalog identik dengan 73 paket lain (paket: 15,32,33,35,44,45,47,56…)
+144. Usaha Tas Rajut → Kerajinan, Hadiah & Dekorasi | produk 10; bahan 10; resep 0 | Katalog identik dengan 44 paket lain (paket: 6,34,36,46,48,58,60,70…)
+145. Bakso Keliling → Bakso, Mi & Soto | produk 4; bahan 12; resep 0 | Perlu validasi operasional; hasil nama/katalog awal tidak otomatis membuktikan kesesuaian
+146. Bakmi Jawa Gerobak → Bakso, Mi & Soto | produk 6; bahan 8; resep 6 | Katalog identik dengan 25 paket lain (paket: 22,27,39,51,63,75,87,99…)
+147. Warung Bakmi → Bakso, Mi & Soto | produk 6; bahan 10; resep 6 | Katalog identik dengan 25 paket lain (paket: 20,28,40,52,64,76,88,100…)
+148. Green Tea Latte → Minuman Dingin & Es Tradisional | produk 5; bahan 8; resep 0 | Katalog identik dengan 24 paket lain (paket: 24,29,53,65,77,89,101,113…)
+149. Usaha Martabak Telur → Jajanan & Gorengan | produk 6; bahan 13; resep 6 | Katalog identik dengan 25 paket lain (paket: 17,30,42,54,66,78,90,102…)
+150. Produksi Keripik → Produksi Bahan Pangan & Bumbu | produk 10; bahan 39; resep 10 | Katalog identik dengan 25 paket lain (paket: 12,31,43,55,67,79,91,103…)
+151. Warung Telur Eceran → Bahan Pangan Segar & Bumbu | produk 22; bahan 0; resep 0 | Katalog identik dengan 73 paket lain (paket: 15,32,33,35,44,45,47,56…)
+152. Pedagang Cumi → Bahan Pangan Segar & Bumbu | produk 22; bahan 0; resep 0 | Katalog identik dengan 73 paket lain (paket: 15,32,33,35,44,45,47,56…)
+153. Jasa Servis HP → Jasa Reparasi & Otomotif | produk 10; bahan 10; resep 0 | Katalog identik dengan 44 paket lain (paket: 6,34,36,46,48,58,60,70…)
+154. Usaha Budidaya Ikan Mas → Peternakan, Perikanan & Pakan | produk 22; bahan 0; resep 0 | Katalog identik dengan 73 paket lain (paket: 15,32,33,35,44,45,47,56…)
+155. Usaha Anyaman Bambu → Kerajinan, Hadiah & Dekorasi | produk 10; bahan 10; resep 0 | Katalog identik dengan 44 paket lain (paket: 6,34,36,46,48,58,60,70…)
+156. Mie Ayam Keliling → Bakso, Mi & Soto | produk 4; bahan 11; resep 0 | Perlu validasi operasional; hasil nama/katalog awal tidak otomatis membuktikan kesesuaian
+157. Nasi Kebuli Gerobak → Makanan Berat & Warung Nasi | produk 6; bahan 8; resep 6 | Katalog identik dengan 25 paket lain (paket: 22,27,39,51,63,75,87,99…)
+158. Warung Bakso → Bakso, Mi & Soto | produk 6; bahan 10; resep 6 | Katalog identik dengan 25 paket lain (paket: 20,28,40,52,64,76,88,100…)
+159. Boba Milk Tea → Minuman Dingin & Es Tradisional | produk 5; bahan 8; resep 0 | Katalog identik dengan 24 paket lain (paket: 24,29,53,65,77,89,101,113…)
+160. Usaha Martabak Manis → Jajanan & Gorengan | produk 6; bahan 13; resep 6 | Katalog identik dengan 25 paket lain (paket: 17,30,42,54,66,78,90,102…)
+161. Produksi Kue Kering Lebaran → Bakery, Kue & Pastry | produk 10; bahan 39; resep 10 | Katalog identik dengan 25 paket lain (paket: 12,31,43,55,67,79,91,103…)
+162. Warung Gas LPG → Sembako & Toko Kelontong | produk 22; bahan 0; resep 0 | Katalog identik dengan 73 paket lain (paket: 15,32,33,35,44,45,47,56…)
+163. Pedagang Sayuran Mangkal → Bahan Pangan Segar & Bumbu | produk 22; bahan 0; resep 0 | Katalog identik dengan 73 paket lain (paket: 15,32,33,35,44,45,47,56…)
+164. Jasa Servis Elektronik → Jasa Reparasi & Otomotif | produk 10; bahan 10; resep 0 | Katalog identik dengan 44 paket lain (paket: 6,34,36,46,48,58,60,70…)
+165. Usaha Budidaya Ikan Hias → Peternakan, Perikanan & Pakan | produk 22; bahan 0; resep 0 | Katalog identik dengan 73 paket lain (paket: 15,32,33,35,44,45,47,56…)
+166. Usaha Kerajinan Kayu → Kerajinan, Hadiah & Dekorasi | produk 10; bahan 10; resep 0 | Katalog identik dengan 44 paket lain (paket: 6,34,36,46,48,58,60,70…)
+167. Cilok Keliling → Jajanan & Gorengan | produk 4; bahan 9; resep 0 | Perlu validasi operasional; hasil nama/katalog awal tidak otomatis membuktikan kesesuaian
+168. Nasi Padang Gerobak → Makanan Berat & Warung Nasi | produk 6; bahan 8; resep 6 | Katalog identik dengan 25 paket lain (paket: 22,27,39,51,63,75,87,99…)
+169. Warung Mie Ayam → Bakso, Mi & Soto | produk 6; bahan 10; resep 6 | Katalog identik dengan 25 paket lain (paket: 20,28,40,52,64,76,88,100…)
+170. Brown Sugar Boba → Minuman Dingin & Es Tradisional | produk 5; bahan 8; resep 0 | Katalog identik dengan 24 paket lain (paket: 24,29,53,65,77,89,101,113…)
+171. Usaha Terang Bulan Mini → Jajanan & Gorengan | produk 6; bahan 13; resep 6 | Katalog identik dengan 25 paket lain (paket: 17,30,42,54,66,78,90,102…)
+172. Produksi Nastar → Bakery, Kue & Pastry | produk 10; bahan 39; resep 10 | Katalog identik dengan 25 paket lain (paket: 12,31,43,55,67,79,91,103…)
+173. Warung Air Mineral → Sembako & Toko Kelontong | produk 22; bahan 0; resep 0 | Katalog identik dengan 73 paket lain (paket: 15,32,33,35,44,45,47,56…)
+174. Pedagang Buah Mangkal → Bahan Pangan Segar & Bumbu | produk 22; bahan 0; resep 0 | Katalog identik dengan 73 paket lain (paket: 15,32,33,35,44,45,47,56…)
+175. Jasa Laundry Kiloan → Jasa Laundry & Kebersihan | produk 10; bahan 10; resep 0 | Katalog identik dengan 44 paket lain (paket: 6,34,36,46,48,58,60,70…)
+176. Usaha Pembenihan Ikan → Peternakan, Perikanan & Pakan | produk 22; bahan 0; resep 0 | Katalog identik dengan 73 paket lain (paket: 15,32,33,35,44,45,47,56…)
+177. Usaha Kerajinan Resin → Kerajinan, Hadiah & Dekorasi | produk 10; bahan 10; resep 0 | Katalog identik dengan 44 paket lain (paket: 6,34,36,46,48,58,60,70…)
+178. Cilung Keliling → Jajanan & Gorengan | produk 3; bahan 8; resep 0 | Perlu validasi operasional; hasil nama/katalog awal tidak otomatis membuktikan kesesuaian
+179. Nasi Campur Gerobak → Makanan Berat & Warung Nasi | produk 6; bahan 8; resep 6 | Katalog identik dengan 25 paket lain (paket: 22,27,39,51,63,75,87,99…)
+180. Warung Soto Ayam → Bakso, Mi & Soto | produk 6; bahan 10; resep 6 | Katalog identik dengan 25 paket lain (paket: 20,28,40,52,64,76,88,100…)
+181. Cappuccino Cincau → Minuman Dingin & Es Tradisional | produk 5; bahan 8; resep 0 | Katalog identik dengan 24 paket lain (paket: 24,29,53,65,77,89,101,113…)
+182. Usaha Roti Bakar → Bakery, Kue & Pastry | produk 6; bahan 13; resep 6 | Katalog identik dengan 25 paket lain (paket: 17,30,42,54,66,78,90,102…)
+183. Produksi Kastengel → Perlu klasifikasi manual | produk 10; bahan 39; resep 10 | Katalog identik dengan 25 paket lain (paket: 12,31,43,55,67,79,91,103…)
+184. Warung Plastik → Sembako & Toko Kelontong | produk 22; bahan 0; resep 0 | Katalog identik dengan 73 paket lain (paket: 15,32,33,35,44,45,47,56…)
+185. Pedagang Beras Eceran → Bahan Pangan Segar & Bumbu | produk 22; bahan 0; resep 0 | Katalog identik dengan 73 paket lain (paket: 15,32,33,35,44,45,47,56…)
+186. Jasa Laundry Sepatu → Jasa Laundry & Kebersihan | produk 10; bahan 10; resep 0 | Katalog identik dengan 44 paket lain (paket: 6,34,36,46,48,58,60,70…)
+187. Usaha Pakan Ikan → Peternakan, Perikanan & Pakan | produk 22; bahan 0; resep 0 | Katalog identik dengan 73 paket lain (paket: 15,32,33,35,44,45,47,56…)
+188. Usaha Lilin Aromaterapi → Kerajinan, Hadiah & Dekorasi | produk 10; bahan 10; resep 0 | Katalog identik dengan 44 paket lain (paket: 6,34,36,46,48,58,60,70…)
+189. Telur Gulung Keliling → Jajanan & Gorengan | produk 3; bahan 8; resep 0 | Perlu validasi operasional; hasil nama/katalog awal tidak otomatis membuktikan kesesuaian
+190. Nasi Kuning Gerobak → Makanan Berat & Warung Nasi | produk 6; bahan 8; resep 6 | Katalog identik dengan 25 paket lain (paket: 22,27,39,51,63,75,87,99…)
+191. Warung Soto Betawi → Bakso, Mi & Soto | produk 6; bahan 10; resep 6 | Katalog identik dengan 25 paket lain (paket: 20,28,40,52,64,76,88,100…)
+192. Alpukat Kocok → Jus & Minuman Buah | produk 5; bahan 8; resep 0 | Katalog identik dengan 24 paket lain (paket: 24,29,53,65,77,89,101,113…)
+193. Usaha Roti Kukus → Bakery, Kue & Pastry | produk 6; bahan 13; resep 6 | Katalog identik dengan 25 paket lain (paket: 17,30,42,54,66,78,90,102…)
+194. Produksi Putri Salju → Perlu klasifikasi manual | produk 10; bahan 39; resep 10 | Katalog identik dengan 25 paket lain (paket: 12,31,43,55,67,79,91,103…)
+195. Warung Perlengkapan Dapur → Retail & Perdagangan Umum | produk 22; bahan 0; resep 0 | Katalog identik dengan 73 paket lain (paket: 15,32,33,35,44,45,47,56…)
+196. Pedagang Gula dan Tepung → Bahan Pangan Segar & Bumbu | produk 22; bahan 0; resep 0 | Katalog identik dengan 73 paket lain (paket: 15,32,33,35,44,45,47,56…)
+197. Jasa Setrika Pakaian → Jasa Laundry & Kebersihan | produk 10; bahan 10; resep 0 | Katalog identik dengan 44 paket lain (paket: 6,34,36,46,48,58,60,70…)
+198. Usaha Pakan Ternak → Peternakan, Perikanan & Pakan | produk 22; bahan 0; resep 0 | Katalog identik dengan 73 paket lain (paket: 15,32,33,35,44,45,47,56…)
+199. Usaha Sabun Handmade → Kerajinan, Hadiah & Dekorasi | produk 10; bahan 10; resep 0 | Katalog identik dengan 44 paket lain (paket: 6,34,36,46,48,58,60,70…)
+200. Martabak Telur Mini Keliling → Jajanan & Gorengan | produk 3; bahan 9; resep 0 | Perlu validasi operasional; hasil nama/katalog awal tidak otomatis membuktikan kesesuaian
+201. Nasi Liwet Gerobak → Makanan Berat & Warung Nasi | produk 6; bahan 8; resep 6 | Katalog identik dengan 25 paket lain (paket: 22,27,39,51,63,75,87,99…)
+202. Warung Rawon → Bakso, Mi & Soto | produk 6; bahan 10; resep 6 | Katalog identik dengan 25 paket lain (paket: 20,28,40,52,64,76,88,100…)
+203. Jus Alpukat → Jus & Minuman Buah | produk 5; bahan 8; resep 0 | Katalog identik dengan 24 paket lain (paket: 24,29,53,65,77,89,101,113…)
+204. Usaha Donat Kampung → Bakery, Kue & Pastry | produk 6; bahan 13; resep 6 | Katalog identik dengan 25 paket lain (paket: 17,30,42,54,66,78,90,102…)
+205. Produksi Cookies → Bakery, Kue & Pastry | produk 10; bahan 39; resep 10 | Katalog identik dengan 25 paket lain (paket: 12,31,43,55,67,79,91,103…)
+206. Toko Alat Tulis Kecil → Retail Khusus & Toko | produk 22; bahan 0; resep 0 | Katalog identik dengan 73 paket lain (paket: 15,32,33,35,44,45,47,56…)
+207. Pedagang Minyak Goreng Curah → Bahan Pangan Segar & Bumbu | produk 22; bahan 0; resep 0 | Katalog identik dengan 73 paket lain (paket: 15,32,33,35,44,45,47,56…) | Usaha produksi/minuman/makanan tetapi daftar bahan kosong
+208. Jasa Jahit Pakaian → Konveksi, Jahit & Kerajinan Tekstil | produk 10; bahan 10; resep 0 | Katalog identik dengan 44 paket lain (paket: 6,34,36,46,48,58,60,70…)
+209. Usaha Sayur Hidroponik → Pertanian & Tanaman | produk 22; bahan 0; resep 0 | Katalog identik dengan 73 paket lain (paket: 15,32,33,35,44,45,47,56…)
+210. Usaha Kerajinan Kulit → Kerajinan, Hadiah & Dekorasi | produk 10; bahan 10; resep 0 | Katalog identik dengan 44 paket lain (paket: 6,34,36,46,48,58,60,70…)
+211. Martabak Manis Keliling → Jajanan & Gorengan | produk 4; bahan 11; resep 0 | Perlu validasi operasional; hasil nama/katalog awal tidak otomatis membuktikan kesesuaian
+212. Nasi Bakar Gerobak → Makanan Berat & Warung Nasi | produk 6; bahan 8; resep 6 | Katalog identik dengan 25 paket lain (paket: 22,27,39,51,63,75,87,99…)
+213. Warung Sop Buntut → Bakso, Mi & Soto | produk 6; bahan 10; resep 6 | Katalog identik dengan 25 paket lain (paket: 20,28,40,52,64,76,88,100…)
+214. Jus Mangga → Jus & Minuman Buah | produk 5; bahan 8; resep 0 | Katalog identik dengan 24 paket lain (paket: 24,29,53,65,77,89,101,113…)
+215. Usaha Donat Premium → Bakery, Kue & Pastry | produk 6; bahan 13; resep 6 | Katalog identik dengan 25 paket lain (paket: 17,30,42,54,66,78,90,102…)
+216. Produksi Brownies → Bakery, Kue & Pastry | produk 10; bahan 39; resep 10 | Katalog identik dengan 25 paket lain (paket: 12,31,43,55,67,79,91,103…)
+217. Toko Mainan Anak → Retail Khusus & Toko | produk 22; bahan 0; resep 0 | Katalog identik dengan 73 paket lain (paket: 15,32,33,35,44,45,47,56…)
+218. Pedagang Bumbu Dapur → Bahan Pangan Segar & Bumbu | produk 22; bahan 0; resep 0 | Katalog identik dengan 73 paket lain (paket: 15,32,33,35,44,45,47,56…) | Usaha produksi/minuman/makanan tetapi daftar bahan kosong
+219. Jasa Permak Jeans → Konveksi, Jahit & Kerajinan Tekstil | produk 10; bahan 10; resep 0 | Katalog identik dengan 44 paket lain (paket: 6,34,36,46,48,58,60,70…)
+220. Usaha Tanaman Hias → Pertanian & Tanaman | produk 22; bahan 0; resep 0 | Katalog identik dengan 73 paket lain (paket: 15,32,33,35,44,45,47,56…)
+221. Usaha Pot Tanaman → Pertanian & Tanaman | produk 10; bahan 10; resep 0 | Katalog identik dengan 44 paket lain (paket: 6,34,36,46,48,58,60,70…)
+222. Tahu Bulat Keliling → Jajanan & Gorengan | produk 3; bahan 8; resep 0 | Perlu validasi operasional; hasil nama/katalog awal tidak otomatis membuktikan kesesuaian
+223. Nasi Kotak Gerobak → Makanan Berat & Warung Nasi | produk 6; bahan 8; resep 6 | Katalog identik dengan 25 paket lain (paket: 22,27,39,51,63,75,87,99…)
+224. Warung Sop Iga → Bakso, Mi & Soto | produk 6; bahan 10; resep 6 | Katalog identik dengan 25 paket lain (paket: 20,28,40,52,64,76,88,100…)
+225. Jus Jambu → Jus & Minuman Buah | produk 5; bahan 8; resep 0 | Katalog identik dengan 24 paket lain (paket: 24,29,53,65,77,89,101,113…)
+226. Usaha Pukis → Bakery, Kue & Pastry | produk 6; bahan 13; resep 6 | Katalog identik dengan 25 paket lain (paket: 17,30,42,54,66,78,90,102…)
+227. Produksi Bolu → Bakery, Kue & Pastry | produk 10; bahan 39; resep 10 | Katalog identik dengan 25 paket lain (paket: 12,31,43,55,67,79,91,103…)
+228. Toko Aksesoris HP → Retail Khusus & Toko | produk 22; bahan 0; resep 0 | Katalog identik dengan 73 paket lain (paket: 15,32,33,35,44,45,47,56…)
+229. Pedagang Cabai dan Bawang → Bahan Pangan Segar & Bumbu | produk 22; bahan 0; resep 0 | Katalog identik dengan 73 paket lain (paket: 15,32,33,35,44,45,47,56…)
+230. Jasa Obras dan Bordir → Konveksi, Jahit & Kerajinan Tekstil | produk 10; bahan 10; resep 0 | Katalog identik dengan 44 paket lain (paket: 6,34,36,46,48,58,60,70…)
+231. Usaha Bibit Tanaman → Pertanian & Tanaman | produk 22; bahan 0; resep 0 | Katalog identik dengan 73 paket lain (paket: 15,32,33,35,44,45,47,56…)
+232. Usaha Dekorasi Rumah → Kerajinan, Hadiah & Dekorasi | produk 10; bahan 10; resep 0 | Katalog identik dengan 44 paket lain (paket: 6,34,36,46,48,58,60,70…)
+233. Cireng Keliling → Jajanan & Gorengan | produk 3; bahan 8; resep 0 | Perlu validasi operasional; hasil nama/katalog awal tidak otomatis membuktikan kesesuaian
+234. Soto Ayam Gerobak → Bakso, Mi & Soto | produk 6; bahan 8; resep 6 | Katalog identik dengan 25 paket lain (paket: 22,27,39,51,63,75,87,99…)
+235. Warung Empal Gentong → Bakso, Mi & Soto | produk 6; bahan 10; resep 6 | Katalog identik dengan 25 paket lain (paket: 20,28,40,52,64,76,88,100…)
+236. Jus Melon → Jus & Minuman Buah | produk 5; bahan 8; resep 0 | Katalog identik dengan 24 paket lain (paket: 24,29,53,65,77,89,101,113…)
+237. Usaha Kue Cubit → Bakery, Kue & Pastry | produk 6; bahan 13; resep 6 | Katalog identik dengan 25 paket lain (paket: 17,30,42,54,66,78,90,102…)
+238. Produksi Cake Ulang Tahun → Bakery, Kue & Pastry | produk 10; bahan 39; resep 10 | Katalog identik dengan 25 paket lain (paket: 12,31,43,55,67,79,91,103…)
+239. Toko Pulsa dan Paket Data → Retail Khusus & Toko | produk 22; bahan 0; resep 0 | Katalog identik dengan 73 paket lain (paket: 15,32,33,35,44,45,47,56…)
+240. Pedagang Tahu Putih → Bahan Pangan Segar & Bumbu | produk 22; bahan 0; resep 0 | Katalog identik dengan 73 paket lain (paket: 15,32,33,35,44,45,47,56…)
+241. Jasa Pengetikan → Jasa Percetakan & Dokumen | produk 10; bahan 10; resep 0 | Katalog identik dengan 44 paket lain (paket: 6,34,36,46,48,58,60,70…) | Katalog jasa tidak relevan: ditemukan produk laundry/cuci sepatu
+242. Usaha Jamur Tiram → Pertanian & Tanaman | produk 22; bahan 0; resep 0 | Katalog identik dengan 73 paket lain (paket: 15,32,33,35,44,45,47,56…) | Usaha produksi/minuman/makanan tetapi daftar bahan kosong
+243. Usaha Bunga Artificial → Kerajinan, Hadiah & Dekorasi | produk 10; bahan 10; resep 0 | Katalog identik dengan 44 paket lain (paket: 6,34,36,46,48,58,60,70…)
+244. Gorengan Keliling → Jajanan & Gorengan | produk 6; bahan 10; resep 0 | Perlu validasi operasional; hasil nama/katalog awal tidak otomatis membuktikan kesesuaian
+245. Soto Betawi Gerobak → Bakso, Mi & Soto | produk 6; bahan 8; resep 6 | Katalog identik dengan 25 paket lain (paket: 22,27,39,51,63,75,87,99…)
+246. Warung Tongseng Kambing → Bakso, Mi & Soto | produk 6; bahan 10; resep 6 | Katalog identik dengan 25 paket lain (paket: 20,28,40,52,64,76,88,100…)
+247. Jus Semangka → Jus & Minuman Buah | produk 5; bahan 8; resep 0 | Katalog identik dengan 24 paket lain (paket: 24,29,53,65,77,89,101,113…)
+248. Usaha Kue Ape → Bakery, Kue & Pastry | produk 6; bahan 13; resep 6 | Katalog identik dengan 25 paket lain (paket: 17,30,42,54,66,78,90,102…)
+249. Produksi Roti Manis → Bakery, Kue & Pastry | produk 10; bahan 39; resep 10 | Katalog identik dengan 25 paket lain (paket: 12,31,43,55,67,79,91,103…)
+250. Toko Perlengkapan Bayi → Retail Khusus & Toko | produk 22; bahan 0; resep 0 | Katalog identik dengan 73 paket lain (paket: 15,32,33,35,44,45,47,56…)
+251. Pedagang Tempe → Bahan Pangan Segar & Bumbu | produk 22; bahan 0; resep 0 | Katalog identik dengan 73 paket lain (paket: 15,32,33,35,44,45,47,56…)
+252. Jasa Fotokopi Rumahan → Jasa Percetakan & Dokumen | produk 10; bahan 10; resep 0 | Katalog identik dengan 44 paket lain (paket: 6,34,36,46,48,58,60,70…) | Katalog jasa tidak relevan: ditemukan produk laundry/cuci sepatu
+253. Usaha Microgreens → Pertanian & Tanaman | produk 22; bahan 0; resep 0 | Katalog identik dengan 73 paket lain (paket: 15,32,33,35,44,45,47,56…)
+254. Usaha Mahar dan Hantaran → Kerajinan, Hadiah & Dekorasi | produk 10; bahan 10; resep 0 | Katalog identik dengan 44 paket lain (paket: 6,34,36,46,48,58,60,70…)
+255. Roti Bakar Keliling → Bakery, Kue & Pastry | produk 4; bahan 8; resep 0 | Perlu validasi operasional; hasil nama/katalog awal tidak otomatis membuktikan kesesuaian
+256. Rawon Gerobak → Bakso, Mi & Soto | produk 6; bahan 8; resep 6 | Katalog identik dengan 25 paket lain (paket: 22,27,39,51,63,75,87,99…)
+257. Warung Gulai → Bakso, Mi & Soto | produk 6; bahan 10; resep 6 | Katalog identik dengan 25 paket lain (paket: 20,28,40,52,64,76,88,100…)
+258. Jus Buah Naga → Jus & Minuman Buah | produk 5; bahan 8; resep 0 | Katalog identik dengan 24 paket lain (paket: 24,29,53,65,77,89,101,113…)
+259. Usaha Kue Pancong → Bakery, Kue & Pastry | produk 6; bahan 13; resep 6 | Katalog identik dengan 25 paket lain (paket: 17,30,42,54,66,78,90,102…)
+260. Produksi Roti Tawar → Bakery, Kue & Pastry | produk 10; bahan 39; resep 10 | Katalog identik dengan 25 paket lain (paket: 12,31,43,55,67,79,91,103…)
+261. Toko Perlengkapan Sekolah → Retail Khusus & Toko | produk 22; bahan 0; resep 0 | Katalog identik dengan 73 paket lain (paket: 15,32,33,35,44,45,47,56…)
+262. Pedagang Tahu dan Tempe Mangkal → Bahan Pangan Segar & Bumbu | produk 22; bahan 0; resep 0 | Katalog identik dengan 73 paket lain (paket: 15,32,33,35,44,45,47,56…)
+263. Jasa Print Dokumen → Jasa Percetakan & Dokumen | produk 10; bahan 10; resep 0 | Katalog identik dengan 44 paket lain (paket: 6,34,36,46,48,58,60,70…) | Katalog jasa tidak relevan: ditemukan produk laundry/cuci sepatu
+264. Usaha Cabai Rumahan → Pertanian & Tanaman | produk 22; bahan 0; resep 0 | Katalog identik dengan 73 paket lain (paket: 15,32,33,35,44,45,47,56…)
+265. Jagung Rebus dan Bakar Keliling → Jajanan & Gorengan | produk 4; bahan 8; resep 0 | Perlu validasi operasional; hasil nama/katalog awal tidak otomatis membuktikan kesesuaian
+266. Sop Ayam Gerobak → Bakso, Mi & Soto | produk 6; bahan 8; resep 6 | Katalog identik dengan 25 paket lain (paket: 22,27,39,51,63,75,87,99…)
+267. Warung Rendang → Retail & Perdagangan Umum | produk 6; bahan 10; resep 6 | Katalog identik dengan 25 paket lain (paket: 20,28,40,52,64,76,88,100…)
+268. Jus Sirsak → Jus & Minuman Buah | produk 5; bahan 8; resep 0 | Katalog identik dengan 24 paket lain (paket: 24,29,53,65,77,89,101,113…)
+269. Usaha Serabi → Bakery, Kue & Pastry | produk 6; bahan 13; resep 6 | Katalog identik dengan 25 paket lain (paket: 17,30,42,54,66,78,90,102…)
+270. Produksi Roti Isi → Bakery, Kue & Pastry | produk 10; bahan 39; resep 10 | Katalog identik dengan 25 paket lain (paket: 12,31,43,55,67,79,91,103…)
+271. Toko Bumbu Dapur → Bahan Pangan Segar & Bumbu | produk 22; bahan 0; resep 0 | Katalog identik dengan 73 paket lain (paket: 15,32,33,35,44,45,47,56…) | Usaha produksi/minuman/makanan tetapi daftar bahan kosong
+272. Pedagang Kelapa Parut → Bahan Pangan Segar & Bumbu | produk 22; bahan 0; resep 0 | Katalog identik dengan 73 paket lain (paket: 15,32,33,35,44,45,47,56…)
+273. Jasa Laminasi dan Jilid → Jasa Percetakan & Dokumen | produk 10; bahan 10; resep 0 | Katalog identik dengan 44 paket lain (paket: 6,34,36,46,48,58,60,70…) | Katalog jasa tidak relevan: ditemukan produk laundry/cuci sepatu
+274. Usaha Bawang Merah → Pertanian & Tanaman | produk 22; bahan 0; resep 0 | Katalog identik dengan 73 paket lain (paket: 15,32,33,35,44,45,47,56…)
+275. Kacang Rebus Keliling → Jajanan & Gorengan | produk 3; bahan 5; resep 0 | Perlu validasi operasional; hasil nama/katalog awal tidak otomatis membuktikan kesesuaian
+276. Sop Iga Gerobak → Bakso, Mi & Soto | produk 6; bahan 8; resep 6 | Katalog identik dengan 25 paket lain (paket: 22,27,39,51,63,75,87,99…)
+277. Warung Masakan Padang → Retail & Perdagangan Umum | produk 6; bahan 10; resep 6 | Katalog identik dengan 25 paket lain (paket: 20,28,40,52,64,76,88,100…)
+278. Jus Wortel → Jus & Minuman Buah | produk 5; bahan 8; resep 0 | Katalog identik dengan 24 paket lain (paket: 24,29,53,65,77,89,101,113…)
+279. Usaha Kue Putu → Bakery, Kue & Pastry | produk 6; bahan 13; resep 6 | Katalog identik dengan 25 paket lain (paket: 17,30,42,54,66,78,90,102…)
+280. Produksi Donat → Bakery, Kue & Pastry | produk 10; bahan 39; resep 10 | Katalog identik dengan 25 paket lain (paket: 12,31,43,55,67,79,91,103…)
+281. Toko Beras Eceran → Bahan Pangan Segar & Bumbu | produk 22; bahan 0; resep 0 | Katalog identik dengan 73 paket lain (paket: 15,32,33,35,44,45,47,56…)
+282. Pedagang Santan Segar → Bahan Pangan Segar & Bumbu | produk 22; bahan 0; resep 0 | Katalog identik dengan 73 paket lain (paket: 15,32,33,35,44,45,47,56…)
+283. Jasa Desain Grafis → Jasa Percetakan & Dokumen | produk 10; bahan 10; resep 0 | Katalog identik dengan 44 paket lain (paket: 6,34,36,46,48,58,60,70…) | Katalog jasa tidak relevan: ditemukan produk laundry/cuci sepatu
+284. Usaha Budidaya Jahe → Pertanian & Tanaman | produk 22; bahan 0; resep 0 | Katalog identik dengan 73 paket lain (paket: 15,32,33,35,44,45,47,56…)
+285. Es Cendol dan Dawet Keliling → Minuman Dingin & Es Tradisional | produk 3; bahan 8; resep 0 | Perlu validasi operasional; hasil nama/katalog awal tidak otomatis membuktikan kesesuaian
+286. Tongseng Gerobak → Bakso, Mi & Soto | produk 6; bahan 8; resep 6 | Katalog identik dengan 25 paket lain (paket: 22,27,39,51,63,75,87,99…)
+287. Warung Nasi Rames → Makanan Berat & Warung Nasi | produk 6; bahan 10; resep 6 | Katalog identik dengan 25 paket lain (paket: 20,28,40,52,64,76,88,100…)
+288. Jus Tomat → Jus & Minuman Buah | produk 5; bahan 8; resep 0 | Katalog identik dengan 24 paket lain (paket: 24,29,53,65,77,89,101,113…)
+289. Usaha Klepon → Bakery, Kue & Pastry | produk 6; bahan 13; resep 6 | Katalog identik dengan 25 paket lain (paket: 17,30,42,54,66,78,90,102…)
+290. Produksi Pastry → Bakery, Kue & Pastry | produk 10; bahan 39; resep 10 | Katalog identik dengan 25 paket lain (paket: 12,31,43,55,67,79,91,103…)
+291. Toko Minyak Goreng → Bahan Pangan Segar & Bumbu | produk 22; bahan 0; resep 0 | Katalog identik dengan 73 paket lain (paket: 15,32,33,35,44,45,47,56…) | Usaha produksi/minuman/makanan tetapi daftar bahan kosong
+292. Pedagang Rempah Kering → Bahan Pangan Segar & Bumbu | produk 22; bahan 0; resep 0 | Katalog identik dengan 73 paket lain (paket: 15,32,33,35,44,45,47,56…)
+293. Jasa Foto Produk → Jasa Percetakan & Dokumen | produk 10; bahan 10; resep 0 | Katalog identik dengan 44 paket lain (paket: 6,34,36,46,48,58,60,70…) | Katalog jasa tidak relevan: ditemukan produk laundry/cuci sepatu
+294. Usaha Budidaya Kunyit → Pertanian & Tanaman | produk 22; bahan 0; resep 0 | Katalog identik dengan 73 paket lain (paket: 15,32,33,35,44,45,47,56…)
+295. Es Doger Keliling → Minuman Dingin & Es Tradisional | produk 3; bahan 10; resep 0 | Perlu validasi operasional; hasil nama/katalog awal tidak otomatis membuktikan kesesuaian
+296. Gulai Ayam Gerobak → Ayam, Bebek & Unggas Siap Saji | produk 6; bahan 8; resep 6 | Katalog identik dengan 25 paket lain (paket: 22,27,39,51,63,75,87,99…)
+297. Warung Nasi Campur → Makanan Berat & Warung Nasi | produk 6; bahan 10; resep 6 | Katalog identik dengan 25 paket lain (paket: 20,28,40,52,64,76,88,100…)
+298. Sop Buah → Jus & Minuman Buah | produk 5; bahan 8; resep 0 | Katalog identik dengan 24 paket lain (paket: 24,29,53,65,77,89,101,113…)
+299. Usaha Onde-onde → Bakery, Kue & Pastry | produk 6; bahan 13; resep 6 | Katalog identik dengan 25 paket lain (paket: 17,30,42,54,66,78,90,102…)
+300. Produksi Risoles Frozen → Produksi Bahan Pangan & Bumbu | produk 10; bahan 39; resep 10 | Katalog identik dengan 25 paket lain (paket: 12,31,43,55,67,79,91,103…)
+301. Toko Telur → Bahan Pangan Segar & Bumbu | produk 22; bahan 0; resep 0 | Katalog identik dengan 73 paket lain (paket: 15,32,33,35,44,45,47,56…)
+
+BATASAN DAN LANGKAH LANJUT
+- Temuan “katalog identik” menunjukkan paket memakai daftar item sama persis; perlu cek apakah itu benar-benar cocok atau hasil salin-tempel.
+- Beberapa katalog tampak hanya memiliki 10 produk dan 10 perlengkapan yang sama untuk usaha berbeda. Hal ini harus diperbaiki berdasarkan kelompok, bukan ditambal satu per satu tanpa aturan.
+- Audit belum membuktikan harga, resep, hasil produksi, konversi satuan, pajak, dan margin sesuai kondisi usaha nyata.
+- Sebelum mengganti katalog produksi, lakukan validasi manual tiap keluarga usaha dan uji alur pembelian → stok bahan → komposisi → produksi → stok produk jadi → kasir → HPP → laba.
