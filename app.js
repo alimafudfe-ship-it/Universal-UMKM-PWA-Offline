@@ -1,5 +1,5 @@
 'use strict';
-window.APP_BUILD_VERSION='4.1.3';document.documentElement.dataset.appVersion='4.1.3';
+window.APP_BUILD_VERSION='4.1.5';document.documentElement.dataset.appVersion='4.1.5';
 const DB_NAME='UniversalUMKMProOffline', DB_VERSION=5;
 let db, master, cart=[], lastReceipt=null, selectedPackageId=null, currentProfile=null, recipeDraft=[], businesses=[], activeBusinessId=null, licenseSlots=1, purchaseSearchSeq=0, catalogAuditMode=false;
 function licensedBusinessCount(){return businesses.filter(b=>!b.auditMode).length;}
@@ -81,9 +81,10 @@ async function migrateMasterV3(){
  if(!master||!Array.isArray(businesses)||!businesses.length)return;
  const originalId=activeBusinessId,originalProfile=currentProfile;let changed=false;
  for(const business of businesses){
-  if(Number(business.masterDataVersion||0)>=6)continue;
+  if(Number(business.masterDataVersion||0)>=8)continue;
   activeBusinessId=business.id;currentProfile=business;
   const pid=Number(business.packageId||0);if(!pid)continue;
+  const currentPackage=(master.packages||[]).find(p=>Number(p.id)===pid);if(currentPackage&&business.business!==currentPackage.nama_usaha){business.business=currentPackage.nama_usaha;changed=true;}
   const templateItems=master.items.filter(i=>Number(i.paket_id)===pid&&i.aktif!==0);
   let products=await getAll('products'),materials=await getAll('materials'),assets=await getAll('assets'),recipes=await getAll('recipes');
   const byTemplate=(rows,templateId)=>rows.find(x=>Number(x.templateItemId)===Number(templateId));
@@ -121,7 +122,7 @@ async function migrateMasterV3(){
    const lines=(r.lines||[]).map(l=>{const materialId=materialMap.get(Number(l.material_template_id))||Number(byTemplate(materials,l.material_template_id)?.id);const material=materials.find(m=>Number(m.id)===Number(materialId));return {materialId,qty:Number(l.qty||0),unit:material?.unit||l.unit||''}}).filter(l=>l.materialId&&Number.isFinite(l.qty)&&l.qty>=0);
    if(lines.length){await add('recipes',{productId,lines,mode:'auto',templateRecipeId:`v3-${r.product_template_id}`,recipeBasis:r.recipe_basis||'unit',targetFinishedGrams:Number(r.target_finished_grams)||0,expectedYieldUnits:Number(r.expected_yield_units)||1,yieldUnit:r.yield_unit||'Pcs',recipeStatus:r.recipe_status||'referensi_awal',formulaVersion:Number(r.formula_version)||1,sourceRefs:Array.isArray(r.source_refs)?r.source_refs:[],sourceNote:r.source_note||'',instructions:r.instructions||'',instructionStatus:r.instructions?'panduan_referensi':'panduan_awal',createdAt:dateNow(),updatedAt:dateNow()});recipes.push({productId,lines});const prod=products.find(x=>Number(x.id)===productId);if(prod&&Number(prod.cost||0)<=0){prod.costMode='auto';await put('products',prod)}changed=true}
   }
-  business.masterDataVersion=6;business.packageVersion='4.0.1';business.masterUpdatedAt=dateNow();changed=true;
+  business.masterDataVersion=8;business.packageVersion='4.1.6';business.masterUpdatedAt=dateNow();changed=true;
  }
  activeBusinessId=originalId;businesses=businesses.map(b=>({...b}));currentProfile=businesses.find(b=>String(b.id)===String(originalId))||originalProfile;
  if(changed)await saveBusinessList();
@@ -769,7 +770,7 @@ async function setupBusiness(){
  const templateItems=master.items.filter(i=>Number(i.paket_id)===pid&&i.aktif!==0);
  if(!templateItems.length){toast('Template ini belum memiliki item awal. Data usaha tidak dibuat agar tidak kosong tanpa sengaja.');return}
  const id='biz-'+Date.now().toString(36)+'-'+Math.random().toString(36).slice(2,7);
- const profile={id,key:'profile-'+id,name,business:pack.nama_usaha,packageId:pid,auditMode:!!catalogAuditMode,packageVersion:master.catalog_version||'4.0.0',masterDataVersion:6,compositionMode:'auto',transactionPrefix:makeTransactionPrefix(name),nextTransactionNumber:1,address:'',phone:'',footer:'Terima kasih atas kunjungan Anda.',createdAt:dateNow()};
+ const profile={id,key:'profile-'+id,name,business:pack.nama_usaha,packageId:pid,auditMode:!!catalogAuditMode,packageVersion:master.catalog_version||'4.0.0',masterDataVersion:8,compositionMode:'auto',transactionPrefix:makeTransactionPrefix(name),nextTransactionNumber:1,address:'',phone:'',footer:'Terima kasih atas kunjungan Anda.',createdAt:dateNow()};
  const tx=db.transaction(['settings','products','materials','assets','recipes'],'readwrite');
  const settings=tx.objectStore('settings'),next=[...businesses,profile];
  settings.put({key:'businesses',value:next});settings.put({key:'activeBusinessId',value:id});settings.put({key:'licenseSlots',value:licenseSlots});
@@ -1814,7 +1815,7 @@ async function importBackup(e){
   await renderHome();await renderProducts();await renderReports();await renderCashItems();await renderMaterials();await renderAssets();if(nameEl)nameEl.textContent='Pemulihan berhasil dari file: '+f.name;toast('Pemulihan selesai. Periksa kembali data usaha Anda.');
  }catch(err){console.error(err);if(nameEl)nameEl.textContent='File tidak berhasil dipulihkan: '+f.name;toast('Impor gagal: '+(err.message||'file tidak dapat dibaca'));}
  finally{if(input)input.value='';}
-}async function resetData(){if(!confirm('RESET DATA UJI COBA\n\nSemua data lokal pada perangkat ini akan dihapus: profil/daftar usaha, produk, bahan, stok, pembelian, komposisi, aset, pengeluaran, dan transaksi.\n\nFile katalog MASTER (master.json) tidak dihapus dan akan dimuat kembali saat aplikasi dibuka.\n\nAnda menyatakan belum memiliki transaksi penting. Lanjutkan reset?'))return;for(const s of ['settings','products','transactions','details','materials','materialPurchases','recipes','assets','expenses','productions'])await clearStore(s);cart=[];currentProfile=null;businesses=[];activeBusinessId=null;licenseSlots=1;selectedPackageId=null;$('setupCard').hidden=true;$('nav').hidden=true;$('shopTitle').textContent='Pilih Jenis Usaha';$('headerSubtitle').textContent='Satu aplikasi untuk berbagai kebutuhan UMKM';$('existingBusiness').hidden=true;toast('Data uji coba lokal dihapus. Katalog MASTER tetap tersedia.');showPage('home');renderBusinessCatalog()}
+}async function resetData(){if(!confirm('Yakin menghapus semua profil, produk, dan transaksi dari browser/perangkat ini? Tindakan ini tidak bisa dibatalkan. Ekspor cadangan dahulu.'))return;for(const s of ['settings','products','transactions','details','materials','materialPurchases','recipes','assets','expenses','productions'])await clearStore(s);cart=[];currentProfile=null;businesses=[];activeBusinessId=null;licenseSlots=1;selectedPackageId=null;$('setupCard').hidden=true;$('nav').hidden=true;$('shopTitle').textContent='Pilih Jenis Usaha';$('headerSubtitle').textContent='Satu aplikasi untuk berbagai kebutuhan UMKM';$('existingBusiness').hidden=true;toast('Data lokal dihapus.');showPage('home');renderBusinessCatalog()}
 function esc(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
 if('serviceWorker'in navigator&&location.protocol!=='file:')window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(e=>console.warn('Service worker belum terpasang',e)));
 init();boot();
