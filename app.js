@@ -1,5 +1,5 @@
 'use strict';
-window.APP_BUILD_VERSION='4.1.5';document.documentElement.dataset.appVersion='4.1.5';
+window.APP_BUILD_VERSION='4.1.8';document.documentElement.dataset.appVersion='4.1.8';
 const DB_NAME='UniversalUMKMProOffline', DB_VERSION=5;
 let db, master, cart=[], lastReceipt=null, selectedPackageId=null, currentProfile=null, recipeDraft=[], businesses=[], activeBusinessId=null, licenseSlots=1, purchaseSearchSeq=0, catalogAuditMode=false;
 function licensedBusinessCount(){return businesses.filter(b=>!b.auditMode&&!b.archivedAt).length;}
@@ -767,7 +767,7 @@ async function setupBusiness(){
  if(!catalogAuditMode&&licensedBusinessCount()>=licenseSlots){toast(`Paket hanya mengizinkan ${licenseSlots} usaha. Aktifkan Mode Audit Katalog untuk membuat ruang uji terpisah.`);return}
  const pack=master.packages.find(p=>Number(p.id)===pid);
  if(!pack){toast('Template usaha tidak ditemukan di Master.');return}
- if(businesses.some(b=>Number(b.packageId)===pid&&!!b.auditMode===catalogAuditMode)){toast(catalogAuditMode?'Ruang audit untuk template ini sudah ada. Pilih data audit tersimpan untuk membukanya.':'Template usaha ini sudah dibuat. Pilih usaha tersimpan untuk membukanya.');return}
+ if(businesses.some(b=>!b.archivedAt&&Number(b.packageId)===pid&&!!b.auditMode===catalogAuditMode)){toast(catalogAuditMode?'Ruang audit untuk template ini sudah ada. Pilih data audit tersimpan untuk membukanya.':'Template usaha ini sudah dibuat. Pilih usaha tersimpan untuk membukanya.');return}
  const templateItems=master.items.filter(i=>Number(i.paket_id)===pid&&i.aktif!==0);
  if(!templateItems.length){toast('Template ini belum memiliki item awal. Data usaha tidak dibuat agar tidak kosong tanpa sengaja.');return}
  const id='biz-'+Date.now().toString(36)+'-'+Math.random().toString(36).slice(2,7);
