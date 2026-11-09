@@ -1,5 +1,5 @@
 'use strict';
-window.APP_BUILD_VERSION='4.1.9';document.documentElement.dataset.appVersion='4.1.9';
+window.APP_BUILD_VERSION='4.2.0';document.documentElement.dataset.appVersion='4.2.0';
 const DB_NAME='UniversalUMKMProOffline', DB_VERSION=5;
 let db, master, cart=[], lastReceipt=null, selectedPackageId=null, currentProfile=null, recipeDraft=[], businesses=[], activeBusinessId=null, licenseSlots=1, purchaseSearchSeq=0, catalogAuditMode=false;
 function licensedBusinessCount(){return businesses.filter(b=>!b.auditMode&&!b.archivedAt).length;}
