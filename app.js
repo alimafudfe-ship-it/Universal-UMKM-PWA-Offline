@@ -1,7 +1,7 @@
 'use strict';
-window.APP_BUILD_VERSION='4.2.3';document.documentElement.dataset.appVersion='4.2.3';
+window.APP_BUILD_VERSION='4.2.5';document.documentElement.dataset.appVersion='4.2.5';
 const DB_NAME='UniversalUMKMProOffline', DB_VERSION=5;
-let db, master, cart=[], lastReceipt=null, selectedPackageId=null, currentProfile=null, recipeDraft=[], businesses=[], activeBusinessId=null, licenseSlots=1, purchaseSearchSeq=0, catalogAuditMode=false, cashierGroup='all';
+let db, master, cart=[], lastReceipt=null, selectedPackageId=null, currentProfile=null, recipeDraft=[], businesses=[], activeBusinessId=null, licenseSlots=1, purchaseSearchSeq=0, catalogAuditMode=false, cashierGroup='all', productGroup='all';
 function licensedBusinessCount(){return businesses.filter(b=>!b.auditMode&&!b.archivedAt).length;}
 let activeProductWorkspaceId = null, currentRecipeIsPrintService = false;
 // Keep product filter selection deterministic when navigating from Product Workspace.
@@ -864,13 +864,25 @@ async function renderProducts(){
  if(!db)return;
  const term=$('productSearch').value.trim().toLowerCase();
  const [allProducts,recipes,materials]=await Promise.all([getAll('products'),getAll('recipes'),getAll('materials')]);
- const products=allProducts.filter(p=>p.active!==false&&!p.legacyMaterial&&p.name.toLowerCase().includes(term));
+ const all=allProducts.filter(p=>p.active!==false&&!p.legacyMaterial&&p.forSale!==false);
+ const groupRoot=$('productGroups');
+ const printing=isPrintingBusiness();
+ let candidates=all;
+ if(printing){
+  const counts=new Map();for(const p of all){const key=cashierGroupForProduct(p);counts.set(key,(counts.get(key)||0)+1)}
+  if(!PRINT_CASHIER_GROUPS.some(([key])=>key===productGroup))productGroup='all';
+  groupRoot.hidden=false;
+  groupRoot.innerHTML=PRINT_CASHIER_GROUPS.filter(([key])=>key==='all'||counts.has(key)).map(([key,label])=>`<button type="button" class="cashier-group${productGroup===key?' active':''}" data-productgroup="${key}" aria-pressed="${productGroup===key}">${label}${key==='all'?` <small>${all.length}</small>`:` <small>${counts.get(key)||0}</small>`}</button>`).join('');
+  groupRoot.querySelectorAll('[data-productgroup]').forEach(b=>b.onclick=()=>{productGroup=b.dataset.productgroup;renderProducts()});
+  if(productGroup!=='all')candidates=all.filter(p=>cashierGroupForProduct(p)===productGroup);
+ }else{groupRoot.hidden=true;groupRoot.innerHTML='';productGroup='all'}
  const recipeByProduct=new Map(recipes.map(r=>[Number(r.productId),r]));
+ const products=candidates.filter(p=>!term||String(p.name||'').toLowerCase().includes(term)||(recipeByProduct.get(Number(p.id))?.variants||[]).some(v=>String(v.name||'').toLowerCase().includes(term)));
  const root=$('productsList');
  const workspace=$('productWorkspace');
- root.hidden=Boolean(activeProductWorkspaceId);$('productSearch').hidden=Boolean(activeProductWorkspaceId);
+ root.hidden=Boolean(activeProductWorkspaceId);$('productSearch').hidden=Boolean(activeProductWorkspaceId);groupRoot.hidden=Boolean(activeProductWorkspaceId)||!printing;
  if(activeProductWorkspaceId){workspace.hidden=false;await renderProductWorkspace();return}else{workspace.hidden=true;workspace.innerHTML=''}
- if(!products.length){root.innerHTML='<div class="empty">Belum ada produk yang cocok.</div>';return}
+ if(!products.length){root.innerHTML='<div class="empty">'+(term?'Tidak ada produk yang cocok dalam kelompok ini. Coba kata kunci lain atau pilih Semua.':'Belum ada produk dalam kelompok ini.')+'</div>';return}
  root.innerHTML=products.map(p=>{
   const recipe=recipeByProduct.get(Number(p.id));
   const sizes=recipe?.variants?.length?`<div class="sku-variant-list"><strong>SKU / spesifikasi yang dijual di Kasir</strong>${recipe.variants.map((v,i)=>{const variantCost=(Number(p.cost)||0)*(Number(v.multiplier)||1)+Number(v.directCost||0)+Number(v.laminationCost||0)+serviceVariantMaterialCost(v,materials);return `<div class="sku-variant-row"><span>${esc(p.name)} — ${esc(v.name)}</span><span>Jual ${money(Number(v.price)||0)} · HPP ${money(variantCost)}</span></div>`}).join('')}</div>`:'';

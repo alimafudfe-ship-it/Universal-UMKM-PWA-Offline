@@ -257,3 +257,4 @@ nav button{font-size:12px}
 .sku-variant-row{display:flex;justify-content:space-between;gap:12px;padding:7px 9px;border-radius:7px;background:var(--soft,#f6f7f8);font-size:.84rem}
 .sku-variant-row span:last-child{text-align:right;white-space:nowrap}
 @media(max-width:600px){.sku-variant-row{display:grid;gap:3px}.sku-variant-row span:last-child{text-align:left;white-space:normal}}
+
