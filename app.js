@@ -1,7 +1,7 @@
 'use strict';
-window.APP_BUILD_VERSION='4.2.2';document.documentElement.dataset.appVersion='4.2.2';
+window.APP_BUILD_VERSION='4.2.3';document.documentElement.dataset.appVersion='4.2.3';
 const DB_NAME='UniversalUMKMProOffline', DB_VERSION=5;
-let db, master, cart=[], lastReceipt=null, selectedPackageId=null, currentProfile=null, recipeDraft=[], businesses=[], activeBusinessId=null, licenseSlots=1, purchaseSearchSeq=0, catalogAuditMode=false;
+let db, master, cart=[], lastReceipt=null, selectedPackageId=null, currentProfile=null, recipeDraft=[], businesses=[], activeBusinessId=null, licenseSlots=1, purchaseSearchSeq=0, catalogAuditMode=false, cashierGroup='all';
 function licensedBusinessCount(){return businesses.filter(b=>!b.auditMode&&!b.archivedAt).length;}
 let activeProductWorkspaceId = null, currentRecipeIsPrintService = false;
 // Keep product filter selection deterministic when navigating from Product Workspace.
@@ -1570,7 +1570,45 @@ async function renderProductionHistory(){
 
 async function renderAssets(){const assets=(await getAll('assets')).filter(a=>a.active!==false&&((($('assetSearch').value||'').trim().toLowerCase())===''||a.name.toLowerCase().includes(($('assetSearch').value||'').trim().toLowerCase())));$('assetsList').innerHTML=assets.length?assets.map(a=>`<div class="productrow"><div class="info"><strong>${esc(a.name)}</strong><div class="muted">${esc(a.category||'Peralatan')} · Beli ${money(a.cost)} · ${esc(a.date||'Tanggal belum diisi')}</div>${a.lifeMonths?`<div class="muted">Penyusutan opsional: ${money(Number(a.cost||0)/Number(a.lifeMonths))}/bulan</div>`:''}</div><div class="rowactions"><button data-aedit="${a.id}">Edit</button><button data-adel="${a.id}">Hapus</button></div></div>`).join(''):'<div class="empty">Belum ada investasi/peralatan.</div>';const all=await getAll('assets');$('assetsList').querySelectorAll('[data-aedit]').forEach(b=>b.onclick=()=>{const a=all.find(x=>x.id===Number(b.dataset.aedit));$('assetId').value=a.id;$('assetName').value=a.name;$('assetCategory').value=a.category||'';$('assetCost').value=a.cost||0;$('assetDate').value=a.date||'';$('assetLife').value=a.lifeMonths||'';window.scrollTo({top:0,behavior:'smooth'})});$('assetsList').querySelectorAll('[data-adel]').forEach(b=>b.onclick=async()=>{if(!confirm('Hapus catatan aset ini?'))return;const a=await get('assets',Number(b.dataset.adel));a.active=false;await put('assets',a);renderAssets()})}
 async function saveAsset(){const name=$('assetName').value.trim();if(!name){toast('Nama investasi/peralatan wajib diisi.');return}const id=Number($('assetId').value||0),old=id?await get('assets',id):null,a={...(old||{}),name,category:$('assetCategory').value.trim()||'Peralatan',cost:Math.max(0,Number($('assetCost').value)||0),date:$('assetDate').value||'',lifeMonths:Math.max(0,Number($('assetLife').value)||0),active:true,updatedAt:dateNow()};if(id)a.id=id;await put('assets',a);$('assetForm').reset();$('assetId').value='';renderAssets();toast('Catatan investasi/peralatan disimpan. Nilainya tidak otomatis dimasukkan ke HPP produk.')}
-async function renderCashItems(){const term=$('cashSearch').value.trim().toLocaleLowerCase('id'),all=(await getAll('products')).filter(p=>p.active!==false&&!p.legacyMaterial&&p.forSale!==false),ps=all.filter(p=>String(p.name||'').toLocaleLowerCase('id').includes(term)),selected=new Set(cart.map(x=>Number(x.id)));$('cashItems').innerHTML=ps.length?ps.map(p=>{const chosen=selected.has(Number(p.id));return `<button type="button" class="cashitem${chosen?' is-selected':''}" data-addcart="${p.id}" aria-pressed="${chosen}"><strong>${chosen?'✓ ':''}${esc(p.name)}</strong><small>${p.price>0?money(p.price):'Harga belum diisi'}${p.stockEnabled?' · Stok '+Number(p.stock||0):''}</small></button>`}).join(''):'<div class="empty">'+(term?'Produk tidak ditemukan. Coba kata kunci lain.':'Belum ada produk untuk dijual.')+'</div>';let count=$('cashierSelectedCount');if(!count){count=document.createElement('div');count.id='cashierSelectedCount';count.className='cashier-selected-count';$('cashItems').before(count)}count.textContent=cart.length?`${new Set(cart.map(x=>Number(x.id))).size} jenis produk dipilih · ${cart.reduce((n,x)=>n+Number(x.qty||0),0)} barang`:'Belum ada produk dipilih';$('cashItems').querySelectorAll('[data-addcart]').forEach(b=>b.onclick=()=>addCart(Number(b.dataset.addcart)))}
+function isPrintingBusiness(){return Number(currentProfile?.packageId)===315||/percetakan|fotokopi|fotocopy/i.test(String(currentProfile?.business||currentProfile?.businessType||currentProfile?.name||''))}
+function cashierGroupForProduct(product){
+ const template=(master?.items||[]).find(x=>Number(x.id)===Number(product.templateItemId||0));
+ const category=String(product.category||template?.kategori||'').toLocaleLowerCase('id');
+ const kind=String(template?.kelompok||'').toLocaleLowerCase('id');
+ const name=String(product.name||'').toLocaleLowerCase('id');
+ if(kind.includes('produk')||category.includes('alat tulis')||category.includes('wadah penyimpanan')||category.includes('kebutuhan administratif'))return 'atk';
+ if(name.includes('fotocopy')||name.includes('fotokopi'))return 'fotocopy';
+ if(name.includes('print'))return 'print';
+ if(category.includes('desain')||name.includes('desain'))return 'desain';
+ if(name.includes('jilid')||name.includes('penjilidan')||name.includes('spiral')||name.includes('softcover')||name.includes('hardcover'))return 'penjilidan';
+ if(category.includes('cover')||name.includes('cover'))return 'cover';
+ if(category.includes('scan')||name.includes('scan'))return 'scan';
+ if(category.includes('laminasi')||name.includes('laminasi')||name.includes('laminating'))return 'laminasi';
+ if(category.includes('percetakan & produksi')||name.startsWith('cetak '))return 'cetak';
+ if(kind.includes('jasa')||category.includes('ppob')||category.includes('jasa')||category.includes('layanan'))return 'jasa';
+ // Produk tambahan yang dibuat pengguna pada paket ini diperlakukan sebagai barang dagang,
+ // kecuali kategori/nama secara jelas menandainya sebagai jasa.
+ if(category.includes('jasa')||category.includes('layanan')||name.startsWith('jasa '))return 'jasa';
+ return 'atk';
+}
+const PRINT_CASHIER_GROUPS=[['all','SEMUA'],['fotocopy','FOTOCOPY'],['print','PRINT'],['penjilidan','PENJILIDAN'],['desain','DESAIN'],['cover','COVER'],['scan','SCAN'],['laminasi','LAMINASI'],['cetak','CETAK & PRODUKSI'],['jasa','JASA'],['atk','ATK']];
+async function renderCashItems(){
+ const term=$('cashSearch').value.trim().toLocaleLowerCase('id'),all=(await getAll('products')).filter(p=>p.active!==false&&!p.legacyMaterial&&p.forSale!==false),printing=isPrintingBusiness(),selected=new Set(cart.map(x=>Number(x.id)));
+ const groupRoot=$('cashierGroups');
+ let candidates=all;
+ if(printing){
+  const counts=new Map();for(const p of all){const key=cashierGroupForProduct(p);counts.set(key,(counts.get(key)||0)+1)}
+  if(!PRINT_CASHIER_GROUPS.some(([key])=>key===cashierGroup))cashierGroup='all';
+  groupRoot.hidden=false;
+  groupRoot.innerHTML=PRINT_CASHIER_GROUPS.filter(([key])=>key==='all'||counts.has(key)).map(([key,label])=>`<button type="button" class="cashier-group${cashierGroup===key?' active':''}" data-cashgroup="${key}" aria-pressed="${cashierGroup===key}">${label}${key==='all'?` <small>${all.length}</small>`:` <small>${counts.get(key)||0}</small>`}</button>`).join('');
+  groupRoot.querySelectorAll('[data-cashgroup]').forEach(b=>b.onclick=()=>{cashierGroup=b.dataset.cashgroup;renderCashItems()});
+  if(cashierGroup!=='all')candidates=all.filter(p=>cashierGroupForProduct(p)===cashierGroup);
+ }else{groupRoot.hidden=true;groupRoot.innerHTML='';cashierGroup='all'}
+ const ps=candidates.filter(p=>String(p.name||'').toLocaleLowerCase('id').includes(term));
+ $('cashItems').innerHTML=ps.length?ps.map(p=>{const chosen=selected.has(Number(p.id));return `<button type="button" class="cashitem${chosen?' is-selected':''}" data-addcart="${p.id}" aria-pressed="${chosen}"><strong>${chosen?'✓ ':''}${esc(p.name)}</strong><small>${p.price>0?money(p.price):'Harga belum diisi'}${p.stockEnabled?' · Stok '+Number(p.stock||0):''}</small></button>`}).join(''):'<div class="empty">'+(term?'Produk tidak ditemukan dalam kelompok ini. Coba kata kunci lain atau pilih Semua.':'Belum ada produk untuk dijual dalam kelompok ini.')+'</div>';
+ let count=$('cashierSelectedCount');if(!count){count=document.createElement('div');count.id='cashierSelectedCount';count.className='cashier-selected-count';$('cashItems').before(count)}count.textContent=cart.length?`${new Set(cart.map(x=>Number(x.id))).size} jenis produk dipilih · ${cart.reduce((n,x)=>n+Number(x.qty||0),0)} barang`:'Belum ada produk dipilih';
+ $('cashItems').querySelectorAll('[data-addcart]').forEach(b=>b.onclick=()=>addCart(Number(b.dataset.addcart)));
+}
 async function addCart(id){
  const p=await get('products',id);if(!p)return;
  const recipe=(await getAll('recipes')).find(r=>Number(r.productId)===Number(id));
