@@ -250,3 +250,10 @@ nav button{font-size:12px}
 .recipe-variant-row .variant-direct-cost{min-width:0}
 .recipe-variant-row .variant-field-label{display:flex;flex-direction:column;gap:5px;font-size:.82rem;color:var(--muted,#64748b)}
 .recipe-variant-row .variant-components-wrap{grid-column:1/-1}
+
+/* v4.2.4 — tampilkan setiap spesifikasi varian sebagai baris SKU di Produk & Jasa */
+.sku-variant-list{margin-top:10px;padding:9px;border:1px solid var(--line,#ddd);border-radius:10px;display:grid;gap:7px}
+.sku-variant-list>strong{font-size:.86rem}
+.sku-variant-row{display:flex;justify-content:space-between;gap:12px;padding:7px 9px;border-radius:7px;background:var(--soft,#f6f7f8);font-size:.84rem}
+.sku-variant-row span:last-child{text-align:right;white-space:nowrap}
+@media(max-width:600px){.sku-variant-row{display:grid;gap:3px}.sku-variant-row span:last-child{text-align:left;white-space:normal}}
