@@ -242,3 +242,11 @@ nav button{font-size:12px}
 
 /* v4.1.1: Mode Audit Katalog */
 #toggleCatalogAudit{margin:8px 0;padding:10px 14px;border:1px solid #315b7d;border-radius:10px;background:#eef5fb;color:#173451;font-weight:700;cursor:pointer}#toggleCatalogAudit.primary{background:#173451;color:#fff}#catalogAuditNote{padding:12px 14px;margin:8px 0 14px;border:1px solid #9bb8ce;border-radius:10px;background:#f1f7fb;color:#173451;font-size:13px;line-height:1.55}#catalogAuditNote[hidden]{display:none}
+/* v4.2.2 — flexible print-service specification editor */
+#serviceVariantGuide{border:1px solid var(--line,#d8e2e8);background:var(--surface-soft,#f8fafc);border-radius:14px;padding:14px;margin:14px 0}
+#serviceVariantGuide[hidden]{display:none!important}
+.recipe-variant-row{align-items:start}
+.recipe-variant-row .variant-components{grid-column:1/-1;min-height:74px;width:100%;font:inherit;resize:vertical}
+.recipe-variant-row .variant-direct-cost{min-width:0}
+.recipe-variant-row .variant-field-label{display:flex;flex-direction:column;gap:5px;font-size:.82rem;color:var(--muted,#64748b)}
+.recipe-variant-row .variant-components-wrap{grid-column:1/-1}
