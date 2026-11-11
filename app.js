@@ -82,9 +82,10 @@ async function migrateMasterV3(){
  if(!master||!Array.isArray(businesses)||!businesses.length)return;
  const originalId=activeBusinessId,originalProfile=currentProfile;let changed=false;
  for(const business of businesses){
-  if(Number(business.masterDataVersion||0)>=8)continue;
-  activeBusinessId=business.id;currentProfile=business;
   const pid=Number(business.packageId||0);if(!pid)continue;
+  const targetMasterVersion=pid===315?9:8;
+  if(Number(business.masterDataVersion||0)>=targetMasterVersion)continue;
+  activeBusinessId=business.id;currentProfile=business;
   const currentPackage=(master.packages||[]).find(p=>Number(p.id)===pid);if(currentPackage&&business.business!==currentPackage.nama_usaha){business.business=currentPackage.nama_usaha;changed=true;}
   const templateItems=master.items.filter(i=>Number(i.paket_id)===pid&&i.aktif!==0);
   let products=await getAll('products'),materials=await getAll('materials'),assets=await getAll('assets'),recipes=await getAll('recipes');
@@ -123,7 +124,7 @@ async function migrateMasterV3(){
    const lines=(r.lines||[]).map(l=>{const materialId=materialMap.get(Number(l.material_template_id))||Number(byTemplate(materials,l.material_template_id)?.id);const material=materials.find(m=>Number(m.id)===Number(materialId));return {materialId,qty:Number(l.qty||0),unit:material?.unit||l.unit||''}}).filter(l=>l.materialId&&Number.isFinite(l.qty)&&l.qty>=0);
    const serviceVariants=(Array.isArray(r.service_variants)?r.service_variants:[]).map(v=>({...v,materials:(v.materials||[]).map(line=>{const mid=materialMap.get(Number(line.material_template_id))||Number(materials.find(m=>Number(m.templateItemId)===Number(line.material_template_id))?.id||0);const material=materials.find(m=>Number(m.id)===mid);return {...line,materialId:mid,name:material?.name||line.name||'',qty:Number(line.qty||0),unit:line.unit||material?.unit||'Pcs'};}).filter(line=>line.materialId>0)}));if(lines.length||serviceVariants.length){await add('recipes',{productId,lines,variants:serviceVariants,serviceMode:serviceVariants.length?'direct':'',consumeOnSale:serviceVariants.length>0,mode:'auto',templateRecipeId:`v4-${r.product_template_id}`,recipeBasis:r.recipe_basis||'unit',targetFinishedGrams:Number(r.target_finished_grams)||0,expectedYieldUnits:Number(r.expected_yield_units)||1,yieldUnit:r.yield_unit||'Pcs',recipeStatus:r.recipe_status||'referensi_awal',formulaVersion:Number(r.formula_version)||1,sourceRefs:Array.isArray(r.source_refs)?r.source_refs:[],sourceNote:r.source_note||'',instructions:r.instructions||'',instructionStatus:r.instructions?'panduan_referensi':'panduan_awal',createdAt:dateNow(),updatedAt:dateNow()});recipes.push({productId,lines,variants:serviceVariants,serviceMode:serviceVariants.length?'direct':'',consumeOnSale:serviceVariants.length>0});const prod=products.find(x=>Number(x.id)===productId);if(prod&&Number(prod.cost||0)<=0){prod.costMode='auto';await put('products',prod)}changed=true}
   }
-  business.masterDataVersion=8;business.packageVersion='4.2.2';business.masterUpdatedAt=dateNow();changed=true;
+  business.masterDataVersion=targetMasterVersion;business.packageVersion=pid===315?'4.2.6':'4.2.2';business.masterUpdatedAt=dateNow();changed=true;
  }
  activeBusinessId=originalId;businesses=businesses.map(b=>({...b}));currentProfile=businesses.find(b=>String(b.id)===String(originalId))||originalProfile;
  if(changed)await saveBusinessList();
